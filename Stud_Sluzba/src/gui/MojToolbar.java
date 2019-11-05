@@ -1,7 +1,9 @@
 package gui;
 
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
@@ -31,6 +33,13 @@ public class MojToolbar extends JToolBar {
 		add(delete_btn);
 		
 		//TODO add search text field
+		
+		add(Box.createHorizontalGlue());
+		
+		JTextField search_txtF = new JTextField(50);
+		search_txtF.setMaximumSize(search_txtF.getPreferredSize());
+		search_txtF.setToolTipText("Enter text");
+		add(search_txtF);
 		
 		JButton search_btn = new JButton();
 		search_btn.setToolTipText("Search");
