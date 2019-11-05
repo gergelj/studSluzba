@@ -37,6 +37,8 @@ public class MainFrame extends JFrame{
 		
 		//TODO napraviti status bar u kom pise Studentska sluzba i datum i trenutno vreme
 		
+		
+		
 		JPanel statusBar = new JPanel();
 		statusBar.setBackground(Color.LIGHT_GRAY);
 		statusBar.setPreferredSize(new Dimension(100,30));
