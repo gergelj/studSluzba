@@ -2,15 +2,18 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.sql.Time;
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
-import java.util.Timer;
+//import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
+//import java.sql.Time;
+//import java.text.SimpleDateFormat;
+//import java.util.Date;
+//import java.util.GregorianCalendar;
+//import java.util.Timer;
 
-import javax.swing.Box;
+//import javax.swing.Box;
+//import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -37,13 +40,16 @@ public class MainFrame extends JFrame{
 		
 		//TODO napraviti status bar u kom pise Studentska sluzba i datum i trenutno vreme
 		
-		
-		
 		JPanel statusBar = new JPanel();
 		statusBar.setBackground(Color.LIGHT_GRAY);
 		statusBar.setPreferredSize(new Dimension(100,30));
 		statusBar.add(new JLabel("Studentska služba"));
-		statusBar.add(new JLabel(new SimpleDateFormat("dd.MM.yyyy. hh:mm:ss").format(new GregorianCalendar().getTime())));
 		add(statusBar,BorderLayout.SOUTH);
+		
+		//TODO napraviti centralni deo glavnog prozora koji ima 3 taba
+		
+		this.add(new MojCentralni(),BorderLayout.CENTER);
+		
+		
 	}
 }

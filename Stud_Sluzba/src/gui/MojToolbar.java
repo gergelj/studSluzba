@@ -34,7 +34,6 @@ public class MojToolbar extends JToolBar {
 		
 		//TODO add search text field
 		
-		
 		add(Box.createHorizontalGlue());
 		
 		JTextField search_txtF = new JTextField(50);
