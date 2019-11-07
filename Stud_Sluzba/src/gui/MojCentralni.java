@@ -1,6 +1,5 @@
 package gui;
 
-import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 
@@ -17,27 +16,20 @@ public class MojCentralni extends JTabbedPane{
 
 	public MojCentralni()
 	{	
-		
-		JTabbedPane tabs = new JTabbedPane();
-        
         JComponent stud_tab = makeTextPanel("Students");
-        tabs.addTab("Students" ,null, stud_tab,"Tab with Students");
-        tabs.setMnemonicAt(0, KeyEvent.VK_1);
+        addTab("Students" ,null, stud_tab,"Tab with Students");
+        setMnemonicAt(0, KeyEvent.VK_1);
          
         JComponent prof_tab = makeTextPanel("Professors");
-        tabs.addTab("Professors", null, prof_tab, "Tab with Professors");
-        tabs.setMnemonicAt(1, KeyEvent.VK_2);
+        addTab("Professors", null, prof_tab, "Tab with Professors");
+        setMnemonicAt(1, KeyEvent.VK_2);
          
         JComponent subj_tab = makeTextPanel("Subjects");
-        tabs.addTab("Subjects", null, subj_tab, "Tab with Subjects");
-        tabs.setMnemonicAt(2, KeyEvent.VK_3);
-        
-        tabs.setBackground(Color.LIGHT_GRAY);
-        
-        add(tabs);
+        addTab("Subjects", null, subj_tab, "Tab with Subjects");
+        setMnemonicAt(2, KeyEvent.VK_3);
         
         //sluzi da ukljuci promenu taba pomocu strelica kada je prozor aplikacije previse uzak
-        tabs.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+        setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
     }
      
     protected JComponent makeTextPanel(String text) {
