@@ -76,6 +76,15 @@ public class MojMenuBar extends JMenuBar {
 		// Nakon toga treba da sledi sažeta biografija svakog autora.
 		JMenuItem about_mi = new JMenuItem("About", new ImageIcon("images/about-22.png"));
 		about_mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));		//CTRL+A
+		about_mi.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AboutDialog ad = new AboutDialog(frame);
+				ad.setVisible(true);
+			}
+			
+		});
 		
 		file.add(new_mi);
 		file.add(close_mi);
