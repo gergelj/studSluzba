@@ -27,6 +27,7 @@ public class MainFrame extends JFrame{
 
 	//labela za vreme i datum
 	JLabel mDateTime;
+	private MojCentralni tabovi;
 	/**
 	 * 
 	 */
@@ -43,7 +44,7 @@ public class MainFrame extends JFrame{
 		setLocationRelativeTo(null);
 		
 		this.setJMenuBar(new MojMenuBar(this));
-		this.add(new MojToolbar(), BorderLayout.NORTH);
+		this.add(new MojToolbar(this), BorderLayout.NORTH);
 		
 		//TODO napraviti status bar u kom pise Studentska sluzba i datum i trenutno vreme
 		
@@ -58,8 +59,8 @@ public class MainFrame extends JFrame{
 		add(statusBar,BorderLayout.SOUTH);
 		
 		//TODO napraviti centralni deo glavnog prozora koji ima 3 taba
-		
-		this.add(new MojCentralni(),BorderLayout.CENTER);
+		tabovi = new MojCentralni();
+		this.add(tabovi,BorderLayout.CENTER);
 		
 		
 		//thread za vreme i datum
@@ -90,5 +91,9 @@ public class MainFrame extends JFrame{
 			
 		});
 
+	}
+	
+	public MojCentralni getTabovi() {
+		return this.tabovi;
 	}
 }

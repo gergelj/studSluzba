@@ -13,8 +13,11 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 import javax.swing.WindowConstants;
 
+import controller.AddListener;
+
 public class MojMenuBar extends JMenuBar {
 
+	//parent frame
 	private MainFrame frame;
 	/**
 	 * 
@@ -35,6 +38,7 @@ public class MojMenuBar extends JMenuBar {
 		//TODO: MenuBar "New" Dodavanje novog entiteta u sistem
 		JMenuItem new_mi = new JMenuItem("New", new ImageIcon("images/add-22.png"));
 		new_mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));		//CTRL+N
+		new_mi.addActionListener(new AddListener(frame));
 		
 		//TODO: MenuBar "Close" Zatvaranje aplikacije
 		JMenuItem close_mi = new JMenuItem("Close", new ImageIcon("images/close-22.png"));

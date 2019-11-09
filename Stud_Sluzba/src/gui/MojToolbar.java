@@ -7,20 +7,26 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
+import controller.AddListener;
+
 public class MojToolbar extends JToolBar {
 
+	//parent frame
+	private MainFrame frame;
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 6293715549294891243L;
 	
-	public MojToolbar() {
+	public MojToolbar(MainFrame mf) {
 		super(SwingConstants.HORIZONTAL);
+		this.frame = mf;
 		
 		JButton add_btn = new JButton();
 		add_btn.setToolTipText("Add");
 		add_btn.setIcon(new ImageIcon("images/add-22.png"));
 		add(add_btn);
+		add_btn.addActionListener(new AddListener(frame));
 		
 		JButton edit_btn = new JButton();
 		edit_btn.setToolTipText("Edit");
