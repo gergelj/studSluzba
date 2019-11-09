@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class Student {
 
+	private enum Status {B, S};
 	private String mIme, mPrezime;
 	private LocalDate mDatumRodjenja, mDatumUpisa;
 	private String mAdresa, mTelefon, mEmail;

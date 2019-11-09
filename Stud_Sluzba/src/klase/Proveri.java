@@ -5,7 +5,6 @@ public class Proveri {
 
 	public static void main(String[] args) {
 		String s[] = {"nesto@nesto.com", "@", "", "@2019", "41-5214@", "abc"};
-		String s2 = null;
 		
 		for(int i=0; i<s.length; ++i) {
 			if(isEmail(s[i])) {
