@@ -1,7 +1,9 @@
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.Frame;
 
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 
@@ -14,43 +16,26 @@ public class AddDialog extends JDialog {
 
 	public AddDialog(Frame parent, int tabSelected) {
 		super(parent, "", true);
-		setSize(250, 250);
+		setSize(400, 500);
 		setLocationRelativeTo(parent);
 		
 		switch(tabSelected) {
 			case 0: //studenti
 			{
 				this.setTitle("Add Student");
-				this.add(getStudentPanel());
+				this.add(new StudentPanel());
 			} break;
 			case 1: //profesori
 			{
 				this.setTitle("Add Professor");
-				this.add(getProfesorPanel());
+				//TODO add AddProfesor Dialog Panel
+
 			} break;
 			case 2: //predmeti
 			{
 				this.setTitle("Add Subject");
-				this.add(getPredmetPanel());
+				//TODO add AddSubject Dialog Panel
 			}break;
 		}
-	}
-	
-	private JPanel getStudentPanel() {
-		JPanel panel = new JPanel();
-		//TODO add student panel
-		return panel;
-	}
-	
-	private JPanel getPredmetPanel() {
-		JPanel panel = new JPanel();
-		//TODO add predmet panel
-		return panel;
-	}
-	
-	private JPanel getProfesorPanel() {
-		JPanel panel = new JPanel();
-		//TODO add profesor panel
-		return panel;
 	}
 }
