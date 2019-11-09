@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 //import java.awt.event.ActionEvent;
 //import java.awt.event.ActionListener;
 //import java.sql.Time;
@@ -11,12 +13,15 @@ import java.awt.Toolkit;
 //import java.util.Date;
 //import java.util.GregorianCalendar;
 //import java.util.Timer;
+import java.awt.event.WindowListener;
 
 //import javax.swing.Box;
 //import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 
 public class MainFrame extends JFrame{
 
@@ -37,7 +42,7 @@ public class MainFrame extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		
-		this.setJMenuBar(new MojMenuBar());
+		this.setJMenuBar(new MojMenuBar(this));
 		this.add(new MojToolbar(), BorderLayout.NORTH);
 		
 		//TODO napraviti status bar u kom pise Studentska sluzba i datum i trenutno vreme
@@ -61,5 +66,29 @@ public class MainFrame extends JFrame{
 		Thread t = new DatumThread(MainFrame.this);
 		t.start();
 		
+		//Dijalog za zatvaranje aplikacije
+		//Parametar je WindowAdapter jer u njemu su vec implementirane prazne metode WindowListener-a, tako da ne moramo implementirati sve metode listenera
+		addWindowListener(new WindowAdapter() {
+
+			@Override
+			public void windowClosing(WindowEvent e) {
+				JFrame frame = (JFrame) e.getComponent();
+				int code = JOptionPane.showConfirmDialog(frame, "Are you sure you want to close the program",
+						"Close Window", JOptionPane.YES_NO_OPTION);
+				if (code != JOptionPane.YES_OPTION) {
+					frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+				} else {
+					// TODO sacuvaj bazu objekata, da li ovde?...
+					frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+				}
+			}
+			
+			@Override
+			public void windowClosed(WindowEvent e) {
+				//TODO sacuvaj bazu objekata, ...ili ovde?
+			}
+			
+		});
+
 	}
 }

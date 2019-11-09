@@ -1,22 +1,28 @@
 package gui;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
+import javax.swing.WindowConstants;
 
 public class MojMenuBar extends JMenuBar {
 
+	private MainFrame frame;
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1107467685534769718L;
 
-	public MojMenuBar() {
+	public MojMenuBar(MainFrame mf) {
+		this.frame = mf;
 		JMenu file = new JMenu("File");
 		file.setMnemonic(KeyEvent.VK_F);
 		
@@ -33,6 +39,19 @@ public class MojMenuBar extends JMenuBar {
 		//TODO: MenuBar "Close" Zatvaranje aplikacije
 		JMenuItem close_mi = new JMenuItem("Close", new ImageIcon("images/close-22.png"));
 		close_mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.ALT_MASK));		//ALT+F4
+		close_mi.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int code = JOptionPane.showConfirmDialog(frame, "Are you sure you want to close the program",
+						"Close Window", JOptionPane.YES_NO_OPTION);
+				if (code != JOptionPane.YES_OPTION) {
+					frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+				} else {
+					// TODO sacuvaj bazu objekata, da li ovde?...
+					frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+				}
+			}
+		});
 		
 		//TODO: MenuBar "Edit" Izmena postojeceg entiteta
 		JMenuItem edit_mi = new JMenuItem("Edit", new ImageIcon("images/edit-22.png"));
