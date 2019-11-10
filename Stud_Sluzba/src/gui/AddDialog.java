@@ -28,13 +28,13 @@ public class AddDialog extends JDialog {
 			case 1: //profesori
 			{
 				this.setTitle("Add Professor");
-				//TODO add AddProfesor Dialog Panel
+				this.add(new ProfessorPanel());
 
 			} break;
 			case 2: //predmeti
 			{
 				this.setTitle("Add Subject");
-				//TODO add AddSubject Dialog Panel
+				this.add(new SubjectPanel());
 			}break;
 		}
 	}
