@@ -26,12 +26,13 @@ public class MojToolbar extends JToolBar {
 		add_btn.setToolTipText("Add");
 		add_btn.setIcon(new ImageIcon("images/add-22.png"));
 		add(add_btn);
-		add_btn.addActionListener(new AddListener(frame));
+		add_btn.addActionListener(new AddListener(AddDialog.ADD_MODE));
 		
 		JButton edit_btn = new JButton();
 		edit_btn.setToolTipText("Edit");
 		edit_btn.setIcon(new ImageIcon("images/edit-22.png"));
 		add(edit_btn);
+		edit_btn.addActionListener(new AddListener(AddDialog.EDIT_MODE));
 		
 		JButton delete_btn = new JButton();
 		delete_btn.setToolTipText("Delete");

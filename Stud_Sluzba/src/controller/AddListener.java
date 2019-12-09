@@ -5,18 +5,19 @@ import java.awt.event.ActionListener;
 
 import gui.AddDialog;
 import gui.MainFrame;
+import gui.MojCentralni;
 
 public class AddListener implements ActionListener {
 
-	private MainFrame frame;
-	public AddListener() {}
-	public AddListener(MainFrame mf) {
-		this.frame = mf;
+	private int mode;
+	
+	public AddListener(int mode) {
+		this.mode = mode;
 	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		AddDialog d = new AddDialog(frame, frame.getTabovi().getSelectedIndex());
+		AddDialog d = new AddDialog(MainFrame.getInstance(), MojCentralni.getInstance().getSelectedIndex(), mode);
 		d.setVisible(true);
 	}
-
 }

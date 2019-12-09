@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
 public class MojCentralni extends JTabbedPane{
@@ -14,10 +15,22 @@ public class MojCentralni extends JTabbedPane{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public MojCentralni()
+	private StudentiJTable tabelaStudenta;
+	
+	private static MojCentralni instance = null;
+	
+	public static MojCentralni getInstance() {
+		if(instance==null)
+			instance = new MojCentralni();
+		return instance;
+	}
+	
+	private MojCentralni()
 	{	
-        JComponent stud_tab = makeTextPanel("Students");
-        addTab("Students" ,null, stud_tab,"Tab with Students");
+		tabelaStudenta = new StudentiJTable();
+        JScrollPane scrollPaneStudenti = new JScrollPane(tabelaStudenta);
+        
+        addTab("Students" ,null, scrollPaneStudenti,"Tab with Students");
         setMnemonicAt(0, KeyEvent.VK_1);
          
         JComponent prof_tab = makeTextPanel("Professors");
@@ -30,8 +43,16 @@ public class MojCentralni extends JTabbedPane{
         
         //sluzi da ukljuci promenu taba pomocu strelica kada je prozor aplikacije previse uzak
         setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+        
+        this.azurirajPrikaz();
     }
      
+	public void azurirajPrikaz() {
+		AbstractTableModelStudenti model_stud = (AbstractTableModelStudenti) tabelaStudenta.getModel();
+        model_stud.fireTableDataChanged();
+		validate();
+	}
+	
     protected JComponent makeTextPanel(String text) {
         JPanel panel = new JPanel(false);
         JLabel filler = new JLabel(text);
@@ -39,5 +60,9 @@ public class MojCentralni extends JTabbedPane{
         panel.setLayout(new GridLayout(1, 1));
         panel.add(filler);
         return panel;
+    }
+    
+    public StudentiJTable getTabelaStudenata() {
+    	return this.tabelaStudenta;
     }
 }

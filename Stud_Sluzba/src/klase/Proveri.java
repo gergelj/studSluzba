@@ -1,5 +1,9 @@
 package klase;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 // klasa za proveru polja za student/profesor/predmet
 public class Proveri {
 
@@ -21,7 +25,13 @@ public class Proveri {
 	}
 	
 	public static boolean isDatum(String datum) {
-		return datum!=null && datum.matches("[0-9]{2}\\.[0-9]{2}\\.[0-9]{4}\\.");
+		try {
+            LocalDate.parse(datum, DateTimeFormatter.ofPattern("dd.MM.yyyy."));
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+		return true;
+		//return datum!=null && datum.matches("[0-9]{2}\\.[0-9]{2}\\.[0-9]{4}\\.");
 	}
 	
 	public static boolean isTelefon(String telefon) {
@@ -42,6 +52,22 @@ public class Proveri {
 	
 	public static boolean isSifraPredmeta(String sfr) {
 		return sfr!=null && sfr.matches("[a-zA-Z0-9]+");
+	}
+	
+	public static boolean isAdresa(String adr) {
+		return adr!=null && !adr.equals("");
+	}
+	
+	public static boolean isProsek(String pros) {
+
+		if(pros.matches("[0-9]{1,2}(\\.[0-9]{1,2})?")) {
+			double d = Double.valueOf(pros);
+			if (d<6 || d>10)
+				return false;
+			else
+				return true;
+		}
+		return false;
 	}
 	
 }

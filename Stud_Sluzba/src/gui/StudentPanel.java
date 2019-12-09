@@ -1,7 +1,12 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.Vector;
 
 import javax.swing.BoxLayout;
@@ -13,23 +18,56 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JTextField;
 
-public class StudentPanel extends JPanel {
+import controller.StudentController;
+import klase.Proveri;
+import klase.Student;
+
+public class StudentPanel extends JPanel implements FocusListener {
 
 	private JTextField ime_txt, prezime_txt, datrodj_txt, adresa_txt, telefon_txt, email_txt, brindeksa_txt, datupis_txt, prosek_txt;
 	private JLabel ime_lbl, prezime_lbl, datrodj_lbl, adresa_lbl, telefon_lbl, email_lbl, brindeksa_lbl, datupis_lbl, prosek_lbl, godstudija_lbl;
-	private JPanel ime_pan, prezime_pan, datrodj_pan, adresa_pan, telefon_pan, email_pan, brindeksa_pan, datupis_pan, prosek_pan, godstudija_pan, finansiranje_pan;
+	//private JPanel ime_pan, prezime_pan, datrodj_pan, adresa_pan, telefon_pan, email_pan, brindeksa_pan, datupis_pan, prosek_pan;
+	private JPanel godstudija_pan, finansiranje_pan;
 	private JComboBox<String> godstudija_list;
 	private ButtonGroup finansiranje_grp;
+	private JButton cancel_btn, ok_btn;
+	JRadioButtonMenuItem finansiranje_b, finansiranje_s;
+	private int broj, mode;
+	private Student st;
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 535374820696793027L;
 
-	public StudentPanel() {
+	public StudentPanel(int mode) {
+		this.mode = mode;
+		
+		ime_txt = new JTextField();
+		prezime_txt = new JTextField();
+		datrodj_txt = new JTextField();
+		adresa_txt = new JTextField();
+		telefon_txt = new JTextField();
+		email_txt = new JTextField();
+		brindeksa_txt = new JTextField();
+		datupis_txt = new JTextField();
+		prosek_txt = new JTextField();
+		
+		// setovanje imena za kasnije u listenerima
+		ime_txt.setName("ime");
+		prezime_txt.setName("prezime");
+		datrodj_txt.setName("datrodj");
+		adresa_txt.setName("adresa");
+		telefon_txt.setName("telefon");
+		email_txt.setName("email");
+		brindeksa_txt.setName("indeks");
+		datupis_txt.setName("datupis");
+		prosek_txt.setName("prosek");
+
+		// podesavanje panela
 		setLayout(new BorderLayout());
 		JPanel buttons = new JPanel();
-		JButton cancel_btn = new JButton("Cancel");
-		JButton ok_btn = new JButton("Add");
+		cancel_btn = new JButton("Cancel");
+		ok_btn = new JButton("Add");
 		buttons.add(cancel_btn);
 		buttons.add(ok_btn);
 		add(buttons, BorderLayout.SOUTH);
@@ -39,86 +77,15 @@ public class StudentPanel extends JPanel {
 		Dimension dim_lbl = new Dimension(150, 20);
 		Dimension dim_txt = new Dimension(200, 20);
 		
-		ime_pan = new JPanel();
-		ime_lbl = new JLabel("Ime *");
-		ime_lbl.setPreferredSize(dim_lbl);
-		ime_txt = new JTextField();
-		ime_txt.setPreferredSize(dim_txt);
-		ime_pan.add(ime_lbl);
-		ime_pan.add(ime_txt);
-		inputpolja.add(ime_pan);
-
-		prezime_pan = new JPanel();
-		prezime_lbl = new JLabel("Prezme *");
-		prezime_lbl.setPreferredSize(dim_lbl);
-		prezime_txt = new JTextField();
-		prezime_txt.setPreferredSize(dim_txt);
-		prezime_pan.add(prezime_lbl);
-		prezime_pan.add(prezime_txt);
-		inputpolja.add(prezime_pan);
-
-		datrodj_pan = new JPanel();
-		datrodj_lbl = new JLabel("Datum rođenja *");
-		datrodj_lbl.setPreferredSize(dim_lbl);
-		datrodj_txt = new JTextField();
-		datrodj_txt.setPreferredSize(dim_txt);
-		datrodj_pan.add(datrodj_lbl);
-		datrodj_pan.add(datrodj_txt);
-		inputpolja.add(datrodj_pan);
-
-		adresa_pan = new JPanel();
-		adresa_lbl = new JLabel("Adresa *");
-		adresa_lbl.setPreferredSize(dim_lbl);
-		adresa_txt = new JTextField();
-		adresa_txt.setPreferredSize(dim_txt);
-		adresa_pan.add(adresa_lbl);
-		adresa_pan.add(adresa_txt);
-		inputpolja.add(adresa_pan);
-
-		telefon_pan = new JPanel();
-		telefon_lbl = new JLabel("Telefon *");
-		telefon_lbl.setPreferredSize(dim_lbl);
-		telefon_txt = new JTextField();
-		telefon_txt.setPreferredSize(dim_txt);
-		telefon_pan.add(telefon_lbl);
-		telefon_pan.add(telefon_txt);
-		inputpolja.add(telefon_pan);
-
-		email_pan = new JPanel();
-		email_lbl = new JLabel("E-mail *");
-		email_lbl.setPreferredSize(dim_lbl);
-		email_txt = new JTextField();
-		email_txt.setPreferredSize(dim_txt);
-		email_pan.add(email_lbl);
-		email_pan.add(email_txt);
-		inputpolja.add(email_pan);
-
-		brindeksa_pan = new JPanel();
-		brindeksa_lbl = new JLabel("Broj indeksa *");
-		brindeksa_lbl.setPreferredSize(dim_lbl);
-		brindeksa_txt = new JTextField();
-		brindeksa_txt.setPreferredSize(dim_txt);
-		brindeksa_pan.add(brindeksa_lbl);
-		brindeksa_pan.add(brindeksa_txt);
-		inputpolja.add(brindeksa_pan);
-
-		datupis_pan = new JPanel();
-		datupis_lbl = new JLabel("Datum upisa *");
-		datupis_lbl.setPreferredSize(dim_lbl);
-		datupis_txt = new JTextField();
-		datupis_txt.setPreferredSize(dim_txt);
-		datupis_pan.add(datupis_lbl);
-		datupis_pan.add(datupis_txt);
-		inputpolja.add(datupis_pan);
-
-		prosek_pan = new JPanel();
-		prosek_lbl = new JLabel("Prosek *");
-		prosek_lbl.setPreferredSize(dim_lbl);
-		prosek_txt = new JTextField();
-		prosek_txt.setPreferredSize(dim_txt);
-		prosek_pan.add(prosek_lbl);
-		prosek_pan.add(prosek_txt);
-		inputpolja.add(prosek_pan);
+		inputpolja.add(noviPanel(ime_lbl, "Ime *", ime_txt));	
+		inputpolja.add(noviPanel(prezime_lbl, "Prezime *", prezime_txt));
+		inputpolja.add(noviPanel(datrodj_lbl, "Datum rodjenja *", datrodj_txt));
+		inputpolja.add(noviPanel(adresa_lbl, "Adresa *", adresa_txt));
+		inputpolja.add(noviPanel(telefon_lbl, "Telefon *", telefon_txt));
+		inputpolja.add(noviPanel(email_lbl, "E-mail *", email_txt));
+		inputpolja.add(noviPanel(brindeksa_lbl, "Broj indeksa *", brindeksa_txt));
+		inputpolja.add(noviPanel(datupis_lbl, "Datum upisa *", datupis_txt));
+		inputpolja.add(noviPanel(prosek_lbl, "Prosek *", prosek_txt));
 
 		godstudija_pan = new JPanel();
 		godstudija_lbl = new JLabel("Godina studija *");
@@ -137,9 +104,9 @@ public class StudentPanel extends JPanel {
 		finansiranje_pan = new JPanel();
 		finansiranje_pan.setLayout(new BoxLayout(finansiranje_pan, BoxLayout.Y_AXIS));
 		finansiranje_grp = new ButtonGroup();
-		JRadioButtonMenuItem finansiranje_b = new JRadioButtonMenuItem("Budžet");
+		finansiranje_b = new JRadioButtonMenuItem("Budžet");
 		finansiranje_b.setSelected(true);
-		JRadioButtonMenuItem finansiranje_s = new JRadioButtonMenuItem("Samofinansiranje");
+		finansiranje_s = new JRadioButtonMenuItem("Samofinansiranje");
 		finansiranje_grp.add(finansiranje_b);
 		finansiranje_grp.add(finansiranje_s);
 		
@@ -147,17 +114,167 @@ public class StudentPanel extends JPanel {
 		finansiranje_pan.add(finansiranje_s);
 		inputpolja.add(finansiranje_pan);
 		
-		add(inputpolja, BorderLayout.CENTER);
+		this.add(inputpolja, BorderLayout.CENTER);
 		
+		if(mode == AddDialog.ADD_MODE) {
+			// onemogucenje da se doda prazan student
+			ok_btn.setEnabled(false);
+			// Student ima 9 stavki (text field)
+			broj = -9;
+		}
+		else {
+			ok_btn.setEnabled(true);
+			broj = 0;
+			st = StudentController.getInstance().nadjiStudenta(MojCentralni.getInstance().getTabelaStudenata().getSelectedRow());
+		
+			ime_txt.setText(st.getIme());
+			prezime_txt.setText(st.getPrezime());
+			datrodj_txt.setText(st.getDatumRodjenja(1));
+			datupis_txt.setText(st.getDatumUpisa(1));
+			adresa_txt.setText(st.getAdresa());
+			telefon_txt.setText(st.getTelefon());
+			email_txt.setText(st.getEmail());
+			brindeksa_txt.setText(st.getBrojIndeksa());
+			prosek_txt.setText(String.valueOf(st.getProsek()));
+		}
+		
+		
+		
+		// prikljucivanje listenera
 		listeners();
+		
+		// tooltip za text polja
+		ime_txt.setToolTipText("npr. Imenko");
+		prezime_txt.setToolTipText("npr. Prezimić");
+		datrodj_txt.setToolTipText("npr. 22.05.2019.");
+		datupis_txt.setToolTipText("npr. 22.05.2019.");
+		adresa_txt.setToolTipText("npr. 21000 Novi Sad");
+		telefon_txt.setToolTipText("npr. 061234567");
+		email_txt.setToolTipText("npr. imenko@uns.ac.rs");
+		brindeksa_txt.setToolTipText("npr. ra-16-2016");
+		prosek_txt.setToolTipText("6.00 - 10.00");
+		
+	}
+	
+	private JPanel noviPanel(JLabel lbl, String name, JTextField txt) {
+		JPanel pan = new JPanel();
+		lbl = new JLabel(name);
+		lbl.setPreferredSize(new Dimension(150, 20));
+		txt.setPreferredSize(new Dimension(200, 20));
+		pan.add(lbl);
+		pan.add(txt);
+		return pan;
 	}
 	
 	private void listeners() {
+		cancel_btn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Zatvori dijalog
+				
+			}
+		});
 		
+		ime_txt.addFocusListener(this);
+		prezime_txt.addFocusListener(this);
+		datrodj_txt.addFocusListener(this);
+		datupis_txt.addFocusListener(this);
+		adresa_txt.addFocusListener(this);
+		telefon_txt.addFocusListener(this);
+		email_txt.addFocusListener(this);
+		brindeksa_txt.addFocusListener(this);
+		prosek_txt.addFocusListener(this);
 		
-		
-		
-		
+		ok_btn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int trenutnagodina = godstudija_list.getSelectedIndex() + 1;
+				Student.Status status = finansiranje_b.isSelected() ? Student.Status.B : Student.Status.S;
+				double prosek = Double.valueOf(prosek_txt.getText());
+				
+				if(mode==AddDialog.ADD_MODE) {
+					if(!StudentController.getInstance().dodajStudenta(ime_txt.getText(), prezime_txt.getText(), datrodj_txt.getText(), adresa_txt.getText(), telefon_txt.getText(), email_txt.getText(), brindeksa_txt.getText().toLowerCase(), datupis_txt.getText(), trenutnagodina, status, prosek)){
+						ok_btn.setEnabled(false);
+						brindeksa_txt.setForeground(Color.RED);
+						brindeksa_txt.setText(brindeksa_txt.getText() + " - postoji vec indeks");
+						broj--;
+					}
+					else {
+						//TODO Zatvori dijalog
+					}
+				}
+				else { //EDIT mode
+					if(!StudentController.getInstance().izmeniStudenta(ime_txt.getText(), prezime_txt.getText(), datrodj_txt.getText(), adresa_txt.getText(), telefon_txt.getText(), email_txt.getText(), brindeksa_txt.getText().toLowerCase(), datupis_txt.getText(), trenutnagodina, status, prosek, st.getId())){
+						ok_btn.setEnabled(false);
+						brindeksa_txt.setForeground(Color.RED);
+						brindeksa_txt.setText(brindeksa_txt.getText() + " - postoji vec indeks");
+						broj--;
+					}
+					else {
+						//TODO Zatvori dijalog
+					}
+				}
+				
+			}
+			
+		});
 		
 	}
+
+	@Override
+	public void focusGained(FocusEvent e) {
+		JTextField tx = (JTextField) e.getComponent();
+		if(tx.getForeground()==Color.RED) {
+			tx.setForeground(Color.BLACK);
+			tx.setText("");
+		}
+		
+		String tekst = tx.getText();
+		String name = tx.getName();
+		boolean uslov = (!Proveri.isIme(tekst) && (name.equals("ime")||name.equals("prezime")))
+				|| (!Proveri.isDatum(tekst) && (name.equals("datrodj")||name.equals("datupis")))
+				|| (!Proveri.isAdresa(tekst) && name.equals("adresa"))
+				|| (!Proveri.isTelefon(tekst) && name.equals("telefon"))
+				|| (!Proveri.isEmail(tekst) && name.equals("email"))
+				|| (!Proveri.isBrojIndeksa(tekst) && name.equals("indeks"))
+				|| (!Proveri.isProsek(tekst) && name.equals("prosek"));
+		
+		if(uslov)
+			broj++;
+		
+	}
+
+	@Override
+	public void focusLost(FocusEvent e) {
+		JTextField tx = (JTextField) e.getComponent();
+		
+		String tekst = tx.getText();
+		String name = tx.getName();
+		boolean uslov = (!Proveri.isIme(tekst) && (name.equals("ime")||name.equals("prezime")))
+				|| (!Proveri.isDatum(tekst) && (name.equals("datrodj")||name.equals("datupis")))
+				|| (!Proveri.isAdresa(tekst) && name.equals("adresa"))
+				|| (!Proveri.isTelefon(tekst) && name.equals("telefon"))
+				|| (!Proveri.isEmail(tekst) && name.equals("email"))
+				|| (!Proveri.isBrojIndeksa(tekst) && name.equals("indeks"))
+				|| (!Proveri.isProsek(tekst) && name.equals("prosek"));
+		
+		if(uslov) {
+			broj--;
+			tx.setForeground(Color.RED);
+		}
+		
+		if(broj==0) {
+			ok_btn.setEnabled(true);
+		}
+		else {
+			ok_btn.setEnabled(false);
+		}
+		
+		if(tx.getText().equals("")) {
+			tx.setText("Obavezno polje");
+		}
+		
+	}
+	
 }

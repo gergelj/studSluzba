@@ -33,7 +33,14 @@ public class MainFrame extends JFrame{
 	 */
 	private static final long serialVersionUID = -8026416994513756565L;
 
-	public MainFrame() {
+	private static MainFrame instance = null;
+	
+	public static MainFrame getInstance() {
+		if(instance==null)
+			instance = new MainFrame();
+		return instance;
+	}
+	private MainFrame() {
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = kit.getScreenSize();
 		int screenHeight = screenSize.height;
@@ -59,8 +66,8 @@ public class MainFrame extends JFrame{
 		add(statusBar,BorderLayout.SOUTH);
 		
 		//TODO napraviti centralni deo glavnog prozora koji ima 3 taba
-		tabovi = new MojCentralni();
-		this.add(tabovi,BorderLayout.CENTER);
+		//tabovi = MojCentralni.getInstance();
+		this.add(MojCentralni.getInstance(),BorderLayout.CENTER);
 		
 		
 		//thread za vreme i datum

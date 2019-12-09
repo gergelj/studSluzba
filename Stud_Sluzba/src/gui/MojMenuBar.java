@@ -35,12 +35,10 @@ public class MojMenuBar extends JMenuBar {
 		JMenu help = new JMenu("Help");
 		help.setMnemonic(KeyEvent.VK_H);
 		
-		//TODO: MenuBar "New" Dodavanje novog entiteta u sistem
 		JMenuItem new_mi = new JMenuItem("New", new ImageIcon("images/add-22.png"));
 		new_mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));		//CTRL+N
-		new_mi.addActionListener(new AddListener(frame));
+		new_mi.addActionListener(new AddListener(AddDialog.ADD_MODE));
 		
-		//TODO: MenuBar "Close" Zatvaranje aplikacije
 		JMenuItem close_mi = new JMenuItem("Close", new ImageIcon("images/close-22.png"));
 		close_mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.ALT_MASK));		//ALT+F4
 		close_mi.addActionListener(new ActionListener() {
@@ -60,6 +58,7 @@ public class MojMenuBar extends JMenuBar {
 		//TODO: MenuBar "Edit" Izmena postojeceg entiteta
 		JMenuItem edit_mi = new JMenuItem("Edit", new ImageIcon("images/edit-22.png"));
 		edit_mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));		//CTRL+E
+		edit_mi.addActionListener(new AddListener(AddDialog.EDIT_MODE));
 		
 		//TODO: MenuBar "Delete" Brisanje postejećeg entiteta
 		JMenuItem delete_mi = new JMenuItem("Delete", new ImageIcon("images/trash-22.png"));
