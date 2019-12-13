@@ -1,9 +1,12 @@
 package klase;
 
-import java.awt.List;
+
 import java.util.ArrayList;
+import java.util.List;
+
 
 public class BazaPredmeta {
+
 	private static BazaPredmeta instance = null;
 	
 	public static BazaPredmeta getInstance()
@@ -12,73 +15,119 @@ public class BazaPredmeta {
 			instance = new BazaPredmeta();
 		return instance;
 	}
-	
 	private int generator;
 	
-	private ArrayList<Predmet> predmeti;
-	private ArrayList<String>  kolone;
+	private List<Predmet> predmeti;
+	private List<String> kolone;
+
 	
 	private BazaPredmeta()
 	{
 		generator = 0;
+		initPredmeti();
 		
 		this.kolone = new ArrayList<String>();
-		this.kolone.add("Sifra predmeta");
-		this.kolone.add("Naziv predmeta");
-		this.kolone.add("Godina");
-		this.kolone.add("Semestar");
-		this.kolone.add("Profesor");
+		this.kolone.add("SIFRA PREDMETA");
+		this.kolone.add("NAZIV PREDMETA");
+		this.kolone.add("GODINA");
+		this.kolone.add("SEMESTAR");
+		this.kolone.add("PROFESOR");
 	}
 	
-	public String getValueAt(int red,int kolona)
+	//TODO: treba implementirati da se ucita sacuvana baza iz fajla
+	private void initPredmeti()
 	{
-		Predmet predmet = this.predmeti.get(red);
-		switch (kolona) {
-		case 0:
-			return predmet.getmSifraPredmeta();
-		case 1:
-			return predmet.getmNazivPredmeta();
-		case 2: 
-			return Integer.toString(predmet.getmGodinaIzvodjenja());
-		case 3:
-			return Integer.toString(predmet.getmSemestarPredmeta());
-		/*case 4:
-			return null*/
-		default:
-			return null;
-		}
-	}
-	
-	//public void addPredmet(String sifra, String naziv, Int god, Int semestar)
-	
-	public String getImeKolone(int index)
-	{
-		return this.kolone.get(index);
-	}
-	
-	public Predmet getRed(int index_red)
-	{
-		return this.predmeti.get(index_red);
-	}
-	
-	public ArrayList<Predmet> getPredmeti()
-	{
-		return predmeti;
-	}
-	
-	public void setPredmeti(ArrayList<Predmet> predmeti) 
-	{
-		this.predmeti=predmeti;
+		this.predmeti = new ArrayList<Predmet>();
 	}
 	
 	private int generateId()
 	{
-		return generator++;
+		return ++generator;
 	}
 	
-	public int getBrojKolona()
+	public List<Predmet> getPredmeti()
 	{
-		return 5;
+		return predmeti;
 	}
 	
+	public void setPredmeti(List<Predmet> predmeti)
+	{
+		this.predmeti = predmeti;
+	}
+	
+	public int getColumnCount()
+	{
+		return kolone.size();
+	}
+	
+	public String getColumnName(int i)
+	{
+		return this.kolone.get(i);
+	}
+	
+	public Predmet getRow(int i)
+	{
+		return this.predmeti.get(i);
+	}
+	
+	public String getValueAt(int row, int column)
+	{
+		Predmet predmet = this.predmeti.get(row);
+		switch (column) {
+		case 0:
+			return predmet.getmSifraPredmeta();
+		case 1:
+			return predmet.getmNazivPredmeta();
+		case 2:
+			return String.valueOf(predmet.getmGodinaIzvodjenja());
+		case 3:
+			return String.valueOf(predmet.getmSemestarPredmeta());
+		case 4:
+			return predmet.getmProfesor().getImeiPrezime();
+	    default:
+	    	return null;
+		}
+	}
+	
+	public void dodajPredmet(String sifraPredmeta,String nazivPredmeta,int semestarPredmeta,int godinaIzvodjenja)
+	{
+		this.predmeti.add(new Predmet(sifraPredmeta,nazivPredmeta,semestarPredmeta,godinaIzvodjenja, generateId()));
+	}
+	
+	public void izbrisiPredmet(int id)
+	{
+		for(Predmet i: predmeti)
+		{
+			if(i.getId() == id)
+			{
+				predmeti.remove(i);
+				break;
+			}
+		}
+	}
+	
+	public void IzmeniPredmet(String sifraPredmeta,String nazivPredmeta,int semestarPredmeta,int godinaIzvodjenja,int id)
+	{
+		for(Predmet i: predmeti)
+		{
+			if(i.getId() == id) {
+				i.setmSifraPredmeta(sifraPredmeta);
+				i.setmNazivPredmeta(nazivPredmeta);
+				i.setmSemestarPredmeta(semestarPredmeta);
+				i.setmGodinaIzvodjenja(godinaIzvodjenja);
+				
+				break;
+			}
+		}
+	}
+	
+	public Predmet lookup_predmet(String sifraPredmeta)
+	{
+		for(Predmet i: predmeti)
+		{
+			if(i.getmSifraPredmeta().equals(sifraPredmeta))
+				return i;
+		}
+		return null;
+	}
 }

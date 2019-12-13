@@ -105,4 +105,9 @@ public class Profesor {
 	public void setmListaPredmeta(ArrayList<Predmet> mListaPredmeta) {
 		this.mListaPredmeta = mListaPredmeta;
 	}	
+	
+	public String getImeiPrezime()
+	{
+		return mIme+" "+mPrezime;
+	}
 }

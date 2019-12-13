@@ -8,6 +8,7 @@ public class Predmet {
 	private int mSemestarPredmeta;
 	private int mGodinaIzvodjenja;
 	private Profesor mProfesor;
+	private int id;
 	private ArrayList<Student> mListaStudenata; //mozda hashmap bude trebao
 	
 	public Predmet()
@@ -15,13 +16,23 @@ public class Predmet {
 		this.mListaStudenata = new ArrayList<Student>();
 	}
 	
-	public Predmet(String sifraPredmeta,String nazivPredmeta,int semestarPredmeta,int godinaIzvodjenja,Profesor profesor,ArrayList<Student> listaStudenata)
+	public Predmet(String sifraPredmeta,String nazivPredmeta,int semestarPredmeta,int godinaIzvodjenja, int id)
+	{
+		this.mSifraPredmeta=sifraPredmeta;
+		this.mNazivPredmeta=nazivPredmeta;
+		this.mSemestarPredmeta=semestarPredmeta;
+		this.mGodinaIzvodjenja=godinaIzvodjenja;
+		this.id = id;
+	}
+	
+	public Predmet(String sifraPredmeta,String nazivPredmeta,int semestarPredmeta,int godinaIzvodjenja,Profesor profesor,int id,ArrayList<Student> listaStudenata)
 	{
 		this.mSifraPredmeta=sifraPredmeta;
 		this.mNazivPredmeta=nazivPredmeta;
 		this.mSemestarPredmeta=semestarPredmeta;
 		this.mGodinaIzvodjenja=godinaIzvodjenja;
 		this.mProfesor=profesor;
+		this.id=id;
 		this.mListaStudenata=listaStudenata; //koji pohadjaju predmet
 	}
 	//verovatno ce trebati u nekom trenutku
@@ -62,4 +73,8 @@ public class Predmet {
 		this.mListaStudenata = mListaStudenata;
 	}	
 	
+	public int getId()
+	{
+		return this.id;
+	}
 }

@@ -36,7 +36,7 @@ public class AddDialog extends JDialog {
 			case 2: //predmeti
 			{
 				this.setTitle("Add Subject");
-				this.add(new SubjectPanel());
+				this.add(new SubjectPanel(mode));
 			}break;
 		}
 	}

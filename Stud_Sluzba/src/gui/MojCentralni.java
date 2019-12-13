@@ -14,7 +14,9 @@ public class MojCentralni extends JTabbedPane{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	private PredmetiJTable tabelaPredmeta;
+	
 	private StudentiJTable tabelaStudenta;
 	
 	private static MojCentralni instance = null;
@@ -30,6 +32,9 @@ public class MojCentralni extends JTabbedPane{
 		tabelaStudenta = new StudentiJTable();
         JScrollPane scrollPaneStudenti = new JScrollPane(tabelaStudenta);
         
+        tabelaPredmeta = new PredmetiJTable();
+        JScrollPane scrollPanePredmeti = new JScrollPane(tabelaPredmeta);
+        
         addTab("Students" ,null, scrollPaneStudenti,"Tab with Students");
         setMnemonicAt(0, KeyEvent.VK_1);
          
@@ -37,8 +42,7 @@ public class MojCentralni extends JTabbedPane{
         addTab("Professors", null, prof_tab, "Tab with Professors");
         setMnemonicAt(1, KeyEvent.VK_2);
          
-        JComponent subj_tab = makeTextPanel("Subjects");
-        addTab("Subjects", null, subj_tab, "Tab with Subjects");
+        addTab("Subjects", null, scrollPanePredmeti, "Tab with Subjects");
         setMnemonicAt(2, KeyEvent.VK_3);
         
         //sluzi da ukljuci promenu taba pomocu strelica kada je prozor aplikacije previse uzak
@@ -62,7 +66,13 @@ public class MojCentralni extends JTabbedPane{
         return panel;
     }
     
+    public PredmetiJTable getTablPredmeti()
+    {
+    	return this.tabelaPredmeta;
+    }
+    
     public StudentiJTable getTabelaStudenata() {
     	return this.tabelaStudenta;
     }
+
 }
