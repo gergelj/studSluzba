@@ -24,18 +24,27 @@ public class AddDialog extends JDialog {
 		switch(tabSelected) {
 			case 0: //studenti
 			{
-				this.setTitle("Add Student");
+				if(mode == AddDialog.ADD_MODE)
+					this.setTitle("Add Student");
+				else
+					this.setTitle("Edit Student");
 				this.add(new StudentPanel(mode));
 			} break;
 			case 1: //profesori
 			{
-				this.setTitle("Add Professor");
+				if(mode == AddDialog.ADD_MODE)
+					this.setTitle("Add Professor");
+				else
+					this.setTitle("Edit Professor");
 				this.add(new ProfessorPanel());
 
 			} break;
 			case 2: //predmeti
 			{
-				this.setTitle("Add Subject");
+				if(mode == AddDialog.ADD_MODE)
+					this.setTitle("Add Subject");
+				else
+					this.setTitle("Edit Subject");
 				this.add(new SubjectPanel(mode));
 			}break;
 		}

@@ -52,7 +52,7 @@ public class MainFrame extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		
-		this.setJMenuBar(new MojMenuBar(this));
+		this.setJMenuBar(MojMenuBar.getInstance());
 		this.add(MojToolbar.getInstance(), BorderLayout.NORTH);
 		
 		//TODO napraviti status bar u kom pise Studentska sluzba i datum i trenutno vreme
