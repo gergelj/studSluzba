@@ -15,6 +15,7 @@ import java.awt.event.WindowEvent;
 //import java.util.Timer;
 import java.awt.event.WindowListener;
 
+import javax.swing.ImageIcon;
 //import javax.swing.Box;
 //import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -52,6 +53,28 @@ public class MainFrame extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		
+		//SET APPLICATION CLASS NAME - umesto "gui-Main" da pise nesto drugo
+		/*
+		java.lang.reflect.Field awtAppClassNameField;
+		try {
+			awtAppClassNameField = kit.getClass().getDeclaredField("awtAppClassName");
+			awtAppClassNameField.setAccessible(true);
+			awtAppClassNameField.set(kit, "Vidakovic");
+		} catch (NoSuchFieldException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SecurityException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IllegalArgumentException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IllegalAccessException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		*/
+			
 		this.setJMenuBar(MojMenuBar.getInstance());
 		this.add(MojToolbar.getInstance(), BorderLayout.NORTH);
 		
@@ -112,10 +135,12 @@ public class MainFrame extends JFrame{
 			}
 			
 		});
+		
+		setIconImage(new ImageIcon("images/vidakovic.jpg").getImage());
 
 	}
-	
+	/*
 	public MojCentralni getTabovi() {
 		return this.tabovi;
-	}
+	}*/
 }

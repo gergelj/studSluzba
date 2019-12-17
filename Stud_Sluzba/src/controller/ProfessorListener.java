@@ -13,6 +13,7 @@ public class ProfessorListener implements FocusListener{
 
 	@Override
 	public void focusGained(FocusEvent e) {
+
 		JTextField tx = (JTextField) e.getComponent();
 		if(tx.getForeground()==Color.RED) 
 		{
@@ -32,7 +33,6 @@ public class ProfessorListener implements FocusListener{
 				      ||(!Proveri.isTitulaOrZvanje(tekst) && (name.equals("titula")||name.equals("zvanje")));
 		if(uslov) {
 			ProfessorPanel.br++;
-			System.out.println(ProfessorPanel.br);
 		}
 	}
 
@@ -50,23 +50,24 @@ public class ProfessorListener implements FocusListener{
 			      ||(!Proveri.isBrojLK(tekst) && name.equals("brlk"))
 			      ||(!Proveri.isTitulaOrZvanje(tekst) && (name.equals("titula")||name.equals("zvanje")));
 
-	if(uslov)
-	{
-		ProfessorPanel.br--;
-		tx.setForeground(Color.RED);
-	}
-	
-	if(ProfessorPanel.br == 0)
-	{
-		ProfessorPanel.ok_btn.setEnabled(true);
-	}
-	else
-	{
-		ProfessorPanel.ok_btn.setEnabled(false);
-	}
-	
-	if(tx.getText().equals(""))
-		tx.setText("Obavezno polje");
+		if(uslov)
+		{
+			ProfessorPanel.br--;
+			tx.setForeground(Color.RED);
+		}
+		
+		if(ProfessorPanel.br == 0)
+		{
+			ProfessorPanel.ok_btn.setEnabled(true);
+		}
+		else
+		{
+			ProfessorPanel.ok_btn.setEnabled(false);
+		}
+		
+		if(tx.getText().equals(""))
+			tx.setText("Obavezno polje");
+		
 	}
 
 }

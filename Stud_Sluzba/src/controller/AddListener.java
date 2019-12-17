@@ -28,7 +28,7 @@ public class AddListener implements ActionListener {
 			}
 			break;
 		case 1:
-			if(MojCentralni.getInstance().getTabelaStudenata().getSelectedRow()!=-1 || mode==AddDialog.ADD_MODE) { //TODO getTabelaProfesora
+			if(MojCentralni.getInstance().getTabelaProfesora().getSelectedRow()!=-1 || mode==AddDialog.ADD_MODE) {
 				AddDialog d = new AddDialog(MainFrame.getInstance(), selectedTab, mode);
 				d.setVisible(true);
 			}

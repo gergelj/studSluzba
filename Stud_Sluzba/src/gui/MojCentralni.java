@@ -17,7 +17,7 @@ public class MojCentralni extends JTabbedPane{
 	
 	private PredmetiJTable tabelaPredmeta;
 	private StudentiJTable tabelaStudenta;
-	//TODO: private ProfesoriJTable tabelaProfesora;
+	private ProfesoriJTable tabelaProfesora;
 	
 	private static MojCentralni instance = null;
 	
@@ -33,18 +33,22 @@ public class MojCentralni extends JTabbedPane{
         JScrollPane scrollPaneStudenti = new JScrollPane(tabelaStudenta);
         tabelaStudenta.setAutoCreateRowSorter(true);
         
-        tabelaPredmeta = new PredmetiJTable();
+        tabelaPredmeta = PredmetiJTable.getInstance();
         JScrollPane scrollPanePredmeti = new JScrollPane(tabelaPredmeta);
         tabelaPredmeta.setAutoCreateRowSorter(true);
         
-        addTab("Students" ,null, scrollPaneStudenti,"Tab with Students");
+        tabelaProfesora = ProfesoriJTable.getInstance();
+        JScrollPane scrollPaneProfesori = new JScrollPane(tabelaProfesora);
+        tabelaProfesora.setAutoCreateRowSorter(true);
+        
+        
+        addTab("Students" ,null, scrollPaneStudenti);
         setMnemonicAt(0, KeyEvent.VK_1);
          
-        JComponent prof_tab = makeTextPanel("Professors");
-        addTab("Professors", null, prof_tab, "Tab with Professors");
+        addTab("Professors", null, scrollPaneProfesori);
         setMnemonicAt(1, KeyEvent.VK_2);
          
-        addTab("Subjects", null, scrollPanePredmeti, "Tab with Subjects");
+        addTab("Subjects", null, scrollPanePredmeti);
         setMnemonicAt(2, KeyEvent.VK_3);
         
         //sluzi da ukljuci promenu taba pomocu strelica kada je prozor aplikacije previse uzak
@@ -52,6 +56,7 @@ public class MojCentralni extends JTabbedPane{
         
         this.azurirajPrikaz();
         this.azurirajPrikazPredmet();
+        this.azurirajPrikazProfesora();
     }
      
 	public void azurirajPrikaz() {
@@ -62,25 +67,16 @@ public class MojCentralni extends JTabbedPane{
 	
 	public void azurirajPrikazPredmet()
 	{
-		AbstractTableModePredmet model_predmet = (AbstractTableModePredmet) tabelaPredmeta.getModel();
+		AbstractTableModelPredmet model_predmet = (AbstractTableModelPredmet) tabelaPredmeta.getModel();
 		model_predmet.fireTableDataChanged();
 		validate();
 	}
 	
 	public void azurirajPrikazProfesora() {
-		//TODO: AbstractTableModePredmet model_profesor = (AbstractTableModePredmet) tabelaProfesora.getModel();
-		//model_profesor.fireTableDataChanged();
+		AbstractTableModelProfesori model_profesor = (AbstractTableModelProfesori) tabelaProfesora.getModel();
+		model_profesor.fireTableDataChanged();
 		validate();
 	}
-	
-    protected JComponent makeTextPanel(String text) {
-        JPanel panel = new JPanel(false);
-        JLabel filler = new JLabel(text);
-        filler.setHorizontalAlignment(JLabel.CENTER);
-        panel.setLayout(new GridLayout(1, 1));
-        panel.add(filler);
-        return panel;
-    }
     
     public PredmetiJTable getTablPredmeti()
     {
@@ -91,9 +87,9 @@ public class MojCentralni extends JTabbedPane{
     	return this.tabelaStudenta;
     }
     
-    /*
-     * public ProfesoriJTable getTabelaProfesora() {
+
+    public ProfesoriJTable getTabelaProfesora() {
     	return this.tabelaProfesora;
-    }*/
+    }
 
 }

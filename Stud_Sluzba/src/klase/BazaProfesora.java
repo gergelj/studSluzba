@@ -144,4 +144,8 @@ public class BazaProfesora {
 		return null;
 	}
 	
+	public Profesor getProfesorAt(int row) {
+		return profesori.get(row);
+	}
+	
 }

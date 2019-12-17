@@ -52,7 +52,7 @@ public class MojToolbar extends JToolBar {
 		delete_btn.setToolTipText("Delete");
 		delete_btn.setIcon(new ImageIcon("images/trash-22.png"));
 		add(delete_btn);
-		delete_btn.addActionListener(new DeleteListener(MojCentralni.getInstance().getSelectedIndex()));
+		delete_btn.addActionListener(new DeleteListener());
 		
 		save_btn = new JButton();
 		save_btn.setToolTipText("Save to Database");

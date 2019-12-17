@@ -48,4 +48,12 @@ public class PredmetController {
 	public Predmet nadjiPredmet(int row) {
 		return BazaPredmeta.getInstance().getRow(row);
 	}
+	
+	public void izbrisiPredmet(int row) {
+		if(row>=0) {
+			Predmet pf = BazaPredmeta.getInstance().getPredmetAt(row);
+			BazaPredmeta.getInstance().izbrisiPredmet(pf.getId());
+			MojCentralni.getInstance().azurirajPrikazPredmet();
+		}
+	}
 }

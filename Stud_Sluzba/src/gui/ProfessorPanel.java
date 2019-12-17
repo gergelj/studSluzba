@@ -89,7 +89,7 @@ public class ProfessorPanel extends JPanel {
 		{
 			ok_btn.setEnabled(true);
 			ProfessorPanel.br=0;
-			//TODO: profesor = ProfesorController.getInstance().nadjiProfesora(MojCentralni.getInstance().getTabelaProfesora().getSelectedRow());
+			profesor = ProfesorController.getInstance().nadjiProfesora(MojCentralni.getInstance().getTabelaProfesora().getSelectedRow());
 			
 			ime_txt.setText(profesor.getmIme());
 			prz_txt.setText(profesor.getmPrezime());
@@ -116,7 +116,7 @@ public class ProfessorPanel extends JPanel {
 				
 			}
 		});
-		
+
 		ime_txt.addFocusListener(new ProfessorListener());
 		prz_txt.addFocusListener(new ProfessorListener());
 		datrodj_txt.addFocusListener(new ProfessorListener());
@@ -127,14 +127,14 @@ public class ProfessorPanel extends JPanel {
 		brlk_txt.addFocusListener(new ProfessorListener());
 		titula_txt.addFocusListener(new ProfessorListener());
 		zvanje_txt.addFocusListener(new ProfessorListener());
-		
+
 		ok_btn.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
             if(mode == AddDialog.ADD_MODE)
             {
-            	if(!ProfesorController.getInstance().dodajProfesora(ime_txt.getText(), prz_txt.getText(), datrodj_txt.getText(), adr_txt.getText(), tel_txt.getText(), email_txt.getText(), adrKanc_txt.getText(), brlk_txt.getText(), titula_txt.getText(), zvanje_txt.getText(), profesor.getId()))
+            	if(!ProfesorController.getInstance().dodajProfesora(ime_txt.getText(), prz_txt.getText(), datrodj_txt.getText(), adr_txt.getText(), tel_txt.getText(), email_txt.getText(), adrKanc_txt.getText(), brlk_txt.getText(), titula_txt.getText(), zvanje_txt.getText()))
             	{
             		ok_btn.setEnabled(false);
             		brlk_txt.setForeground(Color.RED);
@@ -164,7 +164,7 @@ public class ProfessorPanel extends JPanel {
 		Dimension txt_dimension = new Dimension(200,20);
 		labela = new JLabel(ime_labele);
 		labela.setPreferredSize(lbl_dimension);
-		txt = new JTextField();
+		//txt = new JTextField();
 		txt.setPreferredSize(txt_dimension);
 		pomocni.add(labela);
 		pomocni.add(txt);

@@ -7,31 +7,25 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 
-import klase.BazaPredmeta;
+import klase.BazaProfesora;
 
-public class PredmetiJTable extends JTable{
+public class ProfesoriJTable extends JTable {
+	private static ProfesoriJTable instance = null;
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2820887020930754622L;
-
-	private static PredmetiJTable instance = null;
-	
-	public static PredmetiJTable getInstance() {
+	public static ProfesoriJTable getInstance() {
 		if(instance==null)
-			instance = new PredmetiJTable();
+			instance = new ProfesoriJTable();
 		return instance;
 	}
 	
-	private PredmetiJTable()
-	{
+	private ProfesoriJTable() {
 		this.setRowSelectionAllowed(true);
+		//this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		this.setModel(new AbstractTableModelPredmet());
-		new ButtonColumnStudenti(this, BazaPredmeta.getInstance().getColumnCount());		
+		this.setModel(new AbstractTableModelProfesori());
+		new ButtonColumnProfesori(this, BazaProfesora.getInstance().getColumnCount());
 	}
-	
+
 	@Override
 	public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
 		Component c = super.prepareRenderer(renderer, row, column);

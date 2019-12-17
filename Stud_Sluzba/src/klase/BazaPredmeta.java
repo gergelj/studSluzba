@@ -135,4 +135,8 @@ public class BazaPredmeta {
 		}
 		return null;
 	}
+	
+	public Predmet getPredmetAt(int row) {
+		return predmeti.get(row);
+	}
 }

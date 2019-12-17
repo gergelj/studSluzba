@@ -5,7 +5,7 @@ import javax.swing.table.AbstractTableModel;
 
 import klase.BazaPredmeta;
 
-public class AbstractTableModePredmet extends AbstractTableModel{
+public class AbstractTableModelPredmet extends AbstractTableModel{
 
 	/**
 	 * 
