@@ -19,10 +19,11 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JTextField;
 
 import controller.StudentController;
+import controller.StudentListener;
 import klase.Proveri;
 import klase.Student;
 
-public class StudentPanel extends JPanel implements FocusListener {
+public class StudentPanel extends JPanel /*implements FocusListener*/ {
 
 	private JTextField ime_txt, prezime_txt, datrodj_txt, adresa_txt, telefon_txt, email_txt, brindeksa_txt, datupis_txt, prosek_txt;
 	private JLabel ime_lbl, prezime_lbl, datrodj_lbl, adresa_lbl, telefon_lbl, email_lbl, brindeksa_lbl, datupis_lbl, prosek_lbl, godstudija_lbl;
@@ -30,10 +31,12 @@ public class StudentPanel extends JPanel implements FocusListener {
 	private JPanel godstudija_pan, finansiranje_pan;
 	private JComboBox<String> godstudija_list;
 	private ButtonGroup finansiranje_grp;
-	private JButton cancel_btn, ok_btn;
+	private JButton cancel_btn;
+	public static JButton ok_btn;
 	JRadioButtonMenuItem finansiranje_b, finansiranje_s;
-	private int broj, mode;
+	private int mode;
 	private Student st;
+	public static int broj;
 	/**
 	 * 
 	 */
@@ -118,14 +121,14 @@ public class StudentPanel extends JPanel implements FocusListener {
 		
 		if(mode == AddDialog.ADD_MODE) {
 			// onemogucenje da se doda prazan student
-			ok_btn.setEnabled(false);
+			this.ok_btn.setEnabled(false);
 			// Student ima 9 stavki (text field)
-			broj = -9;
+			this.broj = -9;
 		}
 		else {
-			ok_btn.setEnabled(true);
-			broj = 0;
-			st = StudentController.getInstance().nadjiStudenta(MojCentralni.getInstance().getTabelaStudenata().getSelectedRow());
+			this.ok_btn.setEnabled(true);
+			this.broj = 0;
+			this.st = StudentController.getInstance().nadjiStudenta(MojCentralni.getInstance().getTabelaStudenata().getSelectedRow());
 		
 			ime_txt.setText(st.getIme());
 			prezime_txt.setText(st.getPrezime());
@@ -175,15 +178,15 @@ public class StudentPanel extends JPanel implements FocusListener {
 			}
 		});
 		
-		ime_txt.addFocusListener(this);
-		prezime_txt.addFocusListener(this);
-		datrodj_txt.addFocusListener(this);
-		datupis_txt.addFocusListener(this);
-		adresa_txt.addFocusListener(this);
-		telefon_txt.addFocusListener(this);
-		email_txt.addFocusListener(this);
-		brindeksa_txt.addFocusListener(this);
-		prosek_txt.addFocusListener(this);
+		ime_txt.addFocusListener(new StudentListener());
+		prezime_txt.addFocusListener(new StudentListener());
+		datrodj_txt.addFocusListener(new StudentListener());
+		datupis_txt.addFocusListener(new StudentListener());
+		adresa_txt.addFocusListener(new StudentListener());
+		telefon_txt.addFocusListener(new StudentListener());
+		email_txt.addFocusListener(new StudentListener());
+		brindeksa_txt.addFocusListener(new StudentListener());
+		prosek_txt.addFocusListener(new StudentListener());
 		
 		ok_btn.addActionListener(new ActionListener() {
 
@@ -221,7 +224,7 @@ public class StudentPanel extends JPanel implements FocusListener {
 		});
 		
 	}
-
+/*
 	@Override
 	public void focusGained(FocusEvent e) {
 		JTextField tx = (JTextField) e.getComponent();
@@ -275,6 +278,6 @@ public class StudentPanel extends JPanel implements FocusListener {
 			tx.setText("Obavezno polje");
 		}
 		
-	}
+	}*/
 	
 }
