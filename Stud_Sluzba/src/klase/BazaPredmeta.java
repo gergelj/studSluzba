@@ -83,7 +83,12 @@ public class BazaPredmeta {
 		case 3:
 			return String.valueOf(predmet.getmSemestarPredmeta());
 		case 4:
-			return predmet.getmProfesor().getImeiPrezime();
+		{
+			if(predmet.getmProfesor()==null)
+				return "Profesor nije dodat";
+			else
+				return predmet.getmProfesor().getImeiPrezime();
+		}
 	    default:
 	    	return null;
 		}

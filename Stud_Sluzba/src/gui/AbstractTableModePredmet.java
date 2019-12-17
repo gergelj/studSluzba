@@ -57,6 +57,8 @@ public class AbstractTableModePredmet extends AbstractTableModel{
 		case 2:
 		case 3:
 		case 4:
+			return String.class;
+		case 5:
 			return JButton.class;
 		default:
 			return null;
