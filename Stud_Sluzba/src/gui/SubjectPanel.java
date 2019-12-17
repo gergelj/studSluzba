@@ -17,9 +17,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.PredmetController;
+import controller.PredmetListener;
 import klase.Predmet;
 
-public class SubjectPanel extends JPanel implements FocusListener {
+public class SubjectPanel extends JPanel{
 
 	/**
 	 * 
@@ -30,9 +31,10 @@ public class SubjectPanel extends JPanel implements FocusListener {
 	private JLabel sif_lbl,naz_lbl,sem_lbl,god_lbl;	
 	private JComboBox<String> god_list;
 	private JComboBox<String> sem_list;
-	private int mode, broj;
+	private int mode;
+	public static int br;
 	private Predmet predmet;
-	private JButton cnl_btn,ok_btn;
+	public static JButton cnl_btn,ok_btn;
 		
 	
 	public SubjectPanel(int mode)
@@ -40,8 +42,8 @@ public class SubjectPanel extends JPanel implements FocusListener {
 		this.mode = mode;
 		setLayout(new BorderLayout());
 		JPanel btns = new JPanel();
-		this.cnl_btn = new JButton("Cancel");
-		this.ok_btn = new JButton("Add");
+		SubjectPanel.cnl_btn = new JButton("Cancel");
+		SubjectPanel.ok_btn = new JButton("Add");
 		btns.add(cnl_btn);
 		btns.add(ok_btn);
 		add(btns,BorderLayout.SOUTH);
@@ -49,6 +51,36 @@ public class SubjectPanel extends JPanel implements FocusListener {
 		JPanel in_field = new JPanel();
 		in_field.setLayout(new BoxLayout(in_field, BoxLayout.Y_AXIS));
 			
+		sif_txt = new JTextField();
+		sif_lbl = new JLabel();
+		sif_txt.setName("sifra predmeta");
+		
+		naz_txt = new JTextField();
+		naz_lbl = new JLabel();
+		naz_txt.setName("naziv predmeta");
+		
+		
+		
+		Vector<String> vec = new Vector<String>();
+		
+		vec.add("I (prva)");
+		vec.add("II (druga)");
+		vec.add("III (treća)");
+		vec.add("IV (četvrta)");
+		
+		Vector<String> vec2 = new Vector<String>();
+		
+		vec2.add("I (prvi)");
+		vec2.add("II (drugi)");
+		vec2.add("III (treći)");
+		vec2.add("IV (četvrti)");
+		vec2.add("V (peti)");
+		vec2.add("VI (sesti)");
+		vec2.add("VII (sedmi)");
+		vec2.add("VII (osmi)");
+		
+		sem_list = new JComboBox<String>(vec2);
+		god_list = new JComboBox<String>(vec);
 		
 		in_field.add(add_panel(sif_lbl,this.sif_txt,"Sifra predmeta *",0));
 		in_field.add(add_panel(naz_lbl,this.naz_txt,"Naziv predmeta *",0));
@@ -62,12 +94,12 @@ public class SubjectPanel extends JPanel implements FocusListener {
 		if(mode == AddDialog.ADD_MODE)
 		{
 			ok_btn.setEnabled(false);
-			this.broj=-2;
+			SubjectPanel.br=-2;
 		}
 		else
 		{
 			ok_btn.setEnabled(true);
-			this.broj=0;
+			SubjectPanel.br=0;
 			predmet = PredmetController.getInstance().nadjiPredmet(MojCentralni.getInstance().getTablPredmeti().getSelectedRow());
 			
 			sif_txt.setText(predmet.getmSifraPredmeta());
@@ -89,8 +121,8 @@ public class SubjectPanel extends JPanel implements FocusListener {
 			}
 		});
 		
-		sif_txt.addFocusListener(this);
-		naz_txt.addFocusListener(this);
+		sif_txt.addFocusListener(new PredmetListener());
+		naz_txt.addFocusListener(new PredmetListener());
 		
 		ok_btn.addActionListener(new ActionListener() {
 			
@@ -99,22 +131,24 @@ public class SubjectPanel extends JPanel implements FocusListener {
 				int tmp_god = god_list.getSelectedIndex()+1;
 				int tmp_sem = sem_list.getSelectedIndex()+1;
 				
-				if(mode==AddDialog.ADD_MODE)
+				if(mode == AddDialog.ADD_MODE) {
 					if(!PredmetController.getInstance().dodajPredmet(sif_txt.getText(),naz_txt.getText(),tmp_god,tmp_sem))
 					{
 						ok_btn.setEnabled(false);
 						sif_txt.setForeground(Color.RED);
 						sif_txt.setText(sif_txt.getText()+" - vec postoji sifra predmeta");
-						broj--;
+						br--;
 					}
-				else 
+				}
+				else {
 					if(!PredmetController.getInstance().izmeniPredmet(sif_txt.getText(),naz_txt.getText(),tmp_god,tmp_sem,predmet.getId()))
 					{
 						ok_btn.setEnabled(false);
 						sif_txt.setForeground(Color.RED);
 						sif_txt.setText(sif_txt.getText()+" - vec postoji sifra predmeta");
-						broj--;
+						br--;
 					}
+				}
 			}
 		});
 	}
@@ -129,35 +163,19 @@ public class SubjectPanel extends JPanel implements FocusListener {
 		pomocni.add(labela);
 		if(broj==0)
 		{
-			txt = new JTextField();
 			txt.setPreferredSize(txt_dimension);
 			pomocni.add(txt);
 		}
 		else
 		{
-			Vector<String> vec = new Vector<String>();
+			
 			if(broj == 1)
 			{
-				vec.add("I (prva)");
-				vec.add("II (druga)");
-				vec.add("III (treća)");
-				vec.add("IV (četvrta)");
-				sem_list = new JComboBox<String>(vec);
-				sem_list.setPreferredSize(txt_dimension);
-				pomocni.add(sem_list);
-				
+				god_list.setPreferredSize(txt_dimension);
+				pomocni.add(god_list);	
 			}
 			else if(broj == 2)
 			{
-				vec.add("I (prvi)");
-				vec.add("II (drugi)");
-				vec.add("III (treći)");
-				vec.add("IV (četvrti)");
-				vec.add("V (peti)");
-				vec.add("VI (sesti)");
-				vec.add("VII (sedmi)");
-				vec.add("VII (osmi)");
-				sem_list = new JComboBox<String>(vec);
 				sem_list.setPreferredSize(txt_dimension);
 				pomocni.add(sem_list);
 			}
@@ -165,15 +183,4 @@ public class SubjectPanel extends JPanel implements FocusListener {
 		return pomocni;
 	}
 
-	@Override
-	public void focusGained(FocusEvent arg0) {
-		System.out.println("GAINED");
-		
-	}
-
-	@Override
-	public void focusLost(FocusEvent arg0) {
-		System.out.println("LOST");
-		
-	}
 }

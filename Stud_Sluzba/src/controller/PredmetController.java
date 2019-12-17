@@ -21,7 +21,7 @@ public class PredmetController {
 		if(BazaPredmeta.getInstance().lookup_predmet(sif)==null)
 		{
 		    BazaPredmeta.getInstance().dodajPredmet(sif, naz, sem, god);
-		    MojCentralni.getInstance().azurirajPrikaz();
+		    MojCentralni.getInstance().azurirajPrikazPredmet();
 		    return true;
 		}
 		else
@@ -36,7 +36,7 @@ public class PredmetController {
 		if(tmp==null)
 		{
 			BazaPredmeta.getInstance().IzmeniPredmet(sif, naz, sem, god, id);
-			MojCentralni.getInstance().azurirajPrikaz();
+			MojCentralni.getInstance().azurirajPrikazPredmet();
 			return true;
 		}
 		else

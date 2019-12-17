@@ -6,19 +6,6 @@ import java.time.format.DateTimeParseException;
 
 // klasa za proveru polja za student/profesor/predmet
 public class Proveri {
-
-	public static void main(String[] args) {
-		String s[] = {"nesto@nesto.com", "@", "", "@2019", "41-5214@", "abc"};
-		
-		for(int i=0; i<s.length; ++i) {
-			if(isEmail(s[i])) {
-				System.out.println("'" + s[i] + "' je indeks.\n");
-			}
-			else {
-				System.out.println("'" + s[i] + "' nije indeks.\n");
-			}
-		}
-	}
 	
 	public static boolean isIme(String ime) {
 		return ime!=null && ime.matches("[a-zA-Z -]+");
@@ -56,6 +43,11 @@ public class Proveri {
 	
 	public static boolean isAdresa(String adr) {
 		return adr!=null && !adr.equals("");
+	}
+	
+	public static boolean isImePredmeta(String ime)
+	{
+		return ime!=null && !ime.equals("");
 	}
 	
 	public static boolean isProsek(String pros) {

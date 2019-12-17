@@ -49,11 +49,19 @@ public class MojCentralni extends JTabbedPane{
         setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
         
         this.azurirajPrikaz();
+        this.azurirajPrikazPredmet();
     }
      
 	public void azurirajPrikaz() {
 		AbstractTableModelStudenti model_stud = (AbstractTableModelStudenti) tabelaStudenta.getModel();
         model_stud.fireTableDataChanged();
+		validate();
+	}
+	
+	public void azurirajPrikazPredmet()
+	{
+		AbstractTableModePredmet model_predmet = (AbstractTableModePredmet) tabelaPredmeta.getModel();
+		model_predmet.fireTableDataChanged();
 		validate();
 	}
 	
