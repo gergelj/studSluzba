@@ -30,7 +30,7 @@ public class AddDialog extends JDialog {
 			case 1: //profesori
 			{
 				this.setTitle("Add Professor");
-				this.add(new ProfessorPanel());
+				this.add(new ProfessorPanel(mode));
 
 			} break;
 			case 2: //predmeti

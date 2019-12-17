@@ -50,6 +50,11 @@ public class Proveri {
 		return ime!=null && !ime.equals("");
 	}
 	
+	public static boolean isTitulaOrZvanje(String nesto)
+	{
+		return nesto!=null && nesto.matches("[a-zA-z]+");
+	}
+	
 	public static boolean isProsek(String pros) {
 
 		if(pros.matches("[0-9]{1,2}(\\.[0-9]{1,2})?")) {

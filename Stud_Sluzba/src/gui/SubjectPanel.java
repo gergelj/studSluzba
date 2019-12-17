@@ -5,8 +5,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.util.Vector;
 
 import javax.swing.BoxLayout;
@@ -52,11 +50,9 @@ public class SubjectPanel extends JPanel{
 		in_field.setLayout(new BoxLayout(in_field, BoxLayout.Y_AXIS));
 			
 		sif_txt = new JTextField();
-		sif_lbl = new JLabel();
 		sif_txt.setName("sifra predmeta");
 		
 		naz_txt = new JTextField();
-		naz_lbl = new JLabel();
 		naz_txt.setName("naziv predmeta");
 		
 		
@@ -132,7 +128,7 @@ public class SubjectPanel extends JPanel{
 				int tmp_sem = sem_list.getSelectedIndex()+1;
 				
 				if(mode == AddDialog.ADD_MODE) {
-					if(!PredmetController.getInstance().dodajPredmet(sif_txt.getText(),naz_txt.getText(),tmp_god,tmp_sem))
+					if(!PredmetController.getInstance().dodajPredmet(sif_txt.getText().toLowerCase(),naz_txt.getText(),tmp_god,tmp_sem))
 					{
 						ok_btn.setEnabled(false);
 						sif_txt.setForeground(Color.RED);
@@ -141,7 +137,7 @@ public class SubjectPanel extends JPanel{
 					}
 				}
 				else {
-					if(!PredmetController.getInstance().izmeniPredmet(sif_txt.getText(),naz_txt.getText(),tmp_god,tmp_sem,predmet.getId()))
+					if(!PredmetController.getInstance().izmeniPredmet(sif_txt.getText(),naz_txt.getText().toLowerCase(),tmp_god,tmp_sem,predmet.getId()))
 					{
 						ok_btn.setEnabled(false);
 						sif_txt.setForeground(Color.RED);

@@ -1,9 +1,11 @@
 package klase;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Profesor {
+	private int id;
 	private String mIme;
 	private String mPrezime;
 	private LocalDate mDatumRodjenja;
@@ -23,7 +25,7 @@ public class Profesor {
 	
 	
 	
-	public Profesor(String mIme, String mPrezime, LocalDate mDatumRodjenja, String mAdresaStanovanja, String mTelefon,String mEmail, String mAdresaKancelarije, String mBrojLK, String mTitula, String mZvanje,ArrayList<Predmet> mListaPredmeta) {
+	public Profesor(String mIme, String mPrezime, LocalDate mDatumRodjenja, String mAdresaStanovanja, String mTelefon,String mEmail, String mAdresaKancelarije, String mBrojLK, String mTitula, String mZvanje,int id,ArrayList<Predmet> mListaPredmeta) {
 		super();
 		this.mIme = mIme;
 		this.mPrezime = mPrezime;
@@ -36,6 +38,36 @@ public class Profesor {
 		this.mTitula = mTitula;
 		this.mZvanje = mZvanje;
 		this.mListaPredmeta = mListaPredmeta;
+		this.id = id;
+	}
+	
+	public Profesor(String mIme, String mPrezime, LocalDate mDatumRodjenja, String mAdresaStanovanja, String mTelefon,String mEmail, String mAdresaKancelarije, String mBrojLK, String mTitula, String mZvanje,int id) {
+		super();
+		this.mIme = mIme;
+		this.mPrezime = mPrezime;
+		this.mDatumRodjenja = mDatumRodjenja;
+		this.mAdresaStanovanja = mAdresaStanovanja;
+		this.mTelefon = mTelefon;
+		this.mEmail = mEmail;
+		this.mAdresaKancelarije = mAdresaKancelarije;
+		this.mBrojLK = mBrojLK;
+		this.mTitula = mTitula;
+		this.mZvanje = mZvanje;
+		this.id = id;
+	}
+	public Profesor(String mIme, String mPrezime, String mDatumRodjenja, String mAdresaStanovanja, String mTelefon,String mEmail, String mAdresaKancelarije, String mBrojLK, String mTitula, String mZvanje,int id) {
+		super();
+		this.mIme = mIme;
+		this.mPrezime = mPrezime;
+		this.mDatumRodjenja = LocalDate.parse(mDatumRodjenja, DateTimeFormatter.ofPattern("dd.MM.yyyy."));
+		this.mAdresaStanovanja = mAdresaStanovanja;
+		this.mTelefon = mTelefon;
+		this.mEmail = mEmail;
+		this.mAdresaKancelarije = mAdresaKancelarije;
+		this.mBrojLK = mBrojLK;
+		this.mTitula = mTitula;
+		this.mZvanje = mZvanje;
+		this.id = id;
 	}
 
 	//verovatno ce trebaati kasnije tokom pravljenja
@@ -54,9 +86,20 @@ public class Profesor {
 	public LocalDate getmDatumRodjenja() {
 		return mDatumRodjenja;
 	}
+	
+	public String getmDatumRodjenja(int i)
+	{
+		return this.mDatumRodjenja.format(DateTimeFormatter.ofPattern("dd.MM.yyyy.")); 
+	}
 	public void setmDatumRodjenja(LocalDate mDatumRodjenja) {
 		this.mDatumRodjenja = mDatumRodjenja;
 	}
+	
+	public void setmDatumRodjenja(String mDatumRodjenja)
+	{
+		this.mDatumRodjenja = LocalDate.parse(mDatumRodjenja, DateTimeFormatter.ofPattern("dd.MM.yyyy."));
+	}
+	
 	public String getmAdresaStanovanja() {
 		return mAdresaStanovanja;
 	}
@@ -109,5 +152,10 @@ public class Profesor {
 	public String getImeiPrezime()
 	{
 		return mIme+" "+mPrezime;
+	}
+	
+	public int getId()
+	{
+		return this.id;
 	}
 }
