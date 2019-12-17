@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import gui.MojCentralni;
 import gui.StudentiJTable;
 import klase.BazaStudenta;
+import klase.Student;
 
 public class DeleteListener implements ActionListener {
 
@@ -23,10 +24,9 @@ public class DeleteListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		switch(this.selectedTab) {
 		case 0: {
-			//TODO obrisi studenta
-			//Student st = StudentController.getInstance().
-			//BazaStudenta.getInstance().izbrisiStudenta();
+			StudentController.getInstance().izbrisiStudenta(StudentiJTable.getInstance().getSelectedRow());
 		}
+			break;
 		case 1: {
 			//TODO obrisi profesora
 		}

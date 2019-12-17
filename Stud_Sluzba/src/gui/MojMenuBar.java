@@ -14,6 +14,8 @@ import javax.swing.KeyStroke;
 import javax.swing.WindowConstants;
 
 import controller.AddListener;
+import controller.DeleteListener;
+import controller.SaveToDatabaseListener;
 
 public class MojMenuBar extends JMenuBar {
 
@@ -39,6 +41,10 @@ public class MojMenuBar extends JMenuBar {
 		new_mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));		//CTRL+N
 		new_mi.addActionListener(new AddListener(AddDialog.ADD_MODE));
 		
+		JMenuItem save_mi = new JMenuItem("Save to DB", new ImageIcon("images/save-22.png"));
+		save_mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));		//CTRL+S
+		save_mi.addActionListener(new SaveToDatabaseListener());
+		
 		JMenuItem close_mi = new JMenuItem("Close", new ImageIcon("images/close-22.png"));
 		close_mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.ALT_MASK));		//ALT+F4
 		close_mi.addActionListener(new ActionListener() {
@@ -63,6 +69,7 @@ public class MojMenuBar extends JMenuBar {
 		//TODO: MenuBar "Delete" Brisanje postejećeg entiteta
 		JMenuItem delete_mi = new JMenuItem("Delete", new ImageIcon("images/trash-22.png"));
 		delete_mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));		//CTRL+D
+		delete_mi.addActionListener(new DeleteListener());
 		
 		//TODO: MenuBar "Help" Ova sekcija treba da sadrži detaljan opis o načinu korišćenja aplikacije.
 		//Potrebno je objasniti kako se svaka od dolenavedenih funkcionalnosti može sprovesti u

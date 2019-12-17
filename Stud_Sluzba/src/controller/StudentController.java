@@ -53,7 +53,11 @@ public class StudentController {
 	}
 	
 	public void izbrisiStudenta(int row) {
-		//TODO obrisi studenta
+		if(row >= 0) {
+			Student st = BazaStudenta.getInstance().getStudentAt(row);
+			BazaStudenta.getInstance().izbrisiStudenta(st.getId());
+			MojCentralni.getInstance().azurirajPrikaz();
+		}
 	}
 	
 	public void sort(int column, boolean ascending) {
