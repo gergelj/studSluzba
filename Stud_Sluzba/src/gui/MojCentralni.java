@@ -16,8 +16,8 @@ public class MojCentralni extends JTabbedPane{
 	private static final long serialVersionUID = 1L;
 	
 	private PredmetiJTable tabelaPredmeta;
-	
 	private StudentiJTable tabelaStudenta;
+	//TODO: private ProfesoriJTable tabelaProfesora;
 	
 	private static MojCentralni instance = null;
 	
@@ -29,11 +29,13 @@ public class MojCentralni extends JTabbedPane{
 	
 	private MojCentralni()
 	{	
-		tabelaStudenta = new StudentiJTable();
+		tabelaStudenta = StudentiJTable.getInstance();
         JScrollPane scrollPaneStudenti = new JScrollPane(tabelaStudenta);
+        tabelaStudenta.setAutoCreateRowSorter(true);
         
         tabelaPredmeta = new PredmetiJTable();
         JScrollPane scrollPanePredmeti = new JScrollPane(tabelaPredmeta);
+        tabelaPredmeta.setAutoCreateRowSorter(true);
         
         addTab("Students" ,null, scrollPaneStudenti,"Tab with Students");
         setMnemonicAt(0, KeyEvent.VK_1);
@@ -65,6 +67,12 @@ public class MojCentralni extends JTabbedPane{
 		validate();
 	}
 	
+	public void azurirajPrikazProfesora() {
+		//TODO: AbstractTableModePredmet model_profesor = (AbstractTableModePredmet) tabelaProfesora.getModel();
+		//model_profesor.fireTableDataChanged();
+		validate();
+	}
+	
     protected JComponent makeTextPanel(String text) {
         JPanel panel = new JPanel(false);
         JLabel filler = new JLabel(text);
@@ -82,5 +90,10 @@ public class MojCentralni extends JTabbedPane{
     public StudentiJTable getTabelaStudenata() {
     	return this.tabelaStudenta;
     }
+    
+    /*
+     * public ProfesoriJTable getTabelaProfesora() {
+    	return this.tabelaProfesora;
+    }*/
 
 }

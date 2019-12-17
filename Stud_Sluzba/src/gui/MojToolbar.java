@@ -1,5 +1,8 @@
 package gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -8,36 +11,66 @@ import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
 import controller.AddListener;
+import controller.DeleteListener;
+import controller.SaveToDatabaseListener;
 
 public class MojToolbar extends JToolBar {
 
 	//parent frame
-	private MainFrame frame;
+	//private MainFrame frame;
+	private JButton add_btn, edit_btn, delete_btn, save_btn, add_student_btn, professor_btn;
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 6293715549294891243L;
 	
-	public MojToolbar(MainFrame mf) {
+	private static MojToolbar instance = null;
+	
+	public static MojToolbar getInstance() {
+		if(instance==null)
+			instance = new MojToolbar();
+		return instance;
+	}
+	
+	private MojToolbar() {
 		super(SwingConstants.HORIZONTAL);
-		this.frame = mf;
+		//this.frame = mf;
 		
-		JButton add_btn = new JButton();
+		add_btn = new JButton();
 		add_btn.setToolTipText("Add");
 		add_btn.setIcon(new ImageIcon("images/add-22.png"));
 		add(add_btn);
 		add_btn.addActionListener(new AddListener(AddDialog.ADD_MODE));
 		
-		JButton edit_btn = new JButton();
+		edit_btn = new JButton();
 		edit_btn.setToolTipText("Edit");
 		edit_btn.setIcon(new ImageIcon("images/edit-22.png"));
 		add(edit_btn);
 		edit_btn.addActionListener(new AddListener(AddDialog.EDIT_MODE));
 		
-		JButton delete_btn = new JButton();
+		delete_btn = new JButton();
 		delete_btn.setToolTipText("Delete");
 		delete_btn.setIcon(new ImageIcon("images/trash-22.png"));
 		add(delete_btn);
+		delete_btn.addActionListener(new DeleteListener(MojCentralni.getInstance().getSelectedIndex()));
+		
+		save_btn = new JButton();
+		save_btn.setToolTipText("Save to Database");
+		save_btn.setIcon(new ImageIcon("images/save-22.png"));
+		add(save_btn);
+		save_btn.addActionListener(new SaveToDatabaseListener());
+		
+		add_student_btn = new JButton();
+		add_student_btn.setToolTipText("Dodaj studenta na predmet");
+		add_student_btn.setIcon(new ImageIcon("images/add-student-22.png"));
+		add(add_student_btn);
+		add_student_btn.setVisible(false);
+		
+		professor_btn = new JButton();
+		professor_btn.setToolTipText("Promeni profesora na predmetu");
+		professor_btn.setIcon(new ImageIcon("images/professor-22.png"));
+		add(professor_btn);
+		professor_btn.setVisible(false);
 		
 		//TODO add search text field
 		
@@ -54,6 +87,11 @@ public class MojToolbar extends JToolBar {
 		add(search_btn);
 		
 		setFloatable(false);
+	}
+	
+	public void setButtonsVisible(boolean b) {
+		add_student_btn.setVisible(b);
+		professor_btn.setVisible(b);
 	}
 
 }

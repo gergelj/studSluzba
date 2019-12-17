@@ -22,6 +22,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class MainFrame extends JFrame{
 
@@ -50,8 +52,8 @@ public class MainFrame extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		
-		this.setJMenuBar(new MojMenuBar(this));
-		this.add(new MojToolbar(this), BorderLayout.NORTH);
+		this.setJMenuBar(MojMenuBar.getInstance());
+		this.add(MojToolbar.getInstance(), BorderLayout.NORTH);
 		
 		//TODO napraviti status bar u kom pise Studentska sluzba i datum i trenutno vreme
 		
@@ -68,7 +70,20 @@ public class MainFrame extends JFrame{
 		//TODO napraviti centralni deo glavnog prozora koji ima 3 taba
 		//tabovi = MojCentralni.getInstance();
 		this.add(MojCentralni.getInstance(),BorderLayout.CENTER);
-		
+		MojCentralni.getInstance().addChangeListener(new ChangeListener() {
+
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				if(MojCentralni.getInstance().getSelectedIndex()==2) {
+					MojToolbar.getInstance().setButtonsVisible(true);
+				}
+				else {
+					MojToolbar.getInstance().setButtonsVisible(false);
+				}
+				
+			}
+			
+		});
 		
 		//thread za vreme i datum
 		Thread t = new DatumThread(MainFrame.this);

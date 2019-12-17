@@ -126,6 +126,7 @@ public class StudentPanel extends JPanel /*implements FocusListener*/ {
 			this.broj = -9;
 		}
 		else {
+			this.ok_btn.setText("Edit");
 			this.ok_btn.setEnabled(true);
 			this.broj = 0;
 			this.st = StudentController.getInstance().nadjiStudenta(MojCentralni.getInstance().getTabelaStudenata().getSelectedRow());
@@ -139,6 +140,13 @@ public class StudentPanel extends JPanel /*implements FocusListener*/ {
 			email_txt.setText(st.getEmail());
 			brindeksa_txt.setText(st.getBrojIndeksa());
 			prosek_txt.setText(String.valueOf(st.getProsek()));
+			
+			godstudija_list.setSelectedIndex(st.getTrenutnaGodina()-1);
+			
+			if(st.getStatus() == Student.Status.B)
+				finansiranje_b.setSelected(true);
+			else
+				finansiranje_s.setSelected(true);
 		}
 		
 		

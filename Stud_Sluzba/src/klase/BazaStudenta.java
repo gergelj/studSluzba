@@ -141,5 +141,9 @@ public class BazaStudenta {
 		}
 		return null;
 	}
+	
+	public Student getStudentAt(int index) {
+		return studenti.get(index);
+	}
 
 }
