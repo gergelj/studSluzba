@@ -29,7 +29,7 @@ public class MojCentralni extends JTabbedPane{
 	
 	private MojCentralni()
 	{	
-		tabelaStudenta = new StudentiJTable();
+		tabelaStudenta = StudentiJTable.getInstance();
         JScrollPane scrollPaneStudenti = new JScrollPane(tabelaStudenta);
         
         tabelaPredmeta = new PredmetiJTable();

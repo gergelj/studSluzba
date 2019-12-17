@@ -8,6 +8,7 @@ import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
 import controller.AddListener;
+import controller.DeleteListener;
 
 public class MojToolbar extends JToolBar {
 
@@ -38,6 +39,7 @@ public class MojToolbar extends JToolBar {
 		delete_btn.setToolTipText("Delete");
 		delete_btn.setIcon(new ImageIcon("images/trash-22.png"));
 		add(delete_btn);
+		delete_btn.addActionListener(new DeleteListener(MojCentralni.getInstance().getSelectedIndex()));
 		
 		//TODO add search text field
 		
