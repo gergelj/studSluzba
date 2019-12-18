@@ -94,12 +94,15 @@ public class SubjectPanel extends JPanel{
 		}
 		else
 		{
+			ok_btn.setText("Edit");
 			ok_btn.setEnabled(true);
 			SubjectPanel.br=0;
 			predmet = PredmetController.getInstance().nadjiPredmet(MojCentralni.getInstance().getTablPredmeti().getSelectedRow());
 			
 			sif_txt.setText(predmet.getmSifraPredmeta());
 			naz_txt.setText(predmet.getmNazivPredmeta());
+			god_list.setSelectedIndex(predmet.getmGodinaIzvodjenja()-1);
+			sem_list.setSelectedIndex(predmet.getmSemestarPredmeta()-1);
 		}
 		
 		listeners();
@@ -137,7 +140,7 @@ public class SubjectPanel extends JPanel{
 					}
 				}
 				else {
-					if(!PredmetController.getInstance().izmeniPredmet(sif_txt.getText(),naz_txt.getText().toLowerCase(),tmp_god,tmp_sem,predmet.getId()))
+					if(!PredmetController.getInstance().izmeniPredmet(sif_txt.getText().toLowerCase(),naz_txt.getText(),tmp_god,tmp_sem,predmet.getId()))
 					{
 						ok_btn.setEnabled(false);
 						sif_txt.setForeground(Color.RED);

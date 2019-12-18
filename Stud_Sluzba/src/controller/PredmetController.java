@@ -47,7 +47,14 @@ public class PredmetController {
 		}
 		else
 		{
-			return false;
+			if(tmp.getId()==id) {
+				BazaPredmeta.getInstance().IzmeniPredmet(sif, naz, sem, god, id);
+				MojCentralni.getInstance().azurirajPrikazPredmet();
+				return true;
+			}
+			else {
+				return false;
+			}
 		}
 	}
 

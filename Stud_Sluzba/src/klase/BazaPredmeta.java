@@ -19,7 +19,6 @@ public class BazaPredmeta {
 	
 	private List<Predmet> predmeti;
 	private List<String> kolone;
-
 	
 	private BazaPredmeta()
 	{
@@ -32,6 +31,8 @@ public class BazaPredmeta {
 		this.kolone.add("GODINA");
 		this.kolone.add("SEMESTAR");
 		this.kolone.add("PROFESOR");
+		
+
 	}
 	
 	//TODO: treba implementirati da se ucita sacuvana baza iz fajla
