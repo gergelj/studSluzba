@@ -46,7 +46,7 @@ implements TableCellRenderer, TableCellEditor, MouseListener{
 			public void actionPerformed(ActionEvent e) {
 				fireEditingStopped();
 				//TODO: ispis liste predmeta za odabranog studenta
-				JOptionPane.showMessageDialog(table, "Selektovan je student u redu: " + table.getSelectedRow());
+				JOptionPane.showMessageDialog(table, "Selektovan je profesor u redu: " + table.getSelectedRow());
 			}
 		});
 

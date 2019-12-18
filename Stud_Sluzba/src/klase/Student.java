@@ -2,7 +2,7 @@ package klase;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Student {
 
@@ -15,14 +15,14 @@ public class Student {
 	private int trenutnaGodina;
 	private Status status;
 	private double prosek;
-	private ArrayList<Predmet> spisakPredmeta; //mozda HashMap je bolji izbor ovde, videcemo
+	private HashMap<Integer, Predmet> spisakPredmeta; //mozda HashMap je bolji izbor ovde, videcemo
 	
 	public Student() {
-		this.spisakPredmeta = new ArrayList<Predmet>();
+		this.spisakPredmeta = new HashMap<Integer, Predmet>();
 	}
 	
 	public Student(String ime, String prezime, String datumrodj, String adresa, String telefon, String email, String brojindeksa, String datumupisa, int trenutnagodina, Status status, double prosek, int internikljuc) {
-		this.spisakPredmeta = new ArrayList<Predmet>();
+		this.spisakPredmeta = new HashMap<Integer, Predmet>();
 		this.ime = ime;
 		this.prezime = prezime;
 		this.datumRodjenja = LocalDate.parse(datumrodj, DateTimeFormatter.ofPattern("dd.MM.yyyy."));
@@ -37,7 +37,7 @@ public class Student {
 		this.id = internikljuc;
 	}
 	
-	public Student(String ime, String prezime, String datumrodj, String adresa, String telefon, String email, String brojindeksa, String datumupisa, int trenutnagodina, Status status, double prosek, int internikljuc, ArrayList<Predmet> spisakpredmeta) {
+	public Student(String ime, String prezime, String datumrodj, String adresa, String telefon, String email, String brojindeksa, String datumupisa, int trenutnagodina, Status status, double prosek, int internikljuc, HashMap<Integer, Predmet> spisakpredmeta) {
 		this.ime = ime;
 		this.prezime = prezime;
 		this.datumRodjenja = LocalDate.parse(datumrodj, DateTimeFormatter.ofPattern("dd.MM.yyyy."));
@@ -55,8 +55,8 @@ public class Student {
 
 	@Override
 	public String toString() {
-		//npr.
-		return "Student:\n" + "Ime: " + ime + "\nPrezime: " + prezime + "\nDatum rodjenja: " + datumRodjenja + "\nStatus: " +  status;
+		//treba kod prikaza studenata u JListu kada dodamo na predmet
+		return this.brojIndeksa + " " + this.ime + " " + this.prezime + ", " + this.trenutnaGodina + ". godina";
 	}
 
 	public int getId() {
@@ -166,12 +166,20 @@ public class Student {
 		this.prosek = prosek;
 	}
 
-	public ArrayList<Predmet> getSpisakPredmeta() {
+	public HashMap<Integer, Predmet> getSpisakPredmeta() {
 		return spisakPredmeta;
 	}
 
-	public void setSpisakPredmeta(ArrayList<Predmet> spisakPredmeta) {
+	public void setSpisakPredmeta(HashMap<Integer, Predmet> spisakPredmeta) {
 		this.spisakPredmeta = spisakPredmeta;
+	}
+	
+	public void addPredmet(Predmet p) {
+		this.spisakPredmeta.put(p.getId(), p);
+	}
+	
+	public void removePredmet(Predmet p) {
+		this.spisakPredmeta.remove(p.getId());
 	}
 	
 }

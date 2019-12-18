@@ -65,6 +65,18 @@ public class MojToolbar extends JToolBar {
 		add_student_btn.setIcon(new ImageIcon("images/add-student-22.png"));
 		add(add_student_btn);
 		add_student_btn.setVisible(false);
+		add_student_btn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int selectedPredmetRow = MojCentralni.getInstance().getTablPredmeti().getSelectedRow();
+				if(selectedPredmetRow != -1) {
+					AddStudentToPredmetDialog dial = new AddStudentToPredmetDialog(selectedPredmetRow);
+					dial.setVisible(true);
+				}
+			}
+			
+		});
 		
 		professor_btn = new JButton();
 		professor_btn.setToolTipText("Promeni profesora na predmetu");

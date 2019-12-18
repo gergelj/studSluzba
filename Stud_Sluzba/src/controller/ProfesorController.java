@@ -3,6 +3,7 @@ package controller;
 import java.time.LocalDate;
 
 import gui.MojCentralni;
+import klase.BazaPredmeta;
 import klase.BazaProfesora;
 import klase.Profesor;
 
@@ -54,9 +55,13 @@ public class ProfesorController {
 	
 	public void izbrisiProfesora(int row) {
 		if(row>=0) {
-			Profesor pf = BazaProfesora.getInstance().getProfesorAt(row);
+			Profesor pf = this.nadjiProfesora(row);
 			BazaProfesora.getInstance().izbrisiProfesor(pf.getId());
 			MojCentralni.getInstance().azurirajPrikazProfesora();
+			
+			//kada obrisem profesora, on mora da nestane kod svakog predmeta
+			BazaPredmeta.getInstance().deleteAllInstanceOfProfessor(pf);
+			MojCentralni.getInstance().azurirajPrikazPredmet();
 		}
 	}
 	

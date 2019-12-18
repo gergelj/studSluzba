@@ -2,7 +2,7 @@ package klase;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Profesor {
 	private int id;
@@ -16,16 +16,16 @@ public class Profesor {
 	private String mBrojLK; //ima 13 cifara
 	private String mTitula;
 	private String mZvanje;
-	private ArrayList<Predmet> mListaPredmeta; //na kojima predaje
+	private HashMap<Integer, Predmet> mListaPredmeta; //na kojima predaje
 	
 	public Profesor()
 	{
-		this.mListaPredmeta = new ArrayList<Predmet>();
+		this.mListaPredmeta = new HashMap<Integer, Predmet>();
 	}
 	
 	
 	
-	public Profesor(String mIme, String mPrezime, LocalDate mDatumRodjenja, String mAdresaStanovanja, String mTelefon,String mEmail, String mAdresaKancelarije, String mBrojLK, String mTitula, String mZvanje,int id,ArrayList<Predmet> mListaPredmeta) {
+	public Profesor(String mIme, String mPrezime, LocalDate mDatumRodjenja, String mAdresaStanovanja, String mTelefon,String mEmail, String mAdresaKancelarije, String mBrojLK, String mTitula, String mZvanje,int id,HashMap<Integer, Predmet> mListaPredmeta) {
 		super();
 		this.mIme = mIme;
 		this.mPrezime = mPrezime;
@@ -54,6 +54,7 @@ public class Profesor {
 		this.mTitula = mTitula;
 		this.mZvanje = mZvanje;
 		this.id = id;
+		this.mListaPredmeta = new HashMap<Integer, Predmet>();
 	}
 	public Profesor(String mIme, String mPrezime, String mDatumRodjenja, String mAdresaStanovanja, String mTelefon,String mEmail, String mAdresaKancelarije, String mBrojLK, String mTitula, String mZvanje,int id) {
 		super();
@@ -68,6 +69,7 @@ public class Profesor {
 		this.mTitula = mTitula;
 		this.mZvanje = mZvanje;
 		this.id = id;
+		this.mListaPredmeta = new HashMap<Integer, Predmet>();
 	}
 
 	//verovatno ce trebaati kasnije tokom pravljenja
@@ -142,10 +144,10 @@ public class Profesor {
 	public void setmZvanje(String mZvanje) {
 		this.mZvanje = mZvanje;
 	}
-	public ArrayList<Predmet> getmListaPredmeta() {
+	public HashMap<Integer, Predmet> getmListaPredmeta() {
 		return mListaPredmeta;
 	}
-	public void setmListaPredmeta(ArrayList<Predmet> mListaPredmeta) {
+	public void setmListaPredmeta(HashMap<Integer, Predmet> mListaPredmeta) {
 		this.mListaPredmeta = mListaPredmeta;
 	}	
 	

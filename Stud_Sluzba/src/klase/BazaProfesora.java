@@ -1,6 +1,5 @@
 package klase;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -144,8 +143,10 @@ public class BazaProfesora {
 		return null;
 	}
 	
-	public Profesor getProfesorAt(int row) {
-		return profesori.get(row);
+	public void deleteAllInstancesOfSubject(Predmet p) {
+		for(Profesor pf : profesori) {
+			pf.getmListaPredmeta().remove(p.getId());
+		}
 	}
 	
 }

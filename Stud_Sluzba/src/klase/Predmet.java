@@ -1,6 +1,6 @@
 package klase;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Predmet {
 	private String mSifraPredmeta;
@@ -9,11 +9,11 @@ public class Predmet {
 	private int mGodinaIzvodjenja;
 	private Profesor mProfesor;
 	private int id;
-	private ArrayList<Student> mListaStudenata; //mozda hashmap bude trebao
+	private HashMap<Integer, Student> mListaStudenata; //mozda hashmap bude trebao
 	
 	public Predmet()
 	{
-		this.mListaStudenata = new ArrayList<Student>();
+		this.mListaStudenata = new HashMap<Integer, Student>();
 	}
 	
 	public Predmet(String sifraPredmeta,String nazivPredmeta,int semestarPredmeta,int godinaIzvodjenja, int id)
@@ -23,9 +23,10 @@ public class Predmet {
 		this.mSemestarPredmeta=semestarPredmeta;
 		this.mGodinaIzvodjenja=godinaIzvodjenja;
 		this.id = id;
+		this.mListaStudenata = new HashMap<Integer, Student>();
 	}
 	
-	public Predmet(String sifraPredmeta,String nazivPredmeta,int semestarPredmeta,int godinaIzvodjenja,Profesor profesor,int id,ArrayList<Student> listaStudenata)
+	public Predmet(String sifraPredmeta,String nazivPredmeta,int semestarPredmeta,int godinaIzvodjenja,Profesor profesor,int id,HashMap<Integer, Student> listaStudenata)
 	{
 		this.mSifraPredmeta=sifraPredmeta;
 		this.mNazivPredmeta=nazivPredmeta;
@@ -66,15 +67,28 @@ public class Predmet {
 	public void setmProfesor(Profesor mProfesor) {
 		this.mProfesor = mProfesor;
 	}
-	public ArrayList<Student> getmListaStudenata() {
+	public HashMap<Integer, Student> getmListaStudenata() {
 		return mListaStudenata;
 	}
-	public void setmListaStudenata(ArrayList<Student> mListaStudenata) {
+	public void setmListaStudenata(HashMap<Integer, Student> mListaStudenata) {
 		this.mListaStudenata = mListaStudenata;
 	}	
 	
 	public int getId()
 	{
 		return this.id;
+	}
+	
+	public void addStudent(Student s) {
+		this.mListaStudenata.put(s.getId(), s);
+	}
+	
+	public void removeStudent(Student s) {
+		this.mListaStudenata.remove(s.getId());
+	}
+	
+	@Override
+	public String toString() {
+		return mSifraPredmeta + " - " + mNazivPredmeta;
 	}
 }

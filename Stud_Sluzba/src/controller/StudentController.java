@@ -1,6 +1,9 @@
 package controller;
 
+import java.util.List;
+
 import gui.MojCentralni;
+import klase.BazaPredmeta;
 import klase.BazaStudenta;
 import klase.Student;
 
@@ -54,10 +57,17 @@ public class StudentController {
 	
 	public void izbrisiStudenta(int row) {
 		if(row >= 0) {
-			Student st = BazaStudenta.getInstance().getStudentAt(row);
+			Student st = this.nadjiStudenta(row);
 			BazaStudenta.getInstance().izbrisiStudenta(st.getId());
 			MojCentralni.getInstance().azurirajPrikaz();
+			
+			//kada obrisem studenta, on mora da nestane sa svih spiskova svih predmeta
+			BazaPredmeta.getInstance().deleteAllInstanceOfStudent(st);
+			MojCentralni.getInstance().azurirajPrikazPredmet();
 		}
 	}
 	
+	public List<Student> getStudenti() {
+		return BazaStudenta.getInstance().getStudenti();
+	}
 }

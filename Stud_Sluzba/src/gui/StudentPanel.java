@@ -5,8 +5,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.util.Vector;
 
 import javax.swing.BoxLayout;
@@ -20,7 +18,6 @@ import javax.swing.JTextField;
 
 import controller.StudentController;
 import controller.StudentListener;
-import klase.Proveri;
 import klase.Student;
 
 public class StudentPanel extends JPanel /*implements FocusListener*/ {
@@ -121,14 +118,14 @@ public class StudentPanel extends JPanel /*implements FocusListener*/ {
 		
 		if(mode == AddDialog.ADD_MODE) {
 			// onemogucenje da se doda prazan student
-			this.ok_btn.setEnabled(false);
+			StudentPanel.ok_btn.setEnabled(false);
 			// Student ima 9 stavki (text field)
-			this.broj = -9;
+			StudentPanel.broj = -9;
 		}
 		else {
-			this.ok_btn.setText("Edit");
-			this.ok_btn.setEnabled(true);
-			this.broj = 0;
+			StudentPanel.ok_btn.setText("Edit");
+			StudentPanel.ok_btn.setEnabled(true);
+			StudentPanel.broj = 0;
 			this.st = StudentController.getInstance().nadjiStudenta(MojCentralni.getInstance().getTabelaStudenata().getSelectedRow());
 		
 			ime_txt.setText(st.getIme());
@@ -148,8 +145,6 @@ public class StudentPanel extends JPanel /*implements FocusListener*/ {
 			else
 				finansiranje_s.setSelected(true);
 		}
-		
-		
 		
 		// prikljucivanje listenera
 		listeners();
@@ -232,60 +227,5 @@ public class StudentPanel extends JPanel /*implements FocusListener*/ {
 		});
 		
 	}
-/*
-	@Override
-	public void focusGained(FocusEvent e) {
-		JTextField tx = (JTextField) e.getComponent();
-		if(tx.getForeground()==Color.RED) {
-			tx.setForeground(Color.BLACK);
-			tx.setText("");
-		}
-		
-		String tekst = tx.getText();
-		String name = tx.getName();
-		boolean uslov = (!Proveri.isIme(tekst) && (name.equals("ime")||name.equals("prezime")))
-				|| (!Proveri.isDatum(tekst) && (name.equals("datrodj")||name.equals("datupis")))
-				|| (!Proveri.isAdresa(tekst) && name.equals("adresa"))
-				|| (!Proveri.isTelefon(tekst) && name.equals("telefon"))
-				|| (!Proveri.isEmail(tekst) && name.equals("email"))
-				|| (!Proveri.isBrojIndeksa(tekst) && name.equals("indeks"))
-				|| (!Proveri.isProsek(tekst) && name.equals("prosek"));
-		
-		if(uslov)
-			broj++;
-		
-	}
-
-	@Override
-	public void focusLost(FocusEvent e) {
-		JTextField tx = (JTextField) e.getComponent();
-		
-		String tekst = tx.getText();
-		String name = tx.getName();
-		boolean uslov = (!Proveri.isIme(tekst) && (name.equals("ime")||name.equals("prezime")))
-				|| (!Proveri.isDatum(tekst) && (name.equals("datrodj")||name.equals("datupis")))
-				|| (!Proveri.isAdresa(tekst) && name.equals("adresa"))
-				|| (!Proveri.isTelefon(tekst) && name.equals("telefon"))
-				|| (!Proveri.isEmail(tekst) && name.equals("email"))
-				|| (!Proveri.isBrojIndeksa(tekst) && name.equals("indeks"))
-				|| (!Proveri.isProsek(tekst) && name.equals("prosek"));
-		
-		if(uslov) {
-			broj--;
-			tx.setForeground(Color.RED);
-		}
-		
-		if(broj==0) {
-			ok_btn.setEnabled(true);
-		}
-		else {
-			ok_btn.setEnabled(false);
-		}
-		
-		if(tx.getText().equals("")) {
-			tx.setText("Obavezno polje");
-		}
-		
-	}*/
 	
 }

@@ -40,7 +40,10 @@ public class ButtonColumnPredmeti extends AbstractCellEditor implements TableCel
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				fireEditingStopped();
-				JOptionPane.showMessageDialog(table, "Selektovan je predmet u redu: "+table.getSelectedRow());
+				//TODO: prikazi spisak studenta na predmetu
+				//JOptionPane.showMessageDialog(table, "Selektovan je predmet u redu: "+table.getSelectedRow());
+				SpisakStudentaDialog d = new SpisakStudentaDialog(table.getSelectedRow());
+				d.setVisible(true);
 				
 			}
 		});

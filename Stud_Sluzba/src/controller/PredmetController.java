@@ -1,8 +1,14 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import gui.MojCentralni;
 import klase.BazaPredmeta;
+import klase.BazaProfesora;
+import klase.BazaStudenta;
 import klase.Predmet;
+import klase.Student;
 
 public class PredmetController {
 	private static PredmetController instance = null;
@@ -51,9 +57,36 @@ public class PredmetController {
 	
 	public void izbrisiPredmet(int row) {
 		if(row>=0) {
-			Predmet pf = BazaPredmeta.getInstance().getPredmetAt(row);
-			BazaPredmeta.getInstance().izbrisiPredmet(pf.getId());
+			Predmet pr = this.nadjiPredmet(row);
+			BazaPredmeta.getInstance().izbrisiPredmet(pr.getId());
 			MojCentralni.getInstance().azurirajPrikazPredmet();
+			
+			//ako obrisem predmet, brise se i sa spiska svakog studenta i profesora
+			BazaStudenta.getInstance().deleteAllInstancesOfSubject(pr);
+			MojCentralni.getInstance().azurirajPrikaz();
+			
+			BazaProfesora.getInstance().deleteAllInstancesOfSubject(pr);
+			MojCentralni.getInstance().azurirajPrikazProfesora();
 		}
+	}
+	
+	public void linkStudentPredmet(Student s, Predmet p) {
+		p.addStudent(s);
+		s.addPredmet(p);
+	}
+	
+	public void unlinkStudentPredmet(Student s, Predmet p) {
+		p.removeStudent(s);
+		s.removePredmet(p);
+	}
+	
+	public List<Student> getListOfStudents(Predmet p){
+		List<Student> stud = new ArrayList<Student>();
+		
+		for(Student s : p.getmListaStudenata().values()) {
+			stud.add(s);
+		}
+		
+		return stud;
 	}
 }

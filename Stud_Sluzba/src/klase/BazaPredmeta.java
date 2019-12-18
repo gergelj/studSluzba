@@ -136,7 +136,17 @@ public class BazaPredmeta {
 		return null;
 	}
 	
-	public Predmet getPredmetAt(int row) {
-		return predmeti.get(row);
+	public void deleteAllInstanceOfStudent(Student s) {
+		for(Predmet p : predmeti) {
+			p.getmListaStudenata().remove(s.getId());
+		}
+	}
+	
+	public void deleteAllInstanceOfProfessor(Profesor pf) {
+		for(Predmet p : predmeti) {
+			if(p.getmProfesor().getId() == pf.getId()) {
+				p.setmProfesor(null);
+			}
+		}
 	}
 }

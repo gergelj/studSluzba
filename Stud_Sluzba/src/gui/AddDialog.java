@@ -1,11 +1,8 @@
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.Frame;
 
-import javax.swing.JButton;
+import java.awt.Frame;
 import javax.swing.JDialog;
-import javax.swing.JPanel;
 
 public class AddDialog extends JDialog {
 
