@@ -144,8 +144,10 @@ public class BazaPredmeta {
 	
 	public void deleteAllInstanceOfProfessor(Profesor pf) {
 		for(Predmet p : predmeti) {
-			if(p.getmProfesor().getId() == pf.getId()) {
-				p.setmProfesor(null);
+			if(p.getmProfesor()!=null) {
+				if(p.getmProfesor().getId() == pf.getId()) {
+					p.setmProfesor(null);
+				}
 			}
 		}
 	}
