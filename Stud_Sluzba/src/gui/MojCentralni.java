@@ -2,12 +2,22 @@ package gui;
 
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.List;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.RowSorter;
+import javax.swing.RowSorter.SortKey;
+import javax.swing.event.RowSorterEvent;
+import javax.swing.event.RowSorterListener;
+import javax.swing.table.TableModel;
+
+import controller.StudentSorterListener;
 
 public class MojCentralni extends JTabbedPane{
 	/**
@@ -32,6 +42,8 @@ public class MojCentralni extends JTabbedPane{
 		tabelaStudenta = StudentiJTable.getInstance();
         JScrollPane scrollPaneStudenti = new JScrollPane(tabelaStudenta);
         tabelaStudenta.setAutoCreateRowSorter(true);
+        
+        tabelaStudenta.getTableHeader().addMouseListener(new StudentSorterListener());
         
         tabelaPredmeta = PredmetiJTable.getInstance();
         JScrollPane scrollPanePredmeti = new JScrollPane(tabelaPredmeta);

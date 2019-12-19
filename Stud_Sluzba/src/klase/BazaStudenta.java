@@ -3,8 +3,12 @@ package klase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BazaStudenta {
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
+public class BazaStudenta {
+	
 	private static BazaStudenta instance = null;
 
 	public static BazaStudenta getInstance() {
@@ -36,13 +40,15 @@ public class BazaStudenta {
 		this.kolone.add("GODINA");
 		this.kolone.add("STATUS");
 		this.kolone.add("PROSEK");
-		
 
 	}
 
 	private void initStudenti() {
 		this.studenti = new ArrayList<Student>();
 		//TODO: import from file
+		this.studenti.add(new Student("Aleksa", "Vucaj", "01.01.1998.", "juguyfjgj", "4645431322", "jhjkQ@gmail.com", "ra-300-1000", "01.01.2017.", 3, Student.Status.B, 9.99, generateId()));
+		this.studenti.add(new Student("Zarko", "Zarkovic", "10.05.1998.", "uhsoda,ma", "5643128812", "jisjcs@gmail.com", "ra-50-2000", "01.01.2017.", 2, Student.Status.S, 8.75, generateId()));
+		this.studenti.add(new Student("Gergelj", "Kis", "13.08.1998.", "jiosaiknd", "0054878422", "gergo@uns.ac.rs", "ra-6-2017", "01.01.2017.", 3, Student.Status.B, 9.76, generateId()));
 	}
 
 	public List<Student> getStudenti() {
@@ -146,5 +152,10 @@ public class BazaStudenta {
 		for(Student s : studenti) {
 			s.getSpisakPredmeta().remove(p.getId());
 		}
+	}
+	
+	public void sort(int column, boolean isAscending) {
+		//TODO: sort students by column ascending/descending
+		
 	}
 }

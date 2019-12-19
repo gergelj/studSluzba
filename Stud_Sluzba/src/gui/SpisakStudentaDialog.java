@@ -36,21 +36,24 @@ public class SpisakStudentaDialog extends JDialog {
 		private static final long serialVersionUID = 5594587808821419302L;
 		
 		private List<Student> studenti;
-		private Predmet p;
 		
 		public AbstractListModelSpisak(Predmet p) {
-			this.p = p;
-			this.studenti = PredmetController.getInstance().getListOfStudents(p);
+			studenti = PredmetController.getInstance().getListOfStudentsOnSubject(p);
 		}
 		
 		@Override
 		public int getSize() {
-			return this.studenti.size();
+			return studenti.size();
 		}
 
 		@Override
 		public Student getElementAt(int index) {
-			return this.studenti.get(index);
+			return studenti.get(index);
+		}
+		
+		public void azuriraj(int index) {
+			studenti.remove(index);
+			fireContentsChanged(this, 0, studenti.size()-1);
 		}
 
 	}
@@ -82,10 +85,10 @@ public class SpisakStudentaDialog extends JDialog {
 				if(s!=null) {
 					Predmet p = PredmetController.getInstance().nadjiPredmet(selectedPredmetRow);
 					PredmetController.getInstance().unlinkStudentPredmet(s, p);
+					//azuriranje prikaza u JList
+					AbstractListModelSpisak mod = (AbstractListModelSpisak) lista.getModel();
+					mod.azuriraj(lista.getSelectedIndex());
 				}
-				
-				//TODO: refreshovati JList komponentu (ili zatvoriti dijalog) IPAK ZATVORITI DIJALOG
-				
 			}
 			
 		});

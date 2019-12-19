@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
@@ -38,8 +39,9 @@ public class AddStudentToPredmetDialog extends JDialog {
 		
 		private List<Student> studenti;
 		
-		public AbstractListModelStudenti() {
-			this.studenti = StudentController.getInstance().getStudenti();
+		public AbstractListModelStudenti(Predmet p) {
+			//this.studenti = StudentController.getInstance().getStudenti();
+			this.studenti = PredmetController.getInstance().getListOfStudents(p);
 		}
 		
 		@Override
@@ -50,6 +52,11 @@ public class AddStudentToPredmetDialog extends JDialog {
 		@Override
 		public Student getElementAt(int index) {
 			return this.studenti.get(index);
+		}
+		
+		public void azuriraj(int index) {
+			this.studenti.remove(index);
+			fireContentsChanged(this, 0, studenti.size()-1);
 		}
 
 	}
@@ -76,16 +83,20 @@ public class AddStudentToPredmetDialog extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if(lista.getSelectedIndex() == -1) {
+					return;
+				}
 				Student s = lista.getSelectedValue();
 				Predmet p = selectedPredmet;
 				
 				if(s.getTrenutnaGodina()!=p.getmGodinaIzvodjenja()) {
-					//TODO:
-					System.out.println("Nisu ista godina");
+					//System.out.println("Nisu ista godina");
 				}
 				else {
 					PredmetController.getInstance().linkStudentPredmet(s, p);
-					System.out.println("Dodao sam studenta na predmet");
+					AbstractListModelStudenti mod = (AbstractListModelStudenti) lista.getModel();
+					mod.azuriraj(lista.getSelectedIndex());
+					//System.out.println("Dodao sam studenta na predmet");
 				}
 				
 			}
@@ -108,7 +119,7 @@ public class AddStudentToPredmetDialog extends JDialog {
 		scroll.setPreferredSize(new Dimension(400,400));
 		
 		lista = new JList<Student>();
-		lista.setModel(new AbstractListModelStudenti());
+		lista.setModel(new AbstractListModelStudenti(this.selectedPredmet));
 		scroll.add(lista);
 		
 		ret.add(scroll, BorderLayout.NORTH);

@@ -39,6 +39,10 @@ public class BazaPredmeta {
 	private void initPredmeti()
 	{
 		this.predmeti = new ArrayList<Predmet>();
+		
+		predmeti.add(new Predmet("E213", "Analiza 1", 1, 1, generateId()));
+		predmeti.add(new Predmet("E245", "MISS", 3, 2, generateId()));
+		predmeti.add(new Predmet("E268", "OISISI", 5, 3, generateId()));
 	}
 	
 	private int generateId()

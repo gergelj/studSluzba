@@ -87,11 +87,25 @@ public class PredmetController {
 		s.removePredmet(p);
 	}
 	
-	public List<Student> getListOfStudents(Predmet p){
+	public List<Student> getListOfStudentsOnSubject(Predmet p){
+		//vraca listu studenta koji su dodati na predmet p
 		List<Student> stud = new ArrayList<Student>();
 		
 		for(Student s : p.getmListaStudenata().values()) {
 			stud.add(s);
+		}
+		
+		return stud;
+	}
+	
+	public List<Student> getListOfStudents(Predmet p){
+		//vraca listu svih studenta u bazi, sem onih studenta koji su vec na predmetu i koji nemaju pravo da slusaju (koji nisu ista godina)
+		List<Student> stud = new ArrayList<Student>();
+		
+		for(Student s : StudentController.getInstance().getStudenti()) {
+			if(s.getTrenutnaGodina()==p.getmGodinaIzvodjenja() && !p.getmListaStudenata().containsKey(s.getId())) {
+				stud.add(s);
+			}
 		}
 		
 		return stud;

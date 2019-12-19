@@ -70,4 +70,9 @@ public class StudentController {
 	public List<Student> getStudenti() {
 		return BazaStudenta.getInstance().getStudenti();
 	}
+	
+	public void sort(int column, boolean isAscending) {
+		BazaStudenta.getInstance().sort(column, isAscending);
+		MojCentralni.getInstance().azurirajPrikaz();
+	}
 }
