@@ -27,7 +27,6 @@ public class StudentiJTable extends JTable {
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setModel(new AbstractTableModelStudenti());
 		new ButtonColumnStudenti(this, BazaStudenta.getInstance().getColumnCount());
-		//this.getTableHeader().setDefaultRenderer(new ColumnHeaderStudenti());
 	}
 
 	@Override
