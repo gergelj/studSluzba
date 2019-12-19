@@ -8,6 +8,7 @@ import klase.BazaPredmeta;
 import klase.BazaProfesora;
 import klase.BazaStudenta;
 import klase.Predmet;
+import klase.Profesor;
 import klase.Student;
 
 public class PredmetController {
@@ -85,6 +86,12 @@ public class PredmetController {
 	public void unlinkStudentPredmet(Student s, Predmet p) {
 		p.removeStudent(s);
 		s.removePredmet(p);
+	}
+	
+	public void linkProfesorPredmet(Profesor p, Predmet pr)
+	{
+		pr.addProfesor(p);
+		
 	}
 	
 	public List<Student> getListOfStudents(Predmet p){
