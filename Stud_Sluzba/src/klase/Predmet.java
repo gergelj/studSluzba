@@ -87,6 +87,16 @@ public class Predmet {
 		this.mListaStudenata.remove(s.getId());
 	}
 	
+	public void addProfesor(Profesor p)
+	{
+		this.mProfesor=p;
+	}
+	
+	public void removeProfesor()
+	{
+		this.mProfesor=null;
+	}
+	
 	@Override
 	public String toString() {
 		return mSifraPredmeta + " - " + mNazivPredmeta;

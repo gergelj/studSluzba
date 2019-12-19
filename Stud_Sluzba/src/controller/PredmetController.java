@@ -8,6 +8,7 @@ import klase.BazaPredmeta;
 import klase.BazaProfesora;
 import klase.BazaStudenta;
 import klase.Predmet;
+import klase.Profesor;
 import klase.Student;
 
 public class PredmetController {
@@ -87,8 +88,14 @@ public class PredmetController {
 		s.removePredmet(p);
 	}
 	
+	public void linkProfesorPredmet(Profesor p, Predmet pr)
+	{
+		pr.addProfesor(p);
+		
+	}
+
 	public List<Student> getListOfStudentsOnSubject(Predmet p){
-		//vraca listu studenta koji su dodati na predmet p
+			//vraca listu studenta koji su dodati na predmet p
 		List<Student> stud = new ArrayList<Student>();
 		
 		for(Student s : p.getmListaStudenata().values()) {

@@ -1,10 +1,13 @@
 package controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import gui.MojCentralni;
 import klase.BazaPredmeta;
 import klase.BazaProfesora;
+import klase.Predmet;
 import klase.Profesor;
 
 public class ProfesorController {
@@ -65,4 +68,21 @@ public class ProfesorController {
 		}
 	}
 	
+	
+	public List<Profesor> getProfesori()
+	{
+		return BazaProfesora.getInstance().getProfesori();
+	}
+	
+	public List<Predmet> getListOfSubjects(Profesor p)
+	{
+		List<Predmet> pred = new ArrayList<Predmet>();
+		
+		for(Predmet predmet: p.getmListaPredmeta().values() )
+		{
+			pred.add(predmet);
+		}
+		
+		return pred;
+	}
 }

@@ -83,6 +83,19 @@ public class MojToolbar extends JToolBar {
 		professor_btn.setIcon(new ImageIcon("images/professor-22.png"));
 		add(professor_btn);
 		professor_btn.setVisible(false);
+		professor_btn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int selectedPredmetRow = MojCentralni.getInstance().getTablPredmeti().getSelectedRow();
+				if(selectedPredmetRow != -1)
+				{
+					AddProfesorToPredmetDialog dial = new AddProfesorToPredmetDialog(selectedPredmetRow);
+					dial.setVisible(true);
+				}
+				
+			}
+		});
 		
 		//TODO add search text field
 		

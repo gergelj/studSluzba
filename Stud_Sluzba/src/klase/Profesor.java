@@ -160,4 +160,20 @@ public class Profesor {
 	{
 		return this.id;
 	}
+	
+	public void addPredmet(Predmet p)
+	{
+		this.mListaPredmeta.put(p.getId(), p);
+	}
+	
+	public void removePredmet(Predmet p)
+	{
+		this.mListaPredmeta.remove(p.getId());
+	}
+	
+	@Override
+	public String toString() {
+		//treba kod prikaza studenata u JListu kada dodamo na predmet
+		return this.mBrojLK+" "+this.mIme+" "+this.mPrezime;
+	}
 }
