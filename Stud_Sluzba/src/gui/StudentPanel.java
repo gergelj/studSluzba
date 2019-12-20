@@ -14,6 +14,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import controller.StudentController;
@@ -114,7 +115,8 @@ public class StudentPanel extends JPanel /*implements FocusListener*/ {
 		finansiranje_pan.add(finansiranje_s);
 		inputpolja.add(finansiranje_pan);
 		
-		this.add(inputpolja, BorderLayout.CENTER);
+		JScrollPane sp = new JScrollPane(inputpolja);
+		this.add(sp, BorderLayout.CENTER);
 		
 		if(mode == AddDialog.ADD_MODE) {
 			// onemogucenje da se doda prazan student
