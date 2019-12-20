@@ -2,7 +2,10 @@ package klase;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 
 public class Profesor {
 	private int id;
@@ -17,13 +20,12 @@ public class Profesor {
 	private String mTitula;
 	private String mZvanje;
 	private HashMap<Integer, Predmet> mListaPredmeta; //na kojima predaje
+	public static List<Comparator<Profesor>> compare;
 	
 	public Profesor()
 	{
 		this.mListaPredmeta = new HashMap<Integer, Predmet>();
 	}
-	
-	
 	
 	public Profesor(String mIme, String mPrezime, LocalDate mDatumRodjenja, String mAdresaStanovanja, String mTelefon,String mEmail, String mAdresaKancelarije, String mBrojLK, String mTitula, String mZvanje,int id,HashMap<Integer, Predmet> mListaPredmeta) {
 		super();
@@ -70,6 +72,29 @@ public class Profesor {
 		this.mZvanje = mZvanje;
 		this.id = id;
 		this.mListaPredmeta = new HashMap<Integer, Predmet>();
+	}
+	
+	static {
+		Profesor.compare = new ArrayList<Comparator<Profesor>>();
+		
+		compare.add((Profesor p1, Profesor p2) -> p1.getmIme().compareTo(p2.getmIme()));
+		compare.add((Profesor p1, Profesor p2) -> p1.getmPrezime().compareTo(p2.getmPrezime()));
+		compare.add((Profesor p1, Profesor p2) -> p1.getmDatumRodjenja().compareTo(p2.getmDatumRodjenja()));
+		compare.add((Profesor p1, Profesor p2) -> p1.getmAdresaStanovanja().compareTo(p2.getmAdresaStanovanja()));
+		compare.add((Profesor p1, Profesor p2) -> p1.getmTelefon().compareTo(p2.getmTelefon()));
+		compare.add((Profesor p1, Profesor p2) -> p1.getmEmail().compareTo(p2.getmEmail()));
+		compare.add((Profesor p1, Profesor p2) -> p1.getmAdresaKancelarije().compareTo(p2.getmAdresaKancelarije()));
+		compare.add((Profesor p1, Profesor p2) -> p1.getmBrojLK().compareTo(p2.getmBrojLK()));
+		compare.add((Profesor p1, Profesor p2) -> p1.getmTitula().compareTo(p2.getmTitula()));
+		compare.add((Profesor p1, Profesor p2) -> p1.getmZvanje().compareTo(p2.getmZvanje()));	
+	}
+	
+	public static Comparator<Profesor> compareBy(int index){
+		return Profesor.compare.get(index);
+	}
+	
+	public static Comparator<Profesor> compareById(){
+		return (Profesor p1, Profesor p2) -> ((Integer)p1.getId()).compareTo(p2.getId());
 	}
 
 	//verovatno ce trebaati kasnije tokom pravljenja
@@ -173,7 +198,7 @@ public class Profesor {
 	
 	@Override
 	public String toString() {
-		//treba kod prikaza studenata u JListu kada dodamo na predmet
+		//treba kod prikaza profesora u JListu kada dodamo na predmet
 		return this.mBrojLK+" "+this.mIme+" "+this.mPrezime;
 	}
 }

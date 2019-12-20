@@ -17,6 +17,7 @@ import javax.swing.event.RowSorterEvent;
 import javax.swing.event.RowSorterListener;
 import javax.swing.table.TableModel;
 
+import controller.ProfesorSorterListener;
 import controller.StudentSorterListener;
 
 public class MojCentralni extends JTabbedPane{
@@ -45,11 +46,10 @@ public class MojCentralni extends JTabbedPane{
         
         tabelaPredmeta = PredmetiJTable.getInstance();
         JScrollPane scrollPanePredmeti = new JScrollPane(tabelaPredmeta);
-        //tabelaStudenta.getTableHeader().addMouseListener(new StudentSorterListener());
         
         tabelaProfesora = ProfesoriJTable.getInstance();
         JScrollPane scrollPaneProfesori = new JScrollPane(tabelaProfesora);
-        tabelaProfesora.setAutoCreateRowSorter(true);
+        tabelaProfesora.getTableHeader().addMouseListener(new ProfesorSorterListener());
         
         
         addTab("Students" ,null, scrollPaneStudenti);

@@ -1,10 +1,11 @@
 package controller;
 
-import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import gui.MojCentralni;
+import gui.ProfesoriJTable;
 import klase.BazaPredmeta;
 import klase.BazaProfesora;
 import klase.Predmet;
@@ -84,5 +85,19 @@ public class ProfesorController {
 		}
 		
 		return pred;
+	}
+	
+	public void sort(int column, boolean isAscending) {
+		BazaProfesora.getInstance().sort(column, isAscending);
+		MojCentralni.getInstance().azurirajPrikazProfesora();
+	}
+	
+	public void unsort() {
+		for(int i=0; i<BazaProfesora.getInstance().getColumnCount(); i++) {
+			ProfesoriJTable.getInstance().getColumnModel().getColumn(i).setHeaderValue(BazaProfesora.getInstance().getColumnName(i));
+		}
+		ProfesoriJTable.getInstance().getTableHeader().repaint();
+		BazaProfesora.getInstance().unsort();
+		MojCentralni.getInstance().azurirajPrikazProfesora();
 	}
 }

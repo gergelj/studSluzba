@@ -1,6 +1,7 @@
 package klase;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class BazaProfesora {
@@ -41,6 +42,9 @@ public class BazaProfesora {
 	private void initProfesori()
 	{
 		this.profesori = new ArrayList<Profesor>();
+		
+		profesori.add(new Profesor("Nebojsa", "Ralevic", "05.12.1900.", "Novi Sad", "0147852369", "nebojsa@ralevic.com", "Kula-625", "0123456", "phD", "redovni profesor", generateId()));
+		profesori.add(new Profesor("Milan", "Rapaic", "18.04.1980.", "Ruma", "15874965230", "milan@rapaic.rs", "K125", "4578963", "phD", "profesor", generateId()));
 	}
 	
 	public List<Profesor> getProfesori()
@@ -78,7 +82,7 @@ public class BazaProfesora {
 		case 1:
 			return profa.getmPrezime();
 		case 2:
-			return profa.getmDatumRodjenja().toString();
+			return profa.getmDatumRodjenja(0);
 		case 3:
 			return profa.getmAdresaStanovanja();
 		case 4:
@@ -147,6 +151,17 @@ public class BazaProfesora {
 		for(Profesor pf : profesori) {
 			pf.getmListaPredmeta().remove(p.getId());
 		}
+	}
+	
+	public void sort(int column, boolean isAscending) {
+		if(isAscending)
+			Collections.sort(this.getProfesori(), Profesor.compareBy(column));
+		else
+			Collections.sort(this.getProfesori(), Profesor.compareBy(column).reversed());
+	}
+	
+	public void unsort() {
+		Collections.sort(this.getProfesori(), Profesor.compareById());
 	}
 	
 }

@@ -12,6 +12,7 @@ import javax.swing.SwingConstants;
 
 import controller.AddListener;
 import controller.DeleteListener;
+import controller.ProfesorController;
 import controller.SaveToDatabaseListener;
 import controller.StudentController;
 
@@ -72,7 +73,7 @@ public class MojToolbar extends JToolBar {
 				int selectedTab = MojCentralni.getInstance().getSelectedIndex();
 				switch(selectedTab) {
 				case 0: StudentController.getInstance().unsort(); break;
-				case 1: /*TODO: Unsort professors*/ break;
+				case 1: ProfesorController.getInstance().unsort(); break;
 				case 2: /*TODO: Unsort subjects*/ break;
 				}
 			}
