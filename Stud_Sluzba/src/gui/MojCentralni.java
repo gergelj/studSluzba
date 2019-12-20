@@ -41,7 +41,7 @@ public class MojCentralni extends JTabbedPane{
 	{	
 		tabelaStudenta = StudentiJTable.getInstance();
         JScrollPane scrollPaneStudenti = new JScrollPane(tabelaStudenta);
-        tabelaStudenta.setAutoCreateRowSorter(true);
+        //tabelaStudenta.setAutoCreateRowSorter(true);
         
         tabelaStudenta.getTableHeader().addMouseListener(new StudentSorterListener());
         

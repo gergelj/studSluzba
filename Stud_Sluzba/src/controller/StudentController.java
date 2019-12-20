@@ -3,6 +3,7 @@ package controller;
 import java.util.List;
 
 import gui.MojCentralni;
+import gui.StudentiJTable;
 import klase.BazaPredmeta;
 import klase.BazaStudenta;
 import klase.Student;
@@ -73,6 +74,15 @@ public class StudentController {
 	
 	public void sort(int column, boolean isAscending) {
 		BazaStudenta.getInstance().sort(column, isAscending);
+		MojCentralni.getInstance().azurirajPrikaz();
+	}
+	
+	public void unsort() {
+		for(int i = 0; i<BazaStudenta.getInstance().getColumnCount(); i++) {
+			StudentiJTable.getInstance().getColumnModel().getColumn(i).setHeaderValue(BazaStudenta.getInstance().getColumnName(i));
+		}
+		StudentiJTable.getInstance().getTableHeader().repaint();
+		BazaStudenta.getInstance().unsort();
 		MojCentralni.getInstance().azurirajPrikaz();
 	}
 }

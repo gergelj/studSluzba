@@ -1,11 +1,9 @@
 package klase;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 public class BazaStudenta {
 	
@@ -22,7 +20,7 @@ public class BazaStudenta {
 
 	private List<Student> studenti;
 	private List<String> kolone;
-
+	
 	private BazaStudenta() {
 		generator = 0;
 	
@@ -46,7 +44,7 @@ public class BazaStudenta {
 	private void initStudenti() {
 		this.studenti = new ArrayList<Student>();
 		//TODO: import from file
-		this.studenti.add(new Student("Aleksa", "Vucaj", "01.01.1998.", "juguyfjgj", "4645431322", "jhjkQ@gmail.com", "ra-300-1000", "01.01.2017.", 3, Student.Status.B, 9.99, generateId()));
+		this.studenti.add(new Student("Aleksa", "Vucaj", "20.01.1998.", "juguyfjgj", "4645431322", "jhjkQ@gmail.com", "ra-300-1000", "01.01.2017.", 3, Student.Status.B, 9.99, generateId()));
 		this.studenti.add(new Student("Zarko", "Zarkovic", "10.05.1998.", "uhsoda,ma", "5643128812", "jisjcs@gmail.com", "ra-50-2000", "01.01.2017.", 2, Student.Status.S, 8.75, generateId()));
 		this.studenti.add(new Student("Gergelj", "Kis", "13.08.1998.", "jiosaiknd", "0054878422", "gergo@uns.ac.rs", "ra-6-2017", "01.01.2017.", 3, Student.Status.B, 9.76, generateId()));
 	}
@@ -85,7 +83,7 @@ public class BazaStudenta {
 		case 2:
 			return student.getPrezime();
 		case 3:
-			return student.getDatumRodjenja().toString();
+			return student.getDatumRodjenja(0);
 		case 4:
 			return student.getAdresa();
 		case 5:
@@ -93,7 +91,7 @@ public class BazaStudenta {
 		case 6:
 			return student.getEmail();
 		case 7:
-			return student.getDatumUpisa().toString();
+			return student.getDatumUpisa(0);
 		case 8:
 			return String.valueOf(student.getTrenutnaGodina());
 		case 9:
@@ -156,6 +154,13 @@ public class BazaStudenta {
 	
 	public void sort(int column, boolean isAscending) {
 		//TODO: sort students by column ascending/descending
-		
+		if(isAscending)
+			Collections.sort(this.getStudenti(), Student.compareBy(column));
+		else
+			Collections.sort(this.getStudenti(), Student.compareBy(column).reversed());
+	}
+	
+	public void unsort() {
+		Collections.sort(this.getStudenti(), Student.compareById());
 	}
 }

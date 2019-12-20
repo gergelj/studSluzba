@@ -2,7 +2,10 @@ package klase;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 
 public class Student {
 
@@ -16,6 +19,7 @@ public class Student {
 	private Status status;
 	private double prosek;
 	private HashMap<Integer, Predmet> spisakPredmeta; //mozda HashMap je bolji izbor ovde, videcemo
+	public static List<Comparator<Student>> compare;
 	
 	public Student() {
 		this.spisakPredmeta = new HashMap<Integer, Predmet>();
@@ -51,6 +55,31 @@ public class Student {
 		this.prosek = prosek;
 		this.spisakPredmeta = spisakpredmeta;
 		this.id = internikljuc;
+	}
+	
+	static {
+		Student.compare = new ArrayList<Comparator<Student>>();
+		
+		compare.add((Student s1, Student s2) -> s1.getBrojIndeksa().compareTo(s2.getBrojIndeksa()));
+		compare.add((Student s1, Student s2) -> s1.getIme().compareTo(s2.getIme()));
+		compare.add((Student s1, Student s2) -> s1.getPrezime().compareTo(s2.getPrezime()));
+		compare.add((Student s1, Student s2) -> s1.getDatumRodjenja().compareTo(s2.getDatumRodjenja()));
+		compare.add((Student s1, Student s2) -> s1.getAdresa().compareTo(s2.getAdresa()));
+		compare.add((Student s1, Student s2) -> s1.getTelefon().compareTo(s2.getTelefon()));
+		compare.add((Student s1, Student s2) -> s1.getEmail().compareTo(s2.getEmail()));
+		compare.add((Student s1, Student s2) -> s1.getDatumUpisa().compareTo(s2.getDatumUpisa()));
+		compare.add((Student s1, Student s2) -> ((Integer)s1.getTrenutnaGodina()).compareTo(s2.getTrenutnaGodina()));
+		compare.add((Student s1, Student s2) -> s1.getStatus().compareTo(s2.getStatus()));
+		compare.add((Student s1, Student s2) -> ((Double)s1.getProsek()).compareTo(s2.getProsek()));
+		//compare.add((Student s1, Student s2) -> ((Integer)s1.getId()).compareTo(s2.getId()));
+	}
+	
+	public static Comparator<Student> compareBy(int index){
+		return Student.compare.get(index);
+	}
+	
+	public static Comparator<Student> compareById(){
+		return (Student s1, Student s2) -> ((Integer)s1.getId()).compareTo(s2.getId());
 	}
 
 	@Override

@@ -13,12 +13,13 @@ import javax.swing.SwingConstants;
 import controller.AddListener;
 import controller.DeleteListener;
 import controller.SaveToDatabaseListener;
+import controller.StudentController;
 
 public class MojToolbar extends JToolBar {
 
 	//parent frame
 	//private MainFrame frame;
-	private JButton add_btn, edit_btn, delete_btn, save_btn, add_student_btn, professor_btn;
+	private JButton add_btn, edit_btn, delete_btn, save_btn, unsort_btn, add_student_btn, professor_btn;
 	/**
 	 * 
 	 */
@@ -59,6 +60,19 @@ public class MojToolbar extends JToolBar {
 		save_btn.setIcon(new ImageIcon("images/save-22.png"));
 		add(save_btn);
 		save_btn.addActionListener(new SaveToDatabaseListener());
+		
+		unsort_btn = new JButton();
+		unsort_btn.setToolTipText("Reset sorting");
+		unsort_btn.setIcon(new ImageIcon("images/unsort-22.png"));
+		add(unsort_btn);
+		unsort_btn.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				StudentController.getInstance().unsort();
+			}
+			
+		});
 		
 		add_student_btn = new JButton();
 		add_student_btn.setToolTipText("Dodaj studenta na predmet");

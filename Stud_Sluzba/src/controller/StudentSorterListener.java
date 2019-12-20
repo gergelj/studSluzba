@@ -4,6 +4,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import gui.StudentiJTable;
+import klase.BazaStudenta;
 
 public class StudentSorterListener implements MouseListener {
 
@@ -12,18 +13,28 @@ public class StudentSorterListener implements MouseListener {
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
 		int col = StudentiJTable.getInstance().getTableHeader().columnAtPoint(e.getPoint());
-		//isAscending = col==currentColumn ? false : true;
+		if(col==11)
+			return;	//ne treba sortirati kolonu dugmica
 		if(currentColumn==col) {
 			isAscending = !isAscending;
+			if(isAscending) {
+				StudentiJTable.getInstance().getColumnModel().getColumn(col).setHeaderValue(BazaStudenta.getInstance().getColumnName(col) + " ▲");
+			}
+			else {
+				StudentiJTable.getInstance().getColumnModel().getColumn(col).setHeaderValue(BazaStudenta.getInstance().getColumnName(col) + " ▼");
+			}
 		}
 		else {
 			isAscending = true;
+			StudentiJTable.getInstance().getColumnModel().getColumn(col).setHeaderValue(BazaStudenta.getInstance().getColumnName(col) + " ▲");
+			if(currentColumn!=-1)
+				StudentiJTable.getInstance().getColumnModel().getColumn(this.currentColumn).setHeaderValue(BazaStudenta.getInstance().getColumnName(this.currentColumn));
 		}
 		
+		StudentiJTable.getInstance().getTableHeader().repaint();
 		currentColumn = col;
-		System.out.println("Column: " + col + ", isAscending: " + isAscending);
+		//System.out.println("Column: " + col + ", isAscending: " + isAscending);
 		StudentController.getInstance().sort(col, isAscending);
 	}
 
