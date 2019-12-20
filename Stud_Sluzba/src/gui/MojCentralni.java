@@ -41,13 +41,11 @@ public class MojCentralni extends JTabbedPane{
 	{	
 		tabelaStudenta = StudentiJTable.getInstance();
         JScrollPane scrollPaneStudenti = new JScrollPane(tabelaStudenta);
-        //tabelaStudenta.setAutoCreateRowSorter(true);
-        
         tabelaStudenta.getTableHeader().addMouseListener(new StudentSorterListener());
         
         tabelaPredmeta = PredmetiJTable.getInstance();
         JScrollPane scrollPanePredmeti = new JScrollPane(tabelaPredmeta);
-        tabelaPredmeta.setAutoCreateRowSorter(true);
+        //tabelaStudenta.getTableHeader().addMouseListener(new StudentSorterListener());
         
         tabelaProfesora = ProfesoriJTable.getInstance();
         JScrollPane scrollPaneProfesori = new JScrollPane(tabelaProfesora);

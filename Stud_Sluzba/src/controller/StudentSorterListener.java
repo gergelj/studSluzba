@@ -14,7 +14,7 @@ public class StudentSorterListener implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		int col = StudentiJTable.getInstance().getTableHeader().columnAtPoint(e.getPoint());
-		if(col==11)
+		if(col==BazaStudenta.getInstance().getColumnCount())
 			return;	//ne treba sortirati kolonu dugmica
 		if(currentColumn==col) {
 			isAscending = !isAscending;

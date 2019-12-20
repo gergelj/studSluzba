@@ -69,7 +69,12 @@ public class MojToolbar extends JToolBar {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				StudentController.getInstance().unsort();
+				int selectedTab = MojCentralni.getInstance().getSelectedIndex();
+				switch(selectedTab) {
+				case 0: StudentController.getInstance().unsort(); break;
+				case 1: /*TODO: Unsort professors*/ break;
+				case 2: /*TODO: Unsort subjects*/ break;
+				}
 			}
 			
 		});
