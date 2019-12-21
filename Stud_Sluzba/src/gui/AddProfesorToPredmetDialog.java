@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 
 import controller.PredmetController;
 import controller.ProfesorController;
+import gui.SpisakPredmetaDialog.AbstractListModelSpisak;
 import klase.Predmet;
 import klase.Profesor;
 import klase.Student;
@@ -53,6 +54,11 @@ public class AddProfesorToPredmetDialog extends JDialog{
 		public int getSize() {
 			return this.profesori.size();
 		}
+
+		public void azuriraj(int selectedIndex) {
+			// TODO Auto-generated method stub
+			
+		}
 	}
 	
 	public AddProfesorToPredmetDialog(int selPredRow)
@@ -82,7 +88,8 @@ public class AddProfesorToPredmetDialog extends JDialog{
 				
 				PredmetController.getInstance().linkProfesorPredmet(p,pr);
 				System.out.println("Dodat profesor na predmet");
-				
+			    AbstractListModelProfesori mod = (AbstractListModelProfesori) profesori.getModel();
+			    mod.azuriraj(profesori.getSelectedIndex());
 			}
 		});
 	}

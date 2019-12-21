@@ -3,13 +3,17 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.ScrollPane;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.AbstractListModel;
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
+import controller.PredmetController;
 import controller.ProfesorController;
 import klase.Predmet;
 import klase.Profesor;
@@ -21,7 +25,9 @@ public class SpisakPredmetaDialog extends JDialog {
 	 */
 	private static final long serialVersionUID = -1340147516593767107L;
 	
+	private JButton remove_btn;
 	private JList<Predmet> lista;
+	private Profesor selectedProf;
 	
 	public class AbstractListModelSpisak extends AbstractListModel<Predmet>
 	{
@@ -33,10 +39,9 @@ public class SpisakPredmetaDialog extends JDialog {
 
 		
 		private List<Predmet> predmeti;
-		private Profesor p;
+		
 		
 		public AbstractListModelSpisak(Profesor p) {
-			this.p = p;
 			this.predmeti = ProfesorController.getInstance().getListOfSubjects(p);
 		}
 		
@@ -49,25 +54,53 @@ public class SpisakPredmetaDialog extends JDialog {
 		public int getSize() {
 			return this.predmeti.size();
 		}
+		
+		public void azuriraj(int index)
+		{
+			predmeti.remove(index);
+			fireContentsChanged(this, 0, predmeti.size()-1);
+		}
 	}
 	
-	public SpisakPredmetaDialog()
+	public SpisakPredmetaDialog(int selectedProfRow)
 	{
 		super(MainFrame.getInstance(),"Subjects for selected Professor",true);
 		setSize(400,500);
 		setLocationRelativeTo(MainFrame.getInstance());
 		
+		this.selectedProf = ProfesorController.getInstance().nadjiProfesora(selectedProfRow);
 		add(addPanel());
+		
+		remove_btn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Predmet p = lista.getSelectedValue();
+				if(p != null)
+				{
+					Profesor prof = ProfesorController.getInstance().nadjiProfesora(selectedProfRow);
+					PredmetController.getInstance().unlinkProfesorPredmet(prof, p);
+				}
+				
+			}
+		});
 	}
 	
 	private JPanel addPanel()
 	{
 		JPanel ret = new JPanel();
+		
+		remove_btn = new JButton("Remove");
+		JPanel btns = new JPanel();
+		btns.add(remove_btn);
+		
+		ret.add(btns, BorderLayout.SOUTH);
+		
 		ScrollPane scroll = new ScrollPane();
 		scroll.setPreferredSize(new Dimension(400,400));
 		
 		lista = new JList<Predmet>();
-		//TODO: lista.setModel(new AbstractListModelSpisak(p));
+		lista.setModel(new AbstractListModelSpisak(selectedProf));
 		scroll.add(lista);
 		
 		ret.add(scroll,BorderLayout.CENTER);

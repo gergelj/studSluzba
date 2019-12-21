@@ -91,7 +91,13 @@ public class PredmetController {
 	public void linkProfesorPredmet(Profesor p, Predmet pr)
 	{
 		pr.addProfesor(p);
-		
+		p.addPredmet(pr);
+	}
+	
+	public void unlinkProfesorPredmet(Profesor p, Predmet pr)
+	{
+		pr.removeProfesor();
+		p.removePredmet(pr);
 	}
 
 	public List<Student> getListOfStudentsOnSubject(Predmet p){

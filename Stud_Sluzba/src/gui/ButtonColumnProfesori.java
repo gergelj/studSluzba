@@ -17,6 +17,10 @@ import javax.swing.table.TableCellRenderer;
 public class ButtonColumnProfesori extends AbstractCellEditor
 implements TableCellRenderer, TableCellEditor, MouseListener{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -108748213939675169L;
 	// dugme koje se iscrtava
 	private JButton renderButton;
 	// dugme koje obradjuje akciju
@@ -47,7 +51,7 @@ implements TableCellRenderer, TableCellEditor, MouseListener{
 				fireEditingStopped();
 				//TODO: ispis liste predmeta za odabranog studenta
 				//JOptionPane.showMessageDialog(table, "Selektovan je profesor u redu: " + table.getSelectedRow());
-				SpisakPredmetaDialog dial = new SpisakPredmetaDialog();
+				SpisakPredmetaDialog dial = new SpisakPredmetaDialog(table.getSelectedRow());
 				dial.setVisible(true);
 			}
 		});
