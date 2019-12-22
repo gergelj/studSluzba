@@ -1,11 +1,13 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import gui.MojCentralni;
 import gui.StudentiJTable;
 import klase.BazaPredmeta;
 import klase.BazaStudenta;
+import klase.Predmet;
 import klase.Student;
 
 public class StudentController {
@@ -84,5 +86,16 @@ public class StudentController {
 		StudentiJTable.getInstance().getTableHeader().repaint();
 		BazaStudenta.getInstance().unsort();
 		MojCentralni.getInstance().azurirajPrikaz();
+	}
+
+	public List<Predmet> getListOfSubjects(Student s) {
+		List<Predmet> pred = new ArrayList<Predmet>();
+		
+		for(Predmet predmet: s.getSpisakPredmeta().values() )
+		{
+			pred.add(predmet);
+		}
+		
+		return pred;
 	}
 }

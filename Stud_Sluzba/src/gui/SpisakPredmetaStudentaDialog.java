@@ -15,34 +15,35 @@ import javax.swing.JPanel;
 
 import controller.PredmetController;
 import controller.ProfesorController;
+import controller.StudentController;
+import gui.SpisakPredmetaDialog.AbstractListModelSpisak;
 import klase.Predmet;
 import klase.Profesor;
+import klase.Student;
 
-public class SpisakPredmetaDialog extends JDialog {
+public class SpisakPredmetaStudentaDialog extends JDialog {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -1340147516593767107L;
-	
-	private JButton remove_btn;
+	private static final long serialVersionUID = -8030735362088938614L;
+
 	private JList<Predmet> lista;
-	private Profesor selectedProf;
+	private Student selectedStudent;
 	
 	public class AbstractListModelSpisak extends AbstractListModel<Predmet>
 	{
-
+		
 		/**
 		 * 
 		 */
-		private static final long serialVersionUID = -1477659537463415943L;
-
+		private static final long serialVersionUID = 392969592275746323L;
 		
 		private List<Predmet> predmeti;
 		
 		
-		public AbstractListModelSpisak(Profesor p) {
-			this.predmeti = ProfesorController.getInstance().getListOfSubjects(p);
+		public AbstractListModelSpisak(Student s) {
+			this.predmeti = StudentController.getInstance().getListOfSubjects(s);
 		}
 		
 		@Override
@@ -62,50 +63,29 @@ public class SpisakPredmetaDialog extends JDialog {
 		}
 	}
 	
-	public SpisakPredmetaDialog(int selectedProfRow)
+	public SpisakPredmetaStudentaDialog(int selectedStudentRow)
 	{
-		super(MainFrame.getInstance(),"Subjects for selected Professor",true);
+		super(MainFrame.getInstance(),"Subjects for selected Student",true);
 		setSize(400,500);
 		setLocationRelativeTo(MainFrame.getInstance());
 		
-		this.selectedProf = ProfesorController.getInstance().nadjiProfesora(selectedProfRow);
+		this.selectedStudent = StudentController.getInstance().nadjiStudenta(selectedStudentRow);
 		add(addPanel());
-		
-		remove_btn.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				Predmet p = lista.getSelectedValue();
-				if(p != null)
-				{
-					Profesor prof = ProfesorController.getInstance().nadjiProfesora(selectedProfRow);
-					PredmetController.getInstance().unlinkProfesorPredmet(prof, p);
-					MojCentralni.getInstance().azurirajPrikazPredmet();
-					setVisible(false);
-				}
-				
-			}
-		});
 	}
 	
 	private JPanel addPanel()
 	{
 		JPanel ret = new JPanel();
 		
-		remove_btn = new JButton("Remove");
-		JPanel btns = new JPanel();
-		btns.add(remove_btn);
-		
-		ret.add(btns, BorderLayout.SOUTH);
-		
 		ScrollPane scroll = new ScrollPane();
 		scroll.setPreferredSize(new Dimension(400,400));
 		
 		lista = new JList<Predmet>();
-		lista.setModel(new AbstractListModelSpisak(selectedProf));
+		lista.setModel(new AbstractListModelSpisak(selectedStudent));
 		scroll.add(lista);
 		
-		ret.add(scroll,BorderLayout.CENTER);
+		ret.add(scroll);
 		return ret;
 	}
+	
 }

@@ -71,8 +71,7 @@ public class SpisakStudentaDialog extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO zatvoriti dijalog
-				
+				setVisible(false);
 			}
 			
 		});

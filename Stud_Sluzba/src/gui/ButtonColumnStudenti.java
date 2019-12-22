@@ -48,8 +48,8 @@ public class ButtonColumnStudenti extends AbstractCellEditor
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				fireEditingStopped();
-				//TODO: ispis liste predmeta za odabranog studenta
-				JOptionPane.showMessageDialog(table, "Selektovan je student u redu: " + table.getSelectedRow());
+				SpisakPredmetaStudentaDialog d = new SpisakPredmetaStudentaDialog(table.getSelectedRow());
+				d.setVisible(true);
 			}
 		});
 

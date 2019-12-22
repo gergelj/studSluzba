@@ -74,8 +74,7 @@ public class AddProfesorToPredmetDialog extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
+				setVisible(false);
 			}
 		});
 		
@@ -83,13 +82,18 @@ public class AddProfesorToPredmetDialog extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if(profesori.getModel().getSize() == 0 || profesori.getSelectedIndex()==-1) {
+					return;
+				}
 				Profesor p = profesori.getSelectedValue();
 				Predmet pr = selectedPredmet;
 				
 				PredmetController.getInstance().linkProfesorPredmet(p,pr);
-				System.out.println("Dodat profesor na predmet");
-			    AbstractListModelProfesori mod = (AbstractListModelProfesori) profesori.getModel();
-			    mod.azuriraj(profesori.getSelectedIndex());
+				//System.out.println("Dodat profesor na predmet");
+			    //AbstractListModelProfesori mod = (AbstractListModelProfesori) profesori.getModel();
+			    //mod.azuriraj(profesori.getSelectedIndex());
+				MojCentralni.getInstance().azurirajPrikazPredmet();
+			    setVisible(false);
 			}
 		});
 	}

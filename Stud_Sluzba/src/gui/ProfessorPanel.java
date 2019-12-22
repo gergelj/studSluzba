@@ -30,10 +30,12 @@ public class ProfessorPanel extends JPanel {
 	public static int br;
 	private Profesor profesor;
 	public static JButton cnl_btn, ok_btn;
+	private AddDialog dialog;
 	
-	public ProfessorPanel(int mode)
+	public ProfessorPanel(int mode, AddDialog d)
 	{
 		this.mode = mode;
+		this.dialog = d;
 		setLayout(new BorderLayout());
 		
 		JPanel btns = new JPanel();
@@ -112,7 +114,7 @@ public class ProfessorPanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				dialog.setVisible(false);
 				
 			}
 		});
@@ -141,6 +143,10 @@ public class ProfessorPanel extends JPanel {
             		brlk_txt.setText(brlk_txt.getText()+" -vec postoji broj licne karte");
             		br--;
             	}
+            	else
+            	{
+            		dialog.setVisible(false);
+            	}
             }
             else
             {
@@ -150,6 +156,10 @@ public class ProfessorPanel extends JPanel {
             		brlk_txt.setForeground(Color.RED);
             		brlk_txt.setText(brlk_txt.getText()+" -vec postoji broj licne karte");
             		br--;
+            	}
+            	else
+            	{
+            		dialog.setVisible(false);
             	}
             }
             		

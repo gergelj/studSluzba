@@ -35,13 +35,15 @@ public class StudentPanel extends JPanel /*implements FocusListener*/ {
 	private int mode;
 	private Student st;
 	public static int broj;
+	private AddDialog dialog;
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 535374820696793027L;
 
-	public StudentPanel(int mode) {
+	public StudentPanel(int mode, AddDialog d) {
 		this.mode = mode;
+		this.dialog = d;
 		
 		ime_txt = new JTextField();
 		prezime_txt = new JTextField();
@@ -178,7 +180,7 @@ public class StudentPanel extends JPanel /*implements FocusListener*/ {
 		cancel_btn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Zatvori dijalog
+				dialog.setVisible(false);
 				
 			}
 		});
@@ -209,7 +211,7 @@ public class StudentPanel extends JPanel /*implements FocusListener*/ {
 						broj--;
 					}
 					else {
-						//TODO Zatvori dijalog
+						dialog.setVisible(false);
 					}
 				}
 				else { //EDIT mode
@@ -220,7 +222,7 @@ public class StudentPanel extends JPanel /*implements FocusListener*/ {
 						broj--;
 					}
 					else {
-						//TODO Zatvori dijalog
+						dialog.setVisible(false);
 					}
 				}
 				

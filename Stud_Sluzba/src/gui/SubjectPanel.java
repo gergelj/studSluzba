@@ -33,11 +33,12 @@ public class SubjectPanel extends JPanel{
 	public static int br;
 	private Predmet predmet;
 	public static JButton cnl_btn,ok_btn;
-		
+	private AddDialog dialog;
 	
-	public SubjectPanel(int mode)
+	public SubjectPanel(int mode, AddDialog dialog)
 	{
 		this.mode = mode;
+		this.dialog = dialog;
 		setLayout(new BorderLayout());
 		JPanel btns = new JPanel();
 		SubjectPanel.cnl_btn = new JButton("Cancel");
@@ -115,7 +116,7 @@ public class SubjectPanel extends JPanel{
 		cnl_btn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO zatvoriti dijalog
+				dialog.setVisible(false);
 				
 			}
 		});
@@ -138,6 +139,10 @@ public class SubjectPanel extends JPanel{
 						sif_txt.setText(sif_txt.getText()+" - vec postoji sifra predmeta");
 						br--;
 					}
+					else
+					{
+						dialog.setVisible(false);
+					}
 				}
 				else {
 					if(!PredmetController.getInstance().izmeniPredmet(sif_txt.getText().toLowerCase(),naz_txt.getText(),tmp_god,tmp_sem,predmet.getId()))
@@ -146,6 +151,10 @@ public class SubjectPanel extends JPanel{
 						sif_txt.setForeground(Color.RED);
 						sif_txt.setText(sif_txt.getText()+" - vec postoji sifra predmeta");
 						br--;
+					}
+					else
+					{
+						dialog.setVisible(false);
 					}
 				}
 			}

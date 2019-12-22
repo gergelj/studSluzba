@@ -25,7 +25,7 @@ public class AddDialog extends JDialog {
 					this.setTitle("Add Student");
 				else
 					this.setTitle("Edit Student");
-				this.add(new StudentPanel(mode));
+				this.add(new StudentPanel(mode, this));
 			} break;
 			case 1: //profesori
 			{
@@ -33,7 +33,7 @@ public class AddDialog extends JDialog {
 					this.setTitle("Add Professor");
 				else
 					this.setTitle("Edit Professor");
-				this.add(new ProfessorPanel(mode));
+				this.add(new ProfessorPanel(mode, this));
 
 			} break;
 			case 2: //predmeti
@@ -42,7 +42,7 @@ public class AddDialog extends JDialog {
 					this.setTitle("Add Subject");
 				else
 					this.setTitle("Edit Subject");
-				this.add(new SubjectPanel(mode));
+				this.add(new SubjectPanel(mode, this));
 			}break;
 		}
 	}

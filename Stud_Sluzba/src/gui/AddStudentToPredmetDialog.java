@@ -73,7 +73,7 @@ public class AddStudentToPredmetDialog extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO zatvoriti dijalog
+				setVisible(false);
 				
 			}
 			
@@ -83,9 +83,10 @@ public class AddStudentToPredmetDialog extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(lista.getSelectedIndex() == -1) {
+				if(lista.getModel().getSize() == 0 || lista.getSelectedIndex()==-1) {
 					return;
 				}
+				System.out.println(lista.getSelectedIndex());
 				Student s = lista.getSelectedValue();
 				Predmet p = selectedPredmet;
 				
@@ -98,7 +99,6 @@ public class AddStudentToPredmetDialog extends JDialog {
 					mod.azuriraj(lista.getSelectedIndex());
 					//System.out.println("Dodao sam studenta na predmet");
 				}
-				
 			}
 			
 		});
