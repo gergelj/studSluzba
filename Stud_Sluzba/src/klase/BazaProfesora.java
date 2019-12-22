@@ -1,11 +1,17 @@
 package klase;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class BazaProfesora {
+public class BazaProfesora implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4986906173029686936L;
+
 	private static BazaProfesora instance = null;
 	
 	public static BazaProfesora getInstance()
@@ -13,6 +19,10 @@ public class BazaProfesora {
 		if(instance == null)
 			instance = new BazaProfesora();
 		return instance;
+	}
+	
+	public static void setInstance(BazaProfesora db) {
+		instance = db;
 	}
 	
 	private int generator;
@@ -23,7 +33,7 @@ public class BazaProfesora {
 	private BazaProfesora()
 	{
 		generator = 0;
-		initProfesori();
+		this.profesori = new ArrayList<Profesor>();
 		
 		this.kolone = new ArrayList<String>();
 		this.kolone.add("IME");
@@ -37,14 +47,6 @@ public class BazaProfesora {
 		this.kolone.add("TITULA");
 		this.kolone.add("ZVANJE");
 		
-	}
-	
-	private void initProfesori()
-	{
-		this.profesori = new ArrayList<Profesor>();
-		
-		profesori.add(new Profesor("Nebojsa", "Ralevic", "05.12.1900.", "Novi Sad", "0147852369", "nebojsa@ralevic.com", "Kula-625", "0123456", "phD", "redovni profesor", generateId()));
-		profesori.add(new Profesor("Milan", "Rapaic", "18.04.1980.", "Ruma", "15874965230", "milan@rapaic.rs", "K125", "4578963", "phD", "profesor", generateId()));
 	}
 	
 	public List<Profesor> getProfesori()

@@ -1,24 +1,16 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.ScrollPane;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.AbstractListModel;
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
-import controller.PredmetController;
-import controller.ProfesorController;
 import controller.StudentController;
-import gui.SpisakPredmetaDialog.AbstractListModelSpisak;
 import klase.Predmet;
-import klase.Profesor;
 import klase.Student;
 
 public class SpisakPredmetaStudentaDialog extends JDialog {

@@ -1,5 +1,6 @@
 package klase;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -7,8 +8,12 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
-public class Student {
+public class Student implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4543409502630387790L;
 	private int id;
 	public enum Status {B, S};
 	private String ime, prezime;

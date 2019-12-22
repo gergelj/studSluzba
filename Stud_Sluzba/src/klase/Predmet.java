@@ -1,8 +1,13 @@
 package klase;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class Predmet {
+public class Predmet implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 206583722328438418L;
 	private String mSifraPredmeta;
 	private String mNazivPredmeta;
 	private int mSemestarPredmeta;

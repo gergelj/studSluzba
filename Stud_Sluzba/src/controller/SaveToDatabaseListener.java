@@ -7,8 +7,7 @@ public class SaveToDatabaseListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO sacuvaj u fajl
-
+		DatabaseController.save();
 	}
 
 }

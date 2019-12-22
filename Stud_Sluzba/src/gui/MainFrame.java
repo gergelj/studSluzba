@@ -6,18 +6,8 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-//import java.awt.event.ActionEvent;
-//import java.awt.event.ActionListener;
-//import java.sql.Time;
-//import java.text.SimpleDateFormat;
-//import java.util.Date;
-//import java.util.GregorianCalendar;
-//import java.util.Timer;
-import java.awt.event.WindowListener;
 
 import javax.swing.ImageIcon;
-//import javax.swing.Box;
-//import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -26,11 +16,12 @@ import javax.swing.WindowConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import controller.DatabaseController;
+
 public class MainFrame extends JFrame{
 
 	//labela za vreme i datum
 	JLabel mDateTime;
-	private MojCentralni tabovi;
 	/**
 	 * 
 	 */
@@ -124,23 +115,20 @@ public class MainFrame extends JFrame{
 				if (code != JOptionPane.YES_OPTION) {
 					frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 				} else {
-					// TODO sacuvaj bazu objekata, da li ovde?...
+					DatabaseController.save();
 					frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 				}
 			}
 			
 			@Override
 			public void windowClosed(WindowEvent e) {
-				//TODO sacuvaj bazu objekata, ...ili ovde?
 			}
 			
 		});
 		
 		setIconImage(new ImageIcon("images/vidakovic.jpg").getImage());
+		
+		DatabaseController.load();
 
 	}
-	/*
-	public MojCentralni getTabovi() {
-		return this.tabovi;
-	}*/
 }

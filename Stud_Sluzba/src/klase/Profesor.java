@@ -1,5 +1,6 @@
 package klase;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -7,7 +8,11 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
-public class Profesor {
+public class Profesor implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3999102858140994562L;
 	private int id;
 	private String mIme;
 	private String mPrezime;

@@ -10,6 +10,10 @@ import javax.swing.table.TableCellRenderer;
 import klase.BazaProfesora;
 
 public class ProfesoriJTable extends JTable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8656962356610618926L;
 	private static ProfesoriJTable instance = null;
 	
 	public static ProfesoriJTable getInstance() {
@@ -24,6 +28,7 @@ public class ProfesoriJTable extends JTable {
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setModel(new AbstractTableModelProfesori());
 		new ButtonColumnProfesori(this, BazaProfesora.getInstance().getColumnCount());
+		this.getTableHeader().setReorderingAllowed(false);
 	}
 
 	@Override

@@ -1,11 +1,17 @@
 package klase;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class BazaPredmeta {
+public class BazaPredmeta implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8812210980693909776L;
 
 	private static BazaPredmeta instance = null;
 	
@@ -15,6 +21,11 @@ public class BazaPredmeta {
 			instance = new BazaPredmeta();
 		return instance;
 	}
+	
+	public static void setInstance(BazaPredmeta db) {
+		instance = db;
+	}
+	
 	private int generator;
 	
 	private List<Predmet> predmeti;
@@ -23,7 +34,7 @@ public class BazaPredmeta {
 	private BazaPredmeta()
 	{
 		generator = 0;
-		initPredmeti();
+		this.predmeti = new ArrayList<Predmet>();
 		
 		this.kolone = new ArrayList<String>();
 		this.kolone.add("SIFRA PREDMETA");
@@ -33,16 +44,6 @@ public class BazaPredmeta {
 		this.kolone.add("PROFESOR");
 		
 
-	}
-	
-	//TODO: treba implementirati da se ucita sacuvana baza iz fajla
-	private void initPredmeti()
-	{
-		this.predmeti = new ArrayList<Predmet>();
-		
-		predmeti.add(new Predmet("E213", "Analiza 1", 1, 1, generateId()));
-		predmeti.add(new Predmet("E245", "MISS", 3, 2, generateId()));
-		predmeti.add(new Predmet("E268", "OISISI", 5, 3, generateId()));
 	}
 	
 	private int generateId()

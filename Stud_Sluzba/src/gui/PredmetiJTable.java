@@ -29,7 +29,8 @@ public class PredmetiJTable extends JTable{
 		this.setRowSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setModel(new AbstractTableModelPredmet());
-		new ButtonColumnPredmeti(this, BazaPredmeta.getInstance().getColumnCount());		
+		new ButtonColumnPredmeti(this, BazaPredmeta.getInstance().getColumnCount());
+		this.getTableHeader().setReorderingAllowed(false);
 	}
 	
 	@Override
