@@ -80,6 +80,9 @@ public class SpisakStudentaDialog extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if(lista.getModel().getSize() == 0 || lista.getSelectedIndex()==-1 || lista.getSelectedIndex() >= lista.getModel().getSize()) {
+					return;
+				}
 				Student s = lista.getSelectedValue();
 				if(s!=null) {
 					Predmet p = PredmetController.getInstance().nadjiPredmet(selectedPredmetRow);

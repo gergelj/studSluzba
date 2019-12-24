@@ -83,7 +83,7 @@ public class AddStudentToPredmetDialog extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(lista.getModel().getSize() == 0 || lista.getSelectedIndex()==-1) {
+				if(lista.getModel().getSize() == 0 || lista.getSelectedIndex()==-1 || lista.getSelectedIndex() >= lista.getModel().getSize()) {
 					return;
 				}
 				System.out.println(lista.getSelectedIndex());
