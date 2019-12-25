@@ -173,7 +173,11 @@ public class Student implements Serializable{
 	}
 
 	public void setBrojIndeksa(String brojIndeksa) {
-		this.brojIndeksa = brojIndeksa;
+		this.brojIndeksa = brojIndeksa.toLowerCase();
+	}
+	
+	public void setStatus(String status) {
+		this.status = status.equalsIgnoreCase("b") ? Status.B : Status.S;
 	}
 
 	public int getTrenutnaGodina() {
@@ -182,6 +186,10 @@ public class Student implements Serializable{
 
 	public void setTrenutnaGodina(int trenutnaGodina) {
 		this.trenutnaGodina = trenutnaGodina;
+	}
+	
+	public void setGodina(String godina) {
+		this.trenutnaGodina = Integer.parseInt(godina);
 	}
 
 	public Status getStatus() {
@@ -198,6 +206,10 @@ public class Student implements Serializable{
 
 	public void setProsek(double prosek) {
 		this.prosek = prosek;
+	}
+	
+	public void setProsek(String prosek) {
+		this.prosek = Double.parseDouble(prosek);
 	}
 
 	public HashMap<Integer, Predmet> getSpisakPredmeta() {

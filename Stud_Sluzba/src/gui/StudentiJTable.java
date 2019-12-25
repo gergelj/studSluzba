@@ -7,6 +7,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 
+import controller.StudentController;
 import klase.BazaStudenta;
 
 public class StudentiJTable extends JTable {
@@ -25,7 +26,7 @@ public class StudentiJTable extends JTable {
 		this.setRowSelectionAllowed(true);
 		//this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		this.setModel(new AbstractTableModelStudenti());
+		this.setModel(new AbstractTableModelStudenti(StudentController.NORMAL_MODE));
 		new ButtonColumnStudenti(this, BazaStudenta.getInstance().getColumnCount());
 		this.getTableHeader().setReorderingAllowed(false);
 	}

@@ -29,8 +29,16 @@ public class Proveri {
 		return indeks!=null && indeks.matches("[a-zA-Z]{2}\\-[0-9]{1,3}\\-[0-9]{4}");
 	}
 	
+	public static boolean isStatus(String status) {
+		return status!=null && (status.equals("s") || status.equals("b"));
+	}
+	
 	public static boolean isEmail(String email) {
 		return email!=null && email.matches(".+@.+");
+	}
+	
+	public static boolean isGodina(String godina) {
+		return godina!=null && (godina.equals("1") || godina.equals("2") || godina.equals("3") || godina.equals("4"));
 	}
 	
 	public static boolean isBrojLK(String lk) {

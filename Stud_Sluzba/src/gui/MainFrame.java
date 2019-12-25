@@ -17,6 +17,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import controller.DatabaseController;
+import controller.StudentController;
 
 public class MainFrame extends JFrame{
 
@@ -88,12 +89,20 @@ public class MainFrame extends JFrame{
 
 			@Override
 			public void stateChanged(ChangeEvent e) {
+				switch(MojCentralni.getInstance().getSelectedIndex()) {
+				case 0: {
+					MojToolbar.getInstance().setButtonsVisible(false);
+					StudentController.getInstance().clearSearch();
+				}
+				
+				}
 				if(MojCentralni.getInstance().getSelectedIndex()==2) {
 					MojToolbar.getInstance().setButtonsVisible(true);
 				}
 				else {
 					MojToolbar.getInstance().setButtonsVisible(false);
 				}
+				
 				
 			}
 			

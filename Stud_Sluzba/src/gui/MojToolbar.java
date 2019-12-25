@@ -1,7 +1,10 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -14,6 +17,7 @@ import controller.AddListener;
 import controller.DeleteListener;
 import controller.ProfesorController;
 import controller.SaveToDatabaseListener;
+import controller.SearchListener;
 import controller.StudentController;
 
 public class MojToolbar extends JToolBar {
@@ -21,6 +25,7 @@ public class MojToolbar extends JToolBar {
 	//parent frame
 	//private MainFrame frame;
 	private JButton add_btn, edit_btn, delete_btn, save_btn, unsort_btn, add_student_btn, professor_btn;
+	private JTextField search_txtF;
 	/**
 	 * 
 	 */
@@ -36,7 +41,6 @@ public class MojToolbar extends JToolBar {
 	
 	private MojToolbar() {
 		super(SwingConstants.HORIZONTAL);
-		//this.frame = mf;
 		
 		add_btn = new JButton();
 		add_btn.setToolTipText("Add");
@@ -117,19 +121,26 @@ public class MojToolbar extends JToolBar {
 			}
 		});
 		
-		//TODO add search text field
-		
 		add(Box.createHorizontalGlue());
 		
-		JTextField search_txtF = new JTextField(50);
+		search_txtF = new JTextField(50);
 		search_txtF.setMaximumSize(search_txtF.getPreferredSize());
 		search_txtF.setToolTipText("Enter text");
+		search_txtF.setToolTipText("ime: Pera | prezime: Peric | indeks: ra-100-2019...");
 		add(search_txtF);
+		search_txtF.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				JTextField comp = (JTextField) e.getComponent();
+				comp.setForeground(Color.BLACK);
+			}
+		});
 		
 		JButton search_btn = new JButton();
 		search_btn.setToolTipText("Search");
 		search_btn.setIcon(new ImageIcon("images/search-22.png"));
 		add(search_btn);
+		search_btn.addActionListener(new SearchListener());
 		
 		setFloatable(false);
 	}
@@ -137,6 +148,14 @@ public class MojToolbar extends JToolBar {
 	public void setButtonsVisible(boolean b) {
 		add_student_btn.setVisible(b);
 		professor_btn.setVisible(b);
+	}
+
+	public String getQuery() {
+		return this.search_txtF.getText();
+	}
+	
+	public void searchError() {
+		this.search_txtF.setForeground(Color.RED);
 	}
 
 }
