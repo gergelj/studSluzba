@@ -22,4 +22,6 @@ public class Fields {
 	public static final String BROJLK = "brojlk";
 	public static final String TITULA = "titula";
 	public static final String ZVANJE = "zvanje";
+	
+	public static final String DATEFORMAT = "dd.MM.yyyy.";
 }

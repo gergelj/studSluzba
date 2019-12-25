@@ -4,6 +4,8 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 public class MojCentralni extends JTabbedPane{
 	/**
@@ -27,7 +29,8 @@ public class MojCentralni extends JTabbedPane{
 	{	
 		tabelaStudenta = StudentiJTable.getInstance();
         JScrollPane scrollPaneStudenti = new JScrollPane(tabelaStudenta);
-        StudentiJTable.getInstance().setAutoCreateRowSorter(true);
+        //StudentiJTable.getInstance().setAutoCreateRowSorter(true);
+        StudentiJTable.getInstance().setRowSorter(new TableRowSorter<TableModel>(StudentiJTable.getInstance().getModel()));
         
         tabelaPredmeta = PredmetiJTable.getInstance();
         JScrollPane scrollPanePredmeti = new JScrollPane(tabelaPredmeta);

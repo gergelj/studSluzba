@@ -2,24 +2,33 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
+
+import gui.AbstractTableModelStudenti;
 import gui.MojCentralni;
 import gui.MojToolbar;
+import gui.StudentiJTable;
 import klase.Fields;
 import klase.Proveri;
-import klase.Student;
 
 public class SearchListener implements ActionListener {
-
-	private Student studentQuery;
-	private List<String> searchList;
+	
+	private TableRowSorter<AbstractTableModelStudenti> studentSorter;
+	private List<RowFilter<Object,Object>> rowFilters;
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		studentQuery = new Student();
-		searchList = new ArrayList<String>();
+		studentSorter = (TableRowSorter<AbstractTableModelStudenti>) StudentiJTable.getInstance().getRowSorter();
+		rowFilters = new ArrayList<RowFilter<Object,Object>>();
 		
 		String query = MojToolbar.getInstance().getQuery();
 		
@@ -29,12 +38,12 @@ public class SearchListener implements ActionListener {
 		case 0: //studenti
 		{
 			if(query.equals("")) {
-				StudentController.getInstance().clearSearch();
+				studentSorter.setRowFilter(null);
 				return;
 			}
 			
 			String subQuery[] = query.split(";");
-			
+
 			for(int i = 0; i<subQuery.length; i++) {
 				String params[] = subQuery[i].split(":");
 				if(params.length != 2) {
@@ -45,15 +54,14 @@ public class SearchListener implements ActionListener {
 				String paramName = params[0].trim();
 				String paramVal = params[1].trim();
 				
-				if(!setStudentQuery(paramName, paramVal)) {
+				if(!setStudentQueryFilter(paramName, paramVal)) {
 					MojToolbar.getInstance().searchError();
 					return;
 				}
 			}
 			
 			//search...
-			StudentController.getInstance().search(searchList, studentQuery);
-			
+			studentSorter.setRowFilter(RowFilter.andFilter(rowFilters));
 		}
 			break;
 		case 1: //profesori
@@ -70,92 +78,106 @@ public class SearchListener implements ActionListener {
 
 	}
 	
-	private boolean setStudentQuery(String name, String val) {
+	private boolean setStudentQueryFilter(String name, String val) {
+		
+		String regex = "(?i)^" + Pattern.quote(val) + "$";
 		
 		if(name.equalsIgnoreCase(Fields.INDEKS))
 			if(Proveri.isBrojIndeksa(val)) {
-				this.studentQuery.setBrojIndeksa(val);
-				this.searchList.add(Fields.INDEKS);
+				this.rowFilters.add(RowFilter.regexFilter(regex, 0));
 				return true;
 			}
 			else
 				return false;
 		else if(name.equalsIgnoreCase(Fields.IME)) 
 			if(Proveri.isIme(val)) {
-				this.studentQuery.setIme(val);
-				this.searchList.add(Fields.IME);
+				this.rowFilters.add(RowFilter.regexFilter(regex, 1));
 				return true;
 			}
 			else
 				return false;
 		else if(name.equalsIgnoreCase(Fields.PREZIME))
 			if(Proveri.isIme(val)) {
-				this.studentQuery.setPrezime(val);
-				this.searchList.add(Fields.PREZIME);
+				this.rowFilters.add(RowFilter.regexFilter(regex, 2));
 				return true;
 			}
 			else
 				return false;
 		else if(name.equalsIgnoreCase(Fields.DATRODJ))
 			if(Proveri.isDatum(val)) {
-				this.studentQuery.setDatumRodjenja(val);
-				this.searchList.add(Fields.DATRODJ);
+				//datum koji sam uneo
+				LocalDate local = LocalDate.parse(val, DateTimeFormatter.ofPattern("dd.MM.yyyy."));
+
+				//nijedan ugradjeni filter ne koristi LocalDate zato treba napraviti svoj filter
+				RowFilter<Object, Object> filter = new RowFilter<Object, Object>() {
+				      public boolean include(Entry<?, ?> entry) {
+				        LocalDate localD = (LocalDate) entry.getValue(3); //dobavlja datum iz 3. kolone
+				        return local.compareTo(localD) == 0;	//filtrira datum ako su jednaki
+				      }
+				    };
+				
+				this.rowFilters.add(filter);
 				return true;
 			}
 			else
 				return false;
 		else if(name.equalsIgnoreCase(Fields.ADRESA))
 			if(Proveri.isAdresa(val)) {
-				this.studentQuery.setAdresa(val);
-				this.searchList.add(Fields.ADRESA);
+				this.rowFilters.add(RowFilter.regexFilter(regex, 4));
 				return true;
 			}
 			else
 				return false;
 		else if(name.equalsIgnoreCase(Fields.TELEFON))
 			if(Proveri.isTelefon(val)) {
-				this.studentQuery.setTelefon(val);
-				this.searchList.add(Fields.TELEFON);
+				this.rowFilters.add(RowFilter.regexFilter(regex, 5));
 				return true;
 			}
 			else
 				return false;
 		else if(name.equalsIgnoreCase(Fields.EMAIL))
 			if(Proveri.isEmail(val)) {
-				this.studentQuery.setEmail(val);
-				this.searchList.add(Fields.EMAIL);
+				this.rowFilters.add(RowFilter.regexFilter(regex, 6));
 				return true;
 			}
 			else
 				return false;
 		else if(name.equalsIgnoreCase(Fields.DATUPIS))
 			if(Proveri.isDatum(val)) {
-				this.studentQuery.setDatumUpisa(val);
-				this.searchList.add(Fields.DATUPIS);
-				return true;
-			}
-			else
-				return false;
-		else if(name.equalsIgnoreCase(Fields.STATUS))
-			if(Proveri.isStatus(val)) {
-				this.studentQuery.setStatus(val);
-				this.searchList.add(Fields.STATUS);
+				//datum koji sam uneo
+				LocalDate local = LocalDate.parse(val, DateTimeFormatter.ofPattern("dd.MM.yyyy."));
+
+				//nijedan ugradjeni filter ne koristi LocalDate zato treba napraviti svoj filter
+				RowFilter<Object, Object> filter = new RowFilter<Object, Object>() {
+				      public boolean include(Entry<?, ?> entry) {
+				        LocalDate localD = (LocalDate) entry.getValue(7); //dobavlja datum iz 7. kolone
+				        return local.compareTo(localD) == 0;	//filtrira datum ako su jednaki
+				      }
+				};
+				
+				this.rowFilters.add(filter);
 				return true;
 			}
 			else
 				return false;
 		else if(name.equalsIgnoreCase(Fields.GODINA))
 			if(Proveri.isGodina(val)) {
-				this.studentQuery.setGodina(val);
-				this.searchList.add(Fields.GODINA);
+				this.rowFilters.add(RowFilter.regexFilter(regex, 8));
+				return true;
+			}
+			else
+				return false;
+		else if(name.equalsIgnoreCase(Fields.STATUS))
+			if(Proveri.isStatus(val)) {
+				regex = "(?i)^" + Pattern.quote(val.equalsIgnoreCase("b") ? "budzet" : "samofinansiranje") + "$";
+				this.rowFilters.add(RowFilter.regexFilter(regex, 9));
 				return true;
 			}
 			else
 				return false;
 		else if(name.equalsIgnoreCase(Fields.PROSEK))
 			if(Proveri.isProsek(val)) {
-				this.studentQuery.setProsek(val);
-				this.searchList.add(Fields.PROSEK);
+				this.rowFilters.add(RowFilter.regexFilter(regex, 10));
 				return true;
 			}
 			else

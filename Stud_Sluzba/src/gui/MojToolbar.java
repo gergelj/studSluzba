@@ -13,14 +13,11 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.RowSorter;
 import javax.swing.SwingConstants;
-import javax.swing.table.TableModel;
 
 import controller.AddListener;
 import controller.DeleteListener;
-import controller.ProfesorController;
 import controller.SaveToDatabaseListener;
 import controller.SearchListener;
-import controller.StudentController;
 
 public class MojToolbar extends JToolBar {
 

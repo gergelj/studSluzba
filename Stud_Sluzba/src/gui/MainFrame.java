@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.table.TableRowSorter;
 
 import controller.DatabaseController;
 import controller.StudentController;
@@ -46,26 +47,22 @@ public class MainFrame extends JFrame{
 		setLocationRelativeTo(null);
 		
 		//SET APPLICATION CLASS NAME - umesto "gui-Main" da pise nesto drugo
-		/*
+
 		java.lang.reflect.Field awtAppClassNameField;
 		try {
 			awtAppClassNameField = kit.getClass().getDeclaredField("awtAppClassName");
 			awtAppClassNameField.setAccessible(true);
 			awtAppClassNameField.set(kit, "Vidakovic");
 		} catch (NoSuchFieldException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (SecurityException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (IllegalArgumentException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (IllegalAccessException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		*/
+
 			
 		this.setJMenuBar(MojMenuBar.getInstance());
 		this.add(MojToolbar.getInstance(), BorderLayout.NORTH);
@@ -92,7 +89,9 @@ public class MainFrame extends JFrame{
 				switch(MojCentralni.getInstance().getSelectedIndex()) {
 				case 0: {
 					MojToolbar.getInstance().setButtonsVisible(false);
-					StudentController.getInstance().clearSearch();
+					@SuppressWarnings("unchecked")
+					TableRowSorter<AbstractTableModelStudenti> studentSorter = (TableRowSorter<AbstractTableModelStudenti>) StudentiJTable.getInstance().getRowSorter();
+					studentSorter.setRowFilter(null);
 				}
 				
 				}
