@@ -1,6 +1,9 @@
 package gui;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -58,12 +61,12 @@ public class AbstractTableModelStudenti extends AbstractTableModel {
 		switch (columnIndex) {
 		case 0:
 		case 1:
-		case 2:
-		case 3:
+		case 2: return String.class;
+		case 3: return LocalDate.class;
 		case 4:
 		case 5:
-		case 6:
-		case 7:
+		case 6: return String.class;
+		case 7: return LocalDate.class;
 		case 8:
 		case 9:
 		case 10:
@@ -87,18 +90,17 @@ public class AbstractTableModelStudenti extends AbstractTableModel {
 		}
 		else {
 			if (columnIndex < BazaStudenta.getInstance().getColumnCount()) {
-				//return BazaStudenta.getInstance().getValueAt(rowIndex, columnIndex);
 				
 				Student student = this.searchResult.get(rowIndex);
 				switch(columnIndex) {
 				case 0: return student.getBrojIndeksa();
 				case 1: return student.getIme();
 				case 2: return student.getPrezime();
-				case 3: return student.getDatumRodjenja(0);
+				case 3: return student.getDatumRodjenja();
 				case 4: return student.getAdresa();
 				case 5: return student.getTelefon();
 				case 6: return student.getEmail();
-				case 7: return student.getDatumUpisa(0);
+				case 7: return student.getDatumUpisa();
 				case 8: return String.valueOf(student.getTrenutnaGodina());
 				case 9: return student.getStatus()==Student.Status.B ? "budzet" : "samofinansiranje";
 				case 10: return String.valueOf(student.getProsek());
@@ -123,6 +125,10 @@ public class AbstractTableModelStudenti extends AbstractTableModel {
 	public void search(int mode, Iterable<Student> result) {
 		this.mode = mode;
 		this.searchResult = (List<Student>) result;
+	}
+	
+	public int getMode() {
+		return this.mode;
 	}
 	
 }

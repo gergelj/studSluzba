@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gui.MojCentralni;
+import gui.PredmetiJTable;
 import klase.BazaPredmeta;
 import klase.BazaProfesora;
 import klase.BazaStudenta;
@@ -60,7 +61,7 @@ public class PredmetController {
 	}
 
 	public Predmet nadjiPredmet(int row) {
-		return BazaPredmeta.getInstance().getRow(row);
+		return BazaPredmeta.getInstance().getRow(PredmetiJTable.getInstance().convertRowIndexToModel(row));
 	}
 	
 	public void izbrisiPredmet(int row) {

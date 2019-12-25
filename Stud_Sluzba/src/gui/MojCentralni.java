@@ -1,24 +1,9 @@
 package gui;
 
-import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.List;
 
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
-import javax.swing.RowSorter;
-import javax.swing.RowSorter.SortKey;
-import javax.swing.event.RowSorterEvent;
-import javax.swing.event.RowSorterListener;
-import javax.swing.table.TableModel;
-
-import controller.ProfesorSorterListener;
-import controller.StudentSorterListener;
 
 public class MojCentralni extends JTabbedPane{
 	/**
@@ -42,15 +27,15 @@ public class MojCentralni extends JTabbedPane{
 	{	
 		tabelaStudenta = StudentiJTable.getInstance();
         JScrollPane scrollPaneStudenti = new JScrollPane(tabelaStudenta);
-        tabelaStudenta.getTableHeader().addMouseListener(new StudentSorterListener());
+        StudentiJTable.getInstance().setAutoCreateRowSorter(true);
         
         tabelaPredmeta = PredmetiJTable.getInstance();
         JScrollPane scrollPanePredmeti = new JScrollPane(tabelaPredmeta);
+        PredmetiJTable.getInstance().setAutoCreateRowSorter(true);
         
         tabelaProfesora = ProfesoriJTable.getInstance();
         JScrollPane scrollPaneProfesori = new JScrollPane(tabelaProfesora);
-        tabelaProfesora.getTableHeader().addMouseListener(new ProfesorSorterListener());
-        
+        ProfesoriJTable.getInstance().setAutoCreateRowSorter(true);
         
         addTab("Students" ,null, scrollPaneStudenti);
         setMnemonicAt(0, KeyEvent.VK_1);

@@ -155,15 +155,4 @@ public class BazaProfesora implements Serializable{
 		}
 	}
 	
-	public void sort(int column, boolean isAscending) {
-		if(isAscending)
-			Collections.sort(this.getProfesori(), Profesor.compareBy(column));
-		else
-			Collections.sort(this.getProfesori(), Profesor.compareBy(column).reversed());
-	}
-	
-	public void unsort() {
-		Collections.sort(this.getProfesori(), Profesor.compareById());
-	}
-	
 }

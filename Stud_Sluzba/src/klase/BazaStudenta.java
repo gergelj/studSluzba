@@ -1,6 +1,7 @@
 package klase;
 
 import java.io.Serializable;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -74,7 +75,7 @@ public class BazaStudenta implements Serializable{
 		return this.studenti.get(rowIndex);
 	}
 
-	public String getValueAt(int row, int column) {
+	public Object getValueAt(int row, int column) {
 		Student student = this.studenti.get(row);
 		switch (column) {
 		case 0:
@@ -84,7 +85,7 @@ public class BazaStudenta implements Serializable{
 		case 2:
 			return student.getPrezime();
 		case 3:
-			return student.getDatumRodjenja(0);
+			return student.getDatumRodjenja();
 		case 4:
 			return student.getAdresa();
 		case 5:
@@ -92,7 +93,7 @@ public class BazaStudenta implements Serializable{
 		case 6:
 			return student.getEmail();
 		case 7:
-			return student.getDatumUpisa(0);
+			return student.getDatumUpisa();
 		case 8:
 			return String.valueOf(student.getTrenutnaGodina());
 		case 9:
@@ -152,16 +153,5 @@ public class BazaStudenta implements Serializable{
 			s.getSpisakPredmeta().remove(p.getId());
 		}
 	}
-	
-	public void sort(int column, boolean isAscending) {
-		//TODO: sort students by column ascending/descending
-		if(isAscending)
-			Collections.sort(this.getStudenti(), Student.compareBy(column));
-		else
-			Collections.sort(this.getStudenti(), Student.compareBy(column).reversed());
-	}
-	
-	public void unsort() {
-		Collections.sort(this.getStudenti(), Student.compareById());
-	}
+
 }

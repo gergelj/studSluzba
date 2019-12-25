@@ -41,7 +41,12 @@ public class StudentController {
 	}
 	
 	public Student nadjiStudenta(int row) {
-		return BazaStudenta.getInstance().getRow(row);
+		int modelRow = StudentiJTable.getInstance().convertRowIndexToModel(row);
+		if(((AbstractTableModelStudenti)StudentiJTable.getInstance().getModel()).getMode() == StudentController.NORMAL_MODE)
+			return BazaStudenta.getInstance().getRow(modelRow);
+		else {
+			return BazaStudenta.getInstance().lookup_student((String) ((AbstractTableModelStudenti)StudentiJTable.getInstance().getModel()).getValueAt(modelRow, 0));
+		}
 	}
 	
 	public boolean izmeniStudenta(String ime, String prezime,String datumrodj, String adresa, String telefon, String email, String brojindeksa, String datumupisa, int trenutnagodina, Student.Status status, double prosek, int id) {
@@ -78,20 +83,6 @@ public class StudentController {
 	
 	public List<Student> getStudenti() {
 		return BazaStudenta.getInstance().getStudenti();
-	}
-	
-	public void sort(int column, boolean isAscending) {
-		BazaStudenta.getInstance().sort(column, isAscending);
-		MojCentralni.getInstance().azurirajPrikaz();
-	}
-	
-	public void unsort() {
-		for(int i = 0; i<BazaStudenta.getInstance().getColumnCount(); i++) {
-			StudentiJTable.getInstance().getColumnModel().getColumn(i).setHeaderValue(BazaStudenta.getInstance().getColumnName(i));
-		}
-		StudentiJTable.getInstance().getTableHeader().repaint();
-		BazaStudenta.getInstance().unsort();
-		MojCentralni.getInstance().azurirajPrikaz();
 	}
 
 	public List<Predmet> getListOfSubjects(Student s) {

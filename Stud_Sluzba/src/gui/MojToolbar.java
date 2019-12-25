@@ -11,7 +11,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
+import javax.swing.RowSorter;
 import javax.swing.SwingConstants;
+import javax.swing.table.TableModel;
 
 import controller.AddListener;
 import controller.DeleteListener;
@@ -76,9 +78,18 @@ public class MojToolbar extends JToolBar {
 			public void actionPerformed(ActionEvent e) {
 				int selectedTab = MojCentralni.getInstance().getSelectedIndex();
 				switch(selectedTab) {
-				case 0: StudentController.getInstance().unsort(); break;
-				case 1: ProfesorController.getInstance().unsort(); break;
-				case 2: /*TODO: Unsort subjects*/ break;
+				case 0: {RowSorter<?> rs = StudentiJTable.getInstance().getRowSorter();
+						rs.setSortKeys(null);}
+				break;
+				case 1: {
+					RowSorter<?> rs = ProfesoriJTable.getInstance().getRowSorter();
+					rs.setSortKeys(null);} break;
+				case 2:
+					{
+					RowSorter<?> rs = PredmetiJTable.getInstance().getRowSorter();
+					rs.setSortKeys(null);
+					}
+					break;
 				}
 			}
 			

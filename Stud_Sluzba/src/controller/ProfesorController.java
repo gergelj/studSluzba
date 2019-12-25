@@ -34,7 +34,7 @@ public class ProfesorController {
 	}
 	
 	public Profesor nadjiProfesora(int row) {
-		return BazaProfesora.getInstance().getRow(row);
+		return BazaProfesora.getInstance().getRow(ProfesoriJTable.getInstance().convertRowIndexToModel(row));
 	}
 	
 	public boolean izmeniProfesora(String mIme, String mPrezime, String mDatumRodjenja, String mAdresaStanovanja, String mTelefon,String mEmail, String mAdresaKancelarije, String mBrojLK, String mTitula, String mZvanje,int id)
@@ -87,17 +87,4 @@ public class ProfesorController {
 		return pred;
 	}
 	
-	public void sort(int column, boolean isAscending) {
-		BazaProfesora.getInstance().sort(column, isAscending);
-		MojCentralni.getInstance().azurirajPrikazProfesora();
-	}
-	
-	public void unsort() {
-		for(int i=0; i<BazaProfesora.getInstance().getColumnCount(); i++) {
-			ProfesoriJTable.getInstance().getColumnModel().getColumn(i).setHeaderValue(BazaProfesora.getInstance().getColumnName(i));
-		}
-		ProfesoriJTable.getInstance().getTableHeader().repaint();
-		BazaProfesora.getInstance().unsort();
-		MojCentralni.getInstance().azurirajPrikazProfesora();
-	}
 }

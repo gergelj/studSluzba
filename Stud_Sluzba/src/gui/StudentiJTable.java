@@ -2,7 +2,13 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
@@ -29,6 +35,8 @@ public class StudentiJTable extends JTable {
 		this.setModel(new AbstractTableModelStudenti(StudentController.NORMAL_MODE));
 		new ButtonColumnStudenti(this, BazaStudenta.getInstance().getColumnCount());
 		this.getTableHeader().setReorderingAllowed(false);
+		this.getColumnModel().getColumn(3).setCellRenderer(new DateCellRenderer());
+		this.getColumnModel().getColumn(7).setCellRenderer(new DateCellRenderer());
 	}
 
 	@Override
