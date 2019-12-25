@@ -74,7 +74,7 @@ public class BazaProfesora implements Serializable{
 		return this.profesori.get(rowInd);
 	}
 	
-	public String getValueAt(int row,int col)
+	public Object getValueAt(int row,int col)
 	{
 		Profesor profa = this.profesori.get(row);
 		switch(col)
@@ -84,7 +84,7 @@ public class BazaProfesora implements Serializable{
 		case 1:
 			return profa.getmPrezime();
 		case 2:
-			return profa.getmDatumRodjenja(0);
+			return profa.getmDatumRodjenja();
 		case 3:
 			return profa.getmAdresaStanovanja();
 		case 4:

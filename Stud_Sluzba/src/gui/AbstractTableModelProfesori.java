@@ -1,5 +1,7 @@
 package gui;
 
+import java.time.LocalDate;
+
 import javax.swing.JButton;
 import javax.swing.table.AbstractTableModel;
 
@@ -7,6 +9,11 @@ import klase.BazaProfesora;
 
 public class AbstractTableModelProfesori extends AbstractTableModel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3528524555303776280L;
+	
 	public static String kolonaDugme = "PREDMETI";
 			
 	@Override
@@ -37,8 +44,8 @@ public class AbstractTableModelProfesori extends AbstractTableModel {
 	public Class<?> getColumnClass(int columnIndex) {
 		switch (columnIndex) {
 		case 0:
-		case 1:
-		case 2:
+		case 1: return String.class;
+		case 2: return LocalDate.class;
 		case 3:
 		case 4:
 		case 5:

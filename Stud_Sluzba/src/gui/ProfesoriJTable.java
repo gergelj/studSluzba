@@ -28,7 +28,7 @@ public class ProfesoriJTable extends JTable {
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setModel(new AbstractTableModelProfesori());
 		new ButtonColumnProfesori(this, BazaProfesora.getInstance().getColumnCount());
-		this.getTableHeader().setReorderingAllowed(false);
+		this.getColumnModel().getColumn(2).setCellRenderer(new DateCellRenderer());
 	}
 
 	@Override
