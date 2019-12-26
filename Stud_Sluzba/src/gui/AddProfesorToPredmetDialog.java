@@ -19,6 +19,7 @@ import controller.ProfesorController;
 import gui.SpisakPredmetaDialog.AbstractListModelSpisak;
 import klase.Predmet;
 import klase.Profesor;
+import klase.StringResources;
 import klase.Student;
 
 public class AddProfesorToPredmetDialog extends JDialog{
@@ -63,11 +64,11 @@ public class AddProfesorToPredmetDialog extends JDialog{
 	
 	public AddProfesorToPredmetDialog(int selPredRow)
 	{
-		super(MainFrame.getInstance(),"Assign Professor to Subject",true);
+		super(MainFrame.getInstance(),StringResources.ASSIGN_PROFESSOR_TO_SUBJECT ,true);
 		setSize(400,300);
 		setLocationRelativeTo(MainFrame.getInstance());
 		this.selectedPredmet = PredmetController.getInstance().nadjiPredmet(selPredRow);
-		this.setTitle("Assign Professor to "+this.selectedPredmet.getmNazivPredmeta());
+		this.setTitle(StringResources.ASSSIGN_PROFESSOR_TO + this.selectedPredmet.getmNazivPredmeta());
 		add(addPanel());
 		
 		cnl_btn.addActionListener(new ActionListener() {
@@ -100,8 +101,8 @@ public class AddProfesorToPredmetDialog extends JDialog{
 
 	private Component addPanel() {
 		JPanel pom = new JPanel();
-		cnl_btn = new JButton("Cancel");
-		add_btn = new JButton("Add");
+		cnl_btn = new JButton(StringResources.CANCEL);
+		add_btn = new JButton(StringResources.ADD);
 		JPanel btns = new JPanel();
 		btns.add(cnl_btn);
 		btns.add(add_btn);

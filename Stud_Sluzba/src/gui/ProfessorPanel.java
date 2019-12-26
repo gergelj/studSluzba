@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import controller.ProfesorController;
 import controller.ProfessorListener;
 import klase.Profesor;
+import klase.StringResources;
 
 public class ProfessorPanel extends JPanel {
 	/**
@@ -39,8 +40,8 @@ public class ProfessorPanel extends JPanel {
 		setLayout(new BorderLayout());
 		
 		JPanel btns = new JPanel();
-		ok_btn = new JButton("Add");
-		cnl_btn = new JButton("Cancel");
+		ok_btn = new JButton(StringResources.ADD);
+		cnl_btn = new JButton(StringResources.CANCEL);
 		btns.add(cnl_btn);
 		btns.add(ok_btn);
 		add(btns,BorderLayout.SOUTH);
@@ -69,16 +70,16 @@ public class ProfessorPanel extends JPanel {
 		zvanje_txt = new JTextField();
 		zvanje_txt.setName("zvanje");
 		
-		in_field.add(add_panel(ime_lbl,this.ime_txt,"Ime *"));
-		in_field.add(add_panel(prz_lbl,this.prz_txt,"Prezime *"));
-		in_field.add(add_panel(datrodj_lbl,this.datrodj_txt,"Datum rodjenja *"));
-		in_field.add(add_panel(adr_lbl,this.adr_txt,"Adresa stanovanja *"));
-		in_field.add(add_panel(tel_lbl,this.tel_txt,"Kontakt telefon *"));
-		in_field.add(add_panel(email_lbl,this.email_txt,"Email *"));
-		in_field.add(add_panel(adrKanc_lbl,this.adrKanc_txt,"Adresa kancelarije *"));
-		in_field.add(add_panel(brlk_lbl,this.brlk_txt,"Broj licne karte *"));
-		in_field.add(add_panel(titula_lbl,this.titula_txt,"Titula *"));
-		in_field.add(add_panel(zvanje_lbl,this.zvanje_txt,"Zvanje *"));
+		in_field.add(add_panel(ime_lbl,this.ime_txt,StringResources.LABEL_NAME));
+		in_field.add(add_panel(prz_lbl,this.prz_txt,StringResources.LABEL_SURNAME));
+		in_field.add(add_panel(datrodj_lbl,this.datrodj_txt,StringResources.LABEL_DATE_OF_BIRTH));
+		in_field.add(add_panel(adr_lbl,this.adr_txt,StringResources.LABEL_ADDRESS));
+		in_field.add(add_panel(tel_lbl,this.tel_txt,StringResources.LABEL_TELEPHONE));
+		in_field.add(add_panel(email_lbl,this.email_txt,StringResources.LABEL_EMAIL));
+		in_field.add(add_panel(adrKanc_lbl,this.adrKanc_txt,StringResources.LABEL_OFFICE_ADDRESS));
+		in_field.add(add_panel(brlk_lbl,this.brlk_txt,StringResources.LABEL_ID_NUM));
+		in_field.add(add_panel(titula_lbl,this.titula_txt,StringResources.LABEL_TITLE));
+		in_field.add(add_panel(zvanje_lbl,this.zvanje_txt,StringResources.LABEL_DEGREE));
 		in_field.add(Box.createVerticalGlue());
 		add(in_field,BorderLayout.NORTH);
 	
@@ -89,7 +90,7 @@ public class ProfessorPanel extends JPanel {
 		}
 		else
 		{
-			ok_btn.setText("Edit");
+			ok_btn.setText(StringResources.EDIT);
 			ok_btn.setEnabled(true);
 			ProfessorPanel.br=0;
 			profesor = ProfesorController.getInstance().nadjiProfesora(MojCentralni.getInstance().getTabelaProfesora().getSelectedRow());
@@ -141,7 +142,7 @@ public class ProfessorPanel extends JPanel {
             	{
             		ok_btn.setEnabled(false);
             		brlk_txt.setForeground(Color.RED);
-            		brlk_txt.setText(brlk_txt.getText()+" -vec postoji broj licne karte");
+            		brlk_txt.setText(brlk_txt.getText()+StringResources.PROFESSOR_ID_NUM_EXISTS);
             		br--;
             	}
             	else
@@ -155,7 +156,7 @@ public class ProfessorPanel extends JPanel {
             	{
             		ok_btn.setEnabled(false);
             		brlk_txt.setForeground(Color.RED);
-            		brlk_txt.setText(brlk_txt.getText()+" -vec postoji broj licne karte");
+            		brlk_txt.setText(brlk_txt.getText()+StringResources.PROFESSOR_ID_NUM_EXISTS);
             		br--;
             	}
             	else

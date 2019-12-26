@@ -3,6 +3,8 @@ package gui;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import klase.StringResources;
+
 public class DatumThread extends Thread {
 
 	private MainFrame mf;
@@ -15,7 +17,7 @@ public class DatumThread extends Thread {
 	public void run() {
 		while (true) {
 			//osvezava ispis svakog minuta
-			mf.mDateTime.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss   dd.MM.yyyy.")));
+			mf.mDateTime.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern(StringResources.DATETIMEFORMAT)));
 			
 			try {
 				Thread.currentThread();

@@ -6,12 +6,13 @@ import javax.swing.JButton;
 import javax.swing.table.AbstractTableModel;
 
 import klase.BazaStudenta;
+import klase.StringResources;
 
 public class AbstractTableModelStudenti extends AbstractTableModel {
 
 	private static final long serialVersionUID = 2710362894062472488L;
 
-	public static String kolonaDugme = "PREDMETI";
+	public static String kolonaDugme = StringResources.SUBJECTS;
 
 	public AbstractTableModelStudenti() {
 		super();

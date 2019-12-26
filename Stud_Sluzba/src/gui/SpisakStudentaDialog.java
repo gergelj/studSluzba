@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 
 import controller.PredmetController;
 import klase.Predmet;
+import klase.StringResources;
 import klase.Student;
 
 public class SpisakStudentaDialog extends JDialog {
@@ -59,12 +60,11 @@ public class SpisakStudentaDialog extends JDialog {
 	}
 	
 	public SpisakStudentaDialog(int selectedPredmetRow) {
-		super(MainFrame.getInstance(), "Remove Student from Subject", true);
+		super(MainFrame.getInstance(), StringResources.SUBJECT_STUDENT_LIST, true);
 		setSize(400, 500);
 		setLocationRelativeTo(MainFrame.getInstance());
 
 		this.selectedPredmet = PredmetController.getInstance().nadjiPredmet(selectedPredmetRow);
-		this.setTitle("Remove Student from " + this.selectedPredmet.getmNazivPredmeta());
 		add(addPanel());
 		
 		cancel_btn.addActionListener(new ActionListener() {
@@ -99,8 +99,8 @@ public class SpisakStudentaDialog extends JDialog {
 	
 	private JPanel addPanel() {
 		JPanel ret = new JPanel();
-		cancel_btn = new JButton("Cancel");
-		remove_btn = new JButton("Remove");
+		cancel_btn = new JButton(StringResources.CANCEL);
+		remove_btn = new JButton(StringResources.REMOVE);
 		JPanel btns = new JPanel();
 		btns.add(cancel_btn);
 		btns.add(remove_btn);

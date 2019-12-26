@@ -13,7 +13,7 @@ public class Proveri {
 	
 	public static boolean isDatum(String datum) {
 		try {
-            LocalDate.parse(datum, DateTimeFormatter.ofPattern("dd.MM.yyyy."));
+            LocalDate.parse(datum, DateTimeFormatter.ofPattern(StringResources.DATEFORMAT));
         } catch (DateTimeParseException e) {
             return false;
         }

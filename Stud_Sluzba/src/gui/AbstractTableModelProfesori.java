@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.table.AbstractTableModel;
 
 import klase.BazaProfesora;
+import klase.StringResources;
 
 public class AbstractTableModelProfesori extends AbstractTableModel {
 
@@ -14,7 +15,7 @@ public class AbstractTableModelProfesori extends AbstractTableModel {
 	 */
 	private static final long serialVersionUID = 3528524555303776280L;
 	
-	public static String kolonaDugme = "PREDMETI";
+	public static String kolonaDugme = StringResources.SUBJECTS;
 			
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {

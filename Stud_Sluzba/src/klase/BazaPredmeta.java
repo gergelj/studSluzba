@@ -37,11 +37,11 @@ public class BazaPredmeta implements Serializable{
 		this.predmeti = new ArrayList<Predmet>();
 		
 		this.kolone = new ArrayList<String>();
-		this.kolone.add("SIFRA PREDMETA");
-		this.kolone.add("NAZIV PREDMETA");
-		this.kolone.add("GODINA");
-		this.kolone.add("SEMESTAR");
-		this.kolone.add("PROFESOR");
+		this.kolone.add(StringResources.COLUMN_SUBJECT_ID);
+		this.kolone.add(StringResources.COLUMN_SUBJECT_TITLE);
+		this.kolone.add(StringResources.COLUMN_YEAR);
+		this.kolone.add(StringResources.COLUMN_SEMESTER);
+		this.kolone.add(StringResources.COLUMN_PROFESSOR);
 		
 
 	}
@@ -68,7 +68,14 @@ public class BazaPredmeta implements Serializable{
 	
 	public String getColumnName(int i)
 	{
-		return this.kolone.get(i);
+		switch(i) {
+		case(0): return StringResources.COLUMN_SUBJECT_ID;
+		case(1): return StringResources.COLUMN_SUBJECT_TITLE;
+		case(2): return StringResources.COLUMN_YEAR;
+		case(3): return StringResources.COLUMN_SEMESTER;
+		case(4): return StringResources.COLUMN_PROFESSOR;
+		}
+		return null;
 	}
 	
 	public Predmet getRow(int i)
@@ -91,7 +98,7 @@ public class BazaPredmeta implements Serializable{
 		case 4:
 		{
 			if(predmet.getmProfesor()==null)
-				return "Profesor nije dodat";
+				return StringResources.NO_PROFESSOR;
 			else
 				return predmet.getmProfesor().getImeiPrezime();
 		}

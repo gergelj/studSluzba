@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import controller.StudentController;
 import klase.Predmet;
+import klase.StringResources;
 import klase.Student;
 
 public class SpisakPredmetaStudentaDialog extends JDialog {
@@ -57,7 +58,7 @@ public class SpisakPredmetaStudentaDialog extends JDialog {
 	
 	public SpisakPredmetaStudentaDialog(int selectedStudentRow)
 	{
-		super(MainFrame.getInstance(),"Subjects for selected Student",true);
+		super(MainFrame.getInstance(),StringResources.STUDENT_SUBJECT_LIST,true);
 		setSize(400,500);
 		setLocationRelativeTo(MainFrame.getInstance());
 		

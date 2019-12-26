@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 
 import controller.StudentController;
 import controller.StudentListener;
+import klase.StringResources;
 import klase.Student;
 
 public class StudentPanel extends JPanel /*implements FocusListener*/ {
@@ -69,8 +70,8 @@ public class StudentPanel extends JPanel /*implements FocusListener*/ {
 		// podesavanje panela
 		setLayout(new BorderLayout());
 		JPanel buttons = new JPanel();
-		cancel_btn = new JButton("Cancel");
-		ok_btn = new JButton("Add");
+		cancel_btn = new JButton(StringResources.CANCEL);
+		ok_btn = new JButton(StringResources.ADD);
 		buttons.add(cancel_btn);
 		buttons.add(ok_btn);
 		add(buttons, BorderLayout.SOUTH);
@@ -80,25 +81,25 @@ public class StudentPanel extends JPanel /*implements FocusListener*/ {
 		Dimension dim_lbl = new Dimension(150, 20);
 		Dimension dim_txt = new Dimension(200, 20);
 		
-		inputpolja.add(noviPanel(ime_lbl, "Ime *", ime_txt));	
-		inputpolja.add(noviPanel(prezime_lbl, "Prezime *", prezime_txt));
-		inputpolja.add(noviPanel(datrodj_lbl, "Datum rodjenja *", datrodj_txt));
-		inputpolja.add(noviPanel(adresa_lbl, "Adresa *", adresa_txt));
-		inputpolja.add(noviPanel(telefon_lbl, "Telefon *", telefon_txt));
-		inputpolja.add(noviPanel(email_lbl, "E-mail *", email_txt));
-		inputpolja.add(noviPanel(brindeksa_lbl, "Broj indeksa *", brindeksa_txt));
-		inputpolja.add(noviPanel(datupis_lbl, "Datum upisa *", datupis_txt));
-		inputpolja.add(noviPanel(prosek_lbl, "Prosek *", prosek_txt));
+		inputpolja.add(noviPanel(ime_lbl, StringResources.LABEL_NAME, ime_txt));	
+		inputpolja.add(noviPanel(prezime_lbl, StringResources.LABEL_SURNAME, prezime_txt));
+		inputpolja.add(noviPanel(datrodj_lbl, StringResources.LABEL_DATE_OF_BIRTH, datrodj_txt));
+		inputpolja.add(noviPanel(adresa_lbl, StringResources.LABEL_ADDRESS, adresa_txt));
+		inputpolja.add(noviPanel(telefon_lbl, StringResources.LABEL_TELEPHONE, telefon_txt));
+		inputpolja.add(noviPanel(email_lbl, StringResources.LABEL_EMAIL, email_txt));
+		inputpolja.add(noviPanel(brindeksa_lbl, StringResources.LABEL_INDEX_NUM, brindeksa_txt));
+		inputpolja.add(noviPanel(datupis_lbl, StringResources.LABEL_REGISTRATION_DATE, datupis_txt));
+		inputpolja.add(noviPanel(prosek_lbl, StringResources.LABEL_AVERAGE_GRADE, prosek_txt));
 
 		godstudija_pan = new JPanel();
-		godstudija_lbl = new JLabel("Godina studija *");
+		godstudija_lbl = new JLabel(StringResources.LABEL_CURRENT_YEAR);
 		godstudija_lbl.setPreferredSize(dim_lbl);
 		godstudija_pan.add(godstudija_lbl);
 		Vector<String> v = new Vector<String>();
-		v.add("I (prva)");
-		v.add("II (druga)");
-		v.add("III (treća)");
-		v.add("IV (četvrta)");
+		v.add(StringResources.LABEL_FIRST_YEAR);
+		v.add(StringResources.LABEL_SECOND_YEAR);
+		v.add(StringResources.LABEL_THIRD_YEAR);
+		v.add(StringResources.LABEL_FOURTH_YEAR);
 		godstudija_list = new JComboBox<String>(v);
 		godstudija_list.setPreferredSize(dim_txt);
 		godstudija_pan.add(godstudija_list);
@@ -107,9 +108,9 @@ public class StudentPanel extends JPanel /*implements FocusListener*/ {
 		finansiranje_pan = new JPanel();
 		finansiranje_pan.setLayout(new BoxLayout(finansiranje_pan, BoxLayout.Y_AXIS));
 		finansiranje_grp = new ButtonGroup();
-		finansiranje_b = new JRadioButtonMenuItem("Budžet");
+		finansiranje_b = new JRadioButtonMenuItem(StringResources.STATUS_B);
 		finansiranje_b.setSelected(true);
-		finansiranje_s = new JRadioButtonMenuItem("Samofinansiranje");
+		finansiranje_s = new JRadioButtonMenuItem(StringResources.STATUS_S);
 		finansiranje_grp.add(finansiranje_b);
 		finansiranje_grp.add(finansiranje_s);
 		
@@ -127,7 +128,7 @@ public class StudentPanel extends JPanel /*implements FocusListener*/ {
 			StudentPanel.broj = -9;
 		}
 		else {
-			StudentPanel.ok_btn.setText("Edit");
+			StudentPanel.ok_btn.setText(StringResources.EDIT);
 			StudentPanel.ok_btn.setEnabled(true);
 			StudentPanel.broj = 0;
 			this.st = StudentController.getInstance().nadjiStudenta(MojCentralni.getInstance().getTabelaStudenata().getSelectedRow());
@@ -154,15 +155,15 @@ public class StudentPanel extends JPanel /*implements FocusListener*/ {
 		listeners();
 		
 		// tooltip za text polja
-		ime_txt.setToolTipText("npr. Imenko");
-		prezime_txt.setToolTipText("npr. Prezimić");
-		datrodj_txt.setToolTipText("npr. 22.05.2019.");
-		datupis_txt.setToolTipText("npr. 22.05.2019.");
-		adresa_txt.setToolTipText("npr. 21000 Novi Sad");
-		telefon_txt.setToolTipText("npr. 061234567");
-		email_txt.setToolTipText("npr. imenko@uns.ac.rs");
-		brindeksa_txt.setToolTipText("npr. ra-16-2016");
-		prosek_txt.setToolTipText("6.00 - 10.00");
+		ime_txt.setToolTipText(StringResources.EXAMPLE_NAME);
+		prezime_txt.setToolTipText(StringResources.EXAMPLE_SURNAME);
+		datrodj_txt.setToolTipText(StringResources.EXAMPLE_DATE);
+		datupis_txt.setToolTipText(StringResources.EXAMPLE_DATE);
+		adresa_txt.setToolTipText(StringResources.EXAMPLE_ADDRESS);
+		telefon_txt.setToolTipText(StringResources.EXAMPLE_TELEPHONE);
+		email_txt.setToolTipText(StringResources.EXAMPLE_EMAIL);
+		brindeksa_txt.setToolTipText(StringResources.EXAMPLE_INDEX_NUM);
+		prosek_txt.setToolTipText(StringResources.EXAMPLE_GRADE);
 		
 	}
 	
@@ -207,7 +208,7 @@ public class StudentPanel extends JPanel /*implements FocusListener*/ {
 					if(!StudentController.getInstance().dodajStudenta(ime_txt.getText(), prezime_txt.getText(), datrodj_txt.getText(), adresa_txt.getText(), telefon_txt.getText(), email_txt.getText(), brindeksa_txt.getText().toLowerCase(), datupis_txt.getText(), trenutnagodina, status, prosek)){
 						ok_btn.setEnabled(false);
 						brindeksa_txt.setForeground(Color.RED);
-						brindeksa_txt.setText(brindeksa_txt.getText() + " - postoji vec indeks");
+						brindeksa_txt.setText(brindeksa_txt.getText() + StringResources.INDEX_NUM_EXISTS);
 						broj--;
 					}
 					else {
@@ -218,7 +219,7 @@ public class StudentPanel extends JPanel /*implements FocusListener*/ {
 					if(!StudentController.getInstance().izmeniStudenta(ime_txt.getText(), prezime_txt.getText(), datrodj_txt.getText(), adresa_txt.getText(), telefon_txt.getText(), email_txt.getText(), brindeksa_txt.getText().toLowerCase(), datupis_txt.getText(), trenutnagodina, status, prosek, st.getId())){
 						ok_btn.setEnabled(false);
 						brindeksa_txt.setForeground(Color.RED);
-						brindeksa_txt.setText(brindeksa_txt.getText() + " - postoji vec indeks");
+						brindeksa_txt.setText(brindeksa_txt.getText() + StringResources.INDEX_NUM_EXISTS);
 						broj--;
 					}
 					else {

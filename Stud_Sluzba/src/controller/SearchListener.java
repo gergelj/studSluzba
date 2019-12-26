@@ -17,6 +17,7 @@ import gui.MojToolbar;
 import gui.StudentiJTable;
 import klase.Fields;
 import klase.Proveri;
+import klase.StringResources;
 
 public class SearchListener implements ActionListener {
 	
@@ -106,7 +107,7 @@ public class SearchListener implements ActionListener {
 		else if(name.equalsIgnoreCase(Fields.DATRODJ))
 			if(Proveri.isDatum(val)) {
 				//datum koji sam uneo
-				LocalDate local = LocalDate.parse(val, DateTimeFormatter.ofPattern("dd.MM.yyyy."));
+				LocalDate local = LocalDate.parse(val, DateTimeFormatter.ofPattern(StringResources.DATEFORMAT));
 
 				//nijedan ugradjeni filter ne koristi LocalDate zato treba napraviti svoj filter
 				RowFilter<Object, Object> filter = new RowFilter<Object, Object>() {
@@ -145,7 +146,7 @@ public class SearchListener implements ActionListener {
 		else if(name.equalsIgnoreCase(Fields.DATUPIS))
 			if(Proveri.isDatum(val)) {
 				//datum koji sam uneo
-				LocalDate local = LocalDate.parse(val, DateTimeFormatter.ofPattern("dd.MM.yyyy."));
+				LocalDate local = LocalDate.parse(val, DateTimeFormatter.ofPattern(StringResources.DATEFORMAT));
 
 				//nijedan ugradjeni filter ne koristi LocalDate zato treba napraviti svoj filter
 				RowFilter<Object, Object> filter = new RowFilter<Object, Object>() {
@@ -169,7 +170,7 @@ public class SearchListener implements ActionListener {
 				return false;
 		else if(name.equalsIgnoreCase(Fields.STATUS))
 			if(Proveri.isStatus(val)) {
-				regex = "(?i)^" + Pattern.quote(val.equalsIgnoreCase("b") ? "budzet" : "samofinansiranje") + "$";
+				regex = "(?i)^" + Pattern.quote(val.equalsIgnoreCase("b") ? StringResources.STATUS_B : StringResources.STATUS_S) + "$";
 				this.rowFilters.add(RowFilter.regexFilter(regex, 9));
 				return true;
 			}

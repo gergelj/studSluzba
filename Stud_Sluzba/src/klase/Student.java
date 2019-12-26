@@ -34,12 +34,12 @@ public class Student implements Serializable{
 		this.spisakPredmeta = new HashMap<Integer, Predmet>();
 		this.ime = ime;
 		this.prezime = prezime;
-		this.datumRodjenja = LocalDate.parse(datumrodj, DateTimeFormatter.ofPattern("dd.MM.yyyy."));
+		this.datumRodjenja = LocalDate.parse(datumrodj, DateTimeFormatter.ofPattern(StringResources.DATEFORMAT));
 		this.adresa = adresa;
 		this.telefon = telefon;
 		this.email = email;
 		this.brojIndeksa = brojindeksa;
-		this.datumUpisa = LocalDate.parse(datumupisa, DateTimeFormatter.ofPattern("dd.MM.yyyy."));
+		this.datumUpisa = LocalDate.parse(datumupisa, DateTimeFormatter.ofPattern(StringResources.DATEFORMAT));
 		this.status = status;
 		this.trenutnaGodina = trenutnagodina;
 		this.prosek = prosek;
@@ -49,12 +49,12 @@ public class Student implements Serializable{
 	public Student(String ime, String prezime, String datumrodj, String adresa, String telefon, String email, String brojindeksa, String datumupisa, int trenutnagodina, Status status, double prosek, int internikljuc, HashMap<Integer, Predmet> spisakpredmeta) {
 		this.ime = ime;
 		this.prezime = prezime;
-		this.datumRodjenja = LocalDate.parse(datumrodj, DateTimeFormatter.ofPattern("dd.MM.yyyy."));
+		this.datumRodjenja = LocalDate.parse(datumrodj, DateTimeFormatter.ofPattern(StringResources.DATEFORMAT));
 		this.adresa = adresa;
 		this.telefon = telefon;
 		this.email = email;
 		this.brojIndeksa = brojindeksa;
-		this.datumUpisa = LocalDate.parse(datumupisa, DateTimeFormatter.ofPattern("dd.MM.yyyy."));
+		this.datumUpisa = LocalDate.parse(datumupisa, DateTimeFormatter.ofPattern(StringResources.DATEFORMAT));
 		this.status = status;
 		this.trenutnaGodina = trenutnagodina;
 		this.prosek = prosek;
@@ -90,7 +90,7 @@ public class Student implements Serializable{
 	@Override
 	public String toString() {
 		//treba kod prikaza studenata u JListu kada dodamo na predmet
-		return this.brojIndeksa + " " + this.ime + " " + this.prezime + ", " + this.trenutnaGodina + ". godina";
+		return this.brojIndeksa + " " + this.ime + " " + this.prezime + ", " + this.trenutnaGodina + StringResources.NTH_YEAR;
 	}
 
 	public int getId() {
@@ -117,11 +117,11 @@ public class Student implements Serializable{
 	}
 	
 	public String getDatumRodjenja(int i) {
-		return this.datumRodjenja.format(DateTimeFormatter.ofPattern("dd.MM.yyyy."));
+		return this.datumRodjenja.format(DateTimeFormatter.ofPattern(StringResources.DATEFORMAT));
 	}
 	
 	public String getDatumUpisa(int i) {
-		return this.datumUpisa.format(DateTimeFormatter.ofPattern("dd.MM.yyyy."));
+		return this.datumUpisa.format(DateTimeFormatter.ofPattern(StringResources.DATEFORMAT));
 	}
 
 	public void setDatumRodjenja(LocalDate datumRodjenja) {
@@ -129,7 +129,7 @@ public class Student implements Serializable{
 	}
 	
 	public void setDatumRodjenja(String datumRodjenja) {
-		this.datumRodjenja = LocalDate.parse(datumRodjenja, DateTimeFormatter.ofPattern("dd.MM.yyyy."));
+		this.datumRodjenja = LocalDate.parse(datumRodjenja, DateTimeFormatter.ofPattern(StringResources.DATEFORMAT));
 	}
 
 	public LocalDate getDatumUpisa() {
@@ -141,7 +141,7 @@ public class Student implements Serializable{
 	}
 	
 	public void setDatumUpisa(String datumUpisa) {
-		this.datumUpisa = LocalDate.parse(datumUpisa, DateTimeFormatter.ofPattern("dd.MM.yyyy."));
+		this.datumUpisa = LocalDate.parse(datumUpisa, DateTimeFormatter.ofPattern(StringResources.DATEFORMAT));
 	}
 
 	public String getAdresa() {

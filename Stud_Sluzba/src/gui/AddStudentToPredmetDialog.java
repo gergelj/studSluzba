@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import controller.PredmetController;
 import controller.StudentController;
 import klase.Predmet;
+import klase.StringResources;
 import klase.Student;
 
 public class AddStudentToPredmetDialog extends JDialog {
@@ -62,11 +63,11 @@ public class AddStudentToPredmetDialog extends JDialog {
 	}
 	
 	public AddStudentToPredmetDialog(int selectedPredmetRow) {
-		super(MainFrame.getInstance(), "Add Student to Subject", true);
+		super(MainFrame.getInstance(), StringResources.ADD_STUDENT_TO_SUBJECT, true);
 		setSize(400, 500);
 		setLocationRelativeTo(MainFrame.getInstance());
 		this.selectedPredmet = PredmetController.getInstance().nadjiPredmet(selectedPredmetRow);
-		this.setTitle("Add Student to " + this.selectedPredmet.getmNazivPredmeta());
+		this.setTitle(StringResources.ADD_STUDENT_TO + this.selectedPredmet.getmNazivPredmeta());
 		add(addPanel());
 		
 		cancel_btn.addActionListener(new ActionListener() {
@@ -107,8 +108,8 @@ public class AddStudentToPredmetDialog extends JDialog {
 	
 	private JPanel addPanel() {
 		JPanel ret = new JPanel();
-		cancel_btn = new JButton("Cancel");
-		add_btn = new JButton("Add");
+		cancel_btn = new JButton(StringResources.CANCEL);
+		add_btn = new JButton(StringResources.ADD);
 		JPanel btns = new JPanel();
 		btns.add(cancel_btn);
 		btns.add(add_btn);

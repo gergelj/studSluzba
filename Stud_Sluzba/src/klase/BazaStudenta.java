@@ -39,17 +39,17 @@ public class BazaStudenta implements Serializable{
 		this.studenti = new ArrayList<Student>();
 
 		this.kolone = new ArrayList<String>();
-		this.kolone.add("INDEKS");
-		this.kolone.add("IME");
-		this.kolone.add("PREZIME");
-		this.kolone.add("DAT. RODJ.");
-		this.kolone.add("ADRESA");
-		this.kolone.add("TELEFON");
-		this.kolone.add("E-MAIL");
-		this.kolone.add("DAT. UPISA");
-		this.kolone.add("GODINA");
-		this.kolone.add("STATUS");
-		this.kolone.add("PROSEK");
+		this.kolone.add(StringResources.COLUMN_INDEX_NUM);
+		this.kolone.add(StringResources.COLUMN_NAME);
+		this.kolone.add(StringResources.COLUMN_SURNAME);
+		this.kolone.add(StringResources.COLUMN_DATE_OF_BIRTH);
+		this.kolone.add(StringResources.COLUMN_ADDRESS);
+		this.kolone.add(StringResources.COLUMN_TELEPHONE);
+		this.kolone.add(StringResources.COLUMN_EMAIL);
+		this.kolone.add(StringResources.COLUMN_REGISTRATION_DATE);
+		this.kolone.add(StringResources.COLUMN_YEAR);
+		this.kolone.add(StringResources.COLUMN_STATUS);
+		this.kolone.add(StringResources.COLUMN_AVERAGE_GRADE);
 
 	}
 
@@ -70,7 +70,20 @@ public class BazaStudenta implements Serializable{
 	}
 
 	public String getColumnName(int index) {
-		return this.kolone.get(index);
+		switch(index) {
+		case 0: return StringResources.COLUMN_INDEX_NUM;
+		case 1: return StringResources.COLUMN_NAME;
+		case 2: return StringResources.COLUMN_SURNAME;
+		case 3: return StringResources.COLUMN_DATE_OF_BIRTH;
+		case 4: return StringResources.COLUMN_ADDRESS;
+		case 5: return StringResources.COLUMN_TELEPHONE;
+		case 6: return StringResources.COLUMN_EMAIL;
+		case 7: return StringResources.COLUMN_REGISTRATION_DATE;
+		case 8: return StringResources.COLUMN_YEAR;
+		case 9: return StringResources.COLUMN_STATUS;
+		case 10: return StringResources.COLUMN_AVERAGE_GRADE;
+		}
+		return null;
 	}
 
 	public Student getRow(int rowIndex) {

@@ -16,6 +16,7 @@ import javax.swing.WindowConstants;
 import controller.AddListener;
 import controller.DeleteListener;
 import controller.SaveToDatabaseListener;
+import klase.StringResources;
 
 public class MojMenuBar extends JMenuBar {
 
@@ -34,30 +35,30 @@ public class MojMenuBar extends JMenuBar {
 	
 	private MojMenuBar() {
 
-		JMenu file = new JMenu("File");
+		JMenu file = new JMenu(StringResources.MENU_FILE);
 		file.setMnemonic(KeyEvent.VK_F);
 		
-		JMenu edit = new JMenu("Edit");
+		JMenu edit = new JMenu(StringResources.MENU_EDIT);
 		edit.setMnemonic(KeyEvent.VK_E);
 		
-		JMenu help = new JMenu("Help");
+		JMenu help = new JMenu(StringResources.MENU_HELP);
 		help.setMnemonic(KeyEvent.VK_H);
 		
-		JMenuItem new_mi = new JMenuItem("New", new ImageIcon("images/add-22.png"));
+		JMenuItem new_mi = new JMenuItem(StringResources.MENU_NEW, new ImageIcon("images/add-22.png"));
 		new_mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));		//CTRL+N
 		new_mi.addActionListener(new AddListener(AddDialog.ADD_MODE));
 		
-		JMenuItem save_mi = new JMenuItem("Save to DB", new ImageIcon("images/save-22.png"));
+		JMenuItem save_mi = new JMenuItem(StringResources.MENU_SAVE_DB, new ImageIcon("images/save-22.png"));
 		save_mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));		//CTRL+S
 		save_mi.addActionListener(new SaveToDatabaseListener());
 		
-		JMenuItem close_mi = new JMenuItem("Close", new ImageIcon("images/close-22.png"));
+		JMenuItem close_mi = new JMenuItem(StringResources.MENU_CLOSE, new ImageIcon("images/close-22.png"));
 		close_mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.ALT_MASK));		//ALT+F4
 		close_mi.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int code = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Are you sure you want to close the program",
-						"Close Window", JOptionPane.YES_NO_OPTION);
+				int code = JOptionPane.showConfirmDialog(MainFrame.getInstance(), StringResources.CLOSE_CONFIRMATION_MESSAGE,
+						StringResources.CLOSE_WINDOW_TITLE, JOptionPane.YES_NO_OPTION);
 				if (code != JOptionPane.YES_OPTION) {
 					MainFrame.getInstance().setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 				} else {
@@ -68,12 +69,12 @@ public class MojMenuBar extends JMenuBar {
 		});
 		
 		//TODO: MenuBar "Edit" Izmena postojeceg entiteta
-		JMenuItem edit_mi = new JMenuItem("Edit", new ImageIcon("images/edit-22.png"));
+		JMenuItem edit_mi = new JMenuItem(StringResources.MENU_EDIT, new ImageIcon("images/edit-22.png"));
 		edit_mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));		//CTRL+E
 		edit_mi.addActionListener(new AddListener(AddDialog.EDIT_MODE));
 		
 		//TODO: MenuBar "Delete" Brisanje postejećeg entiteta
-		JMenuItem delete_mi = new JMenuItem("Delete", new ImageIcon("images/trash-22.png"));
+		JMenuItem delete_mi = new JMenuItem(StringResources.MENU_DELETE, new ImageIcon("images/trash-22.png"));
 		delete_mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));		//CTRL+D
 		delete_mi.addActionListener(new DeleteListener());
 		
@@ -81,12 +82,21 @@ public class MojMenuBar extends JMenuBar {
 		//Potrebno je objasniti kako se svaka od dolenavedenih funkcionalnosti može sprovesti u
 		//delo i to u vidu niza korisničkih akcija. Takođe, potrebno je navesti prečice
 		//(akceleratore) koje naprednim korisnicima mogu olakšati rad.
-		JMenuItem help_mi = new JMenuItem("Help", new ImageIcon("images/help-22.png"));
+		JMenuItem help_mi = new JMenuItem(StringResources.MENU_HELP, new ImageIcon("images/help-22.png"));
 		help_mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));		//CTRL+H
+		help_mi.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				HelpDialog d = new HelpDialog();
+				d.setVisible(true);
+			}
+			
+		});
 		
 		//TODO MenuBar "About" Prikaz verzije aplikacije, kao i kratak opis iste.
 		// Nakon toga treba da sledi sažeta biografija svakog autora.
-		JMenuItem about_mi = new JMenuItem("About", new ImageIcon("images/about-22.png"));
+		JMenuItem about_mi = new JMenuItem(StringResources.ABOUT, new ImageIcon("images/about-22.png"));
 		about_mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));		//CTRL+A
 		about_mi.addActionListener(new ActionListener() {
 

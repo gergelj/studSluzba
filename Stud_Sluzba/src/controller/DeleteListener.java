@@ -11,6 +11,7 @@ import gui.PredmetiJTable;
 import gui.ProfesoriJTable;
 import gui.StudentiJTable;
 import klase.BazaStudenta;
+import klase.StringResources;
 import klase.Student;
 
 public class DeleteListener implements ActionListener {
@@ -29,16 +30,16 @@ public class DeleteListener implements ActionListener {
 			
 			switch(selectedTab) {
 			case 0: {
-				message = "Da li biste stvarno zeleli da obrisete studenta?";
-				title = "Delete Student";
+				message = StringResources.CONFIRM_DELETE_STUDENT;
+				title = StringResources.DELETE_STUDENT_TITLE;
 			} break;
 			case 1: {
-				message = "Da li biste stvarno zeleli da obrisete profesora?";
-				title = "Delete Profesor";
+				message = StringResources.CONFIRM_DELETE_PROFESSOR;
+				title = StringResources.DELETE_PROFESSOR_TITLE;
 			} break;
 			case 2: {
-				message = "Da li biste stvarno zeleli da obrisete predmet?";
-				title = "Delete Predmet";
+				message = StringResources.CONFIRM_DELETE_SUBJECT;
+				title = StringResources.DELETE_SUBJECT_TITLE;
 			} break;
 			}
 			

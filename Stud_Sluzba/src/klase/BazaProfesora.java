@@ -36,16 +36,16 @@ public class BazaProfesora implements Serializable{
 		this.profesori = new ArrayList<Profesor>();
 		
 		this.kolone = new ArrayList<String>();
-		this.kolone.add("IME");
-		this.kolone.add("PREZIME");
-		this.kolone.add("DAT. RODJ.");
-		this.kolone.add("ADRESA");
-		this.kolone.add("TELEFON");
-		this.kolone.add("E-MAIL");
-		this.kolone.add("ADR. KANC.");
-		this.kolone.add("BR. LK.");
-		this.kolone.add("TITULA");
-		this.kolone.add("ZVANJE");
+		this.kolone.add(StringResources.COLUMN_NAME);
+		this.kolone.add(StringResources.COLUMN_SURNAME);
+		this.kolone.add(StringResources.COLUMN_DATE_OF_BIRTH);
+		this.kolone.add(StringResources.COLUMN_ADDRESS);
+		this.kolone.add(StringResources.COLUMN_TELEPHONE);
+		this.kolone.add(StringResources.COLUMN_EMAIL);
+		this.kolone.add(StringResources.COLUMN_OFFICE_ADDRESS);
+		this.kolone.add(StringResources.COLUMN_PROFESSOR_ID_NUM);
+		this.kolone.add(StringResources.COLUMN_TITLE);
+		this.kolone.add(StringResources.COLUMN_DEGREE);
 		
 	}
 	
@@ -66,7 +66,19 @@ public class BazaProfesora implements Serializable{
 	
 	public String getColumnName(int index)
 	{
-		return this.kolone.get(index);
+		switch(index) {
+		case 0: return StringResources.COLUMN_NAME;
+		case 1: return StringResources.COLUMN_SURNAME;
+		case 2: return StringResources.COLUMN_DATE_OF_BIRTH;
+		case 3: return StringResources.COLUMN_ADDRESS;
+		case 4: return StringResources.COLUMN_TELEPHONE;
+		case 5: return StringResources.COLUMN_EMAIL;
+		case 6: return StringResources.COLUMN_OFFICE_ADDRESS;
+		case 7: return StringResources.COLUMN_PROFESSOR_ID_NUM;
+		case 8: return StringResources.COLUMN_TITLE;
+		case 9: return StringResources.COLUMN_DEGREE;
+		}
+		return null;
 	}
 	
 	public Profesor getRow(int rowInd)

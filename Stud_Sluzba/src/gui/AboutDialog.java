@@ -10,6 +10,8 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import klase.StringResources;
+
 public class AboutDialog extends JDialog {
 
 	/**
@@ -19,7 +21,7 @@ public class AboutDialog extends JDialog {
 
 	public AboutDialog() {}
 	public AboutDialog(Frame parent) {
-		super(parent, "About", false);
+		super(parent, StringResources.ABOUT, false);
 		setSize(400, 500);
 		setLocationRelativeTo(parent);
 		

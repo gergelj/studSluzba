@@ -4,6 +4,7 @@ import javax.swing.JButton;
 import javax.swing.table.AbstractTableModel;
 
 import klase.BazaPredmeta;
+import klase.StringResources;
 
 public class AbstractTableModelPredmet extends AbstractTableModel{
 
@@ -12,7 +13,7 @@ public class AbstractTableModelPredmet extends AbstractTableModel{
 	 */
 	private static final long serialVersionUID = -6705633657400709595L;
 	
-	public static String kolonaDugme = "STUDENTI";
+	public static String kolonaDugme = StringResources.STUDENTS;;
 	
 	@Override
 	public int getColumnCount() {

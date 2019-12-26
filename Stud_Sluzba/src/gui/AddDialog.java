@@ -4,6 +4,8 @@ package gui;
 import java.awt.Frame;
 import javax.swing.JDialog;
 
+import klase.StringResources;
+
 public class AddDialog extends JDialog {
 
 	public static final int ADD_MODE = 1;
@@ -22,26 +24,26 @@ public class AddDialog extends JDialog {
 			case 0: //studenti
 			{
 				if(mode == AddDialog.ADD_MODE)
-					this.setTitle("Add Student");
+					this.setTitle(StringResources.ADD_STUDENT);
 				else
-					this.setTitle("Edit Student");
+					this.setTitle(StringResources.EDIT_STUDENT);
 				this.add(new StudentPanel(mode, this));
 			} break;
 			case 1: //profesori
 			{
 				if(mode == AddDialog.ADD_MODE)
-					this.setTitle("Add Professor");
+					this.setTitle(StringResources.ADD_PROFESSOR);
 				else
-					this.setTitle("Edit Professor");
+					this.setTitle(StringResources.EDIT_PROFESSOR);
 				this.add(new ProfessorPanel(mode, this));
 
 			} break;
 			case 2: //predmeti
 			{
 				if(mode == AddDialog.ADD_MODE)
-					this.setTitle("Add Subject");
+					this.setTitle(StringResources.ADD_SUBJECT);
 				else
-					this.setTitle("Edit Subject");
+					this.setTitle(StringResources.EDIT_SUBJECT);
 				this.add(new SubjectPanel(mode, this));
 			}break;
 		}

@@ -17,6 +17,7 @@ import controller.PredmetController;
 import controller.ProfesorController;
 import klase.Predmet;
 import klase.Profesor;
+import klase.StringResources;
 
 public class SpisakPredmetaDialog extends JDialog {
 
@@ -64,7 +65,7 @@ public class SpisakPredmetaDialog extends JDialog {
 	
 	public SpisakPredmetaDialog(int selectedProfRow)
 	{
-		super(MainFrame.getInstance(),"Subjects for selected Professor",true);
+		super(MainFrame.getInstance(),StringResources.PROFESSOR_SUBJECT_LIST,true);
 		setSize(400,500);
 		setLocationRelativeTo(MainFrame.getInstance());
 		
@@ -92,7 +93,7 @@ public class SpisakPredmetaDialog extends JDialog {
 	{
 		JPanel ret = new JPanel();
 		
-		remove_btn = new JButton("Remove");
+		remove_btn = new JButton(StringResources.REMOVE);
 		JPanel btns = new JPanel();
 		btns.add(remove_btn);
 		

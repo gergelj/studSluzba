@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 
 import gui.SubjectPanel;
 import klase.Proveri;
+import klase.StringResources;
 
 public class PredmetListener implements FocusListener{
 
@@ -59,7 +60,7 @@ public class PredmetListener implements FocusListener{
 		}
 		
 		if(tx.getText().equals(""))
-			tx.setText("Obavezno polje");
+			tx.setText(StringResources.REQUIRED_FIELD);
 	}
      
 	

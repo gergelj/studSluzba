@@ -67,7 +67,7 @@ public class Profesor implements Serializable{
 		super();
 		this.mIme = mIme;
 		this.mPrezime = mPrezime;
-		this.mDatumRodjenja = LocalDate.parse(mDatumRodjenja, DateTimeFormatter.ofPattern("dd.MM.yyyy."));
+		this.mDatumRodjenja = LocalDate.parse(mDatumRodjenja, DateTimeFormatter.ofPattern(StringResources.DATEFORMAT));
 		this.mAdresaStanovanja = mAdresaStanovanja;
 		this.mTelefon = mTelefon;
 		this.mEmail = mEmail;
@@ -121,7 +121,7 @@ public class Profesor implements Serializable{
 	
 	public String getmDatumRodjenja(int i)
 	{
-		return this.mDatumRodjenja.format(DateTimeFormatter.ofPattern("dd.MM.yyyy.")); 
+		return this.mDatumRodjenja.format(DateTimeFormatter.ofPattern(StringResources.DATEFORMAT)); 
 	}
 	public void setmDatumRodjenja(LocalDate mDatumRodjenja) {
 		this.mDatumRodjenja = mDatumRodjenja;
@@ -129,7 +129,7 @@ public class Profesor implements Serializable{
 	
 	public void setmDatumRodjenja(String mDatumRodjenja)
 	{
-		this.mDatumRodjenja = LocalDate.parse(mDatumRodjenja, DateTimeFormatter.ofPattern("dd.MM.yyyy."));
+		this.mDatumRodjenja = LocalDate.parse(mDatumRodjenja, DateTimeFormatter.ofPattern(StringResources.DATEFORMAT));
 	}
 	
 	public String getmAdresaStanovanja() {

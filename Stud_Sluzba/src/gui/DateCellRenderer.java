@@ -9,6 +9,8 @@ import java.util.Date;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
+import klase.StringResources;
+
 public class DateCellRenderer extends DefaultTableCellRenderer{
 
 		/**
@@ -19,7 +21,7 @@ public class DateCellRenderer extends DefaultTableCellRenderer{
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column){
 		super.getTableCellRendererComponent( table, value, isSelected, hasFocus, row, column );
 		
-		String strDate = ((LocalDate) value).format(DateTimeFormatter.ofPattern("dd.MM.yyyy."));
+		String strDate = ((LocalDate) value).format(DateTimeFormatter.ofPattern(StringResources.DATEFORMAT));
 		this.setText(strDate);
 	
 		return this;

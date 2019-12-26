@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import controller.PredmetController;
 import controller.PredmetListener;
 import klase.Predmet;
+import klase.StringResources;
 
 public class SubjectPanel extends JPanel{
 
@@ -41,8 +42,8 @@ public class SubjectPanel extends JPanel{
 		this.dialog = dialog;
 		setLayout(new BorderLayout());
 		JPanel btns = new JPanel();
-		SubjectPanel.cnl_btn = new JButton("Cancel");
-		SubjectPanel.ok_btn = new JButton("Add");
+		SubjectPanel.cnl_btn = new JButton(StringResources.CANCEL);
+		SubjectPanel.ok_btn = new JButton(StringResources.ADD);
 		btns.add(cnl_btn);
 		btns.add(ok_btn);
 		add(btns,BorderLayout.SOUTH);
@@ -60,29 +61,29 @@ public class SubjectPanel extends JPanel{
 		
 		Vector<String> vec = new Vector<String>();
 		
-		vec.add("I (prva)");
-		vec.add("II (druga)");
-		vec.add("III (treća)");
-		vec.add("IV (četvrta)");
+		vec.add(StringResources.LABEL_FIRST_YEAR);
+		vec.add(StringResources.LABEL_SECOND_YEAR);
+		vec.add(StringResources.LABEL_THIRD_YEAR);
+		vec.add(StringResources.LABEL_FOURTH_YEAR);
 		
 		Vector<String> vec2 = new Vector<String>();
 		
-		vec2.add("I (prvi)");
-		vec2.add("II (drugi)");
-		vec2.add("III (treći)");
-		vec2.add("IV (četvrti)");
-		vec2.add("V (peti)");
-		vec2.add("VI (sesti)");
-		vec2.add("VII (sedmi)");
-		vec2.add("VII (osmi)");
+		vec2.add(StringResources.LABEL_FIRST_SEMESTER);
+		vec2.add(StringResources.LABEL_SECOND_SEMESTER);
+		vec2.add(StringResources.LABEL_THIRD_SEMESTER);
+		vec2.add(StringResources.LABEL_FOURTH_SEMESTER);
+		vec2.add(StringResources.LABEL_FIFTH_SEMESTER);
+		vec2.add(StringResources.LABEL_SIXTH_SEMESTER);
+		vec2.add(StringResources.LABEL_SEVENTH_SEMESTER);
+		vec2.add(StringResources.LABEL_EIGHTH_SEMESTER);
 		
 		sem_list = new JComboBox<String>(vec2);
 		god_list = new JComboBox<String>(vec);
 		
-		in_field.add(add_panel(sif_lbl,this.sif_txt,"Sifra predmeta *",0));
-		in_field.add(add_panel(naz_lbl,this.naz_txt,"Naziv predmeta *",0));
-		in_field.add(add_panel(god_lbl,null,"Godina *",1));
-		in_field.add(add_panel(sem_lbl,null,"Semestar *",2));
+		in_field.add(add_panel(sif_lbl,this.sif_txt, StringResources.LABEL_SUBJECT_ID,0));
+		in_field.add(add_panel(naz_lbl,this.naz_txt,StringResources.LABEL_SUBJECT_TITLE,0));
+		in_field.add(add_panel(god_lbl,null,StringResources.LABEL_YEAR,1));
+		in_field.add(add_panel(sem_lbl,null,StringResources.LABEL_SEMESTER,2));
 		
 		
 		
@@ -95,7 +96,7 @@ public class SubjectPanel extends JPanel{
 		}
 		else
 		{
-			ok_btn.setText("Edit");
+			ok_btn.setText(StringResources.EDIT);
 			ok_btn.setEnabled(true);
 			SubjectPanel.br=0;
 			predmet = PredmetController.getInstance().nadjiPredmet(MojCentralni.getInstance().getTablPredmeti().getSelectedRow());
@@ -136,7 +137,7 @@ public class SubjectPanel extends JPanel{
 					{
 						ok_btn.setEnabled(false);
 						sif_txt.setForeground(Color.RED);
-						sif_txt.setText(sif_txt.getText()+" - vec postoji sifra predmeta");
+						sif_txt.setText(sif_txt.getText()+StringResources.SUBJECT_ID_EXISTS);
 						br--;
 					}
 					else
@@ -149,7 +150,7 @@ public class SubjectPanel extends JPanel{
 					{
 						ok_btn.setEnabled(false);
 						sif_txt.setForeground(Color.RED);
-						sif_txt.setText(sif_txt.getText()+" - vec postoji sifra predmeta");
+						sif_txt.setText(sif_txt.getText()+StringResources.SUBJECT_ID_EXISTS);
 						br--;
 					}
 					else

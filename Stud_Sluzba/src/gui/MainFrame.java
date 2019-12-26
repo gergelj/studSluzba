@@ -18,7 +18,7 @@ import javax.swing.event.ChangeListener;
 import javax.swing.table.TableRowSorter;
 
 import controller.DatabaseController;
-import controller.StudentController;
+import klase.StringResources;
 
 public class MainFrame extends JFrame{
 
@@ -42,7 +42,7 @@ public class MainFrame extends JFrame{
 		int screenHeight = screenSize.height;
 		int screenWidth = screenSize.width;
 		setSize(screenWidth*3 / 4, screenHeight*3 / 4);
-		setTitle("Studentska služba");
+		setTitle(StringResources.APPLICATION_NAME);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		
@@ -52,7 +52,7 @@ public class MainFrame extends JFrame{
 		try {
 			awtAppClassNameField = kit.getClass().getDeclaredField("awtAppClassName");
 			awtAppClassNameField.setAccessible(true);
-			awtAppClassNameField.set(kit, "Vidakovic");
+			awtAppClassNameField.set(kit, StringResources.APPLICATION_CLASS_NAME);
 		} catch (NoSuchFieldException e1) {
 			e1.printStackTrace();
 		} catch (SecurityException e1) {
@@ -74,7 +74,7 @@ public class MainFrame extends JFrame{
 		statusBar.setBackground(Color.LIGHT_GRAY);
 		//statusBar.setPreferredSize(new Dimension(100,30));
 		statusBar.setLayout(new BorderLayout());
-		statusBar.add(new JLabel("Studentska služba"), BorderLayout.WEST);
+		statusBar.add(new JLabel(StringResources.APPLICATION_NAME), BorderLayout.WEST);
 		statusBar.add(mDateTime, BorderLayout.EAST);
 		
 		add(statusBar,BorderLayout.SOUTH);
@@ -89,6 +89,7 @@ public class MainFrame extends JFrame{
 				switch(MojCentralni.getInstance().getSelectedIndex()) {
 				case 0: {
 					MojToolbar.getInstance().setButtonsVisible(false);
+					//resetovanje filtrirane tabele
 					@SuppressWarnings("unchecked")
 					TableRowSorter<AbstractTableModelStudenti> studentSorter = (TableRowSorter<AbstractTableModelStudenti>) StudentiJTable.getInstance().getRowSorter();
 					studentSorter.setRowFilter(null);
@@ -118,8 +119,8 @@ public class MainFrame extends JFrame{
 			@Override
 			public void windowClosing(WindowEvent e) {
 				JFrame frame = (JFrame) e.getComponent();
-				int code = JOptionPane.showConfirmDialog(frame, "Are you sure you want to close the program",
-						"Close Window", JOptionPane.YES_NO_OPTION);
+				int code = JOptionPane.showConfirmDialog(frame, StringResources.CLOSE_CONFIRMATION_MESSAGE,
+						StringResources.CLOSE_WINDOW_TITLE, JOptionPane.YES_NO_OPTION);
 				if (code != JOptionPane.YES_OPTION) {
 					frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 				} else {
@@ -134,7 +135,7 @@ public class MainFrame extends JFrame{
 			
 		});
 		
-		setIconImage(new ImageIcon("images/vidakovic.jpg").getImage());
+		setIconImage(new ImageIcon("images/icon.png").getImage());
 		
 		DatabaseController.load();
 
