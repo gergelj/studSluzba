@@ -31,6 +31,7 @@ public class PredmetiJTable extends JTable{
 		this.setModel(new AbstractTableModelPredmet());
 		new ButtonColumnPredmeti(this, BazaPredmeta.getInstance().getColumnCount());
 		this.getTableHeader().setReorderingAllowed(false);
+		this.setRowHeight(25);
 	}
 	
 	@Override

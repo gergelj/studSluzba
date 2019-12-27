@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.format.DateTimeFormatter;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -95,16 +94,16 @@ public class ProfessorPanel extends JPanel {
 			ProfessorPanel.br=0;
 			profesor = ProfesorController.getInstance().nadjiProfesora(MojCentralni.getInstance().getTabelaProfesora().getSelectedRow());
 			
-			ime_txt.setText(profesor.getmIme());
-			prz_txt.setText(profesor.getmPrezime());
-			datrodj_txt.setText(profesor.getmDatumRodjenja(0));
-			adr_txt.setText(profesor.getmAdresaStanovanja());
-			tel_txt.setText(profesor.getmTelefon());
-			email_txt.setText(profesor.getmEmail());
-			adrKanc_txt.setText(profesor.getmAdresaKancelarije());
-			brlk_txt.setText(profesor.getmBrojLK());
-			titula_txt.setText(profesor.getmTitula());
-			zvanje_txt.setText(profesor.getmZvanje());
+			ime_txt.setText(profesor.getIme());
+			prz_txt.setText(profesor.getPrezime());
+			datrodj_txt.setText(profesor.getDatumRodjenja(0));
+			adr_txt.setText(profesor.getAdresa());
+			tel_txt.setText(profesor.getTelefon());
+			email_txt.setText(profesor.getEmail());
+			adrKanc_txt.setText(profesor.getAdresaKancelarije());
+			brlk_txt.setText(profesor.getBrojLK());
+			titula_txt.setText(profesor.getTitula());
+			zvanje_txt.setText(profesor.getZvanje());
 		}
 		
 		listeners();

@@ -2,7 +2,6 @@ package klase;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class BazaProfesora implements Serializable{
@@ -92,25 +91,25 @@ public class BazaProfesora implements Serializable{
 		switch(col)
 		{
 		case 0:
-			return profa.getmIme();
+			return profa.getIme();
 		case 1:
-			return profa.getmPrezime();
+			return profa.getPrezime();
 		case 2:
-			return profa.getmDatumRodjenja();
+			return profa.getDatumRodjenja();
 		case 3:
-			return profa.getmAdresaStanovanja();
+			return profa.getAdresa();
 		case 4:
-			return profa.getmTelefon();
+			return profa.getTelefon();
 		case 5:
-			return profa.getmEmail();
+			return profa.getEmail();
 		case 6: 
-			return profa.getmAdresaKancelarije();
+			return profa.getAdresaKancelarije();
 		case 7:
-			return profa.getmBrojLK();
+			return profa.getBrojLK();
 		case 8:
-			return profa.getmTitula();
+			return profa.getTitula();
 		case 9:
-			return profa.getmZvanje();
+			return profa.getZvanje();
 		default:
 			return null;	
 		}
@@ -137,16 +136,16 @@ public class BazaProfesora implements Serializable{
 		{
 			if(i.getId()==id)
 			{
-				i.setmIme(mIme);
-				i.setmPrezime(mPrezime);
-				i.setmDatumRodjenja(mDatumRodjenja);
-				i.setmAdresaStanovanja(mAdresaStanovanja);
-				i.setmTelefon(mTelefon);
-				i.setmEmail(mEmail);
-				i.setmAdresaKancelarije(mAdresaKancelarije);
-				i.setmBrojLK(mBrojLK);
-				i.setmTitula(mTitula);
-				i.setmZvanje(mZvanje);
+				i.setIme(mIme);
+				i.setPrezime(mPrezime);
+				i.setDatumRodjenja(mDatumRodjenja);
+				i.setAdresa(mAdresaStanovanja);
+				i.setTelefon(mTelefon);
+				i.setEmail(mEmail);
+				i.setAdresaKancelarije(mAdresaKancelarije);
+				i.setBrojLK(mBrojLK);
+				i.setTitula(mTitula);
+				i.setZvanje(mZvanje);
 				
 				break;
 			}
@@ -156,14 +155,14 @@ public class BazaProfesora implements Serializable{
 	public Profesor lookup_profesor(String brlk)
 	{
 		for(Profesor i: profesori)
-			if(i.getmBrojLK().equals(brlk))
+			if(i.getBrojLK().equals(brlk))
 				return i;
 		return null;
 	}
 	
 	public void deleteAllInstancesOfSubject(Predmet p) {
 		for(Profesor pf : profesori) {
-			pf.getmListaPredmeta().remove(p.getId());
+			pf.getListaPredmeta().remove(p.getId());
 		}
 	}
 	

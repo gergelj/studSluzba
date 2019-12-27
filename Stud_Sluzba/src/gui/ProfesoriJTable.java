@@ -29,6 +29,7 @@ public class ProfesoriJTable extends JTable {
 		this.setModel(new AbstractTableModelProfesori());
 		new ButtonColumnProfesori(this, BazaProfesora.getInstance().getColumnCount());
 		this.getColumnModel().getColumn(2).setCellRenderer(new DateCellRenderer());
+		this.setRowHeight(25);
 	}
 
 	@Override

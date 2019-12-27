@@ -18,6 +18,7 @@ import javax.swing.event.ChangeListener;
 import javax.swing.table.TableRowSorter;
 
 import controller.DatabaseController;
+import controller.LanguageController;
 import klase.StringResources;
 
 public class MainFrame extends JFrame{
@@ -78,6 +79,7 @@ public class MainFrame extends JFrame{
 		statusBar.add(mDateTime, BorderLayout.EAST);
 		
 		add(statusBar,BorderLayout.SOUTH);
+
 		
 		//TODO napraviti centralni deo glavnog prozora koji ima 3 taba
 		//tabovi = MojCentralni.getInstance();
@@ -124,6 +126,7 @@ public class MainFrame extends JFrame{
 				if (code != JOptionPane.YES_OPTION) {
 					frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 				} else {
+					LanguageController.getInstance().saveLanguage();
 					DatabaseController.save();
 					frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 				}

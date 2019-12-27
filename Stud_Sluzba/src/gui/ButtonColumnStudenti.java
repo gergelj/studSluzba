@@ -15,6 +15,8 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
+import klase.StringResources;
+
 public class ButtonColumnStudenti extends AbstractCellEditor
 		implements TableCellRenderer, TableCellEditor, MouseListener {
 
@@ -40,8 +42,8 @@ public class ButtonColumnStudenti extends AbstractCellEditor
 		this.table.addMouseListener(this);
 
 		// dugme koje ce biti iscrtavanp
-		this.renderButton = new JButton("...");
-		this.editorButton = new JButton("...");
+		this.renderButton = new JButton(StringResources.SUBJECTS);
+		this.editorButton = new JButton(StringResources.SUBJECTS);
 
 		this.editorButton.addActionListener(new ActionListener() {
 			// mozemo odavde pozvati nas kontroler da se nesto smisleno odradi

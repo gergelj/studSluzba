@@ -78,6 +78,19 @@ public class MojMenuBar extends JMenuBar {
 		delete_mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));		//CTRL+D
 		delete_mi.addActionListener(new DeleteListener());
 		
+		JMenuItem language_mi = new JMenuItem(StringResources.MENU_LANGUAGE, new ImageIcon("images/language-22.png"));
+		language_mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
+		language_mi.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				LanguageDialog d = new LanguageDialog();
+				d.setVisible(true);
+				
+			}
+			
+		});
+		
 		//TODO: MenuBar "Help" Ova sekcija treba da sadrži detaljan opis o načinu korišćenja aplikacije.
 		//Potrebno je objasniti kako se svaka od dolenavedenih funkcionalnosti može sprovesti u
 		//delo i to u vidu niza korisničkih akcija. Takođe, potrebno je navesti prečice
@@ -116,6 +129,7 @@ public class MojMenuBar extends JMenuBar {
 		edit.add(delete_mi);
 		
 		help.add(help_mi);
+		help.add(language_mi);
 		help.add(about_mi);
 		
 		add(file);

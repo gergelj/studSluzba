@@ -29,6 +29,7 @@ public class StudentiJTable extends JTable {
 		new ButtonColumnStudenti(this, BazaStudenta.getInstance().getColumnCount());
 		this.getColumnModel().getColumn(3).setCellRenderer(new DateCellRenderer());
 		this.getColumnModel().getColumn(7).setCellRenderer(new DateCellRenderer());
+		this.setRowHeight(25);
 	}
 
 	@Override

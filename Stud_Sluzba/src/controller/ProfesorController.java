@@ -79,7 +79,7 @@ public class ProfesorController {
 	{
 		List<Predmet> pred = new ArrayList<Predmet>();
 		
-		for(Predmet predmet: p.getmListaPredmeta().values() )
+		for(Predmet predmet: p.getListaPredmeta().values() )
 		{
 			pred.add(predmet);
 		}

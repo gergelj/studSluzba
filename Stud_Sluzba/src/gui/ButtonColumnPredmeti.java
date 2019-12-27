@@ -14,6 +14,8 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
+import klase.StringResources;
+
 public class ButtonColumnPredmeti extends AbstractCellEditor implements TableCellRenderer, TableCellEditor, MouseListener{
 	
 	/**
@@ -32,8 +34,8 @@ public class ButtonColumnPredmeti extends AbstractCellEditor implements TableCel
 		this.table.getColumnModel().getColumn(column).setCellEditor(this);
 		this.table.addMouseListener(this);
 		
-		this.renderButton = new JButton("...");
-		this.editorButton = new JButton("...");
+		this.renderButton = new JButton(StringResources.STUDENTS);
+		this.editorButton = new JButton(StringResources.STUDENTS);
 		
 		this.editorButton.addActionListener(new ActionListener() {
 			

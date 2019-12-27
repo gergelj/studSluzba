@@ -7,6 +7,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+import klase.StringResources;
+
 public class MojCentralni extends JTabbedPane{
 	/**
 	 * 
@@ -40,13 +42,13 @@ public class MojCentralni extends JTabbedPane{
         JScrollPane scrollPaneProfesori = new JScrollPane(tabelaProfesora);
         ProfesoriJTable.getInstance().setAutoCreateRowSorter(true);
         
-        addTab("Students" ,null, scrollPaneStudenti);
+        addTab(StringResources.TAB_TITLE_STUDENTS ,null, scrollPaneStudenti);
         setMnemonicAt(0, KeyEvent.VK_1);
          
-        addTab("Professors", null, scrollPaneProfesori);
+        addTab(StringResources.TAB_TITLE_PROFESSORS, null, scrollPaneProfesori);
         setMnemonicAt(1, KeyEvent.VK_2);
          
-        addTab("Subjects", null, scrollPanePredmeti);
+        addTab(StringResources.TAB_TITLE_SUBJECTS, null, scrollPanePredmeti);
         setMnemonicAt(2, KeyEvent.VK_3);
         
         //sluzi da ukljuci promenu taba pomocu strelica kada je prozor aplikacije previse uzak
