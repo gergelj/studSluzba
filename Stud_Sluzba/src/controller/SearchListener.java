@@ -16,6 +16,7 @@ import gui.AbstractTableModelProfesori;
 import gui.AbstractTableModelStudenti;
 import gui.MojCentralni;
 import gui.MojToolbar;
+import gui.PredmetiJTable;
 import gui.ProfesoriJTable;
 import gui.StudentiJTable;
 import klase.Fields;
@@ -37,6 +38,7 @@ public class SearchListener implements ActionListener {
 		
 		studentSorter = (TableRowSorter<AbstractTableModelStudenti>) StudentiJTable.getInstance().getRowSorter();
 		profesorSorter = (TableRowSorter<AbstractTableModelProfesori>) ProfesoriJTable.getInstance().getRowSorter();
+		predmetSorter = (TableRowSorter<AbstractTableModelPredmet>) PredmetiJTable.getInstance().getRowSorter();
 		rowFilters = new ArrayList<RowFilter<Object,Object>>();
 		rowFilters2 = new ArrayList<RowFilter<Object,Object>>();
 		rowFilters3 = new ArrayList<RowFilter<Object,Object>>();
@@ -132,29 +134,39 @@ public class SearchListener implements ActionListener {
 		}
 	}
 	
-	private boolean setPredmetQueryFilter(String name, String val) {
+private boolean setPredmetQueryFilter(String name, String val) {
+		
 		String regex = "(?i)^" + Pattern.quote(val) + "$";
 		
 		if(name.equalsIgnoreCase(Fields.SIFRA))
-		{
-			if(Proveri.isSifraPredmeta(val))
-			{
+			if(Proveri.isSifraPredmeta(val)) {
 				this.rowFilters3.add(RowFilter.regexFilter(regex, 0));
 				return true;
 			}
 			else
 				return false;
-		}
-		else if(name.equalsIgnoreCase(Fields.NAZIV))
-		{
-			if(Proveri.isImePredmeta(val))
-			{
+		else if(name.equalsIgnoreCase(Fields.NAZIV)) 
+			if(Proveri.isImePredmeta(val)) {
 				this.rowFilters3.add(RowFilter.regexFilter(regex, 1));
 				return true;
 			}
 			else
 				return false;
-		}
+		else if(name.equalsIgnoreCase(Fields.GODINA))
+			if(Proveri.isGodina(val)) {
+				this.rowFilters3.add(RowFilter.regexFilter(regex, 2));
+				return true;
+			}
+			else
+				return false;
+		else if(name.equalsIgnoreCase(Fields.SEMESTAR))
+			if(Proveri.isSemestar(val)) {
+				this.rowFilters3.add(RowFilter.regexFilter(regex, 3));
+				return true;
+			}
+			else
+				return false;
+		
 		
 		return false;
 	}

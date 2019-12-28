@@ -41,6 +41,11 @@ public class Proveri {
 		return godina!=null && (godina.equals("1") || godina.equals("2") || godina.equals("3") || godina.equals("4"));
 	}
 	
+	public static boolean isSemestar(String semestar)
+	{
+		return semestar!=null && (semestar.equals("1")||semestar.equals("2")||semestar.equals("3")||semestar.equals("4")||semestar.equals("5")||semestar.equals("6")||semestar.equals("7")||semestar.equals("8"));
+	}
+	
 	public static boolean isBrojLK(String lk) {
 		return lk!=null && lk.matches("[0-9]+");
 	}
@@ -62,6 +67,7 @@ public class Proveri {
 	{
 		return nesto!=null && nesto.matches("[a-zA-z]+");
 	}
+	
 	
 	public static boolean isProsek(String pros) {
 
