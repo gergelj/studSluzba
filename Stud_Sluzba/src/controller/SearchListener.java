@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
 
+import gui.AbstractTableModelPredmet;
 import gui.AbstractTableModelProfesori;
 import gui.AbstractTableModelStudenti;
 import gui.MojCentralni;
@@ -25,8 +26,10 @@ public class SearchListener implements ActionListener {
 	
 	private TableRowSorter<AbstractTableModelStudenti> studentSorter;
 	private TableRowSorter<AbstractTableModelProfesori> profesorSorter;
+	private TableRowSorter<AbstractTableModelPredmet> predmetSorter;
 	private List<RowFilter<Object,Object>> rowFilters;
 	private List<RowFilter<Object,Object>> rowFilters2;
+	private List<RowFilter<Object,Object>> rowFilters3;
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -36,6 +39,7 @@ public class SearchListener implements ActionListener {
 		profesorSorter = (TableRowSorter<AbstractTableModelProfesori>) ProfesoriJTable.getInstance().getRowSorter();
 		rowFilters = new ArrayList<RowFilter<Object,Object>>();
 		rowFilters2 = new ArrayList<RowFilter<Object,Object>>();
+		rowFilters3 = new ArrayList<RowFilter<Object,Object>>();
 		
 		String query = MojToolbar.getInstance().getQuery();
 		
@@ -94,21 +98,67 @@ public class SearchListener implements ActionListener {
 					MojToolbar.getInstance().searchError();
 					return;
 				}
-			}
-			
-			//search...
+			}			
 			profesorSorter.setRowFilter(RowFilter.andFilter(rowFilters2));
 		}
 			break;
 		case 2: //predmeti
 		{
-			//TODO: Search subjects
+			if(query.equals("")) {
+				predmetSorter.setRowFilter(null);
+				return;
+			}
+			
+			String subQuery[] = query.split(";");
+
+			for(int i = 0; i<subQuery.length; i++) {
+				String params[] = subQuery[i].split(":");
+				if(params.length != 2) {
+					MojToolbar.getInstance().searchError();
+					return;
+				}
+				
+				String paramName = params[0].trim();
+				String paramVal = params[1].trim();
+				
+				if(!setPredmetQueryFilter(paramName, paramVal)) {
+					MojToolbar.getInstance().searchError();
+					return;
+				}
+			}	
+			predmetSorter.setRowFilter(RowFilter.andFilter(rowFilters3));
 		}
 			break;
 		}
-
 	}
 	
+	private boolean setPredmetQueryFilter(String name, String val) {
+		String regex = "(?i)^" + Pattern.quote(val) + "$";
+		
+		if(name.equalsIgnoreCase(Fields.SIFRA))
+		{
+			if(Proveri.isSifraPredmeta(val))
+			{
+				this.rowFilters3.add(RowFilter.regexFilter(regex, 0));
+				return true;
+			}
+			else
+				return false;
+		}
+		else if(name.equalsIgnoreCase(Fields.NAZIV))
+		{
+			if(Proveri.isImePredmeta(val))
+			{
+				this.rowFilters3.add(RowFilter.regexFilter(regex, 1));
+				return true;
+			}
+			else
+				return false;
+		}
+		
+		return false;
+	}
+
 	private boolean setStudentQueryFilter(String name, String val) {
 		
 		String regex = "(?i)^" + Pattern.quote(val) + "$";
