@@ -89,7 +89,13 @@ public class AddProfesorToPredmetDialog extends JDialog{
 				Profesor p = profesori.getSelectedValue();
 				Predmet pr = selectedPredmet;
 				
-				PredmetController.getInstance().linkProfesorPredmet(p,pr);
+				if(pr.getmProfesor() == null)
+					PredmetController.getInstance().linkProfesorPredmet(p,pr);
+				else
+				{
+					PredmetController.getInstance().unlinkProfesorPredmet(pr.getmProfesor(), pr);
+					PredmetController.getInstance().linkProfesorPredmet(p,pr);
+				}
 				//System.out.println("Dodat profesor na predmet");
 			    //AbstractListModelProfesori mod = (AbstractListModelProfesori) profesori.getModel();
 			    //mod.azuriraj(profesori.getSelectedIndex());
