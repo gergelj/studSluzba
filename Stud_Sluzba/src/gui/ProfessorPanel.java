@@ -175,7 +175,6 @@ public class ProfessorPanel extends JPanel {
 		Dimension txt_dimension = new Dimension(200,20);
 		labela = new JLabel(ime_labele);
 		labela.setPreferredSize(lbl_dimension);
-		//txt = new JTextField();
 		txt.setPreferredSize(txt_dimension);
 		pomocni.add(labela);
 		pomocni.add(txt);

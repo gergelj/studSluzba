@@ -81,6 +81,7 @@ public class SpisakPredmetaDialog extends JDialog {
 				{
 					Profesor prof = ProfesorController.getInstance().nadjiProfesora(selectedProfRow);
 					PredmetController.getInstance().unlinkProfesorPredmet(prof, p);
+					p.setmProfesor(null);
 					MojCentralni.getInstance().azurirajPrikazPredmet();
 					setVisible(false);
 				}
