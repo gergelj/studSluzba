@@ -1,4 +1,4 @@
-package controller;
+package listeneri;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -305,7 +305,7 @@ private boolean setProfesorQueryFilter(String name, String val) {
 				//nijedan ugradjeni filter ne koristi LocalDate zato treba napraviti svoj filter
 				RowFilter<Object, Object> filter = new RowFilter<Object, Object>() {
 				      public boolean include(Entry<?, ?> entry) {
-				        LocalDate localD = (LocalDate) entry.getValue(3); //dobavlja datum iz 3. kolone
+				        LocalDate localD = (LocalDate) entry.getValue(2); //dobavlja datum iz 2. kolone
 				        return local.compareTo(localD) == 0;	//filtrira datum ako su jednaki
 				      }
 				    };

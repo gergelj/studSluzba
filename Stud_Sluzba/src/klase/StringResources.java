@@ -1,6 +1,6 @@
 package klase;
 
-import java.util.HashMap;
+import controller.LanguageController;
 
 public class StringResources {
 
@@ -8,61 +8,66 @@ public class StringResources {
 	public static final String APPLICATION_CLASS_NAME = "StudSluzba";
 	public static final String VERSION = "0.1 alpha";
 	
+	public static final String SERBIAN = "SRPSKI";
+	public static final String HUNGARIAN = "MAGYAR";
+	public static final String ENGLISH = "ENGLISH";
+	public static final String GERMAN = "DEUTSCH";
+	
 	public static String DATEFORMAT = "dd.MM.yyyy.";
 	public static String DATETIMEFORMAT = "HH:mm:ss   " + StringResources.DATEFORMAT;
 	
-	public static String CONFIRM_DELETE_STUDENT = "Da li biste stvarno zeleli da obrisete studenta?";
-	public static String DELETE_STUDENT_TITLE = "Delete Student";
-	public static String CONFIRM_DELETE_PROFESSOR = "Da li biste stvarno zeleli da obrisete profesora?";
-	public static String DELETE_PROFESSOR_TITLE = "Delete Professor";
-	public static String CONFIRM_DELETE_SUBJECT = "Da li biste stvarno zeleli da predmet?";
-	public static String DELETE_SUBJECT_TITLE = "Delete Subject";
+	public static String CONFIRM_DELETE_STUDENT = "Da li biste stvarno želeli da obrišete studenta?";
+	public static String DELETE_STUDENT_TITLE = "Brisanje studenta";
+	public static String CONFIRM_DELETE_PROFESSOR = "Da li biste stvarno želeli da obrišete profesora?";
+	public static String DELETE_PROFESSOR_TITLE = "Brisanje profesora";
+	public static String CONFIRM_DELETE_SUBJECT = "Da li biste stvarno želeli da obrišete predmet?";
+	public static String DELETE_SUBJECT_TITLE = "Brisanje predmeta";
 	
 	public static String REQUIRED_FIELD = "Obavezno polje";
 	
-	public static String STATUS_B = "budzet";
+	public static String STATUS_B = "budžet";
 	public static String STATUS_S = "samofinansiranje";
 	
-	public static String ABOUT = "About";
+	public static String ABOUT = "O aplikaciji";
 	
 	public static String STUDENTS = "Studenti";
 	public static String PROFESSORS = "Profesori";
 	public static String SUBJECTS = "Predmeti";
 	
-	public static String ADD_STUDENT = "Add Student";
-	public static String EDIT_STUDENT = "Edit Student";
-	public static String ADD_SUBJECT = "Add Subject";
-	public static String EDIT_SUBJECT = "Edit Subject";
-	public static String ADD_PROFESSOR = "Add Professor";
-	public static String EDIT_PROFESSOR = "Edit Professor";
+	public static String ADD_STUDENT = "Dodaj studenta";
+	public static String EDIT_STUDENT = "Izmeni studenta";
+	public static String ADD_SUBJECT = "Dodaj predmet";
+	public static String EDIT_SUBJECT = "Izmeni predmet";
+	public static String ADD_PROFESSOR = "Dodaj profesora";
+	public static String EDIT_PROFESSOR = "Izmeni profesora";
 	
-	public static String ASSIGN_PROFESSOR_TO_SUBJECT = "Assign Professor to Subject";
-	public static String ASSSIGN_PROFESSOR_TO = "Assign Professor to "; // + name of Subject
-	public static String ADD_STUDENT_TO_SUBJECT = "Add Student to Subject";
-	public static String ADD_STUDENT_TO = "Add Student to "; // + name of Subject
+	public static String ASSIGN_PROFESSOR_TO_SUBJECT = "Dodaj profesora na predmet";
+	public static String ASSSIGN_PROFESSOR_TO = "Dodaj profesora na predmet: "; // + name of Subject
+	public static String ADD_STUDENT_TO_SUBJECT = "Dodaj studenta na predmet";
+	public static String ADD_STUDENT_TO = "Dodaj studenta na predmet: "; // + name of Subject
 	
-	public static String CANCEL = "Cancel";
+	public static String CANCEL = "Odustani";
 	public static String OK = "OK";
-	public static String ADD = "Add";
-	public static String EDIT = "Edit";
-	public static String DELETE = "Delete";
-	public static String SAVE_TO_DB = "Save to Database";
-	public static String RESET_SORT = "Reset sorting";
-	public static String REMOVE = "Remove";
+	public static String ADD = "Dodaj";
+	public static String EDIT = "Izmeni";
+	public static String DELETE = "Obriši";
+	public static String SAVE_TO_DB = "Sačuvaj u bazu podataka";
+	public static String RESET_SORT = "Isključi sortiranje";
+	public static String REMOVE = "Ukloni";
 	
-	public static String CLOSE_CONFIRMATION_MESSAGE = "Are you sure you want to close the program?";
-	public static String CLOSE_WINDOW_TITLE = "Close Window";
+	public static String CLOSE_CONFIRMATION_MESSAGE = "Da li ste sigurni da zatvorite aplikaciju?";
+	public static String CLOSE_WINDOW_TITLE = "Zatvaranje";
 	
-	public static String MENU_FILE = "File";
-	public static String MENU_EDIT = "Edit";
-	public static String MENU_HELP = "Help";
-	public static String MENU_NEW = "New";
-	public static String MENU_SAVE_DB = "Save to Database";
-	public static String MENU_CLOSE = "Close";
-	public static String MENU_DELETE = "Delete";
+	public static String MENU_FILE = "Fajl";
+	public static String MENU_EDIT = "Izmena";
+	public static String MENU_HELP = "Pomoć";
+	public static String MENU_NEW = "Novi";
+	public static String MENU_SAVE_DB = "Sačuvaj u bazu podataka";
+	public static String MENU_CLOSE = "Zatvori";
+	public static String MENU_DELETE = "Obriši";
 	public static String MENU_LANGUAGE = "Jezik";
-	public static String SEARCH = "Search";
-	public static String SEARCH_EXAMPLE = "ime: Pera | prezime: Peric | indeks: ra-100-2019...";
+	public static String SEARCH = "Pretraga";
+	public static String SEARCH_EXAMPLE = "ime: Pera ; prezime: Peric ; indeks: ra-100-2019...";
 	
 	//PANEL LABELS
 	public static String LABEL_NAME = "Ime *";
@@ -72,7 +77,7 @@ public class StringResources {
 	public static String LABEL_TELEPHONE = "Kontakt telefon *";
 	public static String LABEL_EMAIL = "Email *";
 	public static String LABEL_OFFICE_ADDRESS = "Adresa kancelarije *";
-	public static String LABEL_ID_NUM = "Broj licne karte *";
+	public static String LABEL_ID_NUM = "Broj lične karte *";
 	public static String LABEL_DEGREE = "Zvanje *";
 	public static String LABEL_TITLE = "Titula *";
 	public static String LABEL_INDEX_NUM = "Broj indeksa *";
@@ -91,7 +96,7 @@ public class StringResources {
 	public static String LABEL_SIXTH_SEMESTER = "VI (sesti)";
 	public static String LABEL_SEVENTH_SEMESTER = "VII (sedmi)";
 	public static String LABEL_EIGHTH_SEMESTER = "VII (osmi)";
-	public static String LABEL_SUBJECT_ID = "Sifra predmeta *";
+	public static String LABEL_SUBJECT_ID = "Šifra predmeta *";
 	public static String LABEL_SUBJECT_TITLE = "Naziv predmeta *";
 	public static String LABEL_YEAR = "Godina *";
 	public static String LABEL_SEMESTER = "Semestar *";
@@ -99,25 +104,29 @@ public class StringResources {
 	public static String EXAMPLE_NAME = "npr. Imenko";
 	public static String EXAMPLE_SURNAME = "npr. Prezimić";
 	public static String EXAMPLE_DATE = "npr. 22.05.2019.";
-	public static String EXAMPLE_ADDRESS = "npr. 21000 Novi Sad";
+	public static String EXAMPLE_ADDRESS = "npr. Novi Sad";
 	public static String EXAMPLE_TELEPHONE = "npr. 061234567";
 	public static String EXAMPLE_EMAIL = "npr. imenko@uns.ac.rs";
 	public static String EXAMPLE_INDEX_NUM = "npr. ra-16-2016";
 	public static String EXAMPLE_GRADE = "6.00 - 10.00";
 	
-	public static String PROFESSOR_ID_NUM_EXISTS = " -vec postoji broj licne karte";
-	public static String INDEX_NUM_EXISTS = " - postoji vec indeks";
-	public static String SUBJECT_ID_EXISTS = " - vec postoji sifra predmeta";
+	public static String PROFESSOR_ID_NUM_EXISTS = " - već postoji broj lične karte";
+	public static String INDEX_NUM_EXISTS = " - postoji već indeks";
+	public static String INDEX_NUM_DOESNT_EXIST = " - ne postoji indeks";
+	public static String SUBJECT_ID_EXISTS = " - već postoji šifra predmeta";
+	public static String NOT_SAME_YEAR = " - nije ista godina kao predmet";
+	public static String WRONG_FORMAT = " - loš format (ab-xx-yyyy)";
+	public static String INDEX_INPUT = "Upišite indeks:";
 	
-	public static String PROFESSOR_SUBJECT_LIST = "Subjects for selected Professor";
-	public static String STUDENT_SUBJECT_LIST = "Subjects for selected Student";
-	public static String SUBJECT_STUDENT_LIST = "Students for selected Subject";
+	public static String PROFESSOR_SUBJECT_LIST = "Predmeti profesora";
+	public static String STUDENT_SUBJECT_LIST = "Predmeti studenta";
+	public static String SUBJECT_STUDENT_LIST = "Studenti na predmetu";
 	
-	public static String TAB_TITLE_STUDENTS = "Students";
-	public static String TAB_TITLE_PROFESSORS = "Professors";
-	public static String TAB_TITLE_SUBJECTS = "Subjects";
+	public static String TAB_TITLE_STUDENTS = "Studenti";
+	public static String TAB_TITLE_PROFESSORS = "Profesori";
+	public static String TAB_TITLE_SUBJECTS = "Predmeti";
 	
-	public static String COLUMN_SUBJECT_ID = "SIFRA PREDMETA";
+	public static String COLUMN_SUBJECT_ID = "ŠIFRA PREDMETA";
 	public static String COLUMN_SUBJECT_TITLE = "NAZIV PREDMETA";
 	public static String COLUMN_YEAR = "GODINA";
 	public static String COLUMN_SEMESTER = "SEMESTAR"; 
@@ -136,273 +145,156 @@ public class StringResources {
 	public static String COLUMN_REGISTRATION_DATE = "DAT. UPISA";
 	public static String COLUMN_STATUS = "STATUS";
 	public static String COLUMN_AVERAGE_GRADE = "PROSEK";
+	public static String COLUMN_STUDENTS = "STUDENTI";
+	public static String COLUMN_SUBJECTS = "PREDMETI";
 	
 	public static String NO_PROFESSOR = "Profesor nije dodat";
-	public static String NTH_YEAR = ". godina"; //prethodi ga cifra za godinu: 3. godina, 2. godina
-	public static String RESTART_NEEDED = "Restart needed for the changes to take effect";
-	
-	public static final String SERBIAN = "SRPSKI";
-	public static final String HUNGARIAN = "MAGYAR";
-	public static final String ENGLISH = "ENGLISH";
-	public static final String GERMAN = "DEUTSCH";
-	
-	/*****    NEMOJ OVO DOLE GLEDATI *********/
-	/***** TESTING AREA *****/
-	
-	public static String allKeys[] = {
-						"APPLICATION_NAME,",
-						"APPLICATION_CLASS_NAME",
-						"VERSION",
-						"DATEFORMAT",
-						"DATETIMEFORMAT",
-						"CONFIRM_DELETE_STUDENT",
-						"DELETE_STUDENT_TITLE",
-						"CONFIRM_DELETE_PROFESSOR",
-						"DELETE_PROFESSOR_TITLE",
-						"CONFIRM_DELETE_SUBJECT",
-						"DELETE_SUBJECT_TITLE",
-						"REQUIRED_FIELD",
-						"STATUS_B",
-						"STATUS_S",
-						"ABOUT",
-						"STUDENTS",
-						"PROFESSORS",
-						"SUBJECTS",
-						"ADD_STUDENT",
-						"EDIT_STUDENT",
-						"ADD_SUBJECT",
-						"EDIT_SUBJECT",
-						"ADD_PROFESSOR",
-						"EDIT_PROFESSOR",
-						"ASSIGN_PROFESSOR_TO_SUBJECT",
-						"ASSSIGN_PROFESSOR_TO",
-						"ADD_STUDENT_TO_SUBJECT",
-						"ADD_STUDENT_TO",
-						"CANCEL",
-						"OK",
-						"ADD",
-						"EDIT",
-						"DELETE",
-						"SAVE_TO_DB",
-						"RESET_SORT",
-						"REMOVE",
-						"CLOSE_CONFIRMATION_MESSAGE",
-						"CLOSE_WINDOW_TITLE",
-						"MENU_FILE",
-						"MENU_EDIT",
-						"MENU_HELP",
-						"MENU_NEW",
-						"MENU_SAVE_DB",
-						"MENU_CLOSE",
-						"MENU_DELETE",
-						"MENU_LANGUAGE",
-						"SEARCH",
-						"SEARCH_EXAMPLE",
-						"LABEL_NAME",
-						"LABEL_SURNAME",
-						"LABEL_DATE_OF_BIRTH",
-						"LABEL_ADDRESS",
-						"LABEL_TELEPHONE",
-						"LABEL_EMAIL",
-						"LABEL_OFFICE_ADDRESS",
-						"LABEL_ID_NUM",
-						"LABEL_DEGREE",
-						"LABEL_TITLE",
-						"LABEL_INDEX_NUM",
-						"LABEL_REGISTRATION_DATE",
-						"LABEL_AVERAGE_GRADE",
-						"LABEL_CURRENT_YEAR",
-						"LABEL_FIRST_YEAR",
-						"LABEL_SECOND_YEAR",
-						"LABEL_THIRD_YEAR",
-						"LABEL_FOURTH_YEAR",
-						"LABEL_FIRST_SEMESTER",
-						"LABEL_SECOND_SEMESTER",
-						"LABEL_THIRD_SEMESTER",
-						"LABEL_FOURTH_SEMESTER",
-						"LABEL_FIFTH_SEMESTER",
-						"LABEL_SIXTH_SEMESTER",
-						"LABEL_SEVENTH_SEMESTER",
-						"LABEL_EIGHTH_SEMESTER",
-						"LABEL_SUBJECT_ID",
-						"LABEL_SUBJECT_TITLE",
-						"LABEL_YEAR",
-						"LABEL_SEMESTER",
-						"EXAMPLE_NAME",
-						"EXAMPLE_SURNAME",
-						"EXAMPLE_DATE",
-						"EXAMPLE_ADDRESS",
-						"EXAMPLE_TELEPHONE",
-						"EXAMPLE_EMAIL",
-						"EXAMPLE_INDEX_NUM",
-						"EXAMPLE_GRADE",
-						"PROFESSOR_ID_NUM_EXISTS",
-						"INDEX_NUM_EXISTS",
-						"SUBJECT_ID_EXISTS",
-						"PROFESSOR_SUBJECT_LIST",
-						"STUDENT_SUBJECT_LIST",
-						"SUBJECT_STUDENT_LIST",
-						"TAB_TITLE_STUDENTS",
-						"TAB_TITLE_PROFESSORS",
-						"TAB_TITLE_SUBJECTS",
-						"COLUMN_SUBJECT_ID",
-						"COLUMN_SUBJECT_TITLE",
-						"COLUMN_YEAR",
-						"COLUMN_SEMESTER",
-						"COLUMN_PROFESSOR",
-						"COLUMN_NAME",
-						"COLUMN_SURNAME",
-						"COLUMN_DATE_OF_BIRTH",
-						"COLUMN_ADDRESS",
-						"COLUMN_TELEPHONE",
-						"COLUMN_EMAIL",
-						"COLUMN_OFFICE_ADDRESS",
-						"COLUMN_PROFESSOR_ID_NUM",
-						"COLUMN_TITLE",
-						"COLUMN_DEGREE",
-						"COLUMN_INDEX_NUM",
-						"COLUMN_REGISTRATION_DATE",
-						"COLUMN_STATUS",
-						"COLUMN_AVERAGE_GRADE",
-						"NO_PROFESSOR",
-						"NTH_YEAR",
-						"RESTART_NEEDED",
-						"SERBIAN",
-						"HUNGARIAN",
-						"ENGLISH",
-						"GERMAN"
-					};
-	
-	public static HashMap<String,String> srpski = new HashMap<String,String>();
-	public static HashMap<String,String> res = new HashMap<String,String>();
-	
-	static {
-		/* Inicijalizacija srpskog recnika (fallback dictionary)
-		srpski.put("APPLICATION_NAME,", );
-		srpski.put("APPLICATION_CLASS_NAME", );
-		srpski.put("VERSION", );
-		srpski.put("DATEFORMAT", );
-		srpski.put("DATETIMEFORMAT", );
-		srpski.put("CONFIRM_DELETE_STUDENT", );
-		srpski.put("DELETE_STUDENT_TITLE", );
-		srpski.put("CONFIRM_DELETE_PROFESSOR", );
-		srpski.put("DELETE_PROFESSOR_TITLE", );
-		srpski.put("CONFIRM_DELETE_SUBJECT", );
-		srpski.put("DELETE_SUBJECT_TITLE", );
-		srpski.put("REQUIRED_FIELD", );
-		srpski.put("STATUS_B", );
-		srpski.put("STATUS_S", );
-		srpski.put("ABOUT", );
-		srpski.put("STUDENTS", );
-		srpski.put("PROFESSORS", );
-		srpski.put("SUBJECTS", );
-		srpski.put("ADD_STUDENT", );
-		srpski.put("EDIT_STUDENT", );
-		srpski.put("ADD_SUBJECT", );
-		srpski.put("EDIT_SUBJECT", );
-		srpski.put("ADD_PROFESSOR", );
-		srpski.put("EDIT_PROFESSOR", );
-		srpski.put("ASSIGN_PROFESSOR_TO_SUBJECT", );
-		srpski.put("ASSSIGN_PROFESSOR_TO", );
-		srpski.put("ADD_STUDENT_TO_SUBJECT", );
-		srpski.put("ADD_STUDENT_TO", );
-		srpski.put("CANCEL", );
-		srpski.put("OK", );
-		srpski.put("ADD", );
-		srpski.put("EDIT", );
-		srpski.put("DELETE", );
-		srpski.put("SAVE_TO_DB", );
-		srpski.put("RESET_SORT", );
-		srpski.put("REMOVE", );
-		srpski.put("CLOSE_CONFIRMATION_MESSAGE", );
-		srpski.put("CLOSE_WINDOW_TITLE", );
-		srpski.put("MENU_FILE", );
-		srpski.put("MENU_EDIT", );
-		srpski.put("MENU_HELP", );
-		srpski.put("MENU_NEW", );
-		srpski.put("MENU_SAVE_DB", );
-		srpski.put("MENU_CLOSE", );
-		srpski.put("MENU_DELETE", );
-		srpski.put("MENU_LANGUAGE", );
-		srpski.put("SEARCH", );
-		srpski.put("SEARCH_EXAMPLE", );
-		srpski.put("LABEL_NAME", );
-		srpski.put("LABEL_SURNAME", );
-		srpski.put("LABEL_DATE_OF_BIRTH", );
-		srpski.put("LABEL_ADDRESS", );
-		srpski.put("LABEL_TELEPHONE", );
-		srpski.put("LABEL_EMAIL", );
-		srpski.put("LABEL_OFFICE_ADDRESS", );
-		srpski.put("LABEL_ID_NUM", );
-		srpski.put("LABEL_DEGREE", );
-		srpski.put("LABEL_TITLE", );
-		srpski.put("LABEL_INDEX_NUM", );
-		srpski.put("LABEL_REGISTRATION_DATE", );
-		srpski.put("LABEL_AVERAGE_GRADE", );
-		srpski.put("LABEL_CURRENT_YEAR", );
-		srpski.put("LABEL_FIRST_YEAR", );
-		srpski.put("LABEL_SECOND_YEAR", );
-		srpski.put("LABEL_THIRD_YEAR", );
-		srpski.put("LABEL_FOURTH_YEAR", );
-		srpski.put("LABEL_FIRST_SEMESTER", );
-		srpski.put("LABEL_SECOND_SEMESTER", );
-		srpski.put("LABEL_THIRD_SEMESTER", );
-		srpski.put("LABEL_FOURTH_SEMESTER", );
-		srpski.put("LABEL_FIFTH_SEMESTER", );
-		srpski.put("LABEL_SIXTH_SEMESTER", );
-		srpski.put("LABEL_SEVENTH_SEMESTER", );
-		srpski.put("LABEL_EIGHTH_SEMESTER", );
-		srpski.put("LABEL_SUBJECT_ID", );
-		srpski.put("LABEL_SUBJECT_TITLE", );
-		srpski.put("LABEL_YEAR", );
-		srpski.put("LABEL_SEMESTER", );
-		srpski.put("EXAMPLE_NAME", );
-		srpski.put("EXAMPLE_SURNAME", );
-		srpski.put("EXAMPLE_DATE", );
-		srpski.put("EXAMPLE_ADDRESS", );
-		srpski.put("EXAMPLE_TELEPHONE", );
-		srpski.put("EXAMPLE_EMAIL", );
-		srpski.put("EXAMPLE_INDEX_NUM", );
-		srpski.put("EXAMPLE_GRADE", );
-		srpski.put("PROFESSOR_ID_NUM_EXISTS", );
-		srpski.put("INDEX_NUM_EXISTS", );
-		srpski.put("SUBJECT_ID_EXISTS", );
-		srpski.put("PROFESSOR_SUBJECT_LIST", );
-		srpski.put("STUDENT_SUBJECT_LIST", );
-		srpski.put("SUBJECT_STUDENT_LIST", );
-		srpski.put("TAB_TITLE_STUDENTS", );
-		srpski.put("TAB_TITLE_PROFESSORS", );
-		srpski.put("TAB_TITLE_SUBJECTS", );
-		srpski.put("COLUMN_SUBJECT_ID", );
-		srpski.put("COLUMN_SUBJECT_TITLE", );
-		srpski.put("COLUMN_YEAR", );
-		srpski.put("COLUMN_SEMESTER", );
-		srpski.put("COLUMN_PROFESSOR", );
-		srpski.put("COLUMN_NAME", );
-		srpski.put("COLUMN_SURNAME", );
-		srpski.put("COLUMN_DATE_OF_BIRTH", );
-		srpski.put("COLUMN_ADDRESS", );
-		srpski.put("COLUMN_TELEPHONE", );
-		srpski.put("COLUMN_EMAIL", );
-		srpski.put("COLUMN_OFFICE_ADDRESS", );
-		srpski.put("COLUMN_PROFESSOR_ID_NUM", );
-		srpski.put("COLUMN_TITLE", );
-		srpski.put("COLUMN_DEGREE", );
-		srpski.put("COLUMN_INDEX_NUM", );
-		srpski.put("COLUMN_REGISTRATION_DATE", );
-		srpski.put("COLUMN_STATUS", );
-		srpski.put("COLUMN_AVERAGE_GRADE", );
-		srpski.put("NO_PROFESSOR", );
-		srpski.put("NTH_YEAR", );
-		srpski.put("RESTART_NEEDED", );
-		srpski.put("SERBIAN", );
-		srpski.put("HUNGARIAN", );
-		srpski.put("ENGLISH", );
-		srpski.put("GERMAN", );
-		*/
-	}
+	public static String RESTART_NEEDED = "Potrebno je pokrenuti aplikaciju ponovo da biste videli promene.";
 	
 	public static void loadResources() {
+		switch(LanguageController.getInstance().getLanguage()) {
+		case 0: break;
+		case 1: loadHU();
+		}
+	}
+	
+	private static void loadHU() {
+		DATEFORMAT = "yyyy.MM.dd.";
+		DATETIMEFORMAT = "HH:mm:ss   " + StringResources.DATEFORMAT;
 		
+		CONFIRM_DELETE_STUDENT = "Ki szeretné törölni a hallgatót?";
+		DELETE_STUDENT_TITLE = "Hallgató törlése";
+		CONFIRM_DELETE_PROFESSOR = "Ki szeretné törölni a professzort?";
+		DELETE_PROFESSOR_TITLE = "Professzor törlése";
+		CONFIRM_DELETE_SUBJECT = "Ki szeretné törölni a tantárgyat?";
+		DELETE_SUBJECT_TITLE = "Tantárgy törlése";
+		
+		REQUIRED_FIELD = "Kötelező mező";
+		
+		STATUS_B = "állami költséges";
+		STATUS_S = "önköltséges";
+		
+		ABOUT = "Az aplikációról";
+		
+		STUDENTS = "Hallgatók";
+		PROFESSORS = "Professzorok";
+		SUBJECTS = "Tantárgyak";
+		
+		ADD_STUDENT = "Hallgató hozzáadása";
+		EDIT_STUDENT = "Hallgató szerkesztése";
+		ADD_SUBJECT = "Tantárgy hozzáadása";
+		EDIT_SUBJECT = "Tantárgy szerkesztése";
+		ADD_PROFESSOR = "Professzor hozzáadása";
+		EDIT_PROFESSOR = "Professzor szerkesztése";
+		
+		ASSIGN_PROFESSOR_TO_SUBJECT = "Professzor hozzáadása a tantárgyhoz";
+		ASSSIGN_PROFESSOR_TO = "Professzor hozzáadása ehhez a tantárgyhoz: "; // + name of Subject
+		ADD_STUDENT_TO_SUBJECT = "Hallgató hozzáadása a tantárgyhoz";
+		ADD_STUDENT_TO = "Hallgató hozzáadása ehhez a tantárgyhoz: "; // + name of Subject
+		
+		CANCEL = "Vissza";
+		OK = "OK";
+		ADD = "Hozzáad";
+		EDIT = "Szerkesztés";
+		DELETE = "Törlés";
+		SAVE_TO_DB = "Mentés az adatbázisba";
+		RESET_SORT = "Rendezés visszaállítása";
+		REMOVE = "Eltávolítás";
+		
+		CLOSE_CONFIRMATION_MESSAGE = "Biztosan be akarja zárni az aplikációt?";
+		CLOSE_WINDOW_TITLE = "Bezárás";
+		
+		MENU_FILE = "Fájl";
+		MENU_EDIT = "Szerkesztés";
+		MENU_HELP = "Segítség";
+		MENU_NEW = "Új";
+		MENU_SAVE_DB = "Mentés az adatbázisba";
+		MENU_CLOSE = "Bezárás";
+		MENU_DELETE = "Törlés";
+		MENU_LANGUAGE = "Nyelv";
+		SEARCH = "Keresés";
+		SEARCH_EXAMPLE = "ime: Pera ; prezime: Peric ; indeks: ra-100-2019...";
+		
+		//PANEL LABELS
+		LABEL_NAME = "Név *";
+		LABEL_SURNAME = "Vezetéknév *";
+		LABEL_DATE_OF_BIRTH = "Születési dátum *";
+		LABEL_ADDRESS = "Lakhely *";
+		LABEL_TELEPHONE = "Telefonszám *";
+		LABEL_EMAIL = "Email *";
+		LABEL_OFFICE_ADDRESS = "Iroda címe *";
+		LABEL_ID_NUM = "Személyi szám *";
+		LABEL_DEGREE = "Elnevezés *";
+		LABEL_TITLE = "Titulus *";
+		LABEL_INDEX_NUM = "Index szám *";
+		LABEL_REGISTRATION_DATE = "Beíratkozás dátuma *";
+		LABEL_AVERAGE_GRADE = "Átlagosztályzat *";
+		LABEL_CURRENT_YEAR = "Évfolyam *";
+		LABEL_FIRST_YEAR = "I (első)";
+		LABEL_SECOND_YEAR = "II (második)";
+		LABEL_THIRD_YEAR = "III (harmadik)";
+		LABEL_FOURTH_YEAR = "IV (negyedik)";
+		LABEL_FIRST_SEMESTER = "I (első)";
+		LABEL_SECOND_SEMESTER = "II (második)";
+		LABEL_THIRD_SEMESTER = "III (harmadik)";
+		LABEL_FOURTH_SEMESTER = "IV (negyedik)";
+		LABEL_FIFTH_SEMESTER = "V (ötödik)";
+		LABEL_SIXTH_SEMESTER = "VI (hatodik)";
+		LABEL_SEVENTH_SEMESTER = "VII (hetedik)";
+		LABEL_EIGHTH_SEMESTER = "VII (nyolcadik)";
+		LABEL_SUBJECT_ID = "Kód *";
+		LABEL_SUBJECT_TITLE = "Név *";
+		LABEL_YEAR = "Évfolyam *";
+		LABEL_SEMESTER = "Szemeszter *";
+		
+		EXAMPLE_NAME = "pl. Név";
+		EXAMPLE_SURNAME = "pl. Vezetéknév";
+		EXAMPLE_DATE = "pl. 2019.12.20.";
+		EXAMPLE_ADDRESS = "pl. Novi Sad";
+		EXAMPLE_TELEPHONE = "pl. 061234567";
+		EXAMPLE_EMAIL = "pl. nev@uns.ac.rs";
+		EXAMPLE_INDEX_NUM = "pl. ra-16-2016";
+		EXAMPLE_GRADE = "6.00 - 10.00";
+		
+		PROFESSOR_ID_NUM_EXISTS = " - már létezik ilyen személyiszám";
+		INDEX_NUM_EXISTS = " - már létezik ilyen index szám";
+		INDEX_NUM_DOESNT_EXIST = " - nem létezik az index szám";
+		SUBJECT_ID_EXISTS = " - már létezik ilyen tantárgy kódja";
+		NOT_SAME_YEAR = " - nem egyforma évfolyam";
+		WRONG_FORMAT = " - rossz formátum (ab-xx-yyyy)";
+		INDEX_INPUT = "Vigyen be indexszámot:";
+		
+		PROFESSOR_SUBJECT_LIST = "Professzor tantárgyai";
+		STUDENT_SUBJECT_LIST = "Hallgató tantárgyai";
+		SUBJECT_STUDENT_LIST = "A tantárgyat felvették";
+		
+		TAB_TITLE_STUDENTS = "Hallgatók";
+		TAB_TITLE_PROFESSORS = "Professzorok";
+		TAB_TITLE_SUBJECTS = "Tantárgyak";
+		
+		COLUMN_SUBJECT_ID = "KÓD";
+		COLUMN_SUBJECT_TITLE = "NÉV";
+		COLUMN_YEAR = "ÉVFOLYAM";
+		COLUMN_SEMESTER = "SZEMESZTER"; 
+		COLUMN_PROFESSOR = "PROFESSZOR";
+		COLUMN_NAME = "NÉV";
+		COLUMN_SURNAME = "VEZETÉKNÉV";
+		COLUMN_DATE_OF_BIRTH = "SZÜL. DÁTUM";
+		COLUMN_ADDRESS = "LAKCÍM";
+		COLUMN_TELEPHONE = "TELEFON";
+		COLUMN_EMAIL = "E-MAIL";
+		COLUMN_OFFICE_ADDRESS = "IRODA CÍM";
+		COLUMN_PROFESSOR_ID_NUM = "SZEMÉLYI SZÁM";
+		COLUMN_TITLE = "TITULUS";
+		COLUMN_DEGREE = "MEGNEVEZÉS";
+		COLUMN_INDEX_NUM = "INDEX";
+		COLUMN_REGISTRATION_DATE = "BEÍRAT. DÁTUM";
+		COLUMN_STATUS = "STÁTUSZ";
+		COLUMN_AVERAGE_GRADE = "ÁTLAG";
+		COLUMN_STUDENTS = "HALLGATÓK";
+		COLUMN_SUBJECTS = "TANTÁRGYAK";
+		
+		NO_PROFESSOR = "Nincs professzor";
+		RESTART_NEEDED = "A változások életbelépéséhez újraindítás szükséges.";
 	}
 }

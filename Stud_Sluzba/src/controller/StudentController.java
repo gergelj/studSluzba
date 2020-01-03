@@ -81,12 +81,20 @@ public class StudentController {
 	public List<Predmet> getListOfSubjects(Student s) {
 		List<Predmet> pred = new ArrayList<Predmet>();
 		
-		for(Predmet predmet: s.getSpisakPredmeta().values() )
+		for(int idPredmet : s.getSpisakPredmeta())
 		{
-			pred.add(predmet);
+			pred.add(BazaPredmeta.getInstance().getPredmetById(idPredmet));
 		}
 		
 		return pred;
+	}
+	
+	public Student getStudentByBrojIndeksa(String indeks) {
+		return BazaStudenta.getInstance().getStudentByBrojIndeksa(indeks);
+	}
+	
+	public Student getStudentById(int id) {
+		return BazaStudenta.getInstance().getStudentById(id);
 	}
 	
 }

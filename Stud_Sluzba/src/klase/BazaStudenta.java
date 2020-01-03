@@ -108,7 +108,7 @@ public class BazaStudenta implements Serializable{
 		case 8:
 			return String.valueOf(student.getTrenutnaGodina());
 		case 9:
-			return student.getStatus()==Student.Status.B ? "budzet" : "samofinansiranje";
+			return student.getStatus()==Student.Status.B ? StringResources.STATUS_B : StringResources.STATUS_S;
 		case 10:
 			return String.valueOf(student.getProsek());
 		default:
@@ -130,7 +130,6 @@ public class BazaStudenta implements Serializable{
 	}
 
 	public void izmeniStudenta(String ime, String prezime, String datumrodj, String adresa, String telefon, String email, String brojindeksa, String datumupisa, int trenutnagodina, Student.Status status, double prosek, int id) {
-		//TODO: izmeni Studenta
 		for (Student i : studenti) {
 			if (i.getId()==id) {
 				i.setIme(ime);
@@ -144,13 +143,18 @@ public class BazaStudenta implements Serializable{
 				i.setStatus(status);
 				i.setProsek(prosek);
 				i.setBrojIndeksa(brojindeksa);
-				
-				
+
 				break;
 			}
 		}
 	}
-	
+/*
+	public void updatePredmetiZaStudenta(Student s) {
+		for(Predmet p : s.getSpisakPredmeta().values()) {
+			p.getmListaStudenata().put(s.getId(), s);
+		}
+	}
+*/
 	public Student lookup_student(String indeks) {
 		for(Student st : studenti) {
 			if(st.getBrojIndeksa().equals(indeks))
@@ -163,6 +167,22 @@ public class BazaStudenta implements Serializable{
 		for(Student s : studenti) {
 			s.getSpisakPredmeta().remove(p.getId());
 		}
+	}
+
+	public Student getStudentByBrojIndeksa(String indeks) {
+		for(Student s : studenti) {
+			if(indeks.equalsIgnoreCase(s.getBrojIndeksa()))
+				return s;
+		}
+		return null;
+	}
+	
+	public Student getStudentById(int id) {
+		for(Student s : studenti) {
+			if(id == s.getId())
+				return s;
+		}
+		return null;
 	}
 
 }

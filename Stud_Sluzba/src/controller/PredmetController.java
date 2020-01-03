@@ -80,6 +80,11 @@ public class PredmetController {
 	}
 	
 	public void linkStudentPredmet(Student s, Predmet p) {
+		for(int idStud : p.getListaStudenata()) {
+			if(s.getId() == idStud)
+				return;
+		}
+		
 		p.addStudent(s);
 		s.addPredmet(p);
 	}
@@ -105,8 +110,8 @@ public class PredmetController {
 			//vraca listu studenta koji su dodati na predmet p
 		List<Student> stud = new ArrayList<Student>();
 		
-		for(Student s : p.getmListaStudenata().values()) {
-			stud.add(s);
+		for(int idStud : p.getListaStudenata()) {
+			stud.add(StudentController.getInstance().getStudentById(idStud));
 		}
 		
 		return stud;

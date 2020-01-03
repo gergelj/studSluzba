@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.PredmetController;
-import controller.PredmetListener;
+import listeneri.PredmetListener;
 import klase.Predmet;
 import klase.StringResources;
 

@@ -1,7 +1,9 @@
 package klase;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Predmet implements Serializable{
 	/**
@@ -15,10 +17,12 @@ public class Predmet implements Serializable{
 	private Profesor mProfesor;
 	private int id;
 	private HashMap<Integer, Student> mListaStudenata; //mozda hashmap bude trebao
+	private List<Integer> listaStudenata;
 	
 	public Predmet()
 	{
 		this.mListaStudenata = new HashMap<Integer, Student>();
+		this.listaStudenata = new ArrayList<Integer>();
 	}
 	
 	public Predmet(String sifraPredmeta,String nazivPredmeta,int semestarPredmeta,int godinaIzvodjenja, int id)
@@ -29,6 +33,7 @@ public class Predmet implements Serializable{
 		this.mGodinaIzvodjenja=godinaIzvodjenja;
 		this.id = id;
 		this.mListaStudenata = new HashMap<Integer, Student>();
+		this.listaStudenata = new ArrayList<Integer>();
 	}
 	
 	public Predmet(String sifraPredmeta,String nazivPredmeta,int semestarPredmeta,int godinaIzvodjenja,Profesor profesor,int id,HashMap<Integer, Student> listaStudenata)
@@ -42,6 +47,10 @@ public class Predmet implements Serializable{
 		this.mListaStudenata=listaStudenata; //koji pohadjaju predmet
 	}
 	//verovatno ce trebati u nekom trenutku
+	public List<Integer> getListaStudenata(){
+		return this.listaStudenata;
+	}
+	
 	public String getmSifraPredmeta() {
 		return mSifraPredmeta;
 	}
@@ -85,11 +94,15 @@ public class Predmet implements Serializable{
 	}
 	
 	public void addStudent(Student s) {
-		this.mListaStudenata.put(s.getId(), s);
+		this.listaStudenata.add(s.getId());
 	}
 	
 	public void removeStudent(Student s) {
-		this.mListaStudenata.remove(s.getId());
+		for(int i=0; i<this.listaStudenata.size(); i++)
+			if(listaStudenata.get(i) == s.getId()) {
+				listaStudenata.remove(i);
+				return;
+			}
 	}
 	
 	public void addProfesor(Profesor p)

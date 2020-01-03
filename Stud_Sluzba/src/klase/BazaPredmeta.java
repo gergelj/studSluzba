@@ -150,18 +150,31 @@ public class BazaPredmeta implements Serializable{
 	}
 	
 	public void deleteAllInstanceOfStudent(Student s) {
-		for(Predmet p : predmeti) {
+		for(Predmet p : this.predmeti) {
+			//TODO: remove student from every subject
+			
+			
+		}
+		
+		
+		/*
+		for(Predmet p : s.getSpisakPredmeta().values()) {
 			p.getmListaStudenata().remove(s.getId());
 		}
+		*/
 	}
 	
 	public void deleteAllInstanceOfProfessor(Profesor pf) {
-		for(Predmet p : predmeti) {
-			if(p.getmProfesor()!=null) {
-				if(p.getmProfesor().getId() == pf.getId()) {
-					p.setmProfesor(null);
-				}
-			}
+		for(Predmet p : pf.getListaPredmeta().values()) {
+			p.setmProfesor(null);
 		}
+	}
+	
+	public Predmet getPredmetById(int id) {
+		for(Predmet p : predmeti) {
+			if(id == p.getId())
+				return p;
+		}
+		return null;
 	}
 }

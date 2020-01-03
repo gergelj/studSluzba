@@ -13,7 +13,7 @@ public class AbstractTableModelPredmet extends AbstractTableModel{
 	 */
 	private static final long serialVersionUID = -6705633657400709595L;
 	
-	public static String kolonaDugme = StringResources.STUDENTS;;
+	public static String kolonaDugme = StringResources.COLUMN_STUDENTS;;
 	
 	@Override
 	public int getColumnCount() {

@@ -4,12 +4,12 @@ public class Fields {
 
 	public static final String IME = "ime";
 	public static final String PREZIME = "prezime";
-	public static final String DATRODJ = "datumrodj";
+	public static final String DATRODJ = "datumr";
 	public static final String ADRESA = "adresa";
 	public static final String TELEFON = "telefon";
 	public static final String EMAIL = "email";
 	public static final String INDEKS = "indeks";
-	public static final String DATUPIS = "datupis";
+	public static final String DATUPIS = "datumu";
 	public static final String STATUS = "status";
 	public static final String GODINA = "godina";
 	public static final String PROSEK = "prosek";

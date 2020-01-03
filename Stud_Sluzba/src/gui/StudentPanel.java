@@ -18,7 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import controller.StudentController;
-import controller.StudentListener;
+import listeneri.StudentListener;
 import klase.StringResources;
 import klase.Student;
 

@@ -13,9 +13,9 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 import javax.swing.WindowConstants;
 
-import controller.AddListener;
-import controller.DeleteListener;
-import controller.SaveToDatabaseListener;
+import listeneri.AddListener;
+import listeneri.DeleteListener;
+import listeneri.SaveToDatabaseListener;
 import klase.StringResources;
 
 public class MojMenuBar extends JMenuBar {

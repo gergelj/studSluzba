@@ -15,7 +15,7 @@ public class AbstractTableModelProfesori extends AbstractTableModel {
 	 */
 	private static final long serialVersionUID = 3528524555303776280L;
 	
-	public static String kolonaDugme = StringResources.SUBJECTS;
+	public static String kolonaDugme = StringResources.COLUMN_SUBJECTS;
 			
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {

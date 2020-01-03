@@ -12,7 +12,7 @@ public class AbstractTableModelStudenti extends AbstractTableModel {
 
 	private static final long serialVersionUID = 2710362894062472488L;
 
-	public static String kolonaDugme = StringResources.SUBJECTS;
+	public static String kolonaDugme = StringResources.COLUMN_SUBJECTS;
 
 	public AbstractTableModelStudenti() {
 		super();

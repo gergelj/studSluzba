@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.ProfesorController;
-import controller.ProfessorListener;
+import listeneri.ProfessorListener;
 import klase.Profesor;
 import klase.StringResources;
 

@@ -1,10 +1,13 @@
-package controller;
+package listeneri;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import controller.PredmetController;
+import controller.ProfesorController;
+import controller.StudentController;
 import gui.MainFrame;
 import gui.MojCentralni;
 import gui.PredmetiJTable;

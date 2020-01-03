@@ -1,129 +1,103 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.ScrollPane;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
-import javax.swing.AbstractListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JList;
-import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 import controller.PredmetController;
 import controller.StudentController;
 import klase.Predmet;
+import klase.Proveri;
 import klase.StringResources;
 import klase.Student;
 
 public class AddStudentToPredmetDialog extends JDialog {
-	
+
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 186250787181658443L;
-
-	private JButton cancel_btn, add_btn;
-	private JList<Student> lista;
-	private Predmet selectedPredmet;
+	private static final long serialVersionUID = 7925418924221482466L;
 	
-	public class AbstractListModelStudenti extends AbstractListModel<Student> {
-
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 5594587808821419302L;
-		
-		private List<Student> studenti;
-		
-		public AbstractListModelStudenti(Predmet p) {
-			//this.studenti = StudentController.getInstance().getStudenti();
-			this.studenti = PredmetController.getInstance().getListOfStudents(p);
-		}
-		
-		@Override
-		public int getSize() {
-			return this.studenti.size();
-		}
-
-		@Override
-		public Student getElementAt(int index) {
-			return this.studenti.get(index);
-		}
-		
-		public void azuriraj(int index) {
-			this.studenti.remove(index);
-			fireContentsChanged(this, 0, studenti.size()-1);
-		}
-
-	}
+	private JTextField input;
+	private JButton add_btn;
+	private JLabel message;
 	
-	public AddStudentToPredmetDialog(int selectedPredmetRow) {
+	public AddStudentToPredmetDialog(Predmet selectedPredmet) {
 		super(MainFrame.getInstance(), StringResources.ADD_STUDENT_TO_SUBJECT, true);
-		setSize(400, 500);
+		setSize(300, 150);
 		setLocationRelativeTo(MainFrame.getInstance());
-		this.selectedPredmet = PredmetController.getInstance().nadjiPredmet(selectedPredmetRow);
-		this.setTitle(StringResources.ADD_STUDENT_TO + this.selectedPredmet.getmNazivPredmeta());
-		add(addPanel());
 		
-		cancel_btn.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				
-			}
-			
-		});
+		this.setLayout(null);
+		this.setResizable(false);
+		
+		message = new JLabel(StringResources.INDEX_INPUT);
+		message.setBounds(20, 15, 280, 20);
+		this.add(message);
+		
+		input = new JTextField();
+		input.setBounds(20, 35, 260, 25);
+		this.add(input);
+		
+		add_btn = new JButton(StringResources.ADD);
+		add_btn.setBounds(120, 75, 60, 25);
+		add_btn.setMargin(new Insets(0,0,0,0));
+		this.add(add_btn);
 		
 		add_btn.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(lista.getModel().getSize() == 0 || lista.getSelectedIndex()==-1 || lista.getSelectedIndex() >= lista.getModel().getSize()) {
-					return;
-				}
-				System.out.println(lista.getSelectedIndex());
-				Student s = lista.getSelectedValue();
-				Predmet p = selectedPredmet;
+				String query = input.getText();
 				
-				if(s.getTrenutnaGodina()!=p.getmGodinaIzvodjenja()) {
-					//System.out.println("Nisu ista godina");
+				if(query.equals(""))
+					return;
+				else if(Proveri.isBrojIndeksa(query)) {
+					Student s = StudentController.getInstance().getStudentByBrojIndeksa(query);
+					if(s==null) {
+						input.setForeground(Color.RED);
+						input.setText(input.getText() + StringResources.INDEX_NUM_DOESNT_EXIST);
+					}
+					else {
+						if(selectedPredmet.getmGodinaIzvodjenja()!=s.getTrenutnaGodina()) {
+							input.setForeground(Color.RED);
+							input.setText(input.getText() + StringResources.NOT_SAME_YEAR);
+						}
+						else {
+							PredmetController.getInstance().linkStudentPredmet(s, selectedPredmet);
+							setVisible(false);
+						}
+					}
 				}
 				else {
-					PredmetController.getInstance().linkStudentPredmet(s, p);
-					AbstractListModelStudenti mod = (AbstractListModelStudenti) lista.getModel();
-					mod.azuriraj(lista.getSelectedIndex());
-					//System.out.println("Dodao sam studenta na predmet");
+					input.setForeground(Color.RED);
+					input.setText(input.getText() + StringResources.WRONG_FORMAT);
 				}
+				
 			}
 			
 		});
 		
+		input.addFocusListener(new FocusAdapter() {
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				JTextField t = (JTextField) e.getComponent();
+				if(t.getForeground() == Color.RED) {
+					t.setForeground(Color.BLACK);
+					t.setText("");
+				}
+			}
+			
+		});
 	}
 	
-	private JPanel addPanel() {
-		JPanel ret = new JPanel();
-		cancel_btn = new JButton(StringResources.CANCEL);
-		add_btn = new JButton(StringResources.ADD);
-		JPanel btns = new JPanel();
-		btns.add(cancel_btn);
-		btns.add(add_btn);
-		
-		ret.add(btns, BorderLayout.SOUTH);
-		
-		ScrollPane scroll = new ScrollPane();
-		scroll.setPreferredSize(new Dimension(400,400));
-		
-		lista = new JList<Student>();
-		lista.setModel(new AbstractListModelStudenti(this.selectedPredmet));
-		scroll.add(lista);
-		
-		ret.add(scroll, BorderLayout.NORTH);
-		return ret;
-	}
 }

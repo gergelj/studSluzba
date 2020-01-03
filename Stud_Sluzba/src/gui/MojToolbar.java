@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
@@ -14,10 +15,11 @@ import javax.swing.JToolBar;
 import javax.swing.RowSorter;
 import javax.swing.SwingConstants;
 
-import controller.AddListener;
-import controller.DeleteListener;
-import controller.SaveToDatabaseListener;
-import controller.SearchListener;
+import listeneri.AddListener;
+import listeneri.DeleteListener;
+import controller.PredmetController;
+import listeneri.SaveToDatabaseListener;
+import listeneri.SearchListener;
 import klase.StringResources;
 
 public class MojToolbar extends JToolBar {
@@ -104,7 +106,7 @@ public class MojToolbar extends JToolBar {
 			public void actionPerformed(ActionEvent e) {
 				int selectedPredmetRow = MojCentralni.getInstance().getTablPredmeti().getSelectedRow();
 				if(selectedPredmetRow != -1) {
-					AddStudentToPredmetDialog dial = new AddStudentToPredmetDialog(selectedPredmetRow);
+					AddStudentToPredmetDialog dial = new AddStudentToPredmetDialog(PredmetController.getInstance().nadjiPredmet(selectedPredmetRow));
 					dial.setVisible(true);
 				}
 			}
@@ -133,7 +135,7 @@ public class MojToolbar extends JToolBar {
 		add(Box.createHorizontalGlue());
 		
 		search_txtF = new JTextField(50);
-		search_txtF.setMaximumSize(search_txtF.getPreferredSize());
+		search_txtF.setMaximumSize(new Dimension(350, 30));
 		search_txtF.setToolTipText(StringResources.SEARCH_EXAMPLE);
 		add(search_txtF);
 		search_txtF.addFocusListener(new FocusAdapter() {
