@@ -129,4 +129,10 @@ public class PredmetController {
 		
 		return stud;
 	}
+
+	public void deleteProfesor(Predmet p) {
+		Predmet predmet = BazaPredmeta.getInstance().getPredmetById(p.getId());
+		predmet.setmProfesor(null);
+		
+	}
 }

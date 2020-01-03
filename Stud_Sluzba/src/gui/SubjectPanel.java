@@ -99,7 +99,7 @@ public class SubjectPanel extends JPanel{
 			ok_btn.setText(StringResources.EDIT);
 			ok_btn.setEnabled(true);
 			SubjectPanel.br=0;
-			predmet = PredmetController.getInstance().nadjiPredmet(MojCentralni.getInstance().getTablPredmeti().getSelectedRow());
+			predmet = PredmetController.getInstance().nadjiPredmet(PredmetiJTable.getInstance().getSelectedRow());
 			
 			sif_txt.setText(predmet.getmSifraPredmeta());
 			naz_txt.setText(predmet.getmNazivPredmeta());

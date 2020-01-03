@@ -6,6 +6,9 @@ import java.awt.event.ActionListener;
 import gui.AddDialog;
 import gui.MainFrame;
 import gui.MojCentralni;
+import gui.PredmetiJTable;
+import gui.ProfesoriJTable;
+import gui.StudentiJTable;
 
 public class AddListener implements ActionListener {
 
@@ -22,19 +25,19 @@ public class AddListener implements ActionListener {
 		
 		switch(selectedTab) {
 		case 0:
-			if(MojCentralni.getInstance().getTabelaStudenata().getSelectedRow()!=-1 || mode==AddDialog.ADD_MODE) { //ako smo selektovali
+			if(StudentiJTable.getInstance().getSelectedRow()!=-1 || mode==AddDialog.ADD_MODE) { //ako smo selektovali
 				AddDialog d = new AddDialog(MainFrame.getInstance(), selectedTab, mode);
 				d.setVisible(true);
 			}
 			break;
 		case 1:
-			if(MojCentralni.getInstance().getTabelaProfesora().getSelectedRow()!=-1 || mode==AddDialog.ADD_MODE) {
+			if(ProfesoriJTable.getInstance().getSelectedRow()!=-1 || mode==AddDialog.ADD_MODE) {
 				AddDialog d = new AddDialog(MainFrame.getInstance(), selectedTab, mode);
 				d.setVisible(true);
 			}
 			break;
 		case 2:
-			if(MojCentralni.getInstance().getTablPredmeti().getSelectedRow()!=-1 || mode==AddDialog.ADD_MODE) {
+			if(PredmetiJTable.getInstance().getSelectedRow()!=-1 || mode==AddDialog.ADD_MODE) {
 				AddDialog d = new AddDialog(MainFrame.getInstance(), selectedTab, mode);
 				d.setVisible(true);
 			}

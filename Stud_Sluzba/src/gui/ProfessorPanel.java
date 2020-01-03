@@ -92,7 +92,7 @@ public class ProfessorPanel extends JPanel {
 			ok_btn.setText(StringResources.EDIT);
 			ok_btn.setEnabled(true);
 			ProfessorPanel.br=0;
-			profesor = ProfesorController.getInstance().nadjiProfesora(MojCentralni.getInstance().getTabelaProfesora().getSelectedRow());
+			profesor = ProfesorController.getInstance().nadjiProfesora(ProfesoriJTable.getInstance().getSelectedRow());
 			
 			ime_txt.setText(profesor.getIme());
 			prz_txt.setText(profesor.getPrezime());
