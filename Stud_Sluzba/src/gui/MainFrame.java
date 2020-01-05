@@ -48,7 +48,7 @@ public class MainFrame extends JFrame{
 		setLocationRelativeTo(null);
 		
 		//SET APPLICATION CLASS NAME - umesto "gui-Main" da pise nesto drugo
-
+/*
 		java.lang.reflect.Field awtAppClassNameField;
 		try {
 			awtAppClassNameField = kit.getClass().getDeclaredField("awtAppClassName");
@@ -63,7 +63,7 @@ public class MainFrame extends JFrame{
 		} catch (IllegalAccessException e1) {
 			e1.printStackTrace();
 		}
-
+*/
 			
 		this.setJMenuBar(MojMenuBar.getInstance());
 		this.add(MojToolbar.getInstance(), BorderLayout.NORTH);

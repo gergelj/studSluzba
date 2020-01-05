@@ -33,6 +33,7 @@ implements TableCellRenderer, TableCellEditor, MouseListener{
 	// (da li se obradjuju dogadjaji pritiska misa)
 	private boolean isEditorActive = false;
 	
+	
 	public ButtonColumnProfesori(JTable table, int column) {
 		// povezivanje sa tabelom
 		this.table = table;

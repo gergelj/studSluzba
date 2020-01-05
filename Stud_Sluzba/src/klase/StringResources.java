@@ -151,13 +151,295 @@ public class StringResources {
 	public static String NO_PROFESSOR = "Profesor nije dodat";
 	public static String RESTART_NEEDED = "Potrebno je pokrenuti aplikaciju ponovo da biste videli promene.";
 	
+	
 	public static void loadResources() {
 		switch(LanguageController.getInstance().getLanguage()) {
 		case 0: break;
 		case 1: loadHU();
+				break;
+		case 2: loadEn();
+				break;
+		case 3: loadDe();
+				break;
 		}
 	}
 	
+	private static void loadDe() {
+		CONFIRM_DELETE_STUDENT = "Möchten Sie Student löschen?";
+		DELETE_STUDENT_TITLE = "Student löschen";
+		CONFIRM_DELETE_PROFESSOR = "Möchten Sie Professor löschen?";
+		DELETE_PROFESSOR_TITLE = "Professor löschen";
+		CONFIRM_DELETE_SUBJECT = "Möchten Sie dem Fach löschen?";
+		DELETE_SUBJECT_TITLE = "Betreff löschen";
+		
+		REQUIRED_FIELD = "Dieses Feld wird benötigt";
+		
+		STATUS_B = "budget";
+		STATUS_S = "selbstfinanzierung";
+		
+		ABOUT = "Über die Bewerbung";
+		
+		STUDENTS = "Studenten";
+		PROFESSORS = "Professoren";
+		SUBJECTS = "Fächer";
+		
+		ADD_STUDENT = "Schüler hinzufügen";
+		EDIT_STUDENT = "Student bearbeiten";
+		ADD_SUBJECT = "Fach hinzufügen";
+		EDIT_SUBJECT = "Fach bearbeiten";
+		ADD_PROFESSOR = "Professor hinzufügen";
+		EDIT_PROFESSOR = "Professor bearbeiten";
+		
+		ASSIGN_PROFESSOR_TO_SUBJECT = "Ordnen Sie dem Fach einen Professor zu";
+		ASSSIGN_PROFESSOR_TO = "Ordnen Sie dem Fach einen Professor zu: "; // + name of Subject
+		ADD_STUDENT_TO_SUBJECT = "Ordnen Sie dem Fach einen Student zu";
+		ADD_STUDENT_TO = "Ordnen Sie dem Fach einen Student zu: "; // + name of Subject
+		
+		CANCEL = "Absagen";
+		OK = "OK";
+		ADD = "Hinzufügen";
+		EDIT = "Bearbeiten";
+		DELETE = "Löschen";
+		SAVE_TO_DB = "In Datenbank speichern";
+		RESET_SORT = "Sort zurücksetzen";
+		REMOVE = "Entfernen";
+		
+		CLOSE_CONFIRMATION_MESSAGE = "Möchten Sie die Anwendung schließen?";
+		CLOSE_WINDOW_TITLE = "Wird verlassen";
+		
+		MENU_FILE = "Datei";
+		MENU_EDIT = "Bearbeiten";
+		MENU_HELP = "Hilfe";
+		MENU_NEW = "Neu";
+		MENU_SAVE_DB = "In Datenbank speichern";
+		MENU_CLOSE = "Schließen";
+		MENU_DELETE = "Löschen";
+		MENU_LANGUAGE = "Sprache";
+		SEARCH = "Suche";
+		SEARCH_EXAMPLE = "Name: Pera ; Nachname: Peric ; Index: ra-100-2019...";
+		
+		//PANEL LABELS
+		LABEL_NAME = "Name *";
+		LABEL_SURNAME = "Nachname *";
+		LABEL_DATE_OF_BIRTH = "Geburtsdatum *";
+		LABEL_ADDRESS = "Wohnadresse *";
+		LABEL_TELEPHONE = "Kontakt-Telefon *";
+		LABEL_EMAIL = "E-mail *";
+		LABEL_OFFICE_ADDRESS = "Büro adresse *";
+		LABEL_ID_NUM = "ID-Nummer *";
+		LABEL_DEGREE = "Rang *";
+		LABEL_TITLE = "Titel *";
+		LABEL_INDEX_NUM = "Indexnummer *";
+		LABEL_REGISTRATION_DATE = "Zp. des Inkrafttretens *";
+		LABEL_AVERAGE_GRADE = "Notendurchschnitt *";
+		LABEL_CURRENT_YEAR = "Studienjahr *";
+		LABEL_FIRST_YEAR = "I (estes)";
+		LABEL_SECOND_YEAR = "II (zweites)";
+		LABEL_THIRD_YEAR = "III (drittes)";
+		LABEL_FOURTH_YEAR = "IV (viertes)";
+		LABEL_FIRST_SEMESTER = "I (estes)";
+		LABEL_SECOND_SEMESTER = "II (zweites)";
+		LABEL_THIRD_SEMESTER = "III (drittes)";
+		LABEL_FOURTH_SEMESTER = "IV (viertes)";
+		LABEL_FIFTH_SEMESTER = "V (fünftes)";
+		LABEL_SIXTH_SEMESTER = "VI (fünftes)";
+		LABEL_SEVENTH_SEMESTER = "VII (fünftes)";
+		LABEL_EIGHTH_SEMESTER = "VII (achten)";
+		LABEL_SUBJECT_ID = "Fach-Code *";
+		LABEL_SUBJECT_TITLE = "Fach Name *";
+		LABEL_YEAR = "Jahr *";
+		LABEL_SEMESTER = "Semester *";
+		
+		EXAMPLE_NAME = "z.B. Imenko";
+		EXAMPLE_SURNAME = "z.B. Prezimić";
+		EXAMPLE_DATE = "z.B. 22.05.2019.";
+		EXAMPLE_ADDRESS = "z.B. Novi Sad";
+		EXAMPLE_TELEPHONE = "z.B. 061234567";
+		EXAMPLE_EMAIL = "z.B. imenko@uns.ac.rs";
+		EXAMPLE_INDEX_NUM = "z.B. ra-16-2016";
+		EXAMPLE_GRADE = "6.00 - 10.00";
+		
+		PROFESSOR_ID_NUM_EXISTS = " - ID-nummer existiert bereits";
+		INDEX_NUM_EXISTS = " - indexnummer existiert bereits";
+		INDEX_NUM_DOESNT_EXIST = " - Indexnummer existiert nicht";
+		SUBJECT_ID_EXISTS = " - Fach-Code existiert bereits";
+		NOT_SAME_YEAR = " - nicht das gleiche Jahr wie das Fach";
+		WRONG_FORMAT = " - falsches Format (ab-xx-yyyy)";
+		INDEX_INPUT = "Geben Sie die Indexnummer ein:";
+		
+		PROFESSOR_SUBJECT_LIST = "Fächer des Professors";
+		STUDENT_SUBJECT_LIST = "Fächer des Students";
+		SUBJECT_STUDENT_LIST = "Studenten auf Fach";
+		
+		TAB_TITLE_STUDENTS = "Studenten";
+		TAB_TITLE_PROFESSORS = "Professoren";
+		TAB_TITLE_SUBJECTS = "Fächer";
+		
+		COLUMN_SUBJECT_ID = "FACH-CODE";
+		COLUMN_SUBJECT_TITLE = "FACH NAME";
+		COLUMN_YEAR = "JAHR";
+		COLUMN_SEMESTER = "SEMESTER"; 
+		COLUMN_PROFESSOR = "PROFESSOR";
+		COLUMN_NAME = "NAME";
+		COLUMN_SURNAME = "NACHNAME";
+		COLUMN_DATE_OF_BIRTH = "GEBURTSDATUM";
+		COLUMN_ADDRESS = "ADRESSE";
+		COLUMN_TELEPHONE = "TELEFON";
+		COLUMN_EMAIL = "E-MAIL";
+		COLUMN_OFFICE_ADDRESS = "B. ADRESSE";
+		COLUMN_PROFESSOR_ID_NUM = "ID-NUM.";
+		COLUMN_TITLE = "RANG";
+		COLUMN_DEGREE = "TITEL";
+		COLUMN_INDEX_NUM = "INDEX";
+		COLUMN_REGISTRATION_DATE = "Zp.DES INKRAFTTETENS ";
+		COLUMN_STATUS = "STATUS";
+		COLUMN_AVERAGE_GRADE = "NOTENDURCHSCHNITT";
+		COLUMN_STUDENTS = "STUDENTS";
+		COLUMN_SUBJECTS = "FÄCHER";
+		
+		NO_PROFESSOR = "Professor nicht zugewiesen";
+		RESTART_NEEDED = "Starten Sie die Anwendung neu, um die Änderungen anzuzeigen";
+		
+	}
+
+	private static void loadEn() {
+		CONFIRM_DELETE_STUDENT = "Do you really want to delete Student?";
+		DELETE_STUDENT_TITLE = "Deleting Student";
+		CONFIRM_DELETE_PROFESSOR = "Do you really want to delete Professor?";
+		DELETE_PROFESSOR_TITLE = "Deleting Professor";
+		CONFIRM_DELETE_SUBJECT = "Do you really want to delete Subject?";
+		DELETE_SUBJECT_TITLE = "Deleting Subject";
+		
+		REQUIRED_FIELD = "This field is requierd";
+		
+		STATUS_B = "budget";
+		STATUS_S = "self-financing";
+		
+		ABOUT = "About application";
+		
+		STUDENTS = "Students";
+		PROFESSORS = "Professors";
+		SUBJECTS = "Subjects";
+		
+		ADD_STUDENT = "Add Student";
+		EDIT_STUDENT = "Edit studenta";
+		ADD_SUBJECT = "Add Subject";
+		EDIT_SUBJECT = "Edit Subject";
+		ADD_PROFESSOR = "Add Professor";
+		EDIT_PROFESSOR = "Edit Professor";
+		
+		ASSIGN_PROFESSOR_TO_SUBJECT = "Assign a professor to the Subject";
+		ASSSIGN_PROFESSOR_TO = "Assign a Professor to the Subject: "; // + name of Subject
+		ADD_STUDENT_TO_SUBJECT = "Assign a Student to the Subject";
+		ADD_STUDENT_TO = "Assign a Studenta to the Subject: "; // + name of Subject
+		
+		CANCEL = "Cancel";
+		OK = "OK";
+		ADD = "Add";
+		EDIT = "Edit";
+		DELETE = "Delete";
+		SAVE_TO_DB = "Save to Data Base";
+		RESET_SORT = "Reset Sort";
+		REMOVE = "Remove";
+		
+		CLOSE_CONFIRMATION_MESSAGE = "Do you really want to close application?";
+		CLOSE_WINDOW_TITLE = "Close";
+		
+		MENU_FILE = "File";
+		MENU_EDIT = "Edit";
+		MENU_HELP = "Help";
+		MENU_NEW = "New";
+		MENU_SAVE_DB = "Save to Data Base";
+		MENU_CLOSE = "Close";
+		MENU_DELETE = "Delete";
+		MENU_LANGUAGE = "Language";
+		SEARCH = "Search";
+		SEARCH_EXAMPLE = "name: Pera ; surname: Peric ; index: ra-100-2019...";
+		
+		//PANEL LABELS
+		LABEL_NAME = "Name *";
+		LABEL_SURNAME = "Surname *";
+		LABEL_DATE_OF_BIRTH = "Date of Birth *";
+		LABEL_ADDRESS = "Residental Address *";
+		LABEL_TELEPHONE = "Contact Phone *";
+		LABEL_EMAIL = "E-mail *";
+		LABEL_OFFICE_ADDRESS = "Office Address *";
+		LABEL_ID_NUM = "ID Number *";
+		LABEL_DEGREE = "Rank *";
+		LABEL_TITLE = "Title *";
+		LABEL_INDEX_NUM = "Index Number *";
+		LABEL_REGISTRATION_DATE = "Date of Entry *";
+		LABEL_AVERAGE_GRADE = "GPA *";
+		LABEL_CURRENT_YEAR = "Year of Study *";
+		LABEL_FIRST_YEAR = "I (first)";
+		LABEL_SECOND_YEAR = "II (second)";
+		LABEL_THIRD_YEAR = "III (third)";
+		LABEL_FOURTH_YEAR = "IV (fourth)";
+		LABEL_FIRST_SEMESTER = "I (first)";
+		LABEL_SECOND_SEMESTER = "II (second)";
+		LABEL_THIRD_SEMESTER = "III (third)";
+		LABEL_FOURTH_SEMESTER = "IV (fourth)";
+		LABEL_FIFTH_SEMESTER = "V (fifth)";
+		LABEL_SIXTH_SEMESTER = "VI (sixth)";
+		LABEL_SEVENTH_SEMESTER = "VII (seventh)";
+		LABEL_EIGHTH_SEMESTER = "VII (eighth)";
+		LABEL_SUBJECT_ID = "Subject Code *";
+		LABEL_SUBJECT_TITLE = "Subject Name *";
+		LABEL_YEAR = "Year *";
+		LABEL_SEMESTER = "Semester *";
+		
+		EXAMPLE_NAME = "e.g. Imenko";
+		EXAMPLE_SURNAME = "e.g. Prezimić";
+		EXAMPLE_DATE = "e.g. 22.05.2019.";
+		EXAMPLE_ADDRESS = "e.g. Novi Sad";
+		EXAMPLE_TELEPHONE = "e.g.. 061234567";
+		EXAMPLE_EMAIL = "e.g. imenko@uns.ac.rs";
+		EXAMPLE_INDEX_NUM = "e.g. ra-16-2016";
+		EXAMPLE_GRADE = "6.00 - 10.00";
+		
+		PROFESSOR_ID_NUM_EXISTS = " - ID number already exist";
+		INDEX_NUM_EXISTS = " - index number already exist";
+		INDEX_NUM_DOESNT_EXIST = " - index number does not exist";
+		SUBJECT_ID_EXISTS = " - subject code already exist";
+		NOT_SAME_YEAR = " - not same year as the subject";
+		WRONG_FORMAT = " - false format (ab-xx-yyyy)";
+		INDEX_INPUT = "Type index number:";
+		
+		PROFESSOR_SUBJECT_LIST = "Subjects of Professor";
+		STUDENT_SUBJECT_LIST = "Subjects of Student";
+		SUBJECT_STUDENT_LIST = "Students on Subject";
+		
+		TAB_TITLE_STUDENTS = "Students";
+		TAB_TITLE_PROFESSORS = "Professors";
+		TAB_TITLE_SUBJECTS = "Subjects";
+		
+		COLUMN_SUBJECT_ID = "SUBJECT CODE";
+		COLUMN_SUBJECT_TITLE = "SUBJECT NAME";
+		COLUMN_YEAR = "YEAR";
+		COLUMN_SEMESTER = "SEMESTER"; 
+		COLUMN_PROFESSOR = "PROFESSOR";
+		COLUMN_NAME = "NAME";
+		COLUMN_SURNAME = "SURNAME";
+		COLUMN_DATE_OF_BIRTH = "DATE OF BIRTH";
+		COLUMN_ADDRESS = "ADDRESS";
+		COLUMN_TELEPHONE = "PHONE";
+		COLUMN_EMAIL = "E-MAIL";
+		COLUMN_OFFICE_ADDRESS = "OFF. ADDRESS";
+		COLUMN_PROFESSOR_ID_NUM = "ID NUM.";
+		COLUMN_TITLE = "RANK";
+		COLUMN_DEGREE = "TITLE";
+		COLUMN_INDEX_NUM = "INDEX";
+		COLUMN_REGISTRATION_DATE = "DATE OF ENTRY";
+		COLUMN_STATUS = "STATUS";
+		COLUMN_AVERAGE_GRADE = "GPA";
+		COLUMN_STUDENTS = "STUDENTS";
+		COLUMN_SUBJECTS = "SUBJECTS";
+		
+		NO_PROFESSOR = "Professor not assigned";
+		RESTART_NEEDED = "Restart the applicaction to see changes";
+		
+	}
+
 	private static void loadHU() {
 		DATEFORMAT = "yyyy.MM.dd.";
 		DATETIMEFORMAT = "HH:mm:ss   " + StringResources.DATEFORMAT;
