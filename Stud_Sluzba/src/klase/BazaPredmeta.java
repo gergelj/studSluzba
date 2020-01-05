@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import controller.PredmetController;
+
 
 public class BazaPredmeta implements Serializable{
 
@@ -167,6 +169,7 @@ public class BazaPredmeta implements Serializable{
 	public void deleteAllInstanceOfProfessor(Profesor pf) {
 		for(Predmet p : pf.getListaPredmeta().values()) {
 			p.setmProfesor(null);
+			PredmetController.getInstance().deleteProfesor(p);
 		}
 	}
 	

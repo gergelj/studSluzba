@@ -104,7 +104,7 @@ public class MojToolbar extends JToolBar {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int selectedPredmetRow = MojCentralni.getInstance().getTablPredmeti().getSelectedRow();
+				int selectedPredmetRow = PredmetiJTable.getInstance().getSelectedRow();
 				if(selectedPredmetRow != -1) {
 					AddStudentToPredmetDialog dial = new AddStudentToPredmetDialog(PredmetController.getInstance().nadjiPredmet(selectedPredmetRow));
 					dial.setVisible(true);
@@ -122,7 +122,7 @@ public class MojToolbar extends JToolBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int selectedPredmetRow = MojCentralni.getInstance().getTablPredmeti().getSelectedRow();
+				int selectedPredmetRow = PredmetiJTable.getInstance().getSelectedRow();
 				if(selectedPredmetRow != -1)
 				{
 					AddProfesorToPredmetDialog dial = new AddProfesorToPredmetDialog(selectedPredmetRow);

@@ -131,7 +131,7 @@ public class StudentPanel extends JPanel /*implements FocusListener*/ {
 			StudentPanel.ok_btn.setText(StringResources.EDIT);
 			StudentPanel.ok_btn.setEnabled(true);
 			StudentPanel.broj = 0;
-			this.st = StudentController.getInstance().nadjiStudenta(MojCentralni.getInstance().getTabelaStudenata().getSelectedRow());
+			this.st = StudentController.getInstance().nadjiStudenta(StudentiJTable.getInstance().getSelectedRow());
 		
 			ime_txt.setText(st.getIme());
 			prezime_txt.setText(st.getPrezime());

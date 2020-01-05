@@ -15,9 +15,9 @@ public class MojCentralni extends JTabbedPane{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private PredmetiJTable tabelaPredmeta;
-	private StudentiJTable tabelaStudenta;
-	private ProfesoriJTable tabelaProfesora;
+	//private PredmetiJTable tabelaPredmeta;
+	//private StudentiJTable tabelaStudenta;
+	//private ProfesoriJTable tabelaProfesora;
 	
 	private static MojCentralni instance = null;
 	
@@ -29,17 +29,14 @@ public class MojCentralni extends JTabbedPane{
 	
 	private MojCentralni()
 	{	
-		tabelaStudenta = StudentiJTable.getInstance();
-        JScrollPane scrollPaneStudenti = new JScrollPane(tabelaStudenta);
+        JScrollPane scrollPaneStudenti = new JScrollPane(StudentiJTable.getInstance());
         //StudentiJTable.getInstance().setAutoCreateRowSorter(true);
         StudentiJTable.getInstance().setRowSorter(new TableRowSorter<TableModel>(StudentiJTable.getInstance().getModel()));
         
-        tabelaPredmeta = PredmetiJTable.getInstance();
-        JScrollPane scrollPanePredmeti = new JScrollPane(tabelaPredmeta);
+        JScrollPane scrollPanePredmeti = new JScrollPane(PredmetiJTable.getInstance());
         PredmetiJTable.getInstance().setAutoCreateRowSorter(true);
         
-        tabelaProfesora = ProfesoriJTable.getInstance();
-        JScrollPane scrollPaneProfesori = new JScrollPane(tabelaProfesora);
+        JScrollPane scrollPaneProfesori = new JScrollPane(ProfesoriJTable.getInstance());
         ProfesoriJTable.getInstance().setAutoCreateRowSorter(true);
         
         addTab(StringResources.TAB_TITLE_STUDENTS ,null, scrollPaneStudenti);
@@ -60,24 +57,24 @@ public class MojCentralni extends JTabbedPane{
     }
      
 	public void azurirajPrikaz() {
-		AbstractTableModelStudenti model_stud = (AbstractTableModelStudenti) tabelaStudenta.getModel();
+		AbstractTableModelStudenti model_stud = (AbstractTableModelStudenti) StudentiJTable.getInstance().getModel();
         model_stud.fireTableDataChanged();
 		validate();
 	}
 	
 	public void azurirajPrikazPredmet()
 	{
-		AbstractTableModelPredmet model_predmet = (AbstractTableModelPredmet) tabelaPredmeta.getModel();
+		AbstractTableModelPredmet model_predmet = (AbstractTableModelPredmet) PredmetiJTable.getInstance().getModel();
 		model_predmet.fireTableDataChanged();
 		validate();
 	}
 	
 	public void azurirajPrikazProfesora() {
-		AbstractTableModelProfesori model_profesor = (AbstractTableModelProfesori) tabelaProfesora.getModel();
+		AbstractTableModelProfesori model_profesor = (AbstractTableModelProfesori) ProfesoriJTable.getInstance().getModel();
 		model_profesor.fireTableDataChanged();
 		validate();
 	}
-    
+    /*
     public PredmetiJTable getTablPredmeti()
     {
     	return this.tabelaPredmeta;
@@ -90,6 +87,6 @@ public class MojCentralni extends JTabbedPane{
 
     public ProfesoriJTable getTabelaProfesora() {
     	return this.tabelaProfesora;
-    }
+    }*/
 
 }
