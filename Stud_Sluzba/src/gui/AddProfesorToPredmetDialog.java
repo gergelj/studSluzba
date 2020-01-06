@@ -16,11 +16,9 @@ import javax.swing.JPanel;
 
 import controller.PredmetController;
 import controller.ProfesorController;
-import gui.SpisakPredmetaDialog.AbstractListModelSpisak;
 import klase.Predmet;
 import klase.Profesor;
 import klase.StringResources;
-import klase.Student;
 
 public class AddProfesorToPredmetDialog extends JDialog{
 
@@ -87,18 +85,16 @@ public class AddProfesorToPredmetDialog extends JDialog{
 					return;
 				}
 				Profesor p = profesori.getSelectedValue();
-				Predmet pr = selectedPredmet;
+				//Predmet pr = selectedPredmet;
 				
-				if(pr.getmProfesor() == null)
-					PredmetController.getInstance().linkProfesorPredmet(p,pr);
+				if(selectedPredmet.getmProfesor() == null)
+					PredmetController.getInstance().linkProfesorPredmet(p,selectedPredmet);
 				else
 				{
-					PredmetController.getInstance().unlinkProfesorPredmet(pr.getmProfesor(), pr);
-					PredmetController.getInstance().linkProfesorPredmet(p,pr);
+					PredmetController.getInstance().unlinkProfesorPredmet(selectedPredmet);
+					PredmetController.getInstance().linkProfesorPredmet(p,selectedPredmet);
 				}
-				//System.out.println("Dodat profesor na predmet");
-			    //AbstractListModelProfesori mod = (AbstractListModelProfesori) profesori.getModel();
-			    //mod.azuriraj(profesori.getSelectedIndex());
+				
 				MojCentralni.getInstance().azurirajPrikazPredmet();
 			    setVisible(false);
 			}
@@ -107,6 +103,8 @@ public class AddProfesorToPredmetDialog extends JDialog{
 
 	private Component addPanel() {
 		JPanel pom = new JPanel();
+		pom.setLayout(new BorderLayout());
+		
 		cnl_btn = new JButton(StringResources.CANCEL);
 		add_btn = new JButton(StringResources.ADD);
 		JPanel btns = new JPanel();

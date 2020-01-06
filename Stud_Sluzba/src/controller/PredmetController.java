@@ -80,11 +80,6 @@ public class PredmetController {
 	}
 	
 	public void linkStudentPredmet(Student s, Predmet p) {
-		for(int idStud : p.getListaStudenata()) {
-			if(s.getId() == idStud)
-				return;
-		}
-		
 		p.addStudent(s);
 		s.addPredmet(p);
 	}
@@ -100,21 +95,10 @@ public class PredmetController {
 		p.addPredmet(pr);
 	}
 	
-	public void unlinkProfesorPredmet(Profesor p, Predmet pr)
+	public void unlinkProfesorPredmet(Predmet pr)
 	{
+		pr.getmProfesor().removePredmet(pr);
 		pr.removeProfesor();
-		p.removePredmet(pr);
-	}
-
-	public List<Student> getListOfStudentsOnSubject(Predmet p){
-			//vraca listu studenta koji su dodati na predmet p
-		List<Student> stud = new ArrayList<Student>();
-		
-		for(int idStud : p.getListaStudenata()) {
-			stud.add(StudentController.getInstance().getStudentById(idStud));
-		}
-		
-		return stud;
 	}
 	
 	public List<Student> getListOfStudents(Predmet p){

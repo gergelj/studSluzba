@@ -1,12 +1,8 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.Frame;
-
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,8 +15,6 @@ public class AboutDialog extends JDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = -4147155878851661385L;
-	
-	private JButton vucaj_btn;
 	
 	public AboutDialog() {}
 	public AboutDialog(Frame parent) {

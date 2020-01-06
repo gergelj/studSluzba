@@ -1,13 +1,11 @@
 package controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import gui.MojCentralni;
 import gui.StudentiJTable;
 import klase.BazaPredmeta;
 import klase.BazaStudenta;
-import klase.Predmet;
 import klase.Student;
 
 public class StudentController {
@@ -76,17 +74,6 @@ public class StudentController {
 	
 	public List<Student> getStudenti() {
 		return BazaStudenta.getInstance().getStudenti();
-	}
-
-	public List<Predmet> getListOfSubjects(Student s) {
-		List<Predmet> pred = new ArrayList<Predmet>();
-		
-		for(int idPredmet : s.getSpisakPredmeta())
-		{
-			pred.add(BazaPredmeta.getInstance().getPredmetById(idPredmet));
-		}
-		
-		return pred;
 	}
 	
 	public Student getStudentByBrojIndeksa(String indeks) {

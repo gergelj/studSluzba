@@ -32,7 +32,7 @@ public class StudentPanel extends JPanel /*implements FocusListener*/ {
 	private ButtonGroup finansiranje_grp;
 	private JButton cancel_btn;
 	public static JButton ok_btn;
-	JRadioButtonMenuItem finansiranje_b, finansiranje_s;
+	private JRadioButtonMenuItem finansiranje_b, finansiranje_s;
 	private int mode;
 	private Student st;
 	public static int broj;

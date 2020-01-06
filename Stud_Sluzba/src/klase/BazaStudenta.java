@@ -60,6 +60,10 @@ public class BazaStudenta implements Serializable{
 	private int generateId() {
 		return ++generator;
 	}
+	
+	public void setCurrentGenerator(int id) {
+		this.generator = id;
+	}
 
 	public int getColumnCount() {
 		return kolone.size();
@@ -164,14 +168,8 @@ public class BazaStudenta implements Serializable{
 	}
 
 	public void deleteAllInstancesOfSubject(Predmet p) {
-		for(Student s : studenti) {
-			for(int i=0; i<s.getSpisakPredmeta().size(); ++i) {
-				if(s.getSpisakPredmeta().get(i) == p.getId()) {
-					s.getSpisakPredmeta().remove(i);
-					break;
-				}
-			}
-		}
+		for(Student s : studenti) 
+			s.getListaPredmeta().remove(p.getId());
 	}
 
 	public Student getStudentByBrojIndeksa(String indeks) {

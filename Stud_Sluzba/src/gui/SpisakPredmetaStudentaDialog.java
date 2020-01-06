@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.Dimension;
 import java.awt.ScrollPane;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.AbstractListModel;
@@ -36,7 +37,7 @@ public class SpisakPredmetaStudentaDialog extends JDialog {
 		
 		
 		public AbstractListModelSpisak(Student s) {
-			this.predmeti = StudentController.getInstance().getListOfSubjects(s);
+			this.predmeti = new ArrayList<Predmet>(s.getListaPredmeta().values());
 		}
 		
 		@Override

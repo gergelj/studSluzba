@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -47,6 +46,32 @@ public class MojMenuBar extends JMenuBar {
 		JMenuItem new_mi = new JMenuItem(StringResources.MENU_NEW, new ImageIcon("images/add-22.png"));
 		new_mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));		//CTRL+N
 		new_mi.addActionListener(new AddListener(AddDialog.ADD_MODE));
+		
+		JMenuItem report_mi = new JMenuItem(StringResources.MENU_REPORT, new ImageIcon("images/report-22.png"));
+		report_mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, ActionEvent.CTRL_MASK));	 	//CTRL+R
+		report_mi.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				switch(MojCentralni.getInstance().getSelectedIndex()) {
+				case 0:
+					if(StudentiJTable.getInstance().getSelectedRow() == -1)
+						return;
+					break;
+				case 1:
+					if(ProfesoriJTable.getInstance().getSelectedRow() == -1)
+						return;
+					break;
+				case 2:
+					if(PredmetiJTable.getInstance().getSelectedRow() == -1)
+						return;
+					break;
+				}
+				
+				ReportDialog d = new ReportDialog(MojCentralni.getInstance().getSelectedIndex());
+				d.setVisible(true);
+			}
+		});
 		
 		JMenuItem save_mi = new JMenuItem(StringResources.MENU_SAVE_DB, new ImageIcon("images/save-22.png"));
 		save_mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));		//CTRL+S
@@ -122,6 +147,7 @@ public class MojMenuBar extends JMenuBar {
 		});
 		
 		file.add(new_mi);
+		file.add(report_mi);
 		file.add(save_mi);
 		file.add(close_mi);
 		

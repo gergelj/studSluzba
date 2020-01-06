@@ -5,9 +5,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import controller.PredmetController;
-
-
 public class BazaPredmeta implements Serializable{
 
 	/**
@@ -51,6 +48,11 @@ public class BazaPredmeta implements Serializable{
 	private int generateId()
 	{
 		return ++generator;
+	}
+	
+	public void setCurrentGenerator(int id)
+	{
+		this.generator = id;
 	}
 	
 	public List<Predmet> getPredmeti()
@@ -152,11 +154,9 @@ public class BazaPredmeta implements Serializable{
 	}
 	
 	public void deleteAllInstanceOfStudent(Student s) {
-		for(Predmet p : this.predmeti) {
-			//TODO: remove student from every subject
-			
-			
-		}
+		for(Predmet p : this.predmeti) 
+			p.getmListaStudenata().remove(s.getId());
+		
 		
 		
 		/*
@@ -167,9 +167,9 @@ public class BazaPredmeta implements Serializable{
 	}
 	
 	public void deleteAllInstanceOfProfessor(Profesor pf) {
-		for(Predmet p : pf.getListaPredmeta().values()) {
-			p.setmProfesor(null);
-			PredmetController.getInstance().deleteProfesor(p);
+		for(Predmet p : this.predmeti) {
+			if(p.getmProfesor().getId() == pf.getId())
+				p.setmProfesor(null);
 		}
 	}
 	

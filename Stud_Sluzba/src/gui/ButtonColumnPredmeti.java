@@ -8,7 +8,6 @@ import java.awt.event.MouseListener;
 
 import javax.swing.AbstractCellEditor;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;

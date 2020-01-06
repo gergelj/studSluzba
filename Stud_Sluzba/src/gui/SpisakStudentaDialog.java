@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.AbstractListModel;
@@ -50,7 +51,7 @@ public class SpisakStudentaDialog extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(lista.getModel().getSize() == 0 || lista.getSelectedIndex()==-1 || lista.getSelectedIndex() >= lista.getModel().getSize()) {
+				if(lista.getModel().getSize() == 0 || lista.getSelectedIndex()==-1 || lista.getSelectedIndex() >= lista.getModel().getSize()) { //ako nije selektovan nijedan student
 					return;
 				}
 				Student s = lista.getSelectedValue();
@@ -97,7 +98,7 @@ public class SpisakStudentaDialog extends JDialog {
 		private List<Student> studenti;
 		
 		public AbstractListModelSpisak(Predmet p) {
-			studenti = PredmetController.getInstance().getListOfStudentsOnSubject(p);
+			studenti = new ArrayList<Student>(p.getmListaStudenata().values());
 		}
 		
 		@Override

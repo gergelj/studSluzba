@@ -53,9 +53,17 @@ public class BazaProfesora implements Serializable{
 		return profesori;
 	}
 	
+	public void setProfesori(List<Profesor> profesori) {
+		this.profesori = profesori;
+	}
+	
 	private int generateId()
 	{
 		return ++generator;
+	}
+	
+	public void setCurrentGenerator(int id) {
+		this.generator = id;
 	}
 	
 	public int getColumnCount()

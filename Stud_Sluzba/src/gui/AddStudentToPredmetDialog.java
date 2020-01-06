@@ -71,7 +71,7 @@ public class AddStudentToPredmetDialog extends JDialog {
 							input.setForeground(Color.RED);
 							input.setText(input.getText() + StringResources.NOT_SAME_YEAR);
 						}
-						else {
+						else { // OVDE SE DODAJE STUDENT NA PREDMET
 							PredmetController.getInstance().linkStudentPredmet(s, selectedPredmet);
 							setVisible(false);
 						}

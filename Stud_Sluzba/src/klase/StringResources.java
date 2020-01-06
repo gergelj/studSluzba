@@ -6,12 +6,16 @@ public class StringResources {
 
 	public static final String APPLICATION_NAME = "Studentska služba";
 	public static final String APPLICATION_CLASS_NAME = "StudSluzba";
-	public static final String VERSION = "0.1 alpha";
+	public static final String VERSION = "0.2 alpha";
 	
 	public static final String SERBIAN = "SRPSKI";
 	public static final String HUNGARIAN = "MAGYAR";
 	public static final String ENGLISH = "ENGLISH";
 	public static final String GERMAN = "DEUTSCH";
+	public static final String SERBIAN_DATEFORMAT = "dd.MM.yyyy.";
+	public static final String HUNGARIAN_DATEFORMAT = "yyyy.MM.dd.";
+	public static final String ENGLISH_DATEFORMAT = "dd.MM.yyyy.";
+	public static final String GERMAN_DATEFORMAT = "dd.MM.yyyy.";
 	
 	public static String DATEFORMAT = "dd.MM.yyyy.";
 	public static String DATETIMEFORMAT = "HH:mm:ss   " + StringResources.DATEFORMAT;
@@ -62,6 +66,7 @@ public class StringResources {
 	public static String MENU_EDIT = "Izmena";
 	public static String MENU_HELP = "Pomoć";
 	public static String MENU_NEW = "Novi";
+	public static String MENU_REPORT = "Izveštaj";
 	public static String MENU_SAVE_DB = "Sačuvaj u bazu podataka";
 	public static String MENU_CLOSE = "Zatvori";
 	public static String MENU_DELETE = "Obriši";
@@ -151,6 +156,12 @@ public class StringResources {
 	public static String NO_PROFESSOR = "Profesor nije dodat";
 	public static String RESTART_NEEDED = "Potrebno je pokrenuti aplikaciju ponovo da biste videli promene.";
 	
+	public static String STUDENT_REPORT = "Izveštaj za studenta";
+	public static String PROFESSOR_REPORT = "Izveštaj za profesora";
+	public static String SUBJECT_REPORT = "Izveštaj za predmeta";
+	public static String NO_SUBJECT_STUDENT = "Student ne sluša nijedan predmet.";
+	public static String NO_SUBJECT_PROFESSOR = "Profesor ne predaje nijedan predmet.";
+	public static String NO_STUDENTS = "Ne postoji student na predmetu.";
 	
 	public static void loadResources() {
 		switch(LanguageController.getInstance().getLanguage()) {
@@ -211,6 +222,7 @@ public class StringResources {
 		MENU_EDIT = "Bearbeiten";
 		MENU_HELP = "Hilfe";
 		MENU_NEW = "Neu";
+		MENU_REPORT = "??";
 		MENU_SAVE_DB = "In Datenbank speichern";
 		MENU_CLOSE = "Schließen";
 		MENU_DELETE = "Löschen";
@@ -300,6 +312,13 @@ public class StringResources {
 		NO_PROFESSOR = "Professor nicht zugewiesen";
 		RESTART_NEEDED = "Starten Sie die Anwendung neu, um die Änderungen anzuzeigen";
 		
+		STUDENT_REPORT = "???";
+		PROFESSOR_REPORT = "???";
+		SUBJECT_REPORT = "???";
+		NO_SUBJECT_STUDENT = "Student ne sluša nijedan predmet.";
+		NO_SUBJECT_PROFESSOR = "Profesor ne predaje nijedan predmet.";
+		NO_STUDENTS = "Ne postoji student na predmetu.";
+		
 	}
 
 	private static void loadEn() {
@@ -349,6 +368,7 @@ public class StringResources {
 		MENU_EDIT = "Edit";
 		MENU_HELP = "Help";
 		MENU_NEW = "New";
+		MENU_REPORT = "Report";
 		MENU_SAVE_DB = "Save to Data Base";
 		MENU_CLOSE = "Close";
 		MENU_DELETE = "Delete";
@@ -438,6 +458,13 @@ public class StringResources {
 		NO_PROFESSOR = "Professor not assigned";
 		RESTART_NEEDED = "Restart the applicaction to see changes";
 		
+		STUDENT_REPORT = "Student report";
+		PROFESSOR_REPORT = "Professor report";
+		SUBJECT_REPORT = "Subject report";
+		NO_SUBJECT_STUDENT = "No subject for selected student.";
+		NO_SUBJECT_PROFESSOR = "Professor has no subjects.";
+		NO_STUDENTS = "No students on subject.";
+		
 	}
 
 	private static void loadHU() {
@@ -490,6 +517,7 @@ public class StringResources {
 		MENU_EDIT = "Szerkesztés";
 		MENU_HELP = "Segítség";
 		MENU_NEW = "Új";
+		MENU_REPORT = "Összegzés";
 		MENU_SAVE_DB = "Mentés az adatbázisba";
 		MENU_CLOSE = "Bezárás";
 		MENU_DELETE = "Törlés";
@@ -578,5 +606,12 @@ public class StringResources {
 		
 		NO_PROFESSOR = "Nincs professzor";
 		RESTART_NEEDED = "A változások életbelépéséhez újraindítás szükséges.";
+		
+		STUDENT_REPORT = "Hallgató összegzés";
+		PROFESSOR_REPORT = "Professzor összegzés";
+		SUBJECT_REPORT = "Tantárgy összegzés";
+		NO_SUBJECT_STUDENT = "A hallgató nem vett fel egy tantágyat sem.";
+		NO_SUBJECT_PROFESSOR = "A professzor egy tantárgyat sem ad elő.";
+		NO_STUDENTS = "Nincs hallgató a tantárgyon.";
 	}
 }

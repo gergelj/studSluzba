@@ -3,8 +3,9 @@ package klase;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+
+import controller.LanguageController;
 
 public class Student extends Osoba implements Serializable{
 
@@ -19,16 +20,16 @@ public class Student extends Osoba implements Serializable{
 	private int trenutnaGodina;
 	private Status status;
 	private double prosek;
-	private List<Integer> spisakPredmeta; // samo ID-jevi predmeta
+	private HashMap<Integer, Predmet> listaPredmeta;
 	
 	public Student() {
 		super();
-		this.spisakPredmeta = new ArrayList<Integer>();
+		this.listaPredmeta = new HashMap<Integer, Predmet>();
 	}
 	
 	public Student(String ime, String prezime, String datumrodj, String adresa, String telefon, String email, String brojindeksa, String datumupisa, int trenutnagodina, Status status, double prosek, int internikljuc) {
 		super(internikljuc, ime, prezime, datumrodj, adresa, telefon, email);
-		this.spisakPredmeta = new ArrayList<Integer>();
+		this.listaPredmeta = new HashMap<Integer, Predmet>();
 		this.brojIndeksa = brojindeksa;
 		this.datumUpisa = LocalDate.parse(datumupisa, DateTimeFormatter.ofPattern(StringResources.DATEFORMAT));
 		this.status = status;
@@ -36,19 +37,58 @@ public class Student extends Osoba implements Serializable{
 		this.prosek = prosek;
 	}
 	
-	public Student(String ime, String prezime, String datumrodj, String adresa, String telefon, String email, String brojindeksa, String datumupisa, int trenutnagodina, Status status, double prosek, int internikljuc, ArrayList<Integer> spisakpredmeta) {
+	public Student(String ime, String prezime, String datumrodj, String adresa, String telefon, String email, String brojindeksa, String datumupisa, int trenutnagodina, Status status, double prosek, int internikljuc, HashMap<Integer, Predmet> listaPredmeta) {
 		super(internikljuc, ime, prezime, datumrodj, adresa, telefon, email);
 		this.brojIndeksa = brojindeksa;
 		this.datumUpisa = LocalDate.parse(datumupisa, DateTimeFormatter.ofPattern(StringResources.DATEFORMAT));
 		this.status = status;
 		this.trenutnaGodina = trenutnagodina;
 		this.prosek = prosek;
-		this.spisakPredmeta = spisakpredmeta;
+		this.listaPredmeta = listaPredmeta;
+	}
+
+	public String format() {
+		String datumR = null;
+		String datumU = null;
+		
+		switch(LanguageController.getInstance().getLanguage()) {
+		case(0):{
+			datumR = datumRodjenja.format(DateTimeFormatter.ofPattern(StringResources.SERBIAN_DATEFORMAT));
+			datumU = datumUpisa.format(DateTimeFormatter.ofPattern(StringResources.SERBIAN_DATEFORMAT));
+		} break;
+		case(1):{
+			datumR = datumRodjenja.format(DateTimeFormatter.ofPattern(StringResources.HUNGARIAN_DATEFORMAT));
+			datumU = datumUpisa.format(DateTimeFormatter.ofPattern(StringResources.HUNGARIAN_DATEFORMAT));
+		} break;
+		case(2):{
+			datumR = datumRodjenja.format(DateTimeFormatter.ofPattern(StringResources.ENGLISH_DATEFORMAT));
+			datumU = datumUpisa.format(DateTimeFormatter.ofPattern(StringResources.ENGLISH_DATEFORMAT));
+		} break;
+		case(3):{
+			datumR = datumRodjenja.format(DateTimeFormatter.ofPattern(StringResources.GERMAN_DATEFORMAT));
+			datumU = datumUpisa.format(DateTimeFormatter.ofPattern(StringResources.GERMAN_DATEFORMAT));
+		}break;
+		}
+		
+		StringBuilder stringBuilder = new StringBuilder();
+		String returnValue = ime + "|" + prezime + "|" + datumR + "|" + adresa + "|" + telefon + "|" + email + "|" + brojIndeksa + "|" + datumU + "|" + trenutnaGodina + "|" + status + "|" + prosek + "|" + id + "|";
+		stringBuilder.append(returnValue);
+
+		if(listaPredmeta.isEmpty()) {
+			stringBuilder.append("-1");
+		}
+		else {
+			for (Integer id : listaPredmeta.keySet()) {
+				stringBuilder.append(id + ",");
+			}
+			stringBuilder.deleteCharAt(stringBuilder.length() - 1); // delete last ','
+		}
+
+		return stringBuilder.toString();
 	}
 
 	@Override
 	public String toString() {
-		//treba kod prikaza studenata u JListu kada dodamo na predmet
 		return String.format("%-12.12s %s %s", this.brojIndeksa, super.getIme(), super.getPrezime());
 	}
 
@@ -112,25 +152,57 @@ public class Student extends Osoba implements Serializable{
 		this.prosek = Double.parseDouble(prosek);
 	}
 
-	public List<Integer> getSpisakPredmeta() {
-		return spisakPredmeta;
+	public HashMap<Integer, Predmet> getListaPredmeta(){
+		return this.listaPredmeta;
 	}
-
-	public void setSpisakPredmeta(ArrayList<Integer> spisakPredmeta) {
-		this.spisakPredmeta = spisakPredmeta;
+	
+	public void setListaPredmeta(HashMap<Integer, Predmet> predmeti) {
+		this.listaPredmeta = predmeti;
 	}
 	
 	public void addPredmet(Predmet p) {
-		this.spisakPredmeta.add(p.getId());
+		this.listaPredmeta.put(p.getId(), p);
 	}
 	
 	public void removePredmet(Predmet p) {
-		for(int i=0; i<this.spisakPredmeta.size(); i++) {
-			if(spisakPredmeta.get(i) == p.getId()) {
-				this.spisakPredmeta.remove(i);
-				return;
-			}
+		this.listaPredmeta.remove(p.getId());
+	}
+	
+	public String getLongReport() {
+		
+		String student = StringResources.COLUMN_INDEX_NUM + ":\t" + brojIndeksa + "\n" + 
+						StringResources.COLUMN_NAME + ":\t" + ime + "\n" +
+						StringResources.COLUMN_SURNAME + ":\t" + prezime + "\n" +
+						StringResources.COLUMN_DATE_OF_BIRTH + ":\t" + getDatumRodjenja(0) + "\n\n" +
+						StringResources.COLUMN_ADDRESS + ":\t" + adresa + "\n" + 
+						StringResources.COLUMN_TELEPHONE + ":\t" + telefon + "\n" + 
+						StringResources.COLUMN_EMAIL + ":\t" + email + "\n\n" + 
+						StringResources.COLUMN_REGISTRATION_DATE + ":\t" + getDatumUpisa(0) + "\n" + 
+						StringResources.COLUMN_YEAR + ":\t" + trenutnaGodina + "\n" + 
+						StringResources.COLUMN_STATUS + ":\t" + (status==Student.Status.B ? StringResources.STATUS_B : StringResources.STATUS_S) + "\n" + 
+						StringResources.COLUMN_AVERAGE_GRADE + ":\t" + prosek + "\n\n";
+		StringBuilder studentRep = new StringBuilder();
+		studentRep.append(student);
+		
+		if(listaPredmeta.isEmpty()) {
+			studentRep.append(StringResources.NO_SUBJECT_STUDENT);
 		}
+		else {
+			studentRep.append(StringResources.COLUMN_SUBJECTS + "\n\n" + Predmet.getFormattedHeader() + "\n\n");
+			
+			for(Predmet p : listaPredmeta.values())
+				studentRep.append(p.getShortReport() + "\n");
+		}
+		
+		return studentRep.toString();
+	}
+	
+	public static String getFormattedHeader() {
+		return String.format("%-20.20s %-30.30s %-30.30s", StringResources.COLUMN_INDEX_NUM, StringResources.COLUMN_NAME, StringResources.COLUMN_SURNAME);
+	}
+	
+	public String getShortReport() {
+		return String.format("%-20.20s %-30.30s %-30.30s", brojIndeksa, ime, prezime);
 	}
 	
 }

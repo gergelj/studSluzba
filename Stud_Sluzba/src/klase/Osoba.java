@@ -11,10 +11,10 @@ public class Osoba implements Serializable {
 	 */
 	private static final long serialVersionUID = 6430628550835861435L;
 	
-	private int id;
-	private String ime, prezime;
-	private LocalDate datumRodjenja;
-	private String adresa, telefon, email;
+	protected int id;
+	protected String ime, prezime;
+	protected LocalDate datumRodjenja;
+	protected String adresa, telefon, email;
 	
 	public Osoba() {}
 	

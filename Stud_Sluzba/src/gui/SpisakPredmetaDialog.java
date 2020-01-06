@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.AbstractListModel;
@@ -43,7 +44,7 @@ public class SpisakPredmetaDialog extends JDialog {
 		
 		
 		public AbstractListModelSpisak(Profesor p) {
-			this.predmeti = ProfesorController.getInstance().getListOfSubjects(p);
+			this.predmeti = new ArrayList<Predmet>(p.getListaPredmeta().values());
 		}
 		
 		@Override
@@ -76,12 +77,12 @@ public class SpisakPredmetaDialog extends JDialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Predmet p = lista.getSelectedValue();
-				if(p != null)
+				Predmet selectedPredmet = lista.getSelectedValue();
+				if(selectedPredmet != null)
 				{
-					Profesor prof = ProfesorController.getInstance().nadjiProfesora(selectedProfRow);
-					PredmetController.getInstance().unlinkProfesorPredmet(prof, p);
-					p.setmProfesor(null);
+					//Profesor prof = ProfesorController.getInstance().nadjiProfesora(selectedProfRow);
+					PredmetController.getInstance().unlinkProfesorPredmet(selectedPredmet);
+					//p.setmProfesor(null);
 					MojCentralni.getInstance().azurirajPrikazPredmet();
 					setVisible(false);
 				}
@@ -93,6 +94,7 @@ public class SpisakPredmetaDialog extends JDialog {
 	private JPanel addPanel()
 	{
 		JPanel ret = new JPanel();
+		ret.setLayout(new BorderLayout());
 		
 		remove_btn = new JButton(StringResources.REMOVE);
 		JPanel btns = new JPanel();

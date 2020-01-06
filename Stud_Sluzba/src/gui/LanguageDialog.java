@@ -63,6 +63,7 @@ public class LanguageDialog extends JDialog {
 		});
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public class MyComboBoxModel extends AbstractListModel implements ComboBoxModel{
 		
 		/**

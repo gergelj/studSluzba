@@ -13,9 +13,7 @@ import gui.MojCentralni;
 import gui.PredmetiJTable;
 import gui.ProfesoriJTable;
 import gui.StudentiJTable;
-import klase.BazaStudenta;
 import klase.StringResources;
-import klase.Student;
 
 public class DeleteListener implements ActionListener {
 	
