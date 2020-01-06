@@ -165,7 +165,12 @@ public class BazaStudenta implements Serializable{
 
 	public void deleteAllInstancesOfSubject(Predmet p) {
 		for(Student s : studenti) {
-			s.getSpisakPredmeta().remove(p.getId());
+			for(int i=0; i<s.getSpisakPredmeta().size(); ++i) {
+				if(s.getSpisakPredmeta().get(i) == p.getId()) {
+					s.getSpisakPredmeta().remove(i);
+					break;
+				}
+			}
 		}
 	}
 
