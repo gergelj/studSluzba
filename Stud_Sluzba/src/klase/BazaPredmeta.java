@@ -168,8 +168,9 @@ public class BazaPredmeta implements Serializable{
 	
 	public void deleteAllInstanceOfProfessor(Profesor pf) {
 		for(Predmet p : this.predmeti) {
-			if(p.getmProfesor().getId() == pf.getId())
-				p.setmProfesor(null);
+			if(p.getmProfesor()!=null)
+				if(p.getmProfesor().getId() == pf.getId())
+					p.setmProfesor(null);
 		}
 	}
 	
