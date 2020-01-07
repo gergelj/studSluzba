@@ -121,8 +121,11 @@ public class MainFrame extends JFrame{
 			@Override
 			public void windowClosing(WindowEvent e) {
 				JFrame frame = (JFrame) e.getComponent();
-				int code = JOptionPane.showConfirmDialog(frame, StringResources.CLOSE_CONFIRMATION_MESSAGE,
-						StringResources.CLOSE_WINDOW_TITLE, JOptionPane.YES_NO_OPTION);
+				String [] options = new String[2];
+				options[0] = StringResources.YES;
+				options[1] = StringResources.NO;
+				int code = JOptionPane.showOptionDialog(frame, StringResources.CLOSE_CONFIRMATION_MESSAGE,
+						StringResources.CLOSE_WINDOW_TITLE, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
 				if (code != JOptionPane.YES_OPTION) {
 					frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 				} else {

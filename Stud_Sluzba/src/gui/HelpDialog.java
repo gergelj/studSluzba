@@ -71,8 +71,8 @@ public class HelpDialog extends JDialog {
 		Dimension minimumSize = new Dimension(100, 50);
 		htmlView.setMinimumSize(minimumSize);
 		treeView.setMinimumSize(minimumSize);
-		splitPane.setDividerLocation(250); // XXX: ignored in some releases
-		// of Swing. bug 4101306
+		splitPane.setDividerLocation(250);
+		
 		splitPane.setPreferredSize(new Dimension(500, 300));
 		// Dodamo spliter
 		getContentPane().add(splitPane, BorderLayout.CENTER);
@@ -83,8 +83,10 @@ public class HelpDialog extends JDialog {
 	private void kreirajStablo(DefaultMutableTreeNode top) {
 		DefaultMutableTreeNode cvor = null;
 
-		cvor = new DefaultMutableTreeNode(new DocsFile("UI", this.getMainHTML()));
+		cvor = new DefaultMutableTreeNode(new DocsFile("General", this.getMainHTML()));
 		top.add(cvor);
+		
+		cvor.add(new DefaultMutableTreeNode(new DocsFile("Prečice", this.getShortcutsHTML())));
 
 		/**** DODAVANJE ****/
 		
@@ -174,6 +176,9 @@ public class HelpDialog extends JDialog {
 				new DocsFile("Sortiranje", this.getSortiranjeHTML()));
 		top.add(sortiranje);
 		
+		top.add(new DefaultMutableTreeNode(new DocsFile("Ostalo", this.getOtherHTML())));
+	
+		
 	}
 
 	public void selectNode(DefaultMutableTreeNode item) {
@@ -187,6 +192,72 @@ public class HelpDialog extends JDialog {
 	private String getMainHTML() {
 		//TODO: html tekst u korenu stabla
 		return "";
+	}
+	
+	private String getShortcutsHTML() {
+		URL img_url1 = null;
+		URL img_url2 = null;
+		URL img_url3 = null;
+		URL img_url4 = null;
+		URL img_url5 = null;
+		URL img_url6 = null;
+		URL img_url7 = null;
+		URL img_url8 = null;
+		URL img_url9 = null;
+		
+		try {
+			img_url1 = new File("images/add-22.png").toURI().toURL();
+			img_url2 = new File("images/edit-22.png").toURI().toURL();
+			img_url3 = new File("images/trash-22.png").toURI().toURL();
+			img_url4 = new File("images/close-22.png").toURI().toURL();
+			img_url5 = new File("images/help-22.png").toURI().toURL();
+			img_url6 = new File("images/about-22.png").toURI().toURL();
+			img_url7 = new File("images/language-22.png").toURI().toURL();
+			img_url8 = new File("images/report-22.png").toURI().toURL();
+			img_url9 = new File("images/save-22.png").toURI().toURL();
+		} catch (MalformedURLException e) {}
+		
+		return "<h1>Prečice</h1>" + 
+				"<p><img src=\"" + img_url1.toString() + "\" height=\"22\" width=\"22\" /> Dodaj novi - Ctrl+N</p>" + 
+				"<p><img src=\"" + img_url2.toString() + "\" height=\"22\" width=\"22\" /> Izmena - Ctrl+E</p>" + 
+				"<p><img src=\"" + img_url3.toString() + "\" height=\"22\" width=\"22\" /> Brisanje - Ctrl+D</p>" + 
+				"<br>" + 
+				"<p><img src=\"" + img_url4.toString() + "\" height=\"22\" width=\"22\" /> Zatvori aplikaciju - Alt+F4</p>" + 
+				"<p><img src=\"" + img_url5.toString() + "\" height=\"22\" width=\"22\" /> Pomoćna dokumentacija - Ctrl+H</p>" + 
+				"<p><img src=\"" + img_url6.toString() + "\" height=\"22\" width=\"22\" /> O aplikaciji - Ctrl+A</p>" + 
+				"<br>" + 
+				"<p><img src=\"" + img_url7.toString() + "\" height=\"22\" width=\"22\" /> Promeni jezik - Ctrl+L</p>" + 
+				"<p><img src=\"" + img_url8.toString() + "\" height=\"22\" width=\"22\" /> Napravi izveštaj - Ctrl+R</p>" + 
+				"<p><img src=\"" + img_url9.toString() + "\" height=\"22\" width=\"22\" /> Sačuvaj u bazu - Ctrl+S</p>" + 
+				"<br>" + 
+				"<h3>Promena tabova</h3>" + 
+				"<p>Alt+1 za student tabelu</p>" + 
+				"<p>Alt+2 za profesor tabelu</p>" + 
+				"<p>Alt+3 za predmet tabelu</p>";
+	}
+	
+	private String getOtherHTML() {
+		
+		URL img_url1 = null;
+		URL img_url2 = null;
+		URL img_url3 = null;
+		URL img_url4 = null;
+		
+		try {
+			img_url1 = new File("images/save-22.png").toURI().toURL();
+			img_url2 = new File("images/doc/jezik.png").toURI().toURL();
+			img_url3 = new File("images/report-22.png").toURI().toURL();
+			img_url4 = new File("images/language-22.png").toURI().toURL();
+		} catch (MalformedURLException e) {}
+		
+		return "<h1>Ostalo</h1>" + 
+				"<h2>Baza podataka</h2>" + 
+				"<p>Aplikacija automatski sačuva stanje svih tabela prilikom zatvaranja i učita ih prilikom pokretanja. Klikom na dugme <img src=\"" + img_url1.toString() + "\" alt=\"SAVE\" height=\"22\" width=\"22\" /> korisnik može da sačuva tabele bez zatvaranja aplikacije.</p>" + 
+				"<h2>Podešavanje jezika</h2>" + 
+				"<p>Pomoć &gt; <img src=\"" + img_url4.toString() + "\" alt=\"JEZIK\"/> Jezik</p>" + 
+				"<img src=\"" + img_url2.toString() + "\" alt=\"JEZIK\"/>" + 
+				"<h2>Izveštaji</h2>" + 
+				"<p>Ako želite da otvorite izveštaj o jednom studentu, profesoru ili predmetu, prvo izaberite željenu stavku i kliknite na Fajl &gt; <img src=\"" + img_url3.toString() + "\" height=\"22\" width=\"22\" /> Izveštaj.</p>";
 	}
 	
 	private String getDodavanjeStudentaHTML() {

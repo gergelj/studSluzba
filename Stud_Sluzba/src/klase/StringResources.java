@@ -50,6 +50,8 @@ public class StringResources {
 	public static String ADD_STUDENT_TO_SUBJECT = "Dodaj studenta na predmet";
 	public static String ADD_STUDENT_TO = "Dodaj studenta na predmet: "; // + name of Subject
 	
+	public static String YES = "Da";
+	public static String NO = "Ne";
 	public static String CANCEL = "Odustani";
 	public static String OK = "OK";
 	public static String ADD = "Dodaj";
@@ -206,6 +208,8 @@ public class StringResources {
 		ADD_STUDENT_TO_SUBJECT = "Ordnen Sie dem Fach einen Student zu";
 		ADD_STUDENT_TO = "Ordnen Sie dem Fach einen Student zu: "; // + name of Subject
 		
+		YES = "Ja";
+		NO = "Nein";
 		CANCEL = "Absagen";
 		OK = "OK";
 		ADD = "Hinzufügen";
@@ -352,6 +356,8 @@ public class StringResources {
 		ADD_STUDENT_TO_SUBJECT = "Assign a Student to the Subject";
 		ADD_STUDENT_TO = "Assign a Studenta to the Subject: "; // + name of Subject
 		
+		YES = "Yes";
+		NO = "No";
 		CANCEL = "Cancel";
 		OK = "OK";
 		ADD = "Add";
@@ -501,6 +507,8 @@ public class StringResources {
 		ADD_STUDENT_TO_SUBJECT = "Hallgató hozzáadása a tantárgyhoz";
 		ADD_STUDENT_TO = "Hallgató hozzáadása ehhez a tantárgyhoz: "; // + name of Subject
 		
+		YES = "Igen";
+		NO = "Nem";
 		CANCEL = "Vissza";
 		OK = "OK";
 		ADD = "Hozzáad";
