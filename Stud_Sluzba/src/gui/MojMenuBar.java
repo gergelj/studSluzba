@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 import javax.swing.WindowConstants;
 
+import controller.DatabaseController;
+import controller.LanguageController;
 import listeneri.AddListener;
 import listeneri.DeleteListener;
 import listeneri.SaveToDatabaseListener;
@@ -82,13 +84,19 @@ public class MojMenuBar extends JMenuBar {
 		close_mi.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int code = JOptionPane.showConfirmDialog(MainFrame.getInstance(), StringResources.CLOSE_CONFIRMATION_MESSAGE,
-						StringResources.CLOSE_WINDOW_TITLE, JOptionPane.YES_NO_OPTION);
+				String [] options = new String[2];
+				options[0] = StringResources.YES;
+				options[1] = StringResources.NO;
+				int code = JOptionPane.showOptionDialog(MainFrame.getInstance(), StringResources.CLOSE_CONFIRMATION_MESSAGE,
+						StringResources.CLOSE_WINDOW_TITLE, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
+				System.out.println(code + ">>" + JOptionPane.YES_OPTION);
 				if (code != JOptionPane.YES_OPTION) {
 					MainFrame.getInstance().setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 				} else {
-					// TODO sacuvaj bazu objekata, da li ovde?...
-					MainFrame.getInstance().setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+					LanguageController.getInstance().saveLanguage();
+					DatabaseController.save();
+					System.exit(0);
+					//MainFrame.getInstance().setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 				}
 			}
 		});

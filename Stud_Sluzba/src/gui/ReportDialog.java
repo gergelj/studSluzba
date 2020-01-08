@@ -31,8 +31,6 @@ public class ReportDialog extends JDialog {
 		
 		switch(selectedTab) {
 		case 0:{
-			this.setTitle(StringResources.STUDENT_REPORT);
-			
 			Student s = null;
 			int row = StudentiJTable.getInstance().getSelectedRow();
 			if(row != -1)
@@ -40,6 +38,7 @@ public class ReportDialog extends JDialog {
 			else
 				return;
 			
+			this.setTitle(StringResources.STUDENT_REPORT + " - " + s.getBrojIndeksa());
 			textPane.setText(s.getLongReport());
 			
 		}

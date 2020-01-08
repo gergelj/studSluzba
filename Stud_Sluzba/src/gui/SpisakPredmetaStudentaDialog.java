@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.ScrollPane;
 import java.util.ArrayList;
@@ -70,7 +71,7 @@ public class SpisakPredmetaStudentaDialog extends JDialog {
 	private JPanel addPanel()
 	{
 		JPanel ret = new JPanel();
-		
+		ret.setLayout(new BorderLayout());
 		ScrollPane scroll = new ScrollPane();
 		scroll.setPreferredSize(new Dimension(400,400));
 		
@@ -78,7 +79,7 @@ public class SpisakPredmetaStudentaDialog extends JDialog {
 		lista.setModel(new AbstractListModelSpisak(selectedStudent));
 		scroll.add(lista);
 		
-		ret.add(scroll);
+		ret.add(scroll, BorderLayout.CENTER);
 		return ret;
 	}
 	

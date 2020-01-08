@@ -95,14 +95,23 @@ public class MainFrame extends JFrame{
 					@SuppressWarnings("unchecked")
 					TableRowSorter<AbstractTableModelStudenti> studentSorter = (TableRowSorter<AbstractTableModelStudenti>) StudentiJTable.getInstance().getRowSorter();
 					studentSorter.setRowFilter(null);
+					
+				} break;
+				case 1:{
+					MojToolbar.getInstance().setButtonsVisible(false);
+					// da bi se vratila originalna tabela ako sam prethodno trazio nesto
+					@SuppressWarnings("unchecked")
+					TableRowSorter<AbstractTableModelProfesori> profesorSorter = (TableRowSorter<AbstractTableModelProfesori>) ProfesoriJTable.getInstance().getRowSorter();
+					profesorSorter.setRowFilter(null);
+				} break;
+				case 2: {
+					MojToolbar.getInstance().setButtonsVisible(true);
+					// da bi se vratila originalna tabela ako sam prethodno trazio nesto
+					@SuppressWarnings("unchecked")
+					TableRowSorter<AbstractTableModelPredmet> predmetSorter = (TableRowSorter<AbstractTableModelPredmet>) PredmetiJTable.getInstance().getRowSorter();
+					predmetSorter.setRowFilter(null);
 				}
 				
-				}
-				if(MojCentralni.getInstance().getSelectedIndex()==2) {
-					MojToolbar.getInstance().setButtonsVisible(true);
-				}
-				else {
-					MojToolbar.getInstance().setButtonsVisible(false);
 				}
 				
 				
@@ -121,8 +130,11 @@ public class MainFrame extends JFrame{
 			@Override
 			public void windowClosing(WindowEvent e) {
 				JFrame frame = (JFrame) e.getComponent();
-				int code = JOptionPane.showConfirmDialog(frame, StringResources.CLOSE_CONFIRMATION_MESSAGE,
-						StringResources.CLOSE_WINDOW_TITLE, JOptionPane.YES_NO_OPTION);
+				String [] options = new String[2];
+				options[0] = StringResources.YES;
+				options[1] = StringResources.NO;
+				int code = JOptionPane.showOptionDialog(frame, StringResources.CLOSE_CONFIRMATION_MESSAGE,
+						StringResources.CLOSE_WINDOW_TITLE, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
 				if (code != JOptionPane.YES_OPTION) {
 					frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 				} else {
