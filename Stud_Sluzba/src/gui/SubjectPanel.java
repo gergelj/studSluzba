@@ -133,20 +133,31 @@ public class SubjectPanel extends JPanel{
 				int tmp_sem = sem_list.getSelectedIndex()+1;
 				
 				if(mode == AddDialog.ADD_MODE) {
-					if(!PredmetController.getInstance().dodajPredmet(sif_txt.getText().toLowerCase(),naz_txt.getText(),tmp_god,tmp_sem))
+					if(!(tmp_god*2 == tmp_sem || tmp_god*2-1 == tmp_sem))
+					{
+						ok_btn.setEnabled(false);
+						sem_list.setForeground(Color.RED);
+					}
+					else if(!PredmetController.getInstance().dodajPredmet(sif_txt.getText().toLowerCase(),naz_txt.getText(),tmp_god,tmp_sem))
 					{
 						ok_btn.setEnabled(false);
 						sif_txt.setForeground(Color.RED);
 						sif_txt.setText(sif_txt.getText()+StringResources.SUBJECT_ID_EXISTS);
 						br--;
 					}
+					
 					else
 					{
 						dialog.setVisible(false);
 					}
 				}
 				else {
-					if(!PredmetController.getInstance().izmeniPredmet(sif_txt.getText().toLowerCase(),naz_txt.getText(),tmp_god,tmp_sem,predmet.getId()))
+					if(!(tmp_god*2 == tmp_sem || tmp_god*2-1 == tmp_sem))
+					{
+						ok_btn.setEnabled(false);
+						sem_list.setForeground(Color.RED);
+					}
+					else if(!PredmetController.getInstance().izmeniPredmet(sif_txt.getText().toLowerCase(),naz_txt.getText(),tmp_god,tmp_sem,predmet.getId()))
 					{
 						ok_btn.setEnabled(false);
 						sif_txt.setForeground(Color.RED);

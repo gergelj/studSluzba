@@ -26,7 +26,7 @@ public class MojToolbar extends JToolBar {
 
 	//parent frame
 	//private MainFrame frame;
-	private JButton add_btn, edit_btn, delete_btn, save_btn, unsort_btn, add_student_btn, professor_btn;
+	private JButton add_btn, edit_btn, delete_btn, save_btn, unsort_btn, add_student_btn, professor_btn, r_professor_btn;
 	private JTextField search_txtF;
 	/**
 	 * 
@@ -78,16 +78,22 @@ public class MojToolbar extends JToolBar {
 			public void actionPerformed(ActionEvent e) {
 				int selectedTab = MojCentralni.getInstance().getSelectedIndex();
 				switch(selectedTab) {
-				case 0: {RowSorter<?> rs = StudentiJTable.getInstance().getRowSorter();
-						rs.setSortKeys(null);}
-				break;
-				case 1: {
-					RowSorter<?> rs = ProfesoriJTable.getInstance().getRowSorter();
-					rs.setSortKeys(null);} break;
+				case 0: 
+					{
+						RowSorter<?> rs = StudentiJTable.getInstance().getRowSorter();
+						rs.setSortKeys(null);
+					}
+					break;
+				case 1: 
+					{
+						RowSorter<?> rs = ProfesoriJTable.getInstance().getRowSorter();
+						rs.setSortKeys(null);
+					} 
+					break;
 				case 2:
 					{
-					RowSorter<?> rs = PredmetiJTable.getInstance().getRowSorter();
-					rs.setSortKeys(null);
+						RowSorter<?> rs = PredmetiJTable.getInstance().getRowSorter();
+						rs.setSortKeys(null);
 					}
 					break;
 				}
@@ -132,6 +138,29 @@ public class MojToolbar extends JToolBar {
 			}
 		});
 		
+		r_professor_btn = new JButton();
+		r_professor_btn.setToolTipText(StringResources.DELETE_PROFESSOR_FROM_SUBJECT);
+		r_professor_btn.setIcon(new ImageIcon("images/professorx.png"));
+		add(r_professor_btn);
+		r_professor_btn.setVisible(false);
+		r_professor_btn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int selectedPredmetRow = PredmetiJTable.getInstance().getSelectedRow();
+				if(selectedPredmetRow != -1)
+				{
+					if(PredmetController.getInstance().nadjiPredmet(selectedPredmetRow).getmProfesor() != null)
+					{
+						PredmetController.getInstance().unlinkProfesorPredmet(PredmetController.getInstance().nadjiPredmet(selectedPredmetRow));
+						MojCentralni.getInstance().azurirajPrikazPredmet();
+					}
+				}
+				
+			}
+		});
+		
+		
 		add(Box.createHorizontalGlue());
 		
 		search_txtF = new JTextField(50);
@@ -158,6 +187,7 @@ public class MojToolbar extends JToolBar {
 	public void setButtonsVisible(boolean b) {
 		add_student_btn.setVisible(b);
 		professor_btn.setVisible(b);
+		r_professor_btn.setVisible(b);
 	}
 
 	public String getQuery() {

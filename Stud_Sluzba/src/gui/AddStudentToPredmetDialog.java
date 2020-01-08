@@ -66,6 +66,11 @@ public class AddStudentToPredmetDialog extends JDialog {
 						input.setForeground(Color.RED);
 						input.setText(input.getText() + StringResources.INDEX_NUM_DOESNT_EXIST);
 					}
+					else if(selectedPredmet.indexExist(s))
+					{
+						input.setForeground(Color.RED);
+						input.setText(input.getText() + StringResources.INDEX_ON_SUBJECT);
+					}
 					else {
 						if(selectedPredmet.getmGodinaIzvodjenja()!=s.getTrenutnaGodina()) {
 							input.setForeground(Color.RED);

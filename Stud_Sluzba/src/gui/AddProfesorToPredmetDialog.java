@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.ScrollPane;
@@ -69,6 +70,7 @@ public class AddProfesorToPredmetDialog extends JDialog{
 		this.setTitle(StringResources.ASSSIGN_PROFESSOR_TO + this.selectedPredmet.getmNazivPredmeta());
 		add(addPanel());
 		
+		
 		cnl_btn.addActionListener(new ActionListener() {
 			
 			@Override
@@ -76,6 +78,7 @@ public class AddProfesorToPredmetDialog extends JDialog{
 				setVisible(false);
 			}
 		});
+		
 		
 		add_btn.addActionListener(new ActionListener() {
 			
@@ -85,18 +88,27 @@ public class AddProfesorToPredmetDialog extends JDialog{
 					return;
 				}
 				Profesor p = profesori.getSelectedValue();
+				
 				//Predmet pr = selectedPredmet;
 				
 				if(selectedPredmet.getmProfesor() == null)
+				{	
 					PredmetController.getInstance().linkProfesorPredmet(p,selectedPredmet);
+					setVisible(false);
+				}
+				else if(selectedPredmet.getmProfesor() == p)
+				{
+					profesori.setForeground(Color.RED);
+				}
 				else
 				{
 					PredmetController.getInstance().unlinkProfesorPredmet(selectedPredmet);
 					PredmetController.getInstance().linkProfesorPredmet(p,selectedPredmet);
+					setVisible(false);
 				}
 				
 				MojCentralni.getInstance().azurirajPrikazPredmet();
-			    setVisible(false);
+			    
 			}
 		});
 	}
@@ -119,6 +131,7 @@ public class AddProfesorToPredmetDialog extends JDialog{
 		profesori = new JList<Profesor>();
 		profesori.setModel(new AbstractListModelProfesori());
 		scroll.add(profesori);
+		
 		
 		pom.add(scroll,BorderLayout.NORTH);
 		return pom;

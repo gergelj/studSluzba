@@ -46,6 +46,7 @@ public class StringResources {
 	public static String EDIT_PROFESSOR = "Izmeni profesora";
 	
 	public static String ASSIGN_PROFESSOR_TO_SUBJECT = "Dodaj profesora na predmet";
+	public static String DELETE_PROFESSOR_FROM_SUBJECT = "Obrisi profesora sa predmeta";
 	public static String ASSSIGN_PROFESSOR_TO = "Dodaj profesora na predmet: "; // + name of Subject
 	public static String ADD_STUDENT_TO_SUBJECT = "Dodaj studenta na predmet";
 	public static String ADD_STUDENT_TO = "Dodaj studenta na predmet: "; // + name of Subject
@@ -118,6 +119,7 @@ public class StringResources {
 	public static String PROFESSOR_ID_NUM_EXISTS = " - već postoji broj lične karte";
 	public static String INDEX_NUM_EXISTS = " - postoji već indeks";
 	public static String INDEX_NUM_DOESNT_EXIST = " - ne postoji indeks";
+	public static String INDEX_ON_SUBJECT = " - indeks je vec na predmetu";
 	public static String SUBJECT_ID_EXISTS = " - već postoji šifra predmeta";
 	public static String NOT_SAME_YEAR = " - nije ista godina kao predmet";
 	public static String WRONG_FORMAT = " - loš format (ab-xx-yyyy)";

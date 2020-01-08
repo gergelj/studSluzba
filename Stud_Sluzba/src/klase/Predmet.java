@@ -79,6 +79,11 @@ public class Predmet implements Serializable{
 		this.mListaStudenata = mListaStudenata;
 	}	
 	
+	public boolean indexExist(Student s)
+	{
+		return this.mListaStudenata.containsValue(s);
+	}
+	
 	public int getId()
 	{
 		return this.id;

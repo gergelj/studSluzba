@@ -30,7 +30,7 @@ public class StudentiJTable extends JTable {
 		this.getColumnModel().getColumn(3).setCellRenderer(new DateCellRenderer());
 		this.getColumnModel().getColumn(7).setCellRenderer(new DateCellRenderer());
 		this.getTableHeader().setReorderingAllowed(false);
-		this.setRowHeight(25);
+		this.setRowHeight(35);
 	}
 
 	@Override

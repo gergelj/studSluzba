@@ -30,7 +30,7 @@ public class ProfesoriJTable extends JTable {
 		new ButtonColumnProfesori(this, BazaProfesora.getInstance().getColumnCount());
 		this.getColumnModel().getColumn(2).setCellRenderer(new DateCellRenderer());
 		this.getTableHeader().setReorderingAllowed(false);
-		this.setRowHeight(25);
+		this.setRowHeight(35);
 	}
 
 	@Override

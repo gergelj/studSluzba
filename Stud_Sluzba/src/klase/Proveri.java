@@ -21,6 +21,24 @@ public class Proveri {
 		//return datum!=null && datum.matches("[0-9]{2}\\.[0-9]{2}\\.[0-9]{4}\\.");
 	}
 	
+	public static boolean isValidDate(String datum)
+	{
+		LocalDate now = LocalDate.now();
+		
+		try
+		{
+			LocalDate date = LocalDate.parse(datum, DateTimeFormatter.ofPattern(StringResources.DATEFORMAT));
+			if(now.compareTo(date)>0)
+				return true;
+			else 
+				return false;
+		}
+		catch (DateTimeParseException e) {
+			return false;
+		}
+		
+	}
+	
 	public static boolean isTelefon(String telefon) {
 		return telefon!=null && telefon.matches("[+]?[0-9]{7,15}");
 	}

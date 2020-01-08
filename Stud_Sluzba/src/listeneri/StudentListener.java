@@ -23,7 +23,7 @@ public class StudentListener implements FocusListener {
 		String tekst = tx.getText();
 		String name = tx.getName();
 		boolean uslov = (!Proveri.isIme(tekst) && (name.equals("ime")||name.equals("prezime")))
-				|| (!Proveri.isDatum(tekst) && (name.equals("datrodj")||name.equals("datupis")))
+				|| (!(Proveri.isDatum(tekst)&& Proveri.isValidDate(tekst)) && (name.equals("datrodj")||name.equals("datupis")))
 				|| (!Proveri.isAdresa(tekst) && name.equals("adresa"))
 				|| (!Proveri.isTelefon(tekst) && name.equals("telefon"))
 				|| (!Proveri.isEmail(tekst) && name.equals("email"))
@@ -42,7 +42,7 @@ public class StudentListener implements FocusListener {
 		String tekst = tx.getText();
 		String name = tx.getName();
 		boolean uslov = (!Proveri.isIme(tekst) && (name.equals("ime")||name.equals("prezime")))
-				|| (!Proveri.isDatum(tekst) && (name.equals("datrodj")||name.equals("datupis")))
+				|| (!(Proveri.isDatum(tekst) && Proveri.isValidDate(tekst))  && (name.equals("datrodj")||name.equals("datupis")))
 				|| (!Proveri.isAdresa(tekst) && name.equals("adresa"))
 				|| (!Proveri.isTelefon(tekst) && name.equals("telefon"))
 				|| (!Proveri.isEmail(tekst) && name.equals("email"))
