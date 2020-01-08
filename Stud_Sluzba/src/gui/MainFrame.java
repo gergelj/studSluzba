@@ -95,14 +95,23 @@ public class MainFrame extends JFrame{
 					@SuppressWarnings("unchecked")
 					TableRowSorter<AbstractTableModelStudenti> studentSorter = (TableRowSorter<AbstractTableModelStudenti>) StudentiJTable.getInstance().getRowSorter();
 					studentSorter.setRowFilter(null);
+					
+				} break;
+				case 1:{
+					MojToolbar.getInstance().setButtonsVisible(false);
+					// da bi se vratila originalna tabela ako sam prethodno trazio nesto
+					@SuppressWarnings("unchecked")
+					TableRowSorter<AbstractTableModelProfesori> profesorSorter = (TableRowSorter<AbstractTableModelProfesori>) ProfesoriJTable.getInstance().getRowSorter();
+					profesorSorter.setRowFilter(null);
+				} break;
+				case 2: {
+					MojToolbar.getInstance().setButtonsVisible(true);
+					// da bi se vratila originalna tabela ako sam prethodno trazio nesto
+					@SuppressWarnings("unchecked")
+					TableRowSorter<AbstractTableModelPredmet> predmetSorter = (TableRowSorter<AbstractTableModelPredmet>) PredmetiJTable.getInstance().getRowSorter();
+					predmetSorter.setRowFilter(null);
 				}
 				
-				}
-				if(MojCentralni.getInstance().getSelectedIndex()==2) {
-					MojToolbar.getInstance().setButtonsVisible(true);
-				}
-				else {
-					MojToolbar.getInstance().setButtonsVisible(false);
 				}
 				
 				

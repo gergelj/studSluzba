@@ -37,7 +37,7 @@ public class HelpDialog extends JDialog {
 		setLocationRelativeTo(MainFrame.getInstance());
 
 		// PANEL sa Tree view
-		top = new DefaultMutableTreeNode(new DocsFile("Help", "<h2>Kliknite pored na Help da bi se otvorila dokumentacija</h2>"));
+		top = new DefaultMutableTreeNode(new DocsFile("Help", "<h2>Izaberite stavku iz levog panela.</h2>"));
 		// Kreiramo JTree se single selection
 		tree = new JTree(top);
 		kreirajStablo(top);
@@ -190,8 +190,57 @@ public class HelpDialog extends JDialog {
 	/******************** HTML ***********************/
 	
 	private String getMainHTML() {
-		//TODO: html tekst u korenu stabla
-		return "";
+		URL img_url0 = null;
+		URL img_url1 = null;
+		URL img_url2 = null;
+		URL img_url3 = null;
+		URL img_url4 = null;
+		URL img_url5 = null;
+		URL img_url6 = null;
+		URL img_url7 = null;
+		URL img_url8 = null;
+		
+		try {
+			img_url0 = new File("images/doc/general.png").toURI().toURL();
+			img_url1 = new File("images/add-22.png").toURI().toURL();
+			img_url2 = new File("images/edit-22.png").toURI().toURL();
+			img_url3 = new File("images/trash-22.png").toURI().toURL();
+			img_url4 = new File("images/save-22.png").toURI().toURL();
+			img_url5 = new File("images/unsort-22.png").toURI().toURL();
+			img_url6 = new File("images/add-student-22.png").toURI().toURL();
+			img_url7 = new File("images/professor-22.png").toURI().toURL();
+			img_url8 = new File("images/search-22.png").toURI().toURL();
+			
+		} catch (MalformedURLException e) {}
+		
+		return "<h1>Studentska služba</h1>" + 
+				"<img src=\"" + img_url0.toString() + "\" alt=\"GENERAL\"/>" + 
+				"<h2>Menubar</h2>" + 
+				"<p>Opcije za manipulisanje podacima i aplikacijom.</p>" + 
+				"<p>Fajl &gt; Novi - pogledajte dokumentaciju za <em>Dodavanje</em></p>" + 
+				"<p>Fajl &gt; Izveštaj - pogledajte dokumentaciju <em>Ostalo</em></p>" + 
+				"<p>Fajl &gt; Sačuvaj u bazu - pogledajte dokumentaciju <em>Ostalo</em></p>" + 
+				"<p>Fajl &gt; Zatvori - zatvaranje aplikacije</p>" + 
+				"<br>" + 
+				"<p>Izmena &gt; Izmena - pogledajte dokumentaciju <em>Izmena</em></p>" + 
+				"<p>Izmena &gt; Obriši - pogledajte dokumentacije za <em>Brisanje</em></p>" + 
+				"<br>" + 
+				"<p>Pomoć &gt; Pomoć - dokumentacija</p>" + 
+				"<p>Pomoć &gt; Jezik - pogledajte dokumentaciju <em>Ostalo</em></p>" + 
+				"<p>Pomoć &gt; O aplikaciji - podaci o autorima aplikacije</p>" + 
+				"<h2>Toolbar</h2>" + 
+				"<p><img src=\"" + img_url1.toString() + "\" alt=\"ADD\" height=\"22\" width=\"22\" /> Dodaj - pogledajte dokumentaciju za <em>Dodavanje</em></p>" + 
+				"<p><img src=\"" + img_url2.toString() + "\" alt=\"EDIT\" height=\"22\" width=\"22\" /> Izmena - pogledajte dokumentaciju <em>Izmena</em></p>" + 
+				"<p><img src=\"" + img_url3.toString() + "\" alt=\"DELETE\" height=\"22\" width=\"22\" /> Obriši - pogledajte dokumentacije za <em>Brisanje</em></p>" + 
+				"<p><img src=\"" + img_url4.toString() + "\" alt=\"SAVE\" height=\"22\" width=\"22\" /> Sačuvaj u bazu - pogledajte dokumentaciju <em>Ostalo</em></p>" + 
+				"<p><img src=\"" + img_url5.toString() + "\" alt=\"UNSORT\" height=\"22\" width=\"22\" /> Vratiti originalni redosled u tabeli - pogledajte dokumentaciju <em>Sortiranje</em></p>" + 
+				"<p><img src=\"" + img_url6.toString() + "\" alt=\"ADD_STUDENT\" height=\"22\" width=\"22\" /> Dodavanje studenta na predmet (vidljiv samo za predmete) - pogledajte dokumentaciju <em>Dodavanje studenta na predmet</em></p>" + 
+				"<p><img src=\"" + img_url7.toString() + "\" alt=\"ADD_PROFESSOR\" height=\"22\" width=\"22\" /> Dodavanje profesora na predmet (vidljiv samo za predmete) - pogledajte dokumentaciju <em>Dodavanje profesora na predmet</em></p>" + 
+				"<p><img src=\"" + img_url8.toString() + "\" alt=\"SEARCH\" height=\"22\" width=\"22\" /> Pretraga - pogledajte dokumentaciju <em>Pretraga</em></p>" + 
+				"<h2>Tabovi i tabele</h2>" + 
+				"<p>Prikaz studenata, profesora ili predmeta u zavisnosti koji tab je odabran.</p>" + 
+				"<h2>Status bar</h2>" + 
+				"<p>U donjem levom uglu prikaz naziva aplikacije, u desnom uglu trenutni datum i vreme.</p>";
 	}
 	
 	private String getShortcutsHTML() {
@@ -438,7 +487,19 @@ public class HelpDialog extends JDialog {
 	}
 	
 	private String getBrisanjeProfesoraHTML() {
-		return "";
+		URL img_url1 = null;
+		URL img_url2 = null;
+		
+		try {
+			img_url1 = new File("images/trash-22.png").toURI().toURL();
+			img_url2 = new File("images/doc/delete_professor_from_predmet.png").toURI().toURL();
+		} catch (MalformedURLException e) {}
+		
+		return "<h1>Brisanje profesora</h1>" + 
+				"<p>Selektujte profesora koji želite da obrišete i pritisnite dugme <img src=\"" + img_url1.toString() + "\" alt=\"BRISI\" height=\"22\" width=\"22\" /></p>" + 
+				"<h3>Brisanje profesora sa predmeta</h3>" + 
+				"<p>Otvorite spisak predmeta profesora i klikom na UKLONI će se obrisati profesor sa odabranog predmeta.</p>" + 
+				"<img src=\"" + img_url2.toString() + "\" alt=\"PROFESSOR DELETE\"/>";
 	}
 	
 	private String getBrisanjePredmetaHTML() {
@@ -479,7 +540,7 @@ public class HelpDialog extends JDialog {
 				"<p><strong>datumu</strong> - datum upisa studenta</p>" + 
 				"<p><strong>godina</strong> - trenutna godina studenta (1, 2, 3 ili 4)</p>" + 
 				"<p><strong>status</strong> - status studenta: <strong>b</strong> za budžet, <strong>s</strong> za samofinansiranje</p>" + 
-				"<p><strong>prosek</strong> - prosek studenta</p>" + 
+				"<p><strong>prosek</strong> - prosek studenta</p><br>" + 
 				"<em>Pogledajte stranicu Dodavanje studenta kako se pravilno popunjavaju polja da bi vaša pretraga bila uspešna.</em>" + 
 				"<h2>Nazivi obeležja za profesore</h2>" + 
 				"<p><strong>ime</strong> - ime profesora</p>" + 
@@ -491,13 +552,13 @@ public class HelpDialog extends JDialog {
 				"<p><strong>kancelarija</strong> - adresa kancelarije profesora</p>" + 
 				"<p><strong>brojlk</strong> - broj lične karte profesora</p>" + 
 				"<p><strong>titula</strong> - titula profesora</p>" + 
-				"<p><strong>zvanje</strong> - zvanje profesora</p>" + 
+				"<p><strong>zvanje</strong> - zvanje profesora</p><br>" + 
 				"<em>Pogledajte stranicu Dodavanje profesora kako se pravilno popunjavaju polja da bi vaša pretraga bila uspešna.</em>" + 
 				"<h2>Nazivi obeležja za predmete</h2>" + 
 				"<p><strong>sifra</strong> - jedinstvena šifra predmeta</p>" + 
 				"<p><strong>naziv</strong> - naziv predmeta</p>" + 
 				"<p><strong>godina</strong> - godina predmeta (1, 2, 3 ili 4)</p>" + 
-				"<p><strong>semestar</strong> - semestar predmeta (1, 2, 3, 4, 5, 6, 7 ili 8)</p>" + 
+				"<p><strong>semestar</strong> - semestar predmeta (1, 2, 3, 4, 5, 6, 7 ili 8)</p><br>" + 
 				"<em>Pogledajte stranicu Dodavanje predmeta kako se pravilno popunjavaju polja da bi vaša pretraga bila uspešna.</em>";
 	}
 	
@@ -511,7 +572,7 @@ public class HelpDialog extends JDialog {
 		return  "<h1>Sortiranje</h1>" + 
 				"<p>Ako biste želeli da sortirate studenta, profesora ili predmeta po nekoj koloni, samo kliknite na ime određene kolone.</p>" + 
 				"<p>Klikom opet na tu kolonu se menja smer sortiranja (rastući/opadajući smer).</p>" + 
-				"<p>Ako ne biste želeli sortiranje, klikom na dugme <img src=\""+ img_url1.toString() +"\" alt=\"UNSORT\" height=\"22\" width=\"22\" /> se vraća originalna pozicija.</p>";
+				"<p>Klikom na dugme <img src=\""+ img_url1.toString() +"\" alt=\"UNSORT\" height=\"22\" width=\"22\" /> se vraća originalni redosled.</p>";
 	}
 
 }
