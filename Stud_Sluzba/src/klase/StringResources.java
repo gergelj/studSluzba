@@ -51,6 +51,7 @@ public class StringResources {
 	public static String ADD_STUDENT_TO_SUBJECT = "Dodaj studenta na predmet";
 	public static String ADD_STUDENT_TO = "Dodaj studenta na predmet: "; // + name of Subject
 	
+	public static String NOTIFICATION = "Obaveštenje";
 	public static String YES = "Da";
 	public static String NO = "Ne";
 	public static String CANCEL = "Odustani";
@@ -118,10 +119,11 @@ public class StringResources {
 	public static String EXAMPLE_INDEX_NUM = "npr. ra-16-2016";
 	public static String EXAMPLE_GRADE = "6.00 - 10.00";
 	
+	public static String PROFESSOR_ALREADY_ON_SUBJECT = "Profesor je već dodat na predmet.";
 	public static String PROFESSOR_ID_NUM_EXISTS = " - već postoji broj lične karte";
 	public static String INDEX_NUM_EXISTS = " - postoji već indeks";
 	public static String INDEX_NUM_DOESNT_EXIST = " - ne postoji indeks";
-	public static String INDEX_ON_SUBJECT = " - indeks je vec na predmetu";
+	public static String INDEX_ON_SUBJECT = " - student je već na predmetu";
 	public static String SUBJECT_ID_EXISTS = " - već postoji šifra predmeta";
 	public static String NOT_SAME_YEAR = " - nije ista godina kao predmet";
 	public static String WRONG_FORMAT = " - loš format (ab-xx-yyyy)";
@@ -210,6 +212,7 @@ public class StringResources {
 		ADD_STUDENT_TO_SUBJECT = "Ordnen Sie dem Fach einen Student zu";
 		ADD_STUDENT_TO = "Ordnen Sie dem Fach einen Student zu: "; // + name of Subject
 		
+		NOTIFICATION = "Obaveštenje";
 		YES = "Ja";
 		NO = "Nein";
 		CANCEL = "Absagen";
@@ -277,9 +280,11 @@ public class StringResources {
 		EXAMPLE_INDEX_NUM = "z.B. ra-16-2016";
 		EXAMPLE_GRADE = "6.00 - 10.00";
 		
+		PROFESSOR_ALREADY_ON_SUBJECT = "Profesor je već dodat na predmet.";
 		PROFESSOR_ID_NUM_EXISTS = " - ID-nummer existiert bereits";
 		INDEX_NUM_EXISTS = " - indexnummer existiert bereits";
 		INDEX_NUM_DOESNT_EXIST = " - Indexnummer existiert nicht";
+		INDEX_ON_SUBJECT = " - student je već na predmetu";
 		SUBJECT_ID_EXISTS = " - Fach-Code existiert bereits";
 		NOT_SAME_YEAR = " - nicht das gleiche Jahr wie das Fach";
 		WRONG_FORMAT = " - falsches Format (ab-xx-yyyy)";
@@ -358,6 +363,7 @@ public class StringResources {
 		ADD_STUDENT_TO_SUBJECT = "Assign a Student to the Subject";
 		ADD_STUDENT_TO = "Assign a Studenta to the Subject: "; // + name of Subject
 		
+		NOTIFICATION = "Notification";
 		YES = "Yes";
 		NO = "No";
 		CANCEL = "Cancel";
@@ -425,9 +431,11 @@ public class StringResources {
 		EXAMPLE_INDEX_NUM = "e.g. ra-16-2016";
 		EXAMPLE_GRADE = "6.00 - 10.00";
 		
+		PROFESSOR_ALREADY_ON_SUBJECT = "Professor is already added to the subject.";
 		PROFESSOR_ID_NUM_EXISTS = " - ID number already exist";
 		INDEX_NUM_EXISTS = " - index number already exist";
 		INDEX_NUM_DOESNT_EXIST = " - index number does not exist";
+		INDEX_ON_SUBJECT = " - student is already added";
 		SUBJECT_ID_EXISTS = " - subject code already exist";
 		NOT_SAME_YEAR = " - not same year as the subject";
 		WRONG_FORMAT = " - false format (ab-xx-yyyy)";
@@ -509,6 +517,7 @@ public class StringResources {
 		ADD_STUDENT_TO_SUBJECT = "Hallgató hozzáadása a tantárgyhoz";
 		ADD_STUDENT_TO = "Hallgató hozzáadása ehhez a tantárgyhoz: "; // + name of Subject
 		
+		NOTIFICATION = "Értesítés";
 		YES = "Igen";
 		NO = "Nem";
 		CANCEL = "Vissza";
@@ -576,9 +585,11 @@ public class StringResources {
 		EXAMPLE_INDEX_NUM = "pl. ra-16-2016";
 		EXAMPLE_GRADE = "6.00 - 10.00";
 		
+		PROFESSOR_ALREADY_ON_SUBJECT = "Ez a professzor már előad a tantárgyon.";
 		PROFESSOR_ID_NUM_EXISTS = " - már létezik ilyen személyiszám";
 		INDEX_NUM_EXISTS = " - már létezik ilyen index szám";
 		INDEX_NUM_DOESNT_EXIST = " - nem létezik az index szám";
+		INDEX_ON_SUBJECT = " - a hallgató már felvette a tárgyat";
 		SUBJECT_ID_EXISTS = " - már létezik ilyen tantárgy kódja";
 		NOT_SAME_YEAR = " - nem egyforma évfolyam";
 		WRONG_FORMAT = " - rossz formátum (ab-xx-yyyy)";

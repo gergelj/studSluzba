@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.ScrollPane;
@@ -13,7 +12,10 @@ import javax.swing.AbstractListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import controller.PredmetController;
 import controller.ProfesorController;
@@ -70,6 +72,18 @@ public class AddProfesorToPredmetDialog extends JDialog{
 		this.setTitle(StringResources.ASSSIGN_PROFESSOR_TO + this.selectedPredmet.getmNazivPredmeta());
 		add(addPanel());
 		
+		profesori.addListSelectionListener(new ListSelectionListener() {
+
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				if(profesori.getSelectedIndex() != -1)
+					add_btn.setEnabled(true);
+				else
+					add_btn.setEnabled(false);
+				
+			}
+			
+		});
 		
 		cnl_btn.addActionListener(new ActionListener() {
 			
@@ -98,7 +112,7 @@ public class AddProfesorToPredmetDialog extends JDialog{
 				}
 				else if(selectedPredmet.getmProfesor() == p)
 				{
-					profesori.setForeground(Color.RED);
+					JOptionPane.showMessageDialog(((JButton) e.getSource()).getParent(), StringResources.PROFESSOR_ALREADY_ON_SUBJECT, StringResources.NOTIFICATION, JOptionPane.INFORMATION_MESSAGE, null);
 				}
 				else
 				{
@@ -119,6 +133,7 @@ public class AddProfesorToPredmetDialog extends JDialog{
 		
 		cnl_btn = new JButton(StringResources.CANCEL);
 		add_btn = new JButton(StringResources.ADD);
+		add_btn.setEnabled(false);
 		JPanel btns = new JPanel();
 		btns.add(cnl_btn);
 		btns.add(add_btn);

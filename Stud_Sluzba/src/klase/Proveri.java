@@ -28,7 +28,7 @@ public class Proveri {
 		try
 		{
 			LocalDate date = LocalDate.parse(datum, DateTimeFormatter.ofPattern(StringResources.DATEFORMAT));
-			if(now.compareTo(date)>0)
+			if(now.compareTo(date)>=0)
 				return true;
 			else 
 				return false;
