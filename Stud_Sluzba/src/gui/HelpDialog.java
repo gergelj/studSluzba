@@ -33,7 +33,7 @@ public class HelpDialog extends JDialog {
 	
 	public HelpDialog() {
 		super(MainFrame.getInstance(), StringResources.APPLICATION_NAME + " v " + StringResources.VERSION, false);
-		setSize(960, 600);
+		setSize(1100, 600);
 		setLocationRelativeTo(MainFrame.getInstance());
 
 		// PANEL sa Tree view
@@ -63,7 +63,8 @@ public class HelpDialog extends JDialog {
 		htmlPane.setContentType("text/html");
 		htmlPane.setEditable(false);
 		JScrollPane htmlView = new JScrollPane(htmlPane);
-
+		
+		htmlPane.setText(((DocsFile)top.getUserObject()).getContent());
 		// Kreiramo spliter
 		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		splitPane.setTopComponent(treeView);
@@ -199,6 +200,7 @@ public class HelpDialog extends JDialog {
 		URL img_url6 = null;
 		URL img_url7 = null;
 		URL img_url8 = null;
+		URL img_url9 = null;
 		
 		try {
 			img_url0 = new File("images/doc/general.png").toURI().toURL();
@@ -210,6 +212,7 @@ public class HelpDialog extends JDialog {
 			img_url6 = new File("images/add-student-22.png").toURI().toURL();
 			img_url7 = new File("images/professor-22.png").toURI().toURL();
 			img_url8 = new File("images/search-22.png").toURI().toURL();
+			img_url9 = new File("images/professorx.png").toURI().toURL();
 			
 		} catch (MalformedURLException e) {}
 		
@@ -236,6 +239,7 @@ public class HelpDialog extends JDialog {
 				"<p><img src=\"" + img_url5.toString() + "\" alt=\"UNSORT\" height=\"22\" width=\"22\" /> Vratiti originalni redosled u tabeli - pogledajte dokumentaciju <em>Sortiranje</em></p>" + 
 				"<p><img src=\"" + img_url6.toString() + "\" alt=\"ADD_STUDENT\" height=\"22\" width=\"22\" /> Dodavanje studenta na predmet (vidljiv samo za predmete) - pogledajte dokumentaciju <em>Dodavanje studenta na predmet</em></p>" + 
 				"<p><img src=\"" + img_url7.toString() + "\" alt=\"ADD_PROFESSOR\" height=\"22\" width=\"22\" /> Dodavanje profesora na predmet (vidljiv samo za predmete) - pogledajte dokumentaciju <em>Dodavanje profesora na predmet</em></p>" + 
+				"<p><img src=\"" + img_url9.toString() + "\" alt=\"DELETE_PROFESSOR\" height=\"22\" width=\"22\" /> Brisanje profesora sa predmeta (vidljiv samo za predmete) - pogledajte dokumentaciju <em>Brisanje profesora</em></p>" + 
 				"<p><img src=\"" + img_url8.toString() + "\" alt=\"SEARCH\" height=\"22\" width=\"22\" /> Pretraga - pogledajte dokumentaciju <em>Pretraga</em></p>" + 
 				"<h2>Tabovi i tabele</h2>" + 
 				"<p>Prikaz studenata, profesora ili predmeta u zavisnosti koji tab je odabran.</p>" + 
@@ -331,7 +335,7 @@ public class HelpDialog extends JDialog {
 				"<p><strong>prezime</strong> - bilo koje prezime</p>" + 
 				"<p><strong>datum rodjenja</strong> - formata \"dd.MM.yyyy.\" gde su \"dd\" dani, \"MM\" mesec, \"yyyy\" godina</p>" + 
 				"<p><strong>adresa</strong> - bilo koja adresa</p>" + 
-				"<p><strong>telefon</strong> - 7-15 cifara</p>" + 
+				"<p><strong>telefon</strong> - broj telefona</p>" + 
 				"<p><strong>e-mail</strong> - mora da sadrži znak \"@\"</p>" + 
 				"<p><strong>broj indeksa</strong> - formata \"aa-X-yyyy\", gde je \"aa\" dva slova, X je jednocifreni/ dvocifreni ili trocifreni broj</p>" + 
 				"<p><strong>datum upisa</strong> - formata \"dd.MM.yyyy.\" gde su \"dd\" dani, \"MM\" mesec, \"yyyy\" godina</p>" + 
@@ -377,7 +381,7 @@ public class HelpDialog extends JDialog {
 				"<p><strong>prezime</strong> - bilo koje prezime</p>" + 
 				"<p><strong>datum rodjenja</strong> - formata \"dd.MM.yyyy.\" gde su \"dd\" dani, \"MM\" mesec, \"yyyy\" godina</p>" + 
 				"<p><strong>adresa</strong> - bilo koja adresa</p>" + 
-				"<p><strong>telefon</strong> - 7-15 cifara</p>" + 
+				"<p><strong>telefon</strong> - broj telefona</p>" + 
 				"<p><strong>e-mail</strong> - mora da sadrži znak \"@\"</p>" + 
 				"<p><strong>adresa kancelarije</strong> - bilo koja adresa</p>" + 
 				"<p><strong>broj LK</strong> - jedan ili više cifara</p>" + 
@@ -489,17 +493,21 @@ public class HelpDialog extends JDialog {
 	private String getBrisanjeProfesoraHTML() {
 		URL img_url1 = null;
 		URL img_url2 = null;
-		
+		URL img_url3 = null;
 		try {
 			img_url1 = new File("images/trash-22.png").toURI().toURL();
 			img_url2 = new File("images/doc/delete_professor_from_predmet.png").toURI().toURL();
+			img_url3 = new File("images/professorx.png").toURI().toURL();
 		} catch (MalformedURLException e) {}
 		
 		return "<h1>Brisanje profesora</h1>" + 
 				"<p>Selektujte profesora koji želite da obrišete i pritisnite dugme <img src=\"" + img_url1.toString() + "\" alt=\"BRISI\" height=\"22\" width=\"22\" /></p>" + 
 				"<h3>Brisanje profesora sa predmeta</h3>" + 
-				"<p>Otvorite spisak predmeta profesora i klikom na UKLONI će se obrisati profesor sa odabranog predmeta.</p>" + 
-				"<img src=\"" + img_url2.toString() + "\" alt=\"PROFESSOR DELETE\"/>";
+				"<p>Ovo možete uraditi na dva načina:</p>" + 
+				"<p>Prvi način: Otvorite spisak predmeta profesora i klikom na UKLONI će se obrisati profesor sa odabranog predmeta.</p>" + 
+				"<img src=\"" + img_url2.toString() + "\" alt=\"PROFESSOR DELETE\"/>" + 
+				"<p>Drugi način: Izaberite željeni predmet sa kojeg želite da obrišete profesora i kliknite na dugme <img src=\"" + img_url3.toString() + "\" alt=\"DELETE\"/></p>" + 
+				"";
 	}
 	
 	private String getBrisanjePredmetaHTML() {

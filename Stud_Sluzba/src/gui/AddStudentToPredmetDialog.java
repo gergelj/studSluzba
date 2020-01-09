@@ -58,8 +58,10 @@ public class AddStudentToPredmetDialog extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				String query = input.getText();
 				
-				if(query.equals(""))
-					return;
+				if(query.equals("")) {
+					input.setForeground(Color.RED);
+					input.setText(StringResources.INDEX_INPUT_MESSAGE);
+				}
 				else if(Proveri.isBrojIndeksa(query)) {
 					Student s = StudentController.getInstance().getStudentByBrojIndeksa(query);
 					if(s==null) {
@@ -83,8 +85,10 @@ public class AddStudentToPredmetDialog extends JDialog {
 					}
 				}
 				else {
-					input.setForeground(Color.RED);
-					input.setText(input.getText() + StringResources.WRONG_FORMAT);
+					if(!input.getText().equals(StringResources.INDEX_INPUT_MESSAGE)) {
+						input.setForeground(Color.RED);
+						input.setText(input.getText() + StringResources.WRONG_FORMAT);
+					}
 				}
 				
 			}

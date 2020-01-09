@@ -7,6 +7,9 @@ import javax.swing.JTabbedPane;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+import klase.BazaPredmeta;
+import klase.BazaProfesora;
+import klase.BazaStudenta;
 import klase.StringResources;
 
 public class MojCentralni extends JTabbedPane{
@@ -30,18 +33,19 @@ public class MojCentralni extends JTabbedPane{
 	private MojCentralni()
 	{	
         JScrollPane scrollPaneStudenti = new JScrollPane(StudentiJTable.getInstance());
-        //StudentiJTable.getInstance().setAutoCreateRowSorter(true);
-        StudentiJTable.getInstance().setRowSorter(new TableRowSorter<TableModel>(StudentiJTable.getInstance().getModel()));
+        TableRowSorter<TableModel> studentSorter = new TableRowSorter<TableModel>(StudentiJTable.getInstance().getModel());
+		studentSorter.setSortable(BazaStudenta.getInstance().getColumnCount(), false);
+		StudentiJTable.getInstance().setRowSorter(studentSorter);
         
         JScrollPane scrollPanePredmeti = new JScrollPane(PredmetiJTable.getInstance());
-        //PredmetiJTable.getInstance().setAutoCreateRowSorter(true);
-        PredmetiJTable.getInstance().setRowSorter(new TableRowSorter<TableModel>(PredmetiJTable.getInstance().getModel()));
-        
+        TableRowSorter<TableModel> predmetSorter = new TableRowSorter<TableModel>(PredmetiJTable.getInstance().getModel());
+        predmetSorter.setSortable(BazaPredmeta.getInstance().getColumnCount(), false);
+        PredmetiJTable.getInstance().setRowSorter(predmetSorter);
         
         JScrollPane scrollPaneProfesori = new JScrollPane(ProfesoriJTable.getInstance());
-        //ProfesoriJTable.getInstance().setAutoCreateRowSorter(true);
-        ProfesoriJTable.getInstance().setRowSorter(new TableRowSorter<TableModel>(ProfesoriJTable.getInstance().getModel()));
-        
+        TableRowSorter<TableModel> profesorSorter = new TableRowSorter<TableModel>(ProfesoriJTable.getInstance().getModel());
+        profesorSorter.setSortable(BazaProfesora.getInstance().getColumnCount(), false);
+        ProfesoriJTable.getInstance().setRowSorter(profesorSorter);
         
         addTab(StringResources.TAB_TITLE_STUDENTS ,null, scrollPaneStudenti);
         setMnemonicAt(0, KeyEvent.VK_1);
@@ -78,19 +82,5 @@ public class MojCentralni extends JTabbedPane{
 		model_profesor.fireTableDataChanged();
 		validate();
 	}
-    /*
-    public PredmetiJTable getTablPredmeti()
-    {
-    	return this.tabelaPredmeta;
-    }
-    
-    public StudentiJTable getTabelaStudenata() {
-    	return this.tabelaStudenta;
-    }
-    
-
-    public ProfesoriJTable getTabelaProfesora() {
-    	return this.tabelaProfesora;
-    }*/
 
 }

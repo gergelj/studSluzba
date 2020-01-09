@@ -1,5 +1,7 @@
 package gui;
 
+import java.awt.Font;
+
 import javax.swing.JDialog;
 import javax.swing.JEditorPane;
 import javax.swing.JScrollPane;
@@ -26,6 +28,7 @@ public class ReportDialog extends JDialog {
 		
 		JEditorPane textPane = new JEditorPane();
 		textPane.setEditable(false);
+		textPane.setFont(new Font("monospaced", textPane.getFont().getStyle(), textPane.getFont().getSize()));
 		JScrollPane scroll = new JScrollPane(textPane);
 		this.add(scroll);
 		

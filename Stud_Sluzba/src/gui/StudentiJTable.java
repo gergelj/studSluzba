@@ -26,11 +26,18 @@ public class StudentiJTable extends JTable {
 		//this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setModel(new AbstractTableModelStudenti());
+		
 		new ButtonColumnStudenti(this, BazaStudenta.getInstance().getColumnCount());
-		this.getColumnModel().getColumn(3).setCellRenderer(new DateCellRenderer());
-		this.getColumnModel().getColumn(7).setCellRenderer(new DateCellRenderer());
+		//MojCellRenderer renderer = new MojCellRenderer();
+		
+		for(int i=0; i<BazaStudenta.getInstance().getColumnCount(); i++) 
+			this.getColumnModel().getColumn(i).setCellRenderer(new MojCellRenderer(MojCellRenderer.STUDENT_RENDERER));
+		
+		
 		this.getTableHeader().setReorderingAllowed(false);
 		this.setRowHeight(35);
+		
+		
 	}
 
 	@Override

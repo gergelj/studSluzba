@@ -12,6 +12,8 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import controller.PredmetController;
 import klase.Predmet;
@@ -65,12 +67,26 @@ public class SpisakStudentaDialog extends JDialog {
 			
 		});
 		
+		lista.addListSelectionListener(new ListSelectionListener() {
+
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				if(lista.getSelectedIndex() != -1)
+					remove_btn.setEnabled(true);
+				else
+					remove_btn.setEnabled(false);
+				
+			}
+			
+		});
+		
 	}
 	
 	private void setPanel() {
 
 		cancel_btn = new JButton(StringResources.CANCEL);
 		remove_btn = new JButton(StringResources.REMOVE);
+		remove_btn.setEnabled(false);
 		JPanel btns = new JPanel();
 		btns.add(cancel_btn);
 		btns.add(remove_btn);

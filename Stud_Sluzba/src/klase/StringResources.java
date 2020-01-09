@@ -128,6 +128,7 @@ public class StringResources {
 	public static String NOT_SAME_YEAR = " - nije ista godina kao predmet";
 	public static String WRONG_FORMAT = " - loš format (ab-xx-yyyy)";
 	public static String INDEX_INPUT = "Upišite indeks:";
+	public static String INDEX_INPUT_MESSAGE = "Upišite indeks";
 	
 	public static String PROFESSOR_SUBJECT_LIST = "Predmeti profesora";
 	public static String STUDENT_SUBJECT_LIST = "Predmeti studenta";
@@ -289,6 +290,7 @@ public class StringResources {
 		NOT_SAME_YEAR = " - nicht das gleiche Jahr wie der Kurs";
 		WRONG_FORMAT = " - falsches Format (ab-xx-yyyy)";
 		INDEX_INPUT = "Geben Sie die Indexnummer ein:";
+		INDEX_INPUT_MESSAGE = "Geben Sie die Indexnummer ein";
 		
 		PROFESSOR_SUBJECT_LIST = "Kurse des Professors";
 		STUDENT_SUBJECT_LIST = "Kurse des Students";
@@ -440,6 +442,7 @@ public class StringResources {
 		NOT_SAME_YEAR = " - not same year as the subject";
 		WRONG_FORMAT = " - false format (ab-xx-yyyy)";
 		INDEX_INPUT = "Type index number:";
+		INDEX_INPUT_MESSAGE = "Type index number";
 		
 		PROFESSOR_SUBJECT_LIST = "Subjects of Professor";
 		STUDENT_SUBJECT_LIST = "Subjects of Student";
@@ -594,6 +597,7 @@ public class StringResources {
 		NOT_SAME_YEAR = " - nem egyforma évfolyam";
 		WRONG_FORMAT = " - rossz formátum (ab-xx-yyyy)";
 		INDEX_INPUT = "Vigyen be indexszámot:";
+		INDEX_INPUT_MESSAGE = "Vigyen be indexszámot";
 		
 		PROFESSOR_SUBJECT_LIST = "Professzor tantárgyai";
 		STUDENT_SUBJECT_LIST = "Hallgató tantárgyai";

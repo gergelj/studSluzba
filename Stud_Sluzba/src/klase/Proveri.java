@@ -8,7 +8,7 @@ import java.time.format.DateTimeParseException;
 public class Proveri {
 	
 	public static boolean isIme(String ime) {
-		return ime!=null && ime.matches("[a-zA-Z -]+");
+		return ime!=null && !ime.equals("");
 	}
 	
 	public static boolean isDatum(String datum) {
@@ -40,7 +40,7 @@ public class Proveri {
 	}
 	
 	public static boolean isTelefon(String telefon) {
-		return telefon!=null && telefon.matches("[+]?[0-9]{7,15}");
+		return telefon!=null && telefon.matches("[+]?[0-9/-]+");
 	}
 	
 	public static boolean isBrojIndeksa(String indeks) {

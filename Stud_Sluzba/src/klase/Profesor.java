@@ -118,16 +118,18 @@ public class Profesor extends Osoba implements Serializable{
 	
 	public String getLongReport() {
 		
-		String profesor = StringResources.COLUMN_PROFESSOR_ID_NUM + ":\t" + brojLK + "\n" + 
-						StringResources.COLUMN_NAME + ":\t" + ime + "\n" +
-						StringResources.COLUMN_SURNAME + ":\t" + prezime + "\n" +
-						StringResources.COLUMN_DATE_OF_BIRTH + ":\t" + getDatumRodjenja(0) + "\n\n" +
-						StringResources.COLUMN_ADDRESS + ":\t" + adresa + "\n" + 
-						StringResources.COLUMN_TELEPHONE + ":\t" + telefon + "\n" + 
-						StringResources.COLUMN_EMAIL + ":\t" + email + "\n\n" + 
-						StringResources.COLUMN_OFFICE_ADDRESS + ":\t" + adresaKancelarije + "\n" + 
-						StringResources.COLUMN_TITLE + ":\t" + titula + "\n" + 
-						StringResources.COLUMN_DEGREE + ":\t" + zvanje + "\n\n";
+		String profesor = 
+				String.format("%12.12s:\t%s\n", StringResources.COLUMN_PROFESSOR_ID_NUM, brojLK) +
+				String.format("%12.12s:\t%s\n", StringResources.COLUMN_NAME, ime) +
+				String.format("%12.12s:\t%s\n", StringResources.COLUMN_SURNAME, prezime) +
+				String.format("%12.12s:\t%s\n\n", StringResources.COLUMN_DATE_OF_BIRTH, getDatumRodjenja(0)) +
+				String.format("%12.12s:\t%s\n", StringResources.COLUMN_ADDRESS, adresa) +
+				String.format("%12.12s:\t%s\n", StringResources.COLUMN_TELEPHONE, telefon) +
+				String.format("%12.12s:\t%s\n\n", StringResources.COLUMN_EMAIL, email) +
+				String.format("%12.12s:\t%s\n", StringResources.COLUMN_OFFICE_ADDRESS, adresaKancelarije) +
+				String.format("%12.12s:\t%s\n", StringResources.COLUMN_TITLE, titula) +
+				String.format("%12.12s:\t%s\n\n", StringResources.COLUMN_DEGREE, zvanje);
+				
 		StringBuilder profesorRep = new StringBuilder();
 		profesorRep.append(profesor);
 		
@@ -135,7 +137,7 @@ public class Profesor extends Osoba implements Serializable{
 			profesorRep.append(StringResources.NO_SUBJECT_PROFESSOR);
 		}
 		else {
-			profesorRep.append(StringResources.COLUMN_SUBJECTS + "\n\n" + Predmet.getFormattedHeader() + "\n\n");
+			profesorRep.append(StringResources.COLUMN_SUBJECTS + ":\n\n" + Predmet.getFormattedHeader() + "\n\n");
 			
 			for(Predmet p : listaPredmeta.values())
 				profesorRep.append(p.getShortReport() + "\n");
@@ -145,16 +147,16 @@ public class Profesor extends Osoba implements Serializable{
 	}
 	
 	public String getShortReport() {
-		return "\t" + StringResources.COLUMN_PROFESSOR_ID_NUM + ":\t" + brojLK + "\n\t" + 
-				StringResources.COLUMN_NAME + ":\t" + ime + "\n\t" +
-				StringResources.COLUMN_SURNAME + ":\t" + prezime + "\n\t" +
-				StringResources.COLUMN_DATE_OF_BIRTH + ":\t" + getDatumRodjenja(0) + "\n\n\t" +
-				StringResources.COLUMN_ADDRESS + ":\t" + adresa + "\n\t" + 
-				StringResources.COLUMN_TELEPHONE + ":\t" + telefon + "\n\t" + 
-				StringResources.COLUMN_EMAIL + ":\t" + email + "\n\n\t" + 
-				StringResources.COLUMN_OFFICE_ADDRESS + ":\t" + adresaKancelarije + "\n\t" + 
-				StringResources.COLUMN_TITLE + ":\t" + titula + "\n\t" + 
-				StringResources.COLUMN_DEGREE + ":\t" + zvanje + "\n\n";
+		return String.format("\t%12.12s:\t%s\n", StringResources.COLUMN_PROFESSOR_ID_NUM, brojLK) +
+				String.format("\t%12.12s:\t%s\n", StringResources.COLUMN_NAME, ime) +
+				String.format("\t%12.12s:\t%s\n", StringResources.COLUMN_SURNAME, prezime) +
+				String.format("\t%12.12s:\t%s\n\n", StringResources.COLUMN_DATE_OF_BIRTH, getDatumRodjenja(0)) +
+				String.format("\t%12.12s:\t%s\n", StringResources.COLUMN_ADDRESS, adresa) +
+				String.format("\t%12.12s:\t%s\n", StringResources.COLUMN_TELEPHONE, telefon) +
+				String.format("\t%12.12s:\t%s\n\n", StringResources.COLUMN_EMAIL, email) +
+				String.format("\t%12.12s:\t%s\n", StringResources.COLUMN_OFFICE_ADDRESS, adresaKancelarije) +
+				String.format("\t%12.12s:\t%s\n", StringResources.COLUMN_TITLE, titula) +
+				String.format("\t%12.12s:\t%s\n\n", StringResources.COLUMN_DEGREE, zvanje);
 	}
 	
 	

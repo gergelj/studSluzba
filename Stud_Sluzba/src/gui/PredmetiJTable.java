@@ -30,6 +30,11 @@ public class PredmetiJTable extends JTable{
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setModel(new AbstractTableModelPredmet());
 		new ButtonColumnPredmeti(this, BazaPredmeta.getInstance().getColumnCount());
+		MojCellRenderer renderer = new MojCellRenderer(MojCellRenderer.SUBJECT_RENDERER);
+		
+		for(int i = 0; i<BazaPredmeta.getInstance().getColumnCount(); i++)
+			this.getColumnModel().getColumn(i).setCellRenderer(renderer);
+		
 		this.getTableHeader().setReorderingAllowed(false);
 		this.setRowHeight(35);
 	}

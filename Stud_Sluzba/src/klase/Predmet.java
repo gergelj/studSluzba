@@ -140,11 +140,13 @@ public class Predmet implements Serializable{
 	
 	public String getLongReport() {
 		
-		String predmet = StringResources.COLUMN_SUBJECT_ID + ":\t" + mSifraPredmeta + "\n" + 
-						StringResources.COLUMN_SUBJECT_TITLE + ":\t" + mNazivPredmeta + "\n\n" +
-						StringResources.COLUMN_SEMESTER + ":\t" + mSemestarPredmeta + "\n" +
-						StringResources.COLUMN_YEAR + ":\t" + mGodinaIzvodjenja + "\n\n" +
-						StringResources.COLUMN_PROFESSOR + ":\n";
+		String predmet = 
+				String.format("%16.16s:\t%s\n", StringResources.COLUMN_SUBJECT_ID, mSifraPredmeta) +
+				String.format("%16.16s:\t%s\n\n", StringResources.COLUMN_SUBJECT_TITLE, mNazivPredmeta) +
+				String.format("%16.16s:\t%s\n", StringResources.COLUMN_SEMESTER, mSemestarPredmeta) +
+				String.format("%16.16s:\t%s\n\n", StringResources.COLUMN_YEAR, mGodinaIzvodjenja) +
+				String.format("%s:\n", StringResources.COLUMN_PROFESSOR);
+		
 		StringBuilder predmetRep = new StringBuilder();
 		predmetRep.append(predmet);
 		
@@ -157,7 +159,7 @@ public class Predmet implements Serializable{
 			predmetRep.append(StringResources.NO_STUDENTS);
 		}
 		else {
-			predmetRep.append("\n" + StringResources.COLUMN_STUDENTS + "\n\n" + Student.getFormattedHeader() + "\n\n");
+			predmetRep.append("\n" + StringResources.COLUMN_STUDENTS + ":\n\n" + Student.getFormattedHeader() + "\n\n");
 			
 			for(Student s : mListaStudenata.values())
 				predmetRep.append(s.getShortReport() + "\n");

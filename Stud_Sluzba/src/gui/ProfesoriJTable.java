@@ -27,8 +27,14 @@ public class ProfesoriJTable extends JTable {
 		//this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setModel(new AbstractTableModelProfesori());
+		
 		new ButtonColumnProfesori(this, BazaProfesora.getInstance().getColumnCount());
-		this.getColumnModel().getColumn(2).setCellRenderer(new DateCellRenderer());
+		MojCellRenderer renderer = new MojCellRenderer(MojCellRenderer.PROFESSOR_RENDERER);
+		
+		for(int i = 0; i<BazaProfesora.getInstance().getColumnCount(); i++) {
+			this.getColumnModel().getColumn(i).setCellRenderer(renderer);
+		}
+
 		this.getTableHeader().setReorderingAllowed(false);
 		this.setRowHeight(35);
 	}

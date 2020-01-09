@@ -170,17 +170,19 @@ public class Student extends Osoba implements Serializable{
 	
 	public String getLongReport() {
 		
-		String student = StringResources.COLUMN_INDEX_NUM + ":\t" + brojIndeksa + "\n" + 
-						StringResources.COLUMN_NAME + ":\t" + ime + "\n" +
-						StringResources.COLUMN_SURNAME + ":\t" + prezime + "\n" +
-						StringResources.COLUMN_DATE_OF_BIRTH + ":\t" + getDatumRodjenja(0) + "\n\n" +
-						StringResources.COLUMN_ADDRESS + ":\t" + adresa + "\n" + 
-						StringResources.COLUMN_TELEPHONE + ":\t" + telefon + "\n" + 
-						StringResources.COLUMN_EMAIL + ":\t" + email + "\n\n" + 
-						StringResources.COLUMN_REGISTRATION_DATE + ":\t" + getDatumUpisa(0) + "\n" + 
-						StringResources.COLUMN_YEAR + ":\t" + trenutnaGodina + "\n" + 
-						StringResources.COLUMN_STATUS + ":\t" + (status==Student.Status.B ? StringResources.STATUS_B : StringResources.STATUS_S) + "\n" + 
-						StringResources.COLUMN_AVERAGE_GRADE + ":\t" + prosek + "\n\n";
+		String student = 
+				String.format("%12.12s: \t %s\n", StringResources.COLUMN_INDEX_NUM, brojIndeksa) + 
+				String.format("%12.12s: \t %s\n", StringResources.COLUMN_NAME, ime) + 
+				String.format("%12.12s: \t %s\n", StringResources.COLUMN_SURNAME, prezime) + 
+				String.format("%12.12s: \t %s\n\n", StringResources.COLUMN_DATE_OF_BIRTH, getDatumRodjenja(0)) + 
+				String.format("%12.12s: \t %s\n", StringResources.COLUMN_ADDRESS, adresa) + 
+				String.format("%12.12s: \t %s\n", StringResources.COLUMN_TELEPHONE, telefon) + 
+				String.format("%12.12s: \t %s\n\n", StringResources.COLUMN_EMAIL, email) + 
+				String.format("%12.12s: \t %s\n", StringResources.COLUMN_REGISTRATION_DATE , getDatumUpisa(0)) + 
+				String.format("%12.12s: \t %s\n", StringResources.COLUMN_YEAR, trenutnaGodina) + 
+				String.format("%12.12s: \t %s\n", StringResources.COLUMN_STATUS, (status==Student.Status.B ? StringResources.STATUS_B : StringResources.STATUS_S)) + 
+				String.format("%12.12s: \t %s\n\n", StringResources.COLUMN_AVERAGE_GRADE, prosek);
+		
 		StringBuilder studentRep = new StringBuilder();
 		studentRep.append(student);
 		
@@ -188,7 +190,7 @@ public class Student extends Osoba implements Serializable{
 			studentRep.append(StringResources.NO_SUBJECT_STUDENT);
 		}
 		else {
-			studentRep.append(StringResources.COLUMN_SUBJECTS + "\n\n" + Predmet.getFormattedHeader() + "\n\n");
+			studentRep.append(StringResources.COLUMN_SUBJECTS + ":\n\n" + Predmet.getFormattedHeader() + "\n\n");
 			
 			for(Predmet p : listaPredmeta.values())
 				studentRep.append(p.getShortReport() + "\n");
