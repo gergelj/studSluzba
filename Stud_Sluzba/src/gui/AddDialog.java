@@ -20,6 +20,8 @@ public class AddDialog extends JDialog {
 		setSize(400, 500);
 		setLocationRelativeTo(parent);
 		
+		this.setResizable(false);
+		
 		switch(tabSelected) {
 			case 0: //studenti
 			{

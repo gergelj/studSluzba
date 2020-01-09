@@ -22,6 +22,8 @@ public class AboutDialog extends JDialog {
 		setSize(550, 500);
 		setLocationRelativeTo(parent);
 		
+		this.setResizable(false);
+		
 		JPanel panel = new JPanel();
 		
 		JPanel vucaj = new JPanel();

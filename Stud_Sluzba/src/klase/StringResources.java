@@ -208,6 +208,7 @@ public class StringResources {
 		EDIT_PROFESSOR = "Professor bearbeiten";
 		
 		ASSIGN_PROFESSOR_TO_SUBJECT = "Ordnen Sie dem Kurs einen Professor zu";
+		DELETE_PROFESSOR_FROM_SUBJECT = "Löschen Sie den Professor aus den Fach";
 		ASSSIGN_PROFESSOR_TO = "Ordnen Sie dem Kurs einen Professor zu: "; // + name of Subject
 		ADD_STUDENT_TO_SUBJECT = "Ordnen Sie dem Kurs einen Studenten zu";
 		ADD_STUDENT_TO = "Ordnen Sie dem Kurs einen Studenten zu: "; // + name of Subject
@@ -359,6 +360,7 @@ public class StringResources {
 		EDIT_PROFESSOR = "Edit Professor";
 		
 		ASSIGN_PROFESSOR_TO_SUBJECT = "Assign a professor to the Subject";
+		DELETE_PROFESSOR_FROM_SUBJECT = "Delete Professor from the Subject";
 		ASSSIGN_PROFESSOR_TO = "Assign a Professor to the Subject: "; // + name of Subject
 		ADD_STUDENT_TO_SUBJECT = "Assign a Student to the Subject";
 		ADD_STUDENT_TO = "Assign a Studenta to the Subject: "; // + name of Subject
@@ -372,7 +374,7 @@ public class StringResources {
 		EDIT = "Edit";
 		DELETE = "Delete";
 		SAVE_TO_DB = "Save to Data Base";
-		RESET_SORT = "Reset Sort";
+		RESET_SORT = "Reset Sort";DELETE_PROFESSOR_FROM_SUBJECT = "Löschen Sie den Professor aus den Fach";
 		REMOVE = "Remove";
 		
 		CLOSE_CONFIRMATION_MESSAGE = "Do you really want to close application?";
@@ -513,6 +515,7 @@ public class StringResources {
 		EDIT_PROFESSOR = "Professzor szerkesztése";
 		
 		ASSIGN_PROFESSOR_TO_SUBJECT = "Professzor hozzáadása a tantárgyhoz";
+		DELETE_PROFESSOR_FROM_SUBJECT = "Törölje a professzort a tárgyból";
 		ASSSIGN_PROFESSOR_TO = "Professzor hozzáadása ehhez a tantárgyhoz: "; // + name of Subject
 		ADD_STUDENT_TO_SUBJECT = "Hallgató hozzáadása a tantárgyhoz";
 		ADD_STUDENT_TO = "Hallgató hozzáadása ehhez a tantárgyhoz: "; // + name of Subject
