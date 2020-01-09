@@ -72,6 +72,8 @@ public class AddProfesorToPredmetDialog extends JDialog{
 		this.setTitle(StringResources.ASSSIGN_PROFESSOR_TO + this.selectedPredmet.getmNazivPredmeta());
 		add(addPanel());
 		
+		this.setResizable(false);
+		
 		profesori.addListSelectionListener(new ListSelectionListener() {
 
 			@Override
