@@ -182,11 +182,11 @@ public class StringResources {
 	}
 	
 	private static void loadDe() {
-		CONFIRM_DELETE_STUDENT = "Möchten Sie Student löschen?";
-		DELETE_STUDENT_TITLE = "Student löschen";
+		CONFIRM_DELETE_STUDENT = "Möchten Sie Studenten löschen?";
+		DELETE_STUDENT_TITLE = "Studenten löschen";
 		CONFIRM_DELETE_PROFESSOR = "Möchten Sie Professor löschen?";
 		DELETE_PROFESSOR_TITLE = "Professor löschen";
-		CONFIRM_DELETE_SUBJECT = "Möchten Sie dem Fach löschen?";
+		CONFIRM_DELETE_SUBJECT = "Möchten Sie den Kurs löschen?";
 		DELETE_SUBJECT_TITLE = "Betreff löschen";
 		
 		REQUIRED_FIELD = "Dieses Feld wird benötigt";
@@ -198,21 +198,21 @@ public class StringResources {
 		
 		STUDENTS = "Studenten";
 		PROFESSORS = "Professoren";
-		SUBJECTS = "Fächer";
+		SUBJECTS = "Kurse";
 		
 		ADD_STUDENT = "Schüler hinzufügen";
-		EDIT_STUDENT = "Student bearbeiten";
-		ADD_SUBJECT = "Fach hinzufügen";
-		EDIT_SUBJECT = "Fach bearbeiten";
+		EDIT_STUDENT = "Studenten bearbeiten";
+		ADD_SUBJECT = "Kurs hinzufügen";
+		EDIT_SUBJECT = "Kurs bearbeiten";
 		ADD_PROFESSOR = "Professor hinzufügen";
 		EDIT_PROFESSOR = "Professor bearbeiten";
 		
-		ASSIGN_PROFESSOR_TO_SUBJECT = "Ordnen Sie dem Fach einen Professor zu";
-		ASSSIGN_PROFESSOR_TO = "Ordnen Sie dem Fach einen Professor zu: "; // + name of Subject
-		ADD_STUDENT_TO_SUBJECT = "Ordnen Sie dem Fach einen Student zu";
-		ADD_STUDENT_TO = "Ordnen Sie dem Fach einen Student zu: "; // + name of Subject
+		ASSIGN_PROFESSOR_TO_SUBJECT = "Ordnen Sie dem Kurs einen Professor zu";
+		ASSSIGN_PROFESSOR_TO = "Ordnen Sie dem Kurs einen Professor zu: "; // + name of Subject
+		ADD_STUDENT_TO_SUBJECT = "Ordnen Sie dem Kurs einen Studenten zu";
+		ADD_STUDENT_TO = "Ordnen Sie dem Kurs einen Studenten zu: "; // + name of Subject
 		
-		NOTIFICATION = "Obaveštenje";
+		NOTIFICATION = "Benachrichtigung";
 		YES = "Ja";
 		NO = "Nein";
 		CANCEL = "Absagen";
@@ -221,17 +221,17 @@ public class StringResources {
 		EDIT = "Bearbeiten";
 		DELETE = "Löschen";
 		SAVE_TO_DB = "In Datenbank speichern";
-		RESET_SORT = "Sort zurücksetzen";
+		RESET_SORT = "Reheinfolge zurücksetzen";
 		REMOVE = "Entfernen";
 		
 		CLOSE_CONFIRMATION_MESSAGE = "Möchten Sie die Anwendung schließen?";
-		CLOSE_WINDOW_TITLE = "Wird verlassen";
+		CLOSE_WINDOW_TITLE = "Andwendung schließen";
 		
 		MENU_FILE = "Datei";
 		MENU_EDIT = "Bearbeiten";
 		MENU_HELP = "Hilfe";
 		MENU_NEW = "Neu";
-		MENU_REPORT = "??";
+		MENU_REPORT = "Bericht";
 		MENU_SAVE_DB = "In Datenbank speichern";
 		MENU_CLOSE = "Schließen";
 		MENU_DELETE = "Löschen";
@@ -246,7 +246,7 @@ public class StringResources {
 		LABEL_ADDRESS = "Wohnadresse *";
 		LABEL_TELEPHONE = "Kontakt-Telefon *";
 		LABEL_EMAIL = "E-mail *";
-		LABEL_OFFICE_ADDRESS = "Büro adresse *";
+		LABEL_OFFICE_ADDRESS = "Büro Adresse *";
 		LABEL_ID_NUM = "ID-Nummer *";
 		LABEL_DEGREE = "Rang *";
 		LABEL_TITLE = "Titel *";
@@ -258,16 +258,16 @@ public class StringResources {
 		LABEL_SECOND_YEAR = "II (zweites)";
 		LABEL_THIRD_YEAR = "III (drittes)";
 		LABEL_FOURTH_YEAR = "IV (viertes)";
-		LABEL_FIRST_SEMESTER = "I (estes)";
-		LABEL_SECOND_SEMESTER = "II (zweites)";
-		LABEL_THIRD_SEMESTER = "III (drittes)";
-		LABEL_FOURTH_SEMESTER = "IV (viertes)";
-		LABEL_FIFTH_SEMESTER = "V (fünftes)";
-		LABEL_SIXTH_SEMESTER = "VI (fünftes)";
-		LABEL_SEVENTH_SEMESTER = "VII (fünftes)";
-		LABEL_EIGHTH_SEMESTER = "VII (achten)";
-		LABEL_SUBJECT_ID = "Fach-Code *";
-		LABEL_SUBJECT_TITLE = "Fach Name *";
+		LABEL_FIRST_SEMESTER = "I (ester)";
+		LABEL_SECOND_SEMESTER = "II (zweiter)";
+		LABEL_THIRD_SEMESTER = "III (dritter)";
+		LABEL_FOURTH_SEMESTER = "IV (vierter)";
+		LABEL_FIFTH_SEMESTER = "V (fünfter)";
+		LABEL_SIXTH_SEMESTER = "VI (sechster)";
+		LABEL_SEVENTH_SEMESTER = "VII (siebter)";
+		LABEL_EIGHTH_SEMESTER = "VII (achter)";
+		LABEL_SUBJECT_ID = "Kurs-Code *";
+		LABEL_SUBJECT_TITLE = "Kurs Name *";
 		LABEL_YEAR = "Jahr *";
 		LABEL_SEMESTER = "Semester *";
 		
@@ -280,26 +280,26 @@ public class StringResources {
 		EXAMPLE_INDEX_NUM = "z.B. ra-16-2016";
 		EXAMPLE_GRADE = "6.00 - 10.00";
 		
-		PROFESSOR_ALREADY_ON_SUBJECT = "Profesor je već dodat na predmet.";
+		PROFESSOR_ALREADY_ON_SUBJECT = "Professor ist dem Kurs schon zugeordnet.";
 		PROFESSOR_ID_NUM_EXISTS = " - ID-nummer existiert bereits";
-		INDEX_NUM_EXISTS = " - indexnummer existiert bereits";
+		INDEX_NUM_EXISTS = " - Indexnummer existiert bereits";
 		INDEX_NUM_DOESNT_EXIST = " - Indexnummer existiert nicht";
-		INDEX_ON_SUBJECT = " - student je već na predmetu";
-		SUBJECT_ID_EXISTS = " - Fach-Code existiert bereits";
-		NOT_SAME_YEAR = " - nicht das gleiche Jahr wie das Fach";
+		INDEX_ON_SUBJECT = " - Student ist dem Kurs schon zugeordnet";
+		SUBJECT_ID_EXISTS = " - Kurs-Code existiert bereits";
+		NOT_SAME_YEAR = " - nicht das gleiche Jahr wie der Kurs";
 		WRONG_FORMAT = " - falsches Format (ab-xx-yyyy)";
 		INDEX_INPUT = "Geben Sie die Indexnummer ein:";
 		
-		PROFESSOR_SUBJECT_LIST = "Fächer des Professors";
-		STUDENT_SUBJECT_LIST = "Fächer des Students";
-		SUBJECT_STUDENT_LIST = "Studenten auf Fach";
+		PROFESSOR_SUBJECT_LIST = "Kurse des Professors";
+		STUDENT_SUBJECT_LIST = "Kurse des Students";
+		SUBJECT_STUDENT_LIST = "Studenten im Kurs.";
 		
 		TAB_TITLE_STUDENTS = "Studenten";
 		TAB_TITLE_PROFESSORS = "Professoren";
-		TAB_TITLE_SUBJECTS = "Fächer";
+		TAB_TITLE_SUBJECTS = "Kurse";
 		
-		COLUMN_SUBJECT_ID = "FACH-CODE";
-		COLUMN_SUBJECT_TITLE = "FACH NAME";
+		COLUMN_SUBJECT_ID = "KURS-CODE";
+		COLUMN_SUBJECT_TITLE = "KURSBEZEICHNUNG";
 		COLUMN_YEAR = "JAHR";
 		COLUMN_SEMESTER = "SEMESTER"; 
 		COLUMN_PROFESSOR = "PROFESSOR";
@@ -317,18 +317,18 @@ public class StringResources {
 		COLUMN_REGISTRATION_DATE = "Zp.DES INKRAFTTETENS ";
 		COLUMN_STATUS = "STATUS";
 		COLUMN_AVERAGE_GRADE = "NOTENDURCHSCHNITT";
-		COLUMN_STUDENTS = "STUDENTS";
-		COLUMN_SUBJECTS = "FÄCHER";
+		COLUMN_STUDENTS = "STUDENTEN";
+		COLUMN_SUBJECTS = "KURSE";
 		
-		NO_PROFESSOR = "Professor nicht zugewiesen";
+		NO_PROFESSOR = "Professor nicht zugeordnet";
 		RESTART_NEEDED = "Starten Sie die Anwendung neu, um die Änderungen anzuzeigen";
 		
-		STUDENT_REPORT = "???";
-		PROFESSOR_REPORT = "???";
-		SUBJECT_REPORT = "???";
-		NO_SUBJECT_STUDENT = "Student ne sluša nijedan predmet.";
-		NO_SUBJECT_PROFESSOR = "Profesor ne predaje nijedan predmet.";
-		NO_STUDENTS = "Ne postoji student na predmetu.";
+		STUDENT_REPORT = "Bericht über Studenten";
+		PROFESSOR_REPORT = "Bericht über Professoren";
+		SUBJECT_REPORT = "Bericht über Kurse";
+		NO_SUBJECT_STUDENT = "Student ist keinem Kurs zugeordnet.";
+		NO_SUBJECT_PROFESSOR = "Professor ist keinem Kurs zugeordnet.";
+		NO_STUDENTS = "Kurs kein Student zugeordnet.";
 		
 	}
 
