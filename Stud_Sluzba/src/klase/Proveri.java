@@ -83,7 +83,7 @@ public class Proveri {
 	
 	public static boolean isTitulaOrZvanje(String nesto)
 	{
-		return nesto!=null && nesto.matches("[a-zA-z]+");
+		return nesto!=null && !nesto.matches("");
 	}
 	
 	
