@@ -58,7 +58,6 @@ public class AddProfesorToPredmetDialog extends JDialog{
 		}
 
 		public void azuriraj(int selectedIndex) {
-			// TODO Auto-generated method stub
 			
 		}
 	}

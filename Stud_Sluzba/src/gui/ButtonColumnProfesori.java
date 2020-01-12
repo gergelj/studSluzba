@@ -51,8 +51,6 @@ implements TableCellRenderer, TableCellEditor, MouseListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				fireEditingStopped();
-				//TODO: ispis liste predmeta za odabranog studenta
-				//JOptionPane.showMessageDialog(table, "Selektovan je profesor u redu: " + table.getSelectedRow());
 				SpisakPredmetaDialog dial = new SpisakPredmetaDialog(table.getSelectedRow());
 				dial.setVisible(true);
 			}

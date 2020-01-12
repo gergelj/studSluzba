@@ -68,8 +68,6 @@ public class MainFrame extends JFrame{
 		this.setJMenuBar(MojMenuBar.getInstance());
 		this.add(MojToolbar.getInstance(), BorderLayout.NORTH);
 		
-		//TODO napraviti status bar u kom pise Studentska sluzba i datum i trenutno vreme
-		
 		mDateTime = new JLabel();
 		JPanel statusBar = new JPanel();
 		statusBar.setBackground(Color.LIGHT_GRAY);
@@ -80,9 +78,6 @@ public class MainFrame extends JFrame{
 		
 		add(statusBar,BorderLayout.SOUTH);
 
-		
-		//TODO napraviti centralni deo glavnog prozora koji ima 3 taba
-		//tabovi = MojCentralni.getInstance();
 		this.add(MojCentralni.getInstance(),BorderLayout.CENTER);
 		MojCentralni.getInstance().addChangeListener(new ChangeListener() {
 
