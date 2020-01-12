@@ -19,6 +19,7 @@ import gui.MojToolbar;
 import gui.PredmetiJTable;
 import gui.ProfesoriJTable;
 import gui.StudentiJTable;
+import klase.BrojIndeksa;
 import klase.Fields;
 import klase.Proveri;
 import klase.StringResources;
@@ -275,6 +276,18 @@ private boolean setPredmetQueryFilter(String name, String val) {
 			}
 			else
 				return false;
+		else if(name.equalsIgnoreCase(Fields.SMER)) {
+			RowFilter<Object, Object> filter = new RowFilter<Object, Object>() {
+			      public boolean include(Entry<?, ?> entry) {
+			        BrojIndeksa localIndeks = (BrojIndeksa) entry.getValue(0); //dobavlja indeks iz 0. kolone
+			        return localIndeks.getSmer().equalsIgnoreCase(val);	//filtrira odgovarajuce smerove
+			      }
+			};
+			
+			this.rowFilters.add(filter);
+			return true;
+		}
+			
 		
 		return false;
 	}

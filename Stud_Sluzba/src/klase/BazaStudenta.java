@@ -70,20 +70,7 @@ public class BazaStudenta implements Serializable{
 	}
 
 	public String getColumnName(int index) {
-		switch(index) {
-		case 0: return StringResources.COLUMN_INDEX_NUM;
-		case 1: return StringResources.COLUMN_NAME;
-		case 2: return StringResources.COLUMN_SURNAME;
-		case 3: return StringResources.COLUMN_DATE_OF_BIRTH;
-		case 4: return StringResources.COLUMN_ADDRESS;
-		case 5: return StringResources.COLUMN_TELEPHONE;
-		case 6: return StringResources.COLUMN_EMAIL;
-		case 7: return StringResources.COLUMN_REGISTRATION_DATE;
-		case 8: return StringResources.COLUMN_YEAR;
-		case 9: return StringResources.COLUMN_STATUS;
-		case 10: return StringResources.COLUMN_AVERAGE_GRADE;
-		}
-		return null;
+		return this.kolone.get(index);
 	}
 
 	public Student getRow(int rowIndex) {
@@ -94,7 +81,7 @@ public class BazaStudenta implements Serializable{
 		Student student = this.studenti.get(row);
 		switch (column) {
 		case 0:
-			return student.getBrojIndeksa();
+			return student.getBrojIndeksa(0); // tipa BrojIndeksa
 		case 1:
 			return student.getIme();
 		case 2:

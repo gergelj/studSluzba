@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.table.AbstractTableModel;
 
 import klase.BazaStudenta;
+import klase.BrojIndeksa;
 import klase.StringResources;
 
 public class AbstractTableModelStudenti extends AbstractTableModel {
@@ -45,7 +46,7 @@ public class AbstractTableModelStudenti extends AbstractTableModel {
 	@Override
 	public Class<?> getColumnClass(int columnIndex) {
 		switch (columnIndex) {
-		case 0:
+		case 0: return BrojIndeksa.class;
 		case 1:
 		case 2: return String.class;
 		case 3: return LocalDate.class;

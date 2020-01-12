@@ -44,7 +44,8 @@ public class Proveri {
 	}
 	
 	public static boolean isBrojIndeksa(String indeks) {
-		return indeks!=null && indeks.matches("[a-zA-Z]{2}\\-[0-9]{1,3}\\-[0-9]{4}");
+		return indeks!=null && indeks.matches(BrojIndeksa.pattern());
+		//return indeks!=null && indeks.matches("[a-zA-Z]{2}\\-[0-9]{1,3}\\-[0-9]{4}");
 	}
 	
 	public static boolean isStatus(String status) {
@@ -83,7 +84,7 @@ public class Proveri {
 	
 	public static boolean isTitulaOrZvanje(String nesto)
 	{
-		return nesto!=null && nesto.matches("[a-zA-Z]+(\\.?\\s?)[a-zA-Z]*");
+		return nesto!=null && !nesto.matches(""); //nesto.matches("[a-zA-Z]+(\\.?\\s?)[a-zA-Z]*");
 	}
 	
 	

@@ -73,19 +73,7 @@ public class BazaProfesora implements Serializable{
 	
 	public String getColumnName(int index)
 	{
-		switch(index) {
-		case 0: return StringResources.COLUMN_NAME;
-		case 1: return StringResources.COLUMN_SURNAME;
-		case 2: return StringResources.COLUMN_DATE_OF_BIRTH;
-		case 3: return StringResources.COLUMN_ADDRESS;
-		case 4: return StringResources.COLUMN_TELEPHONE;
-		case 5: return StringResources.COLUMN_EMAIL;
-		case 6: return StringResources.COLUMN_OFFICE_ADDRESS;
-		case 7: return StringResources.COLUMN_PROFESSOR_ID_NUM;
-		case 8: return StringResources.COLUMN_TITLE;
-		case 9: return StringResources.COLUMN_DEGREE;
-		}
-		return null;
+		return this.kolone.get(index);
 	}
 	
 	public Profesor getRow(int rowInd)

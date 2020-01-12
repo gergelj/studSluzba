@@ -13,6 +13,7 @@ public class Fields {
 	public static final String STATUS = "status";
 	public static final String GODINA = "godina";
 	public static final String PROSEK = "prosek";
+	public static final String SMER = "smer";
 	
 	public static final String NAZIV = "naziv";
 	public static final String SEMESTAR = "semestar";

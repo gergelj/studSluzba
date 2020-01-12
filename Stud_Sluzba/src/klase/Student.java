@@ -16,7 +16,7 @@ public class Student extends Osoba implements Serializable{
 
 	public enum Status {B, S};
 	private LocalDate datumUpisa; 
-	private String brojIndeksa;
+	private BrojIndeksa brojIndeksa;
 	private int trenutnaGodina;
 	private Status status;
 	private double prosek;
@@ -30,7 +30,7 @@ public class Student extends Osoba implements Serializable{
 	public Student(String ime, String prezime, String datumrodj, String adresa, String telefon, String email, String brojindeksa, String datumupisa, int trenutnagodina, Status status, double prosek, int internikljuc) {
 		super(internikljuc, ime, prezime, datumrodj, adresa, telefon, email);
 		this.listaPredmeta = new HashMap<Integer, Predmet>();
-		this.brojIndeksa = brojindeksa;
+		this.brojIndeksa = new BrojIndeksa(brojindeksa); // = brojIndeksa;
 		this.datumUpisa = LocalDate.parse(datumupisa, DateTimeFormatter.ofPattern(StringResources.DATEFORMAT));
 		this.status = status;
 		this.trenutnaGodina = trenutnagodina;
@@ -39,7 +39,7 @@ public class Student extends Osoba implements Serializable{
 	
 	public Student(String ime, String prezime, String datumrodj, String adresa, String telefon, String email, String brojindeksa, String datumupisa, int trenutnagodina, Status status, double prosek, int internikljuc, HashMap<Integer, Predmet> listaPredmeta) {
 		super(internikljuc, ime, prezime, datumrodj, adresa, telefon, email);
-		this.brojIndeksa = brojindeksa;
+		this.brojIndeksa = new BrojIndeksa(brojindeksa); //= brojindeksa;
 		this.datumUpisa = LocalDate.parse(datumupisa, DateTimeFormatter.ofPattern(StringResources.DATEFORMAT));
 		this.status = status;
 		this.trenutnaGodina = trenutnagodina;
@@ -109,11 +109,11 @@ public class Student extends Osoba implements Serializable{
 	}
 
 	public String getBrojIndeksa() {
-		return brojIndeksa;
+		return brojIndeksa.toString(); //return brojIndeksa;
 	}
 
 	public void setBrojIndeksa(String brojIndeksa) {
-		this.brojIndeksa = brojIndeksa.toLowerCase();
+		this.brojIndeksa.setBrojIndeksa(brojIndeksa); //this.brojIndeksa = brojIndeksa.toLowerCase();
 	}
 	
 	public void setStatus(String status) {
@@ -207,4 +207,7 @@ public class Student extends Osoba implements Serializable{
 		return String.format("%-20.20s %-30.30s %-30.30s", brojIndeksa, ime, prezime);
 	}
 	
+	public BrojIndeksa getBrojIndeksa(int i) {
+		return this.brojIndeksa;
+	}
 }

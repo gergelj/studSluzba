@@ -76,7 +76,7 @@ public class StringResources {
 	public static String MENU_DELETE = "Obriši";
 	public static String MENU_LANGUAGE = "Jezik";
 	public static String SEARCH = "Pretraga";
-	public static String SEARCH_EXAMPLE = "ime: Pera ; prezime: Peric ; indeks: ra-100-2019...";
+	public static String SEARCH_EXAMPLE = "ime: Pera ; prezime: Peric ; indeks: " + BrojIndeksa.example();
 	
 	//PANEL LABELS
 	public static String LABEL_NAME = "Ime *";
@@ -116,7 +116,7 @@ public class StringResources {
 	public static String EXAMPLE_ADDRESS = "npr. Novi Sad";
 	public static String EXAMPLE_TELEPHONE = "npr. 061234567";
 	public static String EXAMPLE_EMAIL = "npr. imenko@uns.ac.rs";
-	public static String EXAMPLE_INDEX_NUM = "npr. ra-16-2016";
+	public static String EXAMPLE_INDEX_NUM = "npr. " + BrojIndeksa.example();
 	public static String EXAMPLE_GRADE = "6.00 - 10.00";
 	
 	public static String PROFESSOR_ALREADY_ON_SUBJECT = "Profesor je već dodat na predmet.";
@@ -126,7 +126,7 @@ public class StringResources {
 	public static String INDEX_ON_SUBJECT = " - student je već na predmetu";
 	public static String SUBJECT_ID_EXISTS = " - već postoji šifra predmeta";
 	public static String NOT_SAME_YEAR = " - nije ista godina kao predmet";
-	public static String WRONG_FORMAT = " - loš format (ab-xx-yyyy)";
+	public static String WRONG_FORMAT = " - loš format " + BrojIndeksa.format();
 	public static String INDEX_INPUT = "Upišite indeks:";
 	public static String INDEX_INPUT_MESSAGE = "Upišite indeks";
 	
@@ -239,7 +239,7 @@ public class StringResources {
 		MENU_DELETE = "Löschen";
 		MENU_LANGUAGE = "Sprache";
 		SEARCH = "Suche";
-		SEARCH_EXAMPLE = "Name: Pera ; Nachname: Peric ; Index: ra-100-2019...";
+		SEARCH_EXAMPLE = "Name: Pera ; Nachname: Peric ; Index: " + BrojIndeksa.example();
 		
 		//PANEL LABELS
 		LABEL_NAME = "Name *";
@@ -279,7 +279,7 @@ public class StringResources {
 		EXAMPLE_ADDRESS = "z.B. Novi Sad";
 		EXAMPLE_TELEPHONE = "z.B. 061234567";
 		EXAMPLE_EMAIL = "z.B. imenko@uns.ac.rs";
-		EXAMPLE_INDEX_NUM = "z.B. ra-16-2016";
+		EXAMPLE_INDEX_NUM = "z.B. " + BrojIndeksa.example();
 		EXAMPLE_GRADE = "6.00 - 10.00";
 		
 		PROFESSOR_ALREADY_ON_SUBJECT = "Professor ist dem Kurs schon zugeordnet.";
@@ -289,7 +289,7 @@ public class StringResources {
 		INDEX_ON_SUBJECT = " - Student ist dem Kurs schon zugeordnet";
 		SUBJECT_ID_EXISTS = " - Kurs-Code existiert bereits";
 		NOT_SAME_YEAR = " - nicht das gleiche Jahr wie der Kurs";
-		WRONG_FORMAT = " - falsches Format (ab-xx-yyyy)";
+		WRONG_FORMAT = " - falsches Format " + BrojIndeksa.format();
 		INDEX_INPUT = "Geben Sie die Indexnummer ein:";
 		INDEX_INPUT_MESSAGE = "Geben Sie die Indexnummer ein";
 		
@@ -376,7 +376,7 @@ public class StringResources {
 		EDIT = "Edit";
 		DELETE = "Delete";
 		SAVE_TO_DB = "Save to Data Base";
-		RESET_SORT = "Reset Sort";DELETE_PROFESSOR_FROM_SUBJECT = "Löschen Sie den Professor aus den Fach";
+		RESET_SORT = "Reset Sort";
 		REMOVE = "Remove";
 		
 		CLOSE_CONFIRMATION_MESSAGE = "Do you really want to close application?";
@@ -392,7 +392,7 @@ public class StringResources {
 		MENU_DELETE = "Delete";
 		MENU_LANGUAGE = "Language";
 		SEARCH = "Search";
-		SEARCH_EXAMPLE = "name: Pera ; surname: Peric ; index: ra-100-2019...";
+		SEARCH_EXAMPLE = "name: Pera ; surname: Peric ; index: " + BrojIndeksa.example();
 		
 		//PANEL LABELS
 		LABEL_NAME = "Name *";
@@ -430,9 +430,9 @@ public class StringResources {
 		EXAMPLE_SURNAME = "e.g. Prezimić";
 		EXAMPLE_DATE = "e.g. 22.05.2019.";
 		EXAMPLE_ADDRESS = "e.g. Novi Sad";
-		EXAMPLE_TELEPHONE = "e.g.. 061234567";
+		EXAMPLE_TELEPHONE = "e.g. 061234567";
 		EXAMPLE_EMAIL = "e.g. imenko@uns.ac.rs";
-		EXAMPLE_INDEX_NUM = "e.g. ra-16-2016";
+		EXAMPLE_INDEX_NUM = "e.g. " + BrojIndeksa.example();
 		EXAMPLE_GRADE = "6.00 - 10.00";
 		
 		PROFESSOR_ALREADY_ON_SUBJECT = "Professor is already added to the subject.";
@@ -442,7 +442,7 @@ public class StringResources {
 		INDEX_ON_SUBJECT = " - student is already added";
 		SUBJECT_ID_EXISTS = " - subject code already exist";
 		NOT_SAME_YEAR = " - not same year as the subject";
-		WRONG_FORMAT = " - false format (ab-xx-yyyy)";
+		WRONG_FORMAT = " - false format " + BrojIndeksa.format();
 		INDEX_INPUT = "Type index number:";
 		INDEX_INPUT_MESSAGE = "Type index number";
 		
@@ -548,7 +548,7 @@ public class StringResources {
 		MENU_DELETE = "Törlés";
 		MENU_LANGUAGE = "Nyelv";
 		SEARCH = "Keresés";
-		SEARCH_EXAMPLE = "ime: Pera ; prezime: Peric ; indeks: ra-100-2019...";
+		SEARCH_EXAMPLE = "ime: Pera ; prezime: Peric ; indeks: " + BrojIndeksa.example();
 		
 		//PANEL LABELS
 		LABEL_NAME = "Név *";
@@ -588,7 +588,7 @@ public class StringResources {
 		EXAMPLE_ADDRESS = "pl. Novi Sad";
 		EXAMPLE_TELEPHONE = "pl. 061234567";
 		EXAMPLE_EMAIL = "pl. nev@uns.ac.rs";
-		EXAMPLE_INDEX_NUM = "pl. ra-16-2016";
+		EXAMPLE_INDEX_NUM = "pl. " + BrojIndeksa.example();
 		EXAMPLE_GRADE = "6.00 - 10.00";
 		
 		PROFESSOR_ALREADY_ON_SUBJECT = "Ez a professzor már előad a tantárgyon.";
@@ -598,7 +598,7 @@ public class StringResources {
 		INDEX_ON_SUBJECT = " - a hallgató már felvette a tárgyat";
 		SUBJECT_ID_EXISTS = " - már létezik ilyen tantárgy kódja";
 		NOT_SAME_YEAR = " - nem egyforma évfolyam";
-		WRONG_FORMAT = " - rossz formátum (ab-xx-yyyy)";
+		WRONG_FORMAT = " - rossz formátum " + BrojIndeksa.format();
 		INDEX_INPUT = "Vigyen be indexszámot:";
 		INDEX_INPUT_MESSAGE = "Vigyen be indexszámot";
 		

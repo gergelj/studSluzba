@@ -30,12 +30,14 @@ Asistent:
 
 	- #kombinovano\_trazenje_studenta (1) - napravi se nova kolekcija koja se prikazuje preko abstract table model (kasnije smo promenili za rowfilter)
 	- #pretraga_studenta rowfilter fix (1)
+	- #pretraga_studenta indeks fix - sada može da se pretraži po smerovima (smer: ra ili smer:sw)
 
 5. #sortiranje_studenata
 
 	- #sortiranje\_studenta_predmeta (1) - autosorterom, posle smo promenili
 	- #sortiranje_studenta (1) - sortiranje baze, posle smo i to promenili
 	- #sortiranje final\_bug_fix (1) - nasli smo metodu convertRowIndexToModel() i dodali smo auto rowsorter (kasnije smo dodali novi rowsorter da bismo koristili rowfiltere)
+	- #sortiranje_studenta indeks fix - sada kolona indeksa se sortira po logici smer-godina-broj
 	
 6. #dodavanje_profesora
 

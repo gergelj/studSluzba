@@ -10,6 +10,7 @@ import javax.swing.table.TableRowSorter;
 import klase.BazaPredmeta;
 import klase.BazaProfesora;
 import klase.BazaStudenta;
+import klase.BrojIndeksa;
 import klase.StringResources;
 
 public class MojCentralni extends JTabbedPane{
@@ -36,6 +37,7 @@ public class MojCentralni extends JTabbedPane{
         TableRowSorter<TableModel> studentSorter = new TableRowSorter<TableModel>(StudentiJTable.getInstance().getModel());
 		studentSorter.setSortable(BazaStudenta.getInstance().getColumnCount(), false);
 		StudentiJTable.getInstance().setRowSorter(studentSorter);
+		studentSorter.setComparator(0, new BrojIndeksa.BrojIndeksaComparator());	// custom comparator za brojeve indeksa
         
         JScrollPane scrollPanePredmeti = new JScrollPane(PredmetiJTable.getInstance());
         TableRowSorter<TableModel> predmetSorter = new TableRowSorter<TableModel>(PredmetiJTable.getInstance().getModel());

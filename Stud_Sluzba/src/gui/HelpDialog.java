@@ -533,12 +533,13 @@ public class HelpDialog extends JDialog {
 				"<p>Formiranje upita se vrši na sledeći način: naziv_obelezja : vrednost</p>" + 
 				"<p>Ako biste želeli da pronađete studente sa imenom Marija, vaš upit bi izgledao ovako:</p>" + 
 				"<strong>ime: Marija</strong>" + 
-				"<p>Takođe možete kombinovati vašu pretragu. Ako biste hteli da pronađete sve studente koji su na budžetu na trećoj godini i žive u Novom Sadu, upišite sledeće:</p>" + 
-				"<strong>adresa: Novi Sad ; status: b ; godina: 3</strong>" + 
+				"<p>Takođe možete kombinovati vašu pretragu. Ako biste hteli da pronađete sve studente sa Računarstva i automatike koji su na budžetu na trećoj godini, upišite sledeće:</p>" + 
+				"<strong>smer: ra ; status: b ; godina: 3</strong>" + 
 				"<p>Za prikazivanje cele baze unesite prazan upit ili pređite na drugi tab pa se vratite.</p>" +
 				"<hr />" + 
 				"<h2>Nazivi obeležja za studente</h2>" + 
 				"<p><strong>indeks</strong> - broj indeksa studenta</p>" + 
+				"<p><strong>smer</strong> - smer studenta (npr. ra, sw, ee..)</p>" + 
 				"<p><strong>ime</strong> - ime studenta</p>" + 
 				"<p><strong>prezime</strong> - prezime studenta</p>" + 
 				"<p><strong>datumr</strong> - datum rođenja studenta</p>" + 
@@ -549,7 +550,8 @@ public class HelpDialog extends JDialog {
 				"<p><strong>godina</strong> - trenutna godina studenta (1, 2, 3 ili 4)</p>" + 
 				"<p><strong>status</strong> - status studenta: <strong>b</strong> za budžet, <strong>s</strong> za samofinansiranje</p>" + 
 				"<p><strong>prosek</strong> - prosek studenta</p><br>" + 
-				"<em>Pogledajte stranicu Dodavanje studenta kako se pravilno popunjavaju polja da bi vaša pretraga bila uspešna.</em>" + 
+				"<em>Pogledajte stranicu 'Dodavanje studenta' kako se pravilno popunjavaju polja da bi vaša pretraga bila uspešna.</em>" + 
+				"<br>" + 
 				"<h2>Nazivi obeležja za profesore</h2>" + 
 				"<p><strong>ime</strong> - ime profesora</p>" + 
 				"<p><strong>prezime</strong> - prezime profesora</p>" + 
@@ -561,13 +563,14 @@ public class HelpDialog extends JDialog {
 				"<p><strong>brojlk</strong> - broj lične karte profesora</p>" + 
 				"<p><strong>titula</strong> - titula profesora</p>" + 
 				"<p><strong>zvanje</strong> - zvanje profesora</p><br>" + 
-				"<em>Pogledajte stranicu Dodavanje profesora kako se pravilno popunjavaju polja da bi vaša pretraga bila uspešna.</em>" + 
+				"<em>Pogledajte stranicu 'Dodavanje profesora' kako se pravilno popunjavaju polja da bi vaša pretraga bila uspešna.</em>" + 
+				"<br>" + 
 				"<h2>Nazivi obeležja za predmete</h2>" + 
 				"<p><strong>sifra</strong> - jedinstvena šifra predmeta</p>" + 
 				"<p><strong>naziv</strong> - naziv predmeta</p>" + 
 				"<p><strong>godina</strong> - godina predmeta (1, 2, 3 ili 4)</p>" + 
 				"<p><strong>semestar</strong> - semestar predmeta (1, 2, 3, 4, 5, 6, 7 ili 8)</p><br>" + 
-				"<em>Pogledajte stranicu Dodavanje predmeta kako se pravilno popunjavaju polja da bi vaša pretraga bila uspešna.</em>";
+				"<em>Pogledajte stranicu 'Dodavanje predmeta' kako se pravilno popunjavaju polja da bi vaša pretraga bila uspešna.</em>";
 	}
 	
 	private String getSortiranjeHTML() {

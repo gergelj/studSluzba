@@ -72,14 +72,7 @@ public class BazaPredmeta implements Serializable{
 	
 	public String getColumnName(int i)
 	{
-		switch(i) {
-		case(0): return StringResources.COLUMN_SUBJECT_ID;
-		case(1): return StringResources.COLUMN_SUBJECT_TITLE;
-		case(2): return StringResources.COLUMN_YEAR;
-		case(3): return StringResources.COLUMN_SEMESTER;
-		case(4): return StringResources.COLUMN_PROFESSOR;
-		}
-		return null;
+		return this.kolone.get(i);
 	}
 	
 	public Predmet getRow(int i)

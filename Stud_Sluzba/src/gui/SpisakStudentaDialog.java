@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -98,6 +99,7 @@ public class SpisakStudentaDialog extends JDialog {
 		
 		lista = new JList<Student>();
 		lista.setModel(new AbstractListModelSpisak(selectedPredmet));
+		lista.setFont(new Font("monospaced", lista.getFont().getStyle(), lista.getFont().getSize()));
 		scroll.add(lista);
 		
 		add(scroll, BorderLayout.CENTER);
