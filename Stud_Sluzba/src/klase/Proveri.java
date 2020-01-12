@@ -8,7 +8,7 @@ import java.time.format.DateTimeParseException;
 public class Proveri {
 	
 	public static boolean isIme(String ime) {
-		return ime!=null && !ime.equals("");
+		return ime!=null && !ime.equals("");// ime.equals("\u0000-\u007f\u0110-\u0170]+");
 	}
 	
 	public static boolean isDatum(String datum) {
@@ -83,7 +83,7 @@ public class Proveri {
 	
 	public static boolean isTitulaOrZvanje(String nesto)
 	{
-		return nesto!=null && !nesto.matches("");
+		return nesto!=null && nesto.matches("[a-zA-Z]+(\\.?\\s?)[a-zA-Z]*");
 	}
 	
 	
