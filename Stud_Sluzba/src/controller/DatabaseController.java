@@ -42,15 +42,15 @@ public class DatabaseController {
 			
 		try {
 			
-			profesorWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(profesorTextFile)));
+			profesorWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(profesorTextFile), "UTF8"));
 			for(Profesor p : BazaProfesora.getInstance().getProfesori())
 				profesorWriter.write(p.format() + "\n");
 			
-			studentWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(studentTextFile)));
+			studentWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(studentTextFile), "UTF8"));
 			for(Student s : BazaStudenta.getInstance().getStudenti())
 				studentWriter.write(s.format() + "\n");
 			
-			predmetWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(predmetTextFile)));
+			predmetWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(predmetTextFile), "UTF8"));
 			for(Predmet p : BazaPredmeta.getInstance().getPredmeti())
 				predmetWriter.write(p.format() + "\n");
 			
@@ -96,7 +96,7 @@ public class DatabaseController {
 	
 	private static void loadPredmeti() {
 		try {
-			predmetReader = new BufferedReader(new InputStreamReader(new FileInputStream(predmetTextFile)));
+			predmetReader = new BufferedReader(new InputStreamReader(new FileInputStream(predmetTextFile), "UTF8"));
 			String line = null;
 			List<Predmet> predmeti = new ArrayList<Predmet>();
 			int maxId = 0;
@@ -147,7 +147,7 @@ public class DatabaseController {
 	
 	private static void loadStudenti() {
 		try {
-			studentReader = new BufferedReader(new InputStreamReader(new FileInputStream(studentTextFile)));
+			studentReader = new BufferedReader(new InputStreamReader(new FileInputStream(studentTextFile), "UTF8"));
 			String line = null;
 			List<Student> studenti = new ArrayList<Student>();
 			int maxId = 0;
@@ -193,7 +193,7 @@ public class DatabaseController {
 	
 	private static void loadProfesori() {
 		try {
-			profesorReader = new BufferedReader(new InputStreamReader(new FileInputStream(profesorTextFile)));
+			profesorReader = new BufferedReader(new InputStreamReader(new FileInputStream(profesorTextFile), "UTF8"));
 			String line = null;
 			List<Profesor> profesori = new ArrayList<Profesor>();
 			int maxId = 0;
